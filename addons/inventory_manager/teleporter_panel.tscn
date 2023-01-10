@@ -1,0 +1,128 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/inventory_manager/teleporter_panel.gd" type="Script" id=1]
+[ext_resource path="res://sprites/objects/teleporter/generic/frame001.png" type="Texture" id=2]
+[ext_resource path="res://sprites/objects/teleporter/boss/bosswarp1.png" type="Texture" id=3]
+
+
+
+
+
+
+
+
+
+
+[node name="PanelContainer" type="PanelContainer"]
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 132.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 241.0
+margin_bottom = 127.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 234.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 13.0
+margin_right = 84.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Type: "
+align = 1
+
+[node name="CheckBox" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 88.0
+margin_right = 234.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "Generic"
+icon = ExtResource( 2 )
+items = [ "Generic", ExtResource( 2 ), false, 0, null, "Boss", ExtResource( 3 ), false, 1, null ]
+selected = 0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 234.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_top = 3.0
+margin_right = 115.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Orientation:"
+
+[node name="CheckBox" type="OptionButton" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 119.0
+margin_right = 234.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Horizontal"
+items = [ "Horizontal", null, false, 0, null, "Vertical", null, false, 1, null ]
+selected = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 234.0
+margin_bottom = 92.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 78.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Destination:"
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 82.0
+margin_right = 156.0
+margin_bottom = 24.0
+min_value = -999999.0
+max_value = 999999.0
+prefix = "X:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox2" type="SpinBox" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 160.0
+margin_right = 234.0
+margin_bottom = 24.0
+min_value = -999999.0
+max_value = 999999.0
+prefix = "Y:"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 234.0
+margin_bottom = 120.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+margin_top = 5.0
+margin_right = 115.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "One use:"
+align = 3
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 119.0
+margin_right = 234.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "On"
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_type_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer3/CheckBox" to="." method="_on_orientation_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SpinBox" to="." method="_on_x_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SpinBox2" to="." method="_on_y_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer4/CheckBox" to="." method="_on_one_use_toggled"]

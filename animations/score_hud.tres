@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=2]
+
+[ext_resource path="res://sprites/ui/hud/score_chest/chest010.png" type="Texture" id=1]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest008.png" type="Texture" id=2]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest002.png" type="Texture" id=3]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest005.png" type="Texture" id=4]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest006.png" type="Texture" id=5]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest003.png" type="Texture" id=6]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest009.png" type="Texture" id=7]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest001.png" type="Texture" id=8]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest004.png" type="Texture" id=9]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest007.png" type="Texture" id=10]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest011.png" type="Texture" id=11]
+[ext_resource path="res://sprites/ui/hud/score_chest/chest012.png" type="Texture" id=12]
+
+
+
+
+
+
+
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "ChestLoop",
+"speed": 10.0
+} ]

@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=2]
+
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/red_blue.png" type="Texture" id=1]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/center.png" type="Texture" id=2]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/green.png" type="Texture" id=3]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/blue.png" type="Texture" id=4]
+[ext_resource path="res://sprites/objects/pickup/end_item/map_piece/map_fragment.png" type="Texture" id=5]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/red.png" type="Texture" id=6]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "Green",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "Red",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Map",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "RedBlue",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "Center",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "Blue",
+"speed": 1.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "Empty",
+"speed": 1.0
+} ]
