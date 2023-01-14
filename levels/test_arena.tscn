@@ -213,7 +213,7 @@ contents = [ [ 1, "Magic", "Large" ], [ 1, "Ammo", "Large" ], [ 1, "Dynamite" ],
 position = Vector2( 332, -89 )
 patrol = true
 patrol_width = Vector2( 50, 50 )
-contents = [ [ 0, "Skull", "Purple" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Red" ], [ 0, "Skull", "Red" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Purple" ] ]
+contents = [ [ 0, "Skull", "Purple" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Red" ], [ 0, "Skull", "Red" ], [ 2, 6, 2, true, true ], [ 3, "Generic", Vector2( 500, -450 ), "Horizontal", true ] ]
 
 [node name="ExplosiveBarrel" parent="Objects/ExplosiveBarrels" index="0" instance=ExtResource( 17 )]
 position = Vector2( -31.8633, -633.766 )

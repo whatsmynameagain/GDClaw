@@ -90,7 +90,7 @@ func set_temp_contents(value) -> void:
 	else:
 		for slot in inventory_slots.get_children():
 			slot.get_node("AnimatedSprite").play("Empty")
-	confirm_button.disabled = selection_contents == temp_contents
+	confirm_button.disabled = selection_contents == temp_contents and !item_properties.visible
 	discard_button.disabled = confirm_button.disabled 
 
 

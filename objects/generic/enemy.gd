@@ -135,7 +135,6 @@ func set_patrol_width(value : Vector2) -> void:
 	property_list_changed_notify()
 
 func _get_voice_lines() -> Dictionary:
-	
 	return voice_lines
 
 func set_state(value) -> void:
@@ -214,7 +213,6 @@ func set_state(value) -> void:
 			override = _patrol_on_enter()
 			if !override:
 				pass
-
 		States.ATTACK_MELEE:
 			override = _attack_melee_on_enter()
 			if !override:
@@ -241,7 +239,7 @@ func set_state(value) -> void:
 				randomize()
 				var chance = randi()%3+1
 				if chance == 3: #1/3 chance of saying something
-					#this breaks if there aren't exactly two lift lines (fine for testing)
+					#this breaks if there aren't exactly two lift lines (good enough for testing)
 					on_voice_trigger(_get_voice_lines()["lift_%s" % str(randi()%2+1)])
 					
 				collision_lifted.call_deferred("set_disabled", false) #hm, future problems if an enemy is lifted
@@ -258,7 +256,6 @@ func set_state(value) -> void:
 			override = _death_combat_on_enter()
 			if !override:
 				contact_hitbox.monitoring = false
-				pass
 		States.DEATH_SPIKES:
 			override = _death_spikes_on_enter()
 			if !override:
@@ -274,13 +271,13 @@ func set_state(value) -> void:
 			override = _death_liquid_on_enter()
 			if !override:
 				contact_hitbox.monitoring = false
-				pass
 		States.DEAD_THROW:
 			override = _death_throw_on_enter()
 			if !override:
 				if !contents.empty():
 					drop_loot()
 				animation_player.play("despawn")
+
 
 func _ready():
 	if !Engine.is_editor_hint():
@@ -309,8 +306,9 @@ func _physics_process(delta):
 				if spikes or liquid:
 					motion = Vector2.ZERO
 				motion = move_and_slide(motion, Vector2.UP)
-				motion.y =  motion.y + (gravity *.75 * delta) if !is_on_floor() and motion.y < MAXVELOCITY else MAXVELOCITY
-				
+				motion.y =  motion.y + (gravity * .75 * delta) if !is_on_floor() and motion.y < MAXVELOCITY else MAXVELOCITY
+			
+			#not tested, collision mask still disabled
 			for x in get_slide_count():
 				var _collision = get_slide_collision(x)
 				if _collision.collider.is_class("CrumblingPlatform") and !_collision.collider.activated:
@@ -325,10 +323,11 @@ func _physics_process(delta):
 					override = _patrol_update()
 					if !override:
 						if ((global_position.x >= patrol_limit_positions.x and orientation == 1) 
-								or (global_position.x <= patrol_limit_positions.y and orientation == -1)): #problem here
+								or (global_position.x <= patrol_limit_positions.y and orientation == -1)): #problem here (?)
 							motion.x = -walk_speed * orientation
 							animation.play("walk")
 						else:
+							#put all of this in a method and call said method via signal when a ledge is detected?
 							if randi()%100+1 <= Settings.ENEMY_PATROL_WAIT_CHANCE * 100: 
 								set_state(States.IDLE)
 							else:
@@ -360,10 +359,11 @@ func _physics_process(delta):
 						if thrown_stop and !thrown_stop_checked and !dead:
 							thrown_stop_checked = true
 							yield(get_tree().create_timer(1), "timeout") #gotta check the timing, seems ok-ish for now
-							#error here, entity sometimes is killed somewhere else before the yield returns?
+							#rare error here, entity sometimes is killed somewhere else before the yield returns?
 							#resume: Resumed function '_physics_process()' after yield, but class instance is gone. At script: res://objects/generic/enemy.gd:361
+							#gotta figure out how to reproduce
 							if !dropped:
-								print("taking throw damage")
+								print("enemy taking throw damage")
 								health -= Settings.THROW_DAMAGE 
 								print("%s hit for %s by %s" % [name, Settings.THROW_DAMAGE , "throw"])
 							if health <= 0:
@@ -373,8 +373,9 @@ func _physics_process(delta):
 				States.DAMAGE:
 					override = _damage_update()
 					if !override:
-						if motion.x > 5:
-							motion.x -= 5
+						pass
+						#if motion.x > 5:
+						#	motion.x -= 5
 				States.DEATH_COMBAT:
 					override = _death_combat_update()
 					if !override:
@@ -389,12 +390,11 @@ func _physics_process(delta):
 						pass
 
 
-#to do: make enemy face the damage source. Can't really check how the original does it right now
 func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vector2) -> void:
 	juggle = dead
 	if !damage_cooldown:
 		damage_cooldown = !dead
-		set_state(States.DAMAGE) #kinda pointless, there's nothing there
+		set_state(States.DAMAGE)
 		
 		if "orientation" in source:
 			set_orientation(source.orientation) #because for the player -1 is looking left, blah blah
@@ -402,7 +402,7 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 			# warning-ignore:narrowing_conversion
 			set_orientation(sign(global_position.x - source.global_position.x))
 		#sprite.flip_h = orientation == -1
-		motion.x = 50 * orientation #not tested
+		knockback()  #not tested
 		
 		print("%s hit for %s by %s" % [type, damage, source.name])
 		
@@ -412,17 +412,16 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 		health -= damage
 		
 		if health <= 0:
-			if source.is_class("PistolBullet"): #pistol bullets disappear after killing
+			if source.is_class("PistolBullet"): #pistol bullets disappear after killing one enemy
 				source.queue_free()
 			elif source.is_class("Player"):
 				source._on_enemy_kill() #probably should be a signal
 			on_death(_type, orientation)
-			
-		#dunno if the sword projectiles trigger a hit sound aside from the elemental hit sound in the original
-		var hit_type = "high" if source.is_class("Player") and source.melee_attack == 4 else "mid"
-		if !dead: #a bit redundant but easier. Maybe change later.
+		else:
+			#dunno if the sword projectiles trigger a hit sound aside from the elemental hit sound in the original
+			var hit_type = "high" if source.is_class("Player") and source.melee_attack == 4 else "mid"
 			animation.play("hit_%s" % hit_type) 
-		Utils.decide_player(sounds, sound_effects_generic["hit_%s" % hit_type])
+			Utils.decide_player(sounds, sound_effects_generic["hit_%s" % hit_type])
 
 
 func knockback() -> void:
@@ -560,7 +559,7 @@ func _draw() -> void:
 
 func _on_damage_animation_completed() -> void:
 	damage_cooldown = false
-	motion.x = 0 #temp, might break something later
+	stop_knockback() #temp, might break something later
 	set_state(States.IDLE)
 
 
@@ -590,8 +589,8 @@ func _on_throw_hitbox_body_entered(body: Node) -> void:
 
 
 #player contact damage // to-do: keep damaging while inside the area 
-#(currently needs to exit and re enter to trigger 
-func _on_contact_hitbox_body_entered(body: KinematicBody2D) -> void:	
+#(currently needs to exit and re enter to trigger)
+func _on_contact_hitbox_body_entered(body: KinematicBody2D) -> void:
 	if body == self:
 		return
 	else:
@@ -638,7 +637,10 @@ func _throw_land_on_exit() -> bool:
 	
 	return false
 
+
 #----------ON ENTER-------------#
+
+
 func _idle_on_enter() -> bool:
 	
 	return false

@@ -16,15 +16,15 @@ absorbent = true
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "Break",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]

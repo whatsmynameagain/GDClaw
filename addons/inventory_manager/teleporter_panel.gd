@@ -14,7 +14,7 @@ onready var destination_y = $VBoxContainer/HBoxContainer2/SpinBox2
 onready var one_use = $VBoxContainer/HBoxContainer4/CheckBox
 
 
-func setFromItem(item) -> void:
+func set_from_item(item) -> void:
 	type_list.selected = 0 if item[1] == "Generic" else 1
 	orientation_list.selected = 0 if item[3] == "Horizontal" else 1
 	destination_x.value = item[2].x

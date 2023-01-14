@@ -1,11 +1,6 @@
-*.png
 *.md5
 *.import
-/.import/
-/Video/
 /Sounds/
 /Music/
-/exported/
 *.exe
 *.pck
-/player/s

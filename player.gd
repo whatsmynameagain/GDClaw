@@ -366,12 +366,12 @@ func _physics_process(delta):
 	motion.y = max_floor_y_velocity if (floor_velocity != Vector2.ZERO 
 					and active_state.name != "Jump") else motion.y
 	
-	
 	snap = Vector2.DOWN * 4 if !active_state.name in ["Jump", "Climb"] else Vector2.ZERO
-	#move_and_slide_with_snap causes a slight jiggle to some other physicsbody2d (enemies and some pickups)
-	#when going from idle to move states (at least on linux, check windows later)
-	#with the camera fixed to the player's position. Goes away with camera smoothing.
 	motion = move_and_slide_with_snap(motion, snap, Vector2.UP)
+	position = position.round()
+	#temp (?) fix for jiggling physicsbodies when moving laterally
+	#(seems to be caused by small changes in position.y float values after calling 
+	#move_and_slide functions)
 	
 	for x in get_slide_count():
 		var collision = get_slide_collision(x)
@@ -532,7 +532,7 @@ func use_pickup(pickup : Pickup) -> void:
 			previous_timer_int = pickup.duration
 			powerup_timer.start()
 			if powerup != Powerup_enum.NONE:
-				end_powerup(powerup) 
+				end_powerup() 
 				
 			set_powerup(pickup.type if pickup.type != 2 else Powerup_enum.CATNIP) #2 = catnip_red
 			emit_signal("powerup_collected")
@@ -568,8 +568,8 @@ func flip_checks() -> void:
 		lifted_object._flip_anim(orientation == -1)
 
 
-func end_powerup(_powerup) -> void:
-	match _powerup:
+func end_powerup() -> void:
+	match powerup:
 		Powerup_enum.CATNIP:
 			climb_speed = CLIMB
 			animation.speed_scale = 1.0
@@ -835,7 +835,7 @@ func _on_liftablecheck_body_exited(body: Node) -> void:
 
 func _on_powerup_timer_end() -> void: #called by the powerup timer node when the timer ends (or manually on death)
 	emit_signal("powerup_timer_end") #hide the timer hud
-	end_powerup(powerup) 
+	end_powerup() 
 	powerup_timer.stop()
 	set_powerup(Powerup_enum.NONE)
 

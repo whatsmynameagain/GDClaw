@@ -77,7 +77,6 @@ func _ready():
 "
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 0, -3.23535 )
 collision_layer = 2
 collision_mask = 1033
 script = ExtResource( 1 )
@@ -420,6 +419,7 @@ one_shot = true
 [node name="InvulnSwitcher" type="Timer" parent="."]
 
 [node name="Camera2D" parent="." instance=ExtResource( 17 )]
+process_mode = 0
 smoothing_speed = 15.0
 
 [connection signal="area_entered" from="AreaCheck" to="." method="_on_area_entered"]

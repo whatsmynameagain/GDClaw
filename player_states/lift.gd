@@ -32,6 +32,8 @@ func _on_enter() -> void:
 
 
 func _update(_delta) -> void:
+	if !owner.is_on_floor():
+		emit_signal("finished", "Idle")
 	if lifting:
 		if Input.is_action_just_pressed("ui_attack") and charge_key == "":
 			charge_key = "ui_attack"
