@@ -4,14 +4,6 @@ extends Node
 #Note: anything that is a string comparison will probably be eventually switched to enums
 #---------------------------
 
-#TO DO------------
-#player voice lines after killing an enemy
-#	-easy if the player hits with melee, hard if hits with projectiles
-#	-the answer is probably signals
-#	-gotta figure out where to emit the enemy_dead signal and what to send with it
-#
-
-
 
 enum GameStates {Intro, Menu, Playing, Pause, Booty} 
 

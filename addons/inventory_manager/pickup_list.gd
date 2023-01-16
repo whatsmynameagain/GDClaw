@@ -6,10 +6,6 @@ class_name PickupList
 
 #item selection specifics (double click, right click, etc) can be experimented with
 
-#there's currently an editor bug that draws the highlight outline
-#of the item_list even though it should be clipped by the scrollcontainer
-#https://github.com/godotengine/godot/issues/9612
-
 signal selected(item)
 
 

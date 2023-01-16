@@ -156,7 +156,7 @@ var show_labels := false
 var damage_cooldown := 0.0
 var active_state #state
 var previous_state #state
-var next_state_name := ""
+var next_state_name := "" #used in states
 var on_ladder := false
 var on_ladder_top := false
 var on_two_ladders := false
@@ -355,7 +355,7 @@ func _physics_process(delta):
 	if show_labels:
 		update_labels()
 	
-	if not(active_state.name in ["Damage", "Climb", "Noclip", 
+	if !(active_state.name in ["Damage", "Climb", "Noclip", 
 			"Swing", "Death_Damage", "Death_Spikes", "Death_Liquid"]):
 		motion.y = motion.y + (gravity * delta) if motion.y < MAXVELOCITY else MAXVELOCITY
 
@@ -368,7 +368,7 @@ func _physics_process(delta):
 	
 	snap = Vector2.DOWN * 4 if !active_state.name in ["Jump", "Climb"] else Vector2.ZERO
 	motion = move_and_slide_with_snap(motion, snap, Vector2.UP)
-	position = position.round()
+	
 	#temp (?) fix for jiggling physicsbodies when moving laterally
 	#(seems to be caused by small changes in position.y float values after calling 
 	#move_and_slide functions)
@@ -397,6 +397,10 @@ func _physics_process(delta):
 		on_elevator = on_elevator_area
 	else:
 		on_elevator = true
+	
+	#To avoid glitchy movement. Can't round the elevator movement because it's based on tween
+	if !on_elevator: 
+		position = position.round()
 	
 	boosted = run_boost_charge >= BOOST_START
 
@@ -681,11 +685,11 @@ func on_hit(_type: int, source : CollisionObject2D, damage : int, point : Vector
 
 
 # -------------SIGNAL METHODS-------------
-func _change_state(stateName) -> void:
-	next_state_name = stateName
+func _change_state(state_name) -> void:
+	next_state_name = state_name
 	active_state._on_exit()
 	previous_state = active_state
-	active_state = state_list[stateName]
+	active_state = state_list[state_name]
 	active_state._on_enter()
 	next_state_name = ""
 	#only running off a ledge after running should keep the charge while not boosted
@@ -695,12 +699,11 @@ func _change_state(stateName) -> void:
 		if active_state != state_list["Jump"] and previous_state == state_list["Move"]: 
 			run_boost_charge = 0.0 #this resets the speed boosts in physics process
 	else: #but while boosted, both jumping and falling should keep the momentum
-		if !active_state.name in ["Jump", "Fall", "Move"]: #string comparison, could be direct comparisons
+		if !active_state.name in ["Jump", "Fall", "Move"]:
 			run_boost_charge = 0.0
 
 
 func _on_area_entered(area) -> void:
-	#this whole thing can be optimized, string comparisons are slow.
 	var area_owner = area.get_parent()
 	match area.name:
 		"LadderBody":
@@ -737,7 +740,6 @@ func _on_area_exited(area) -> void:
 
 
 func _on_damage_taken(_source: CollisionObject2D, _damage : int) -> void: 
-	
 	health = max(health - _damage, 0)
 	emit_signal("health_updated", health)
 	#print("Player Damage: %s" % _damage)
@@ -846,7 +848,7 @@ func _on_color_switch() -> void:
 	animation.material.set_shader_param("switcher", current_switcher)
 
 
-#called by the player_sounds finished signal	to automatically hide the thingy when the dialogue line ends
+#called by the player_sounds finished signal to automatically hide the thingy when the dialogue line ends
 func _on_dialogue_end() -> void:
 	exclamation.visible = false
 

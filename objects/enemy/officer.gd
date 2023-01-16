@@ -23,5 +23,16 @@ func _init() -> void:
 	type = "officer"
 
 
-func damage_on_enter() -> void:
-	print("officer damage_on_enter")
+func _attack_melee_on_enter() -> bool:
+	sprite.offset = Vector2(-20, 0)
+	return true
+
+
+func _attack_melee_on_exit() -> bool:
+	sprite.offset = Vector2.ZERO
+	return true
+
+#func _damage_on_enter() -> bool:
+#	print("officer damage_on_enter")
+#	return true
+

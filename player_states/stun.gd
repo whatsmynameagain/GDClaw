@@ -17,7 +17,4 @@ func _update(delta) -> void:
 	stun_time -= delta
 	owner.motion.y = owner.GRAVITY
 	if stun_time <= 0:
-		if owner.is_on_floor():
-			emit_signal("finished", "Idle")
-		else:
-			emit_signal("finished", "Fall")
+		emit_signal("finished", "Idle")

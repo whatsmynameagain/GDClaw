@@ -1,6 +1,7 @@
 *.md5
 *.import
-/Sounds/
-/Music/
 *.exe
 *.pck
+*.wav
+*.png
+*.ogg

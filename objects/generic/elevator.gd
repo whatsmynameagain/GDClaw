@@ -76,11 +76,11 @@ func _physics_process(_delta) -> void:
 		if !carry_check_break.is_colliding():
 			if carry_check.is_colliding(): 
 				var collider = carry_check.get_collider()
-				if collider.motion.y == collider.gravity:
+				if collider.motion.y == 0:
 					carrying = true
 			elif carry_check_safe.is_colliding(): 
 				var collider = carry_check_safe.get_collider()
-				if collider.motion.y == collider.gravity:
+				if collider.motion.y == 0:
 					carrying = true
 			else: 
 				carrying = false

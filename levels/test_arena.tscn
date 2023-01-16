@@ -96,6 +96,11 @@ position = Vector2( 61.3793, -44.5647 )
 z_position = "Front"
 contents = [ [ 0, "Coin" ], [ 0, "Bars" ], [ 0, "Ring", "Red" ] ]
 
+[node name="Crate2" parent="Objects/Crates" index="1" instance=ExtResource( 20 )]
+position = Vector2( 161, -47 )
+z_position = "Back"
+contents = [ [ 0, "Coin" ] ]
+
 [node name="CrumblingPlatform" parent="Objects/CrumblingPlatforms" index="0" instance=ExtResource( 21 )]
 position = Vector2( 479.114, -64.424 )
 
@@ -233,7 +238,7 @@ static_glitter = true
 
 [node name="Treasure3" parent="Objects/Pickups" index="2" instance=ExtResource( 12 )]
 position = Vector2( 798.003, -63.6502 )
-z_index = 19
+z_index = 15
 physics_material_override = ExtResource( 9 )
 gravity_scale = 1.0
 physics = true

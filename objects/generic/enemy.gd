@@ -142,41 +142,37 @@ func set_state(value) -> void:
 	
 	 #basically state.on_exit()
 	match state:
+		
+		#all state machine parts (on_enter, update and on_exit) follow this format:
 		States.IDLE:
-			override = _idle_on_exit() #check if overriden, if not, do something else
-			if !override:
+			#do stuff before the potential overriden method
+			if !_idle_on_exit(): #check if overriden, if not, do something else:
 				patrol_idle_timer.stop()
 				set_orientation(orientation * -1)
-				pass
+			#do stuff after the potential overriden method
+		
 		States.PATROL:
-			override = _patrol_on_exit()
-			if !override:
+			if !_patrol_on_exit():
 				motion.x = 0.0
 				pass
 		States.ATTACK_MELEE:
-			override = _attack_melee_on_exit()
-			if !override:
+			if !_attack_melee_on_exit():
 				pass
 		States.ATTACK_RANGED:
-			override = _attack_ranged_on_exit()
-			if !override:
+			if !_attack_ranged_on_exit():
 				pass
 		States.CHASE:
-			override = _chase_on_exit()
-			if !override:
+			if !_chase_on_exit():
 				pass
 		States.LEAP:
-			override = _leap_on_exit()
-			if !override:
+			if !_leap_on_exit():
 				pass
 		States.LIFTED:
-			override = _lifted_on_exit()
-			if !override:
+			if !_lifted_on_exit():
 				if dropped:
 					set_collision_layer_bit(6, true)
 		States.THROW_LAND:
-			override = _throw_land_on_exit()
-			if !override:
+			if !_throw_land_on_exit():
 				if !dead:
 					global_position.y -= 40 #bit hacky, but the alternative
 						#would be to offset the sprite and collisionlifted area down 
@@ -189,8 +185,7 @@ func set_state(value) -> void:
 	#basically state.on_enter()-------------------------
 	match state: 
 		States.IDLE:
-			override = _idle_on_enter()
-			if !override:
+			if !_idle_on_enter():
 				dropped = false
 				collision_lifted.disabled = true
 				collision.disabled = false
@@ -210,28 +205,22 @@ func set_state(value) -> void:
 				else:
 					set_state(States.PATROL)
 		States.PATROL:
-			override = _patrol_on_enter()
-			if !override:
+			if !_patrol_on_enter():
 				pass
 		States.ATTACK_MELEE:
-			override = _attack_melee_on_enter()
-			if !override:
+			if !_attack_melee_on_enter():
 				pass
 		States.ATTACK_RANGED:
-			override = _attack_ranged_on_enter()
-			if !override:
+			if !_attack_ranged_on_enter():
 				pass
-		States.CHASE:
-			override = _chase_on_enter()
-			if !override:
+		States.CHASE: 
+			if !_chase_on_enter():
 				pass
 		States.LEAP:
-			override = _leap_on_enter()
-			if !override:
+			if !_leap_on_enter():
 				pass
 		States.LIFTED:
-			override = _lifted_on_enter()
-			if !override:
+			if !_lifted_on_enter():
 				#temp voice line stuff, I don't know the chances
 				contact_hitbox.monitoring = false
 				animation.play("lifted")
@@ -245,20 +234,16 @@ func set_state(value) -> void:
 				collision_lifted.call_deferred("set_disabled", false) #hm, future problems if an enemy is lifted
 				collision.call_deferred("set_disabled", true) #in a small vertical space?
 		States.THROW_LAND:
-			override = _throw_land_on_enter()
-			if !override:
+			if !_throw_land_on_enter():
 				animation.play("land")
 		States.DAMAGE:
-			override = _damage_on_enter()
-			if !override:
+			if !_damage_on_enter():
 				pass
 		States.DEATH_COMBAT:
-			override = _death_combat_on_enter()
-			if !override:
+			if !_death_combat_on_enter():
 				contact_hitbox.monitoring = false
 		States.DEATH_SPIKES:
-			override = _death_spikes_on_enter()
-			if !override:
+			if !_death_spikes_on_enter():
 				contact_hitbox.monitoring = false
 				spikes = true
 				motion = Vector2.ZERO
@@ -268,12 +253,10 @@ func set_state(value) -> void:
 					drop_loot()
 				animation_player.play("despawn")
 		States.DEATH_LIQUID:
-			override = _death_liquid_on_enter()
-			if !override:
+			if !_death_liquid_on_enter():
 				contact_hitbox.monitoring = false
 		States.DEAD_THROW:
-			override = _death_throw_on_enter()
-			if !override:
+			if !_death_throw_on_enter():
 				if !contents.empty():
 					drop_loot()
 				animation_player.play("despawn")
@@ -316,12 +299,10 @@ func _physics_process(delta):
 		
 			match state: #state.update()
 				States.IDLE:
-					override = _idle_update()
-					if !override:
+					if !_idle_update():
 						pass
 				States.PATROL:
-					override = _patrol_update()
-					if !override:
+					if !_patrol_update():
 						if ((global_position.x >= patrol_limit_positions.x and orientation == 1) 
 								or (global_position.x <= patrol_limit_positions.y and orientation == -1)): #problem here (?)
 							motion.x = -walk_speed * orientation
@@ -334,28 +315,22 @@ func _physics_process(delta):
 								set_orientation(orientation * -1)
 								
 				States.ATTACK_MELEE:
-					override = _attack_melee_update()
-					if !override:
+					if !_attack_melee_update():
 						pass
 				States.ATTACK_RANGED:
-					override = _attack_ranged_update()
-					if !override:
+					if !_attack_ranged_update():
 						pass
 				States.CHASE:
-					override = _chase_update()
-					if !override:
+					if !_chase_update():
 						pass
 				States.LEAP:
-					override = _leap_update()
-					if !override:
+					if !_leap_update():
 						pass
 				States.LIFTED:
-					override = _lifted_update()
-					if !override:
+					if !_lifted_update():
 						pass
 				States.THROW_LAND:
-					override = _throw_land_update()
-					if !override:
+					if !_throw_land_update():
 						if thrown_stop and !thrown_stop_checked and !dead:
 							thrown_stop_checked = true
 							yield(get_tree().create_timer(1), "timeout") #gotta check the timing, seems ok-ish for now
@@ -371,23 +346,20 @@ func _physics_process(delta):
 							else:
 								set_state(States.IDLE)
 				States.DAMAGE:
-					override = _damage_update()
-					if !override:
+					if !_damage_update():
 						pass
 						#if motion.x > 5:
 						#	motion.x -= 5
 				States.DEATH_COMBAT:
-					override = _death_combat_update()
-					if !override:
+					if !_death_combat_update():
 						pass
 				States.DEATH_SPIKES:
-					override = _death_spikes_update()
-					if !override:
+					if !_death_spikes_update():
 						pass
 				States.DEATH_LIQUID:
-					override = _death_liquid_update()
-					if !override:
+					if !_death_liquid_update():
 						pass
+		position = position.round()
 
 
 func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vector2) -> void:
@@ -405,7 +377,6 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 		knockback()  #not tested
 		
 		print("%s hit for %s by %s" % [type, damage, source.name])
-		
 		
 		hit.position = to_local(point)
 		hit.play("enemy_%s" % str(randi()%3+1))
