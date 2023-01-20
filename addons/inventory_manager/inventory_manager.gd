@@ -26,7 +26,6 @@ func _on_selection_changed():
 			dock.toggle(true)
 			dock.set_selection_contents(selection[0].contents) #duplicate made in the method
 		else:
-			
 			dock.clear()
 			dock.toggle(false)
 

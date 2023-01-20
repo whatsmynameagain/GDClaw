@@ -6,7 +6,6 @@ extends State
 var played_l
 var played_r 
 
-
 func play_footsteps() -> void:
 	#add a check for if the player is in an area that triggers a different footstep sound 
 	#(like water puddles)
@@ -29,13 +28,17 @@ func _on_enter() -> void:
 	if owner.get_run_speed() == owner.SPEED_BOOST:
 		owner.animation.speed_scale = 1.1
 	
-	if Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left"):
 		move(false, "running")
 	elif Input.is_action_pressed("ui_right"):
 		move(true, "running")
 
-
+#slow, this is kind of a mess as it is
 func _update(delta) -> void:
+	if !owner.is_on_floor(): 
+		owner.falling = true
+		emit_signal("finished", "Jump")
+
 	if owner.powerup != owner.Powerup_enum.CATNIP:
 		owner.run_boost_charge += delta
 	
@@ -50,13 +53,8 @@ func _update(delta) -> void:
 			emit_signal("finished", "Climb")
 		else:
 			emit_signal("finished", "Crouch")
-	elif !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
-		if Input.is_action_just_pressed("ui_jump"):
-			emit_signal("finished", "Jump")
-		emit_signal("finished", "Idle")
 	
 	#check if any of the 4 attack types keys are pressed
-	#could use a dictionary with a loop
 	elif Input.is_action_just_pressed("ui_attack"):
 		emit_signal("finished", "Idle_Attack")
 	elif Input.is_action_just_pressed("ui_pistol"):
@@ -65,7 +63,12 @@ func _update(delta) -> void:
 		emit_signal("finished", "Idle_Magic")
 	elif Input.is_action_just_pressed("ui_dynamite"):
 		emit_signal("finished", "Idle_Dynamite")
-		
+	
+	elif !Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
+		if Input.is_action_just_pressed("ui_jump"):
+			emit_signal("finished", "Jump")
+		emit_signal("finished", "Idle")
+			
 	elif owner.orientation == owner.Orientations.RIGHT: #if the character is moving to the right
 		if Input.is_action_just_pressed("ui_jump"):
 			move(true, "jump")
@@ -76,6 +79,7 @@ func _update(delta) -> void:
 		elif Input.is_action_pressed("ui_right"):
 			play_footsteps()
 			move(true, "running") #this is needed for updating the speed when a catnip effects ends in the middle of a run action
+	
 	else: #if moving to the left
 		if Input.is_action_just_pressed("ui_jump"):
 			move(false, "jump")
@@ -88,9 +92,7 @@ func _update(delta) -> void:
 			play_footsteps()
 			move(false, "running")#this is needed for updating the speed when a catnip effects ends in the middle of a run action
 		
-	if !owner.is_on_floor(): 
-		owner.falling = true
-		emit_signal("finished", "Jump")
+	
 
 
 func _on_exit() -> void:

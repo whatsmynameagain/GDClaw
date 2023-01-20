@@ -6,7 +6,6 @@
 *.png
 *.ogg
 *.WAV
-original_assets/
 sounds/
 sprites/
 video/

@@ -165,6 +165,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "res://addons/inventory_manager/plugin.cfg" )
 
+[global]
+
+vsync=false
+
 [importer_defaults]
 
 texture={

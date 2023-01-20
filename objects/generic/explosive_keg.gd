@@ -22,7 +22,7 @@ func is_class(name) -> bool:
 
 func _ready() -> void:
 	audio.volume_db = Settings.EFFECTS_VOLUME
-	z_index = Settings.BARREL_Z
+	z_index = Settings.KEG_Z
 	physics_material_override = load("res://objects/generic/pickup_physics_material_bounceless.tres")
 
 
@@ -77,7 +77,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	if body.is_class("Crate"):
 		body.on_break()
 	elif body.is_class("Player") or body.is_class("Enemy"):
-		body.on_hit(Settings.Damage_Types.COMBAT, self, Settings.BARREL_DAMAGE, global_position)
-	else: #barrel
+		body.on_hit(Settings.Damage_Types.COMBAT, self, Settings.KEG_DAMAGE, global_position)
+	else: #keg
 		if !body.lifted and !body.thrown and !body.exploding:
 			body.explode()

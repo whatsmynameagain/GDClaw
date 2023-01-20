@@ -72,6 +72,9 @@ volume_db = -25.0
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
 volume_db = -25.0
 
+[node name="Sounds2" type="AudioStreamPlayer2D" parent="."]
+volume_db = -25.0
+
 [node name="StateLabel" type="Label" parent="."]
 margin_left = -16.3975
 margin_top = -121.51

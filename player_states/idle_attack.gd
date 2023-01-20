@@ -54,7 +54,8 @@ func _check_attack() -> void:
 	owner.animation.disconnect("animation_finished", self, "_check_attack")
 	if !owner.animation.is_connected("animation_finished", self, "_on_animation_complete"):
 		owner.animation.connect("animation_finished", self, "_on_animation_complete")
-	owner.animation.play("attack_%s_post" % animation_strings[owner.melee_attack])
+	if owner.melee_attack != 0:
+		owner.animation.play("attack_%s_post" % animation_strings[owner.melee_attack])
 
 
 func _on_exit() -> void:

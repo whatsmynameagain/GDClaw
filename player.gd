@@ -173,7 +173,6 @@ var action_time := 0.0
 var floor_velocity := Vector2.ZERO
 var max_floor_y_velocity := 0.0
 var snap_vector := Vector2.ZERO
-var previous_timer_int : int = 0
 var active_ranged = Ranged.PISTOL
 var run_boost_charge : float #note: camera moves back a bit in the original when the boost is triggered
 var boosted := false
@@ -197,6 +196,7 @@ var lifting := false
 var lifted_object
 var hit_effect = preload("res://objects/generic/hit_effect.tscn").instance()
 var snap := Vector2.ZERO
+var powerup_time := 0
 
 
 #nodes
@@ -216,6 +216,8 @@ onready var attack_kick = $AttackAreas/AttackKick
 onready var attack_punch = $AttackAreas/AttackPunch
 onready var attack_sword = $AttackAreas/AttackSword
 onready var player_sounds = $PlayerSounds
+onready var player_sounds_2 = $PlayerSounds2
+onready var player_sounds_3 = $PlayerSounds3
 onready var player_voice = $PlayerVoice
 onready var attack_areas = $AttackAreas
 onready var player_glitter = $PlayerGlitter
@@ -309,6 +311,8 @@ func set_powerup(value) -> void:
 func _ready() -> void:
 	z_index = Settings.PLAYER_Z
 	player_sounds.set_volume_db(Settings.EFFECTS_VOLUME)
+	player_sounds_2.set_volume_db(Settings.EFFECTS_VOLUME)
+	player_sounds_3.set_volume_db(Settings.EFFECTS_VOLUME)
 	player_voice.set_volume_db(Settings.EFFECTS_VOLUME)
 	for state_node in $State.get_children():
 		if state_node.is_class("State"):
@@ -342,12 +346,7 @@ func _process(delta) -> void:
 		max_floor_y_velocity = max(max_floor_y_velocity, abs(get_floor_velocity().y))
 	else:
 		max_floor_y_velocity = 0
-		
-	#what is this monstrosity
-	if !powerup_timer.is_stopped():
-		if previous_timer_int + 1 > int(powerup_timer.time_left):
-			previous_timer_int = int(powerup_timer.time_left) + 1
-			emit_signal("powerup_timer_update", previous_timer_int)
+
 
 
 func _physics_process(delta):
@@ -525,21 +524,15 @@ func use_pickup(pickup : Pickup) -> void:
 		if ((powerup == pickup.type) or (powerup == Powerup_enum.CATNIP and pickup.type == 2)): #2 = catnip_red
 			# if the powerup is the same type as the one had and it's not reusable
 			if pickup.stack_duration: #if the powerup can stack
-				powerup_timer.wait_time = clamp(powerup_timer.time_left + pickup.duration, 0, 999)
+				update_powerup_timer(clamp(powerup_time + pickup.duration, 0, 999))
 			else:
-				powerup_timer.wait_time = pickup.duration
-			previous_timer_int = int(powerup_timer.wait_time)
-			powerup_timer.start() #reset the timer with new value
+				update_powerup_timer(clamp(pickup.duration, 0, 999))
 		else: #start a new powerup timer
-			powerup_timer.wait_time = pickup.duration
-			previous_timer_int = pickup.duration
-			powerup_timer.start()
+			update_powerup_timer(pickup.duration)
 			if powerup != Powerup_enum.NONE:
 				end_powerup() 
-				
 			set_powerup(pickup.type if pickup.type != 2 else Powerup_enum.CATNIP) #2 = catnip_red
 			emit_signal("powerup_collected")
-		emit_signal("powerup_timer_update", int(powerup_timer.time_left))
 
 
 func change_ammo() -> void:
@@ -610,6 +603,12 @@ func on_dynamite_prepared() -> void:
 		on_voice_trigger(dialogue["fire_dynamite"])
 
 
+#all these spawn_projectile methods can be improved by having a pool of pre-instantiated objects
+#and setting them up instead of always creating a new instance. Requires to change the behavior of 
+#current projectiles of despawning with queue_free when they hit terrain or a single enemy 
+#in the case of bullets.
+#soon(tm)
+
 #(assumes powerup is one of the three sword powerups)
 #check if the original has 2d sound for the sword projectile
 func spawn_sword_projectile(stance : int) -> void:
@@ -617,7 +616,7 @@ func spawn_sword_projectile(stance : int) -> void:
 		var projectile = Sword_Projectile.instance()
 		projectile.type = powerup
 		var id = 12 if projectile.type == Powerup_enum.FIRE_SWORD else 13 if projectile.type == Powerup_enum.ICE_SWORD else 14
-		Utils.decide_player(player_sounds, action_sounds[id]) 
+		Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[id]) 
 		var node_name = "SwordStanding" if stance == 1 else "SwordCrouch" if stance == 2 else "SwordAir"
 		var _rotation = 180 if orientation == Orientations.LEFT else 0
 		emit_signal("projectile_fired", projectile, 
@@ -630,7 +629,7 @@ func spawn_sword_projectile(stance : int) -> void:
 func spawn_pistol_projectile(stance : int) -> void:
 	var projectile = Pistol_Bullet.instance()
 	var node_name = "PistolStanding" if stance == 1 else "PistolCrouch" if stance == 2 else "PistolAir"
-	Utils.decide_player(player_sounds, action_sounds[22]) 
+	Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[22]) 
 	emit_signal("projectile_fired", projectile,
 			projectile_spawns.get_node(node_name).global_position,
 			orientation,
@@ -642,7 +641,7 @@ func spawn_magic_projectile(stance : int) -> void:
 	var projectile = Magic_Projectile.instance()
 	var node_name = "MagicClawStanding" if stance == 1 else "MagicClawCrouch" if stance == 2 else "MagicClawAir"
 	var _rotation = 180 if orientation == Orientations.LEFT else 0
-	Utils.decide_player(player_sounds, action_sounds[23]) 
+	Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[23]) 
 	emit_signal("projectile_fired", projectile,
 			projectile_spawns.get_node(node_name).global_position,
 			orientation,
@@ -653,7 +652,7 @@ func spawn_magic_projectile(stance : int) -> void:
 func spawn_dynamite_projectile(stance : int, charge : Vector2) -> void:
 	var projectile = Dynamite_Projectile.instance()
 	var node_name = "DynamiteStanding" if stance == 1 else "DynamiteCrouch" if stance == 2 else "DynamiteAir"
-	Utils.decide_player(player_sounds, action_sounds[7]) 
+	Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[7]) 
 	emit_signal("projectile_fired", projectile,
 			projectile_spawns.get_node(node_name).global_position,
 			-orientation,
@@ -681,6 +680,11 @@ func on_hit(_type: int, source : CollisionObject2D, damage : int, point : Vector
 	else:
 		print("Can't take damage on cooldown // Invincible status")
 
+
+func update_powerup_timer(value) -> void:
+	powerup_time = value
+	emit_signal("powerup_timer_update", powerup_time) 
+	powerup_timer.start(1.0)
 
 # -------------SIGNAL METHODS-------------
 func _change_state(state_name) -> void:
@@ -833,11 +837,17 @@ func _on_liftablecheck_body_exited(body: Node) -> void:
 	liftable_in_close_range = !liftables_in_range.empty()
 
 
-func _on_powerup_timer_end() -> void: #called by the powerup timer node when the timer ends (or manually on death)
-	emit_signal("powerup_timer_end") #hide the timer hud
-	end_powerup() 
-	powerup_timer.stop()
-	set_powerup(Powerup_enum.NONE)
+#-1 seconds on counter
+func _on_powerup_timer_end() -> void:
+	powerup_time -= 1
+	if powerup_time <= 0:
+		emit_signal("powerup_timer_end") #hide the timer hud
+		end_powerup() 
+		powerup_timer.stop()
+		set_powerup(Powerup_enum.NONE)
+	else:
+		emit_signal("powerup_timer_update", powerup_time) 
+		powerup_timer.start(1.0)
 
 
 func _on_color_switch() -> void:

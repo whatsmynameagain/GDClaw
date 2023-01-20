@@ -54,7 +54,7 @@ var splash := true
 var damage_cooldown := false #there's some sort of cooldown, haven't figured out how it works yet
 	#currently waits until the hit animation ends
 var dead_offscreen := false
-var logic #: Node #variable to load the enemy type's logic
+#var logic #: Node #variable to load the enemy type's logic
 var player #for tracking once the player is detected?
 var gravity := 0.0
 var state = States.IDLE setget set_state
@@ -86,8 +86,10 @@ onready var throw_hitbox = $ThrowHitbox
 onready var contact_hitbox = $ContactHitbox
 onready var voice = $Voice
 onready var sounds = $Sounds
+onready var sounds_2 = $Sounds2
 onready var exclamation = $Exclamation
 onready var patrol_idle_timer = $Timer
+
 
 func get_class() -> String:
 	return "Enemy"
@@ -135,8 +137,10 @@ func set_patrol_width(value : Vector2) -> void:
 	update()
 	property_list_changed_notify()
 
+
 func _get_voice_lines() -> Dictionary:
 	return voice_lines
+
 
 func set_state(value) -> void:
 	#print("Prev state: %s, Next state: %s" % [States.keys()[state], States.keys()[value]])
@@ -178,7 +182,7 @@ func set_state(value) -> void:
 					global_position.y -= 40 #bit hacky, but the alternative
 						#would be to offset the sprite and collisionlifted area down 
 						#to match the base of the main collision area beforehand.
-						#will do that eventually but for now this is fine
+						#might do that eventually but for now this is fine
 					set_collision_layer_bit(6, true)
 	
 	state = value
@@ -249,7 +253,7 @@ func set_state(value) -> void:
 				spikes = true
 				motion = Vector2.ZERO
 				set_collision_layer_bit(6, false)
-				Utils.decide_player(sounds, sound_effects_generic["death_spikes"])
+				Utils.decide_player([sounds, sounds_2], sound_effects_generic["death_spikes"])
 				if !contents.empty():
 					drop_loot()
 				animation_player.play("despawn")
@@ -277,6 +281,7 @@ func _ready():
 		z_index = Settings.ENEMY_Z
 
 
+#Needs optimization
 func _physics_process(delta):
 	
 	if !Engine.is_editor_hint():
@@ -286,7 +291,7 @@ func _physics_process(delta):
 		
 		if !dead_offscreen:
 
-			if state != States.LIFTED:
+			if state != States.LIFTED and state != States.IDLE: #plus !attacking 
 				if spikes or liquid:
 					motion = Vector2.ZERO
 				motion = move_and_slide(motion, Vector2.UP)
@@ -314,7 +319,7 @@ func _physics_process(delta):
 								set_state(States.IDLE)
 							else:
 								set_orientation(orientation * -1)
-								
+
 				States.ATTACK_MELEE:
 					if !_attack_melee_update():
 						pass
@@ -395,7 +400,7 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 			#dunno if the sword projectiles trigger a hit sound aside from the elemental hit sound in the original
 			var hit_type = "high" if source.is_class("Player") and source.melee_attack == 4 else "mid"
 			animation.play("hit_%s" % hit_type) 
-			Utils.decide_player(sounds, sound_effects_generic["hit_%s" % hit_type])
+			Utils.decide_player([sounds, sounds_2], sound_effects_generic["hit_%s" % hit_type])
 
 
 func knockback() -> void:
@@ -419,32 +424,36 @@ func on_voice_trigger(audio) -> void:
 
 #source = type, side = (-1, 0, 1)
 func on_death(source, side : int) -> void:
+	if dead:
+		print("juggled")
 	dead = true
 	emit_signal("enemy_dead")
 	set_collision_layer_bit(7, false) #disable collision with death tiles
+	print("enemy death by %s" % Settings.Damage_Types.keys()[source])
 	match source:
 		Settings.Damage_Types.COMBAT: #melee
-			print("enemy death by combat")
+#			print("enemy death by combat")
 			death_combat(side)
 		Settings.Damage_Types.SPIKES:
-			print("enemy death by spikes")
+#			print("enemy death by spikes")
 			set_state(States.DEATH_SPIKES)
 		Settings.Damage_Types.LIQUID:
-			print("enemy death by liquid")
+#			print("enemy death by liquid")
 			set_state(States.DEATH_LIQUID)
 		Settings.Damage_Types.THROW:
-			print("enemy death by throw")
+#			print("enemy death by throw")
 			set_state(States.DEAD_THROW)
 		Settings.Damage_Types.OTHER:
-			print("enemy death by.... something")
+#			print("enemy death by.... something")
+			pass
 		Settings.Damage_Types.FIRE:
-			print("enemy death by fire")
+#			print("enemy death by fire")
 			death_combat(side, "fire")
 		Settings.Damage_Types.ICE:
-			print("enemy death by ice")
+#			print("enemy death by ice")
 			death_combat(side, "ice")
 		Settings.Damage_Types.LIGHTNING:
-			print("enemy death by lightning")
+#			print("enemy death by lightning")
 			death_combat(side, "lightning")
 
 
@@ -483,7 +492,7 @@ func death_combat(side : int, modifier := "") -> void:
 		
 	#I think there's a chance to not play a voice line, check later (and during juggle)	
 	randomize()
-	Utils.decide_player(sounds, _get_voice_lines()["death_%s" % str(randi()%2+1)]) 
+	Utils.decide_player(voice, _get_voice_lines()["death_%s" % str(randi()%2+1)]) 
 	if !contents.empty() and !juggle:
 		drop_loot()
 			
@@ -498,7 +507,7 @@ func death_combat(side : int, modifier := "") -> void:
 
 
 func drop_loot():
-	Utils.decide_player(sounds, sound_effects_generic["drop_loot"])
+	Utils.decide_player([sounds, sounds_2], sound_effects_generic["drop_loot"])
 	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instance()
 	emit_signal("drop_loot", spawner, global_position, z_index+1, false, contents)
 

@@ -1,7 +1,9 @@
 extends State
 
+var fired : bool
 
 func _on_enter() -> void:
+	fired = false
 	owner.active_ranged = owner.Ranged.MAGIC
 	owner.motion.x = 0 if owner.motion.x != 0 else owner.motion.x 
 	owner.attacking = true
@@ -17,8 +19,29 @@ func _on_enter() -> void:
 func _update(_delta) -> void:
 	if !owner.is_on_floor():
 		emit_signal("finished", "Jump")
-	elif Input.is_action_just_pressed("ui_down"):
-		emit_signal("finished", "Crouch")
+	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")) and fired:
+		emit_signal("finished", "Move")
+		_on_exit()
+		return
+	if Input.is_action_just_pressed("ui_down") and fired:
+		for body in owner.floor_check.get_overlapping_bodies():
+			if body.name == "LadderTopCollision":
+				owner.above_ladder_top = true
+				owner.ladder_x_pos = body.global_position.x
+		if owner.above_ladder_top:
+			owner.global_position.y += 2 #bypass the one way collison
+			owner.above_ladder_top = false
+			emit_signal("finished", "Climb")
+			_on_exit()
+			return
+		else:
+			emit_signal("finished", "Crouch")
+			_on_exit()
+			return
+	if Input.is_action_just_pressed("ui_jump") and fired:
+		emit_signal("finished", "Jump")
+		_on_exit()
+		return
 
 
 func shoot() -> void:
@@ -29,6 +52,7 @@ func shoot() -> void:
 		owner.spawn_magic_projectile(1)
 		owner.magic -= 1
 		owner.emit_signal("ammo_updated", owner.magic)
+		fired = true
 	owner.animation.play("magic_post")
 
 	if !owner.animation.is_connected("animation_finished", self, "_on_animation_complete"):

@@ -1,10 +1,13 @@
 #current goal: playable level 1 including menus, intro video cutscene and booty-map cutscene-results
 #to-do: 
+#	-notes:
+#		-check if jump momentum is maintained after taking a teleporter in the original
 #	-quick:
 #		-move tile sprites to /sprites/tiles
 #	--features: (in order)
 #		-officer player detection and attacks (mid and low, high isn't used)
 #		-create soldier enemy and add mechanics
+#		-same with rat
 #		-claw look up state and crouch camera movement
 #		-game over screen
 #		-special footstep sounds (remember that bad framerate can affect animation frame detections)
@@ -24,7 +27,7 @@
 #		-create script to unify tilemap collisions
 #		-figure out how to extract info from original maps for easier object/tile placing
 #		-look into the rolling and teleporter shaders, would be nice to have them
-#		-general optimizations
+#		-general optimizations (first priority: stop object processing when far away enough from the player)
 #		(...)
 
 
@@ -82,13 +85,15 @@ onready var pause_menu = $PauseMenu/PauseMenu
 onready var circle_transition = $Transitions/CircleTransition
 onready var teleporter_transition = $Transitions/TeleporterTransition
 onready var game_sounds = $GameSounds
-
+onready var game_sounds_2 = $GameSounds2 #check if needed
+onready var teleporter_transition_animation = teleporter_transition.get_node("AnimationPlayer")
+onready var circle_transition_animation = circle_transition.get_node("AnimationPlayer")
 
 func _ready() -> void:
-	print(_level)
 	level = load("res://levels/%s.tscn" % _level).instance()
 	level.music_enabled = music_enabled
 	game_sounds.volume_db = Settings.EFFECTS_VOLUME
+	game_sounds_2.volume_db = Settings.EFFECTS_VOLUME
 	fps_label = hud.get_node("FPSLabel")
 	ui.add_child(hud)
 	get_node("Level").add_child(level)
@@ -322,15 +327,14 @@ func _on_teleporter_taken(teleporter) -> void:
 	level.music_player.pause_mode = PAUSE_MODE_STOP
 	_on_pause_toggled()
 	get_tree().paused = true
-	var animation = teleporter_transition.get_node("AnimationPlayer")
-	animation.play("ToBlack")
+	teleporter_transition_animation.play("ToBlack")
 	Utils.decide_player(game_sounds, teleporter_sound)
-	yield(animation, "animation_finished")
+	yield(teleporter_transition_animation, "animation_finished")
 	player.global_position = teleporter.destination
 	player.camera.align()
 	teleporter_transition.material.set_shader_param("mask", teleporter_transition_mask_2)
-	animation.play("FromBlack")
-	yield(animation, "animation_finished")
+	teleporter_transition_animation.play("FromBlack")
+	yield(teleporter_transition_animation, "animation_finished")
 	_on_pause_toggled()
 	teleporter_transition.material.set_shader_param("mask", teleporter_transition_mask)
 	teleporter_transition.visible = false
@@ -361,10 +365,9 @@ func _on_respawn(from, orientation) -> void:
 	level.music_player.pause_mode = PAUSE_MODE_STOP
 	_on_pause_toggled()
 	get_tree().paused = true
-	var animation = circle_transition.get_node("AnimationPlayer")
-	animation.play("Close")
+	circle_transition_animation .play("Close")
 	Utils.decide_player(game_sounds, circle_close_sound)
-	yield(animation, "animation_finished")
+	yield(circle_transition_animation, "animation_finished")
 	Utils.decide_player(game_sounds, circle_open_sound)
 	yield(get_tree().create_timer(0.2), "timeout")
 	player.global_position = level.spawn_point.global_position #replace with level.get_active_spawnpoint()
@@ -372,8 +375,8 @@ func _on_respawn(from, orientation) -> void:
 	player.visible = true
 	#-to do: make the close position higher, it opens from claw's head
 	circle_transition.material.set_shader_param("close_position", Vector2(0.5, 0.5))
-	animation.play("Open")
-	yield(animation, "animation_finished")
+	circle_transition_animation.play("Open")
+	yield(circle_transition_animation, "animation_finished")
 	circle_transition.visible = false
 	level.music_player.pause_mode = PAUSE_MODE_PROCESS
 	_on_pause_toggled()

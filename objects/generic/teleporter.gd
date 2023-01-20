@@ -24,7 +24,7 @@ func is_class(name) -> bool:
 func set_destination(value) -> void:
 	destination = value
 	if is_instance_valid(destination_helper):
-		get_node("DestinationHelper").global_position = value
+		destination_helper.global_position = value
 	update()
 
 
@@ -55,8 +55,7 @@ func _ready() -> void:
 	destination_helper.visible = false
 	animation.rotation_degrees = degrees
 	
-	if type == "Boss":
-		one_use = false #to avoid accidental locks after respawning
+	one_use = !type == "Boss" #to avoid accidental locks after respawning
 	animation.play(type)
 	
 	if !physics:
@@ -72,21 +71,21 @@ func _process(_delta) -> void:
 		return
 		
 	if is_instance_valid(destination_helper):
-		get_node("DestinationHelper").global_position = destination
+		destination_helper.global_position = destination
 		
 	update()
 
 
+
 func _draw() -> void:
-	if get_node("Animation").frames != animations:
-		get_node("Animation").frames = animations
-		
-	if get_node("Animation").visible == false:
-		get_node("Animation").visible = true
-		
 	if !Engine.is_editor_hint():
 		return
 		
+	if get_node("Animation").frames != animations:
+		get_node("Animation").frames = animations
+	if get_node("Animation").visible == false:
+		get_node("Animation").visible = true
+	
 	draw_line(Vector2.ZERO, get_node("DestinationHelper").position, Color("#ffffff"), 2.0)
 	var degrees : int
 	degrees = 0 if orientation == "Horizontal" else 90
@@ -103,7 +102,7 @@ func _draw() -> void:
 			if has_node("Glitter"):
 				get_node("Glitter").queue_free()
 	#gotta use get_node instead of the reference variable or else the editor starts bitching
-
+	#update: might have been fixed with newer versions
 
 func _on_pickup() -> void: 
 	if one_use: 

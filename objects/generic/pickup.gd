@@ -38,6 +38,7 @@ onready var animation = $Animation
 onready var collision = $CollisionShape2D
 onready var area = $Area
 onready var audio = $Audio
+onready var audio2 = $Audio2
 onready var animation_player = $AnimationPlayer
 
 
@@ -106,11 +107,15 @@ func _ready() -> void:
 	z_index = Settings.PICKUP_Z if physics else Settings.PICKUP_BG_Z
 
 
-func _integrate_forces(_state) -> void:
+#this is being called way too many times
+#func _integrate_forces(_state) -> void:
+func _physics_process(_delta):	
 	if Engine.is_editor_hint():
 		return
-		
-	if physics:
+	if !physics:
+		set_physics_process(false)
+		return
+	else:
 		#At the time of making this, there's an engine bug where rigidbody2ds never stop bouncing, 
 		#gotta patch it a bit with materials, which actually makes it behave pretty similarly to the original
 		
@@ -123,9 +128,10 @@ func _integrate_forces(_state) -> void:
 				elif abs(x_velocity_safe) > abs(linear_velocity.x):
 					if linear_velocity.x == 0 and bounces >= 0:
 						linear_velocity.x = x_velocity_safe/2
-			if bounces == 0:
+			if bounces <= 0:
 				if !stopped:
 					stopped = true
+					set_physics_process(false)
 				var temp_material := preload("res://objects/generic/pickup_physics_material_bounceless.tres") 
 				physics_material_override = temp_material
 			
@@ -145,7 +151,8 @@ func _integrate_forces(_state) -> void:
 
 func _on_bounce(_body) -> void:
 	bounces -= 1
-	Utils.decide_player(audio, pickup_sounds["Bounce"])
+	#this is creating too many useless audio players, fix
+	Utils.decide_player([audio, audio2], pickup_sounds["Bounce"])
 	if bounces == -1: #spawn glitter once it stops bouncing
 		if !has_node("Glitter") and !despawning:
 			add_child(preload("res://objects/generic/glitter.tscn").instance())

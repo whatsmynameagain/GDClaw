@@ -147,44 +147,24 @@
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 46 ), ExtResource( 58 ) ],
-"loop": true,
-"name": "idle",
-"speed": 9.1
-}, {
-"frames": [ ExtResource( 119 ) ],
-"loop": true,
-"name": "crouching",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 36 ), ExtResource( 23 ), ExtResource( 59 ) ],
+"frames": [ ExtResource( 142 ), ExtResource( 142 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 136 ), ExtResource( 136 ), ExtResource( 136 ) ],
 "loop": false,
-"name": "pistol",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 127 ) ],
-"loop": true,
-"name": "land",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 52 ), ExtResource( 52 ), ExtResource( 52 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "magic",
+"name": "attack_air",
 "speed": 40.0
 }, {
-"frames": [ ExtResource( 92 ), ExtResource( 85 ), ExtResource( 93 ) ],
+"frames": [ ExtResource( 134 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 136 ), ExtResource( 136 ), ExtResource( 136 ) ],
 "loop": false,
-"name": "attack_kick",
+"name": "attack_air_post",
 "speed": 40.0
-}, {
-"frames": [ ExtResource( 126 ), ExtResource( 79 ) ],
-"loop": false,
-"name": "attack_punch",
-"speed": 20.0
 }, {
 "frames": [ ExtResource( 75 ), ExtResource( 75 ), ExtResource( 72 ), ExtResource( 73 ) ],
 "loop": false,
 "name": "attack_crouch",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 75 ) ],
+"loop": false,
+"name": "attack_crouch_post",
 "speed": 40.0
 }, {
 "frames": [ ExtResource( 89 ), ExtResource( 109 ) ],
@@ -192,149 +172,24 @@ animations = [ {
 "name": "attack_hook",
 "speed": 40.0
 }, {
-"frames": [ ExtResource( 142 ), ExtResource( 142 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 136 ), ExtResource( 136 ), ExtResource( 136 ) ],
-"loop": false,
-"name": "attack_air",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 37 ) ],
-"loop": false,
-"name": "pickup",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 59 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 65 ), ExtResource( 65 ), ExtResource( 65 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 39 ) ],
-"loop": false,
-"name": "pistol_post",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 43 ), ExtResource( 42 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 32 ), ExtResource( 5 ), ExtResource( 26 ) ],
-"loop": false,
-"name": "climbing_top",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 55 ), ExtResource( 8 ), ExtResource( 24 ), ExtResource( 33 ), ExtResource( 68 ) ],
-"loop": false,
-"name": "fall",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 97 ), ExtResource( 112 ) ],
-"loop": false,
-"name": "death_env",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 37 ) ],
-"loop": false,
-"name": "lift_idle",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 51 ), ExtResource( 51 ), ExtResource( 64 ) ],
-"loop": false,
-"name": "pistol_air",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 37 ), ExtResource( 37 ) ],
-"loop": false,
-"name": "lift",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 121 ), ExtResource( 121 ), ExtResource( 121 ), ExtResource( 121 ), ExtResource( 84 ), ExtResource( 87 ) ],
-"loop": false,
-"name": "dynamite_windup",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 86 ), ExtResource( 86 ) ],
-"loop": false,
-"name": "magic_crouch_empty",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 49 ), ExtResource( 49 ), ExtResource( 48 ) ],
-"loop": false,
-"name": "attack_swipe_post",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 99 ), ExtResource( 105 ) ],
-"loop": false,
-"name": "magic_air_empty",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 71 ) ],
-"loop": true,
-"name": "lift_charge",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ) ],
-"loop": true,
-"name": "damage_low",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 103 ), ExtResource( 116 ), ExtResource( 132 ), ExtResource( 102 ), ExtResource( 114 ), ExtResource( 101 ), ExtResource( 118 ), ExtResource( 98 ), ExtResource( 76 ), ExtResource( 131 ), ExtResource( 96 ), ExtResource( 128 ) ],
-"loop": true,
-"name": "climbing_down",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 110 ), ExtResource( 111 ), ExtResource( 117 ), ExtResource( 120 ), ExtResource( 122 ), ExtResource( 123 ), ExtResource( 69 ), ExtResource( 135 ) ],
-"loop": true,
-"name": "ledge",
-"speed": 15.4
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": false,
-"name": "dynamite_air",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 64 ), ExtResource( 64 ), ExtResource( 106 ), ExtResource( 106 ), ExtResource( 106 ), ExtResource( 77 ), ExtResource( 77 ), ExtResource( 77 ) ],
-"loop": false,
-"name": "pistol_air_post",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 29 ), ExtResource( 29 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 34 ), ExtResource( 34 ), ExtResource( 34 ) ],
-"loop": true,
-"name": "lift_walk",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 21 ) ],
-"loop": false,
-"name": "dynamite_crouch_charge",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 109 ), ExtResource( 109 ), ExtResource( 109 ), ExtResource( 109 ), ExtResource( 109 ), ExtResource( 109 ), ExtResource( 89 ), ExtResource( 89 ), ExtResource( 89 ) ],
 "loop": false,
 "name": "attack_hook_post",
 "speed": 40.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 50 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "hug",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 5 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 42 ), ExtResource( 43 ) ],
-"loop": true,
-"name": "climbing_top_down",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 73 ), ExtResource( 75 ) ],
+"frames": [ ExtResource( 92 ), ExtResource( 85 ), ExtResource( 93 ) ],
 "loop": false,
-"name": "attack_crouch_post",
+"name": "attack_kick",
 "speed": 40.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 39 ) ],
-"loop": true,
-"name": "pistol_empty_post",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 87 ), ExtResource( 87 ), ExtResource( 87 ) ],
-"loop": true,
-"name": "dynamite_charge",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 39 ), ExtResource( 39 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "pistol_empty",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 83 ) ],
+"frames": [ ExtResource( 93 ), ExtResource( 93 ), ExtResource( 93 ), ExtResource( 93 ), ExtResource( 70 ), ExtResource( 70 ) ],
 "loop": false,
-"name": "dynamite_crouch",
+"name": "attack_kick_post",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 126 ), ExtResource( 79 ) ],
+"loop": false,
+"name": "attack_punch",
 "speed": 20.0
 }, {
 "frames": [ ExtResource( 79 ), ExtResource( 79 ) ],
@@ -342,100 +197,105 @@ animations = [ {
 "name": "attack_punch_post",
 "speed": 20.0
 }, {
+"frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 11 ), ExtResource( 40 ) ],
+"loop": false,
+"name": "attack_swipe",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 40 ), ExtResource( 40 ), ExtResource( 40 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 49 ), ExtResource( 49 ), ExtResource( 48 ) ],
+"loop": false,
+"name": "attack_swipe_post",
+"speed": 40.0
+}, {
 "frames": [ ExtResource( 128 ), ExtResource( 96 ), ExtResource( 131 ), ExtResource( 76 ), ExtResource( 98 ), ExtResource( 118 ), ExtResource( 101 ), ExtResource( 114 ), ExtResource( 102 ), ExtResource( 132 ), ExtResource( 116 ), ExtResource( 103 ) ],
 "loop": true,
 "name": "climbing",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 60 ), ExtResource( 60 ) ],
+"frames": [ ExtResource( 103 ), ExtResource( 116 ), ExtResource( 132 ), ExtResource( 102 ), ExtResource( 114 ), ExtResource( 101 ), ExtResource( 118 ), ExtResource( 98 ), ExtResource( 76 ), ExtResource( 131 ), ExtResource( 96 ), ExtResource( 128 ) ],
 "loop": true,
-"name": "pistol_crouch_empty_post",
+"name": "climbing_down",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 24 ), ExtResource( 33 ), ExtResource( 68 ) ],
-"loop": true,
-"name": "fall_loop",
-"speed": 12.5
-}, {
-"frames": [ ExtResource( 63 ) ],
-"loop": true,
-"name": "stunned",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "dynamite_air_empty",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 51 ) ],
+"frames": [ ExtResource( 43 ), ExtResource( 42 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 32 ), ExtResource( 5 ), ExtResource( 26 ) ],
 "loop": false,
-"name": "pistol_air_empty",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 99 ), ExtResource( 115 ) ],
-"loop": false,
-"name": "magic_air",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "idle_bored",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "magic_empty",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 93 ), ExtResource( 93 ), ExtResource( 93 ), ExtResource( 93 ), ExtResource( 70 ), ExtResource( 70 ) ],
-"loop": false,
-"name": "attack_kick_post",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ) ],
-"loop": false,
-"name": "dynamite_empty",
+"name": "climbing_top",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 41 ), ExtResource( 41 ), ExtResource( 107 ), ExtResource( 107 ), ExtResource( 107 ), ExtResource( 108 ), ExtResource( 108 ), ExtResource( 108 ), ExtResource( 108 ), ExtResource( 107 ), ExtResource( 107 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 60 ) ],
-"loop": false,
-"name": "pistol_crouch_post",
-"speed": 40.0
+"frames": [ ExtResource( 26 ), ExtResource( 5 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 42 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "climbing_top_down",
+"speed": 12.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ) ],
-"loop": false,
-"name": "magic_post",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 100 ) ],
-"loop": false,
-"name": "death_hit",
-"speed": 8.0
+"frames": [ ExtResource( 119 ) ],
+"loop": true,
+"name": "crouching",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 125 ), ExtResource( 125 ), ExtResource( 125 ), ExtResource( 125 ), ExtResource( 125 ), ExtResource( 125 ), ExtResource( 125 ) ],
 "loop": true,
 "name": "damage_high",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 105 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 99 ), ExtResource( 105 ) ],
-"loop": false,
-"name": "magic_fall",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 80 ), ExtResource( 81 ), ExtResource( 95 ), ExtResource( 129 ), ExtResource( 124 ), ExtResource( 113 ), ExtResource( 130 ), ExtResource( 82 ), ExtResource( 88 ), ExtResource( 91 ) ],
+"frames": [ ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ), ExtResource( 61 ) ],
 "loop": true,
-"name": "running",
-"speed": 12.5
-}, {
-"frames": [ ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 99 ), ExtResource( 105 ) ],
-"loop": false,
-"name": "magic_air_post",
+"name": "damage_low",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 104 ), ExtResource( 104 ), ExtResource( 86 ), ExtResource( 86 ) ],
+"frames": [ ExtResource( 97 ), ExtResource( 112 ) ],
 "loop": false,
-"name": "magic_crouch",
+"name": "death_env",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 100 ) ],
+"loop": false,
+"name": "death_hit",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "dynamite_air",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "dynamite_air_empty",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "dynamite_air_post",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 87 ), ExtResource( 87 ), ExtResource( 87 ) ],
+"loop": true,
+"name": "dynamite_charge",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 83 ) ],
+"loop": false,
+"name": "dynamite_crouch",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": false,
+"name": "dynamite_crouch_charge",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ) ],
+"loop": false,
+"name": "dynamite_crouch_empty",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ) ],
+"loop": true,
+"name": "dynamite_crouch_post",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ) ],
+"loop": false,
+"name": "dynamite_empty",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
@@ -447,73 +307,213 @@ animations = [ {
 "name": "dynamite_post",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 48 ), ExtResource( 49 ), ExtResource( 11 ), ExtResource( 40 ) ],
+"frames": [ ExtResource( 137 ), ExtResource( 6 ) ],
 "loop": false,
-"name": "attack_swipe",
-"speed": 40.0
+"name": "dynamite_throw",
+"speed": 5.0
 }, {
-"frames": [ ExtResource( 141 ), ExtResource( 138 ), ExtResource( 143 ), ExtResource( 139 ), ExtResource( 133 ), ExtResource( 144 ), ExtResource( 140 ) ],
-"loop": true,
-"name": "swing",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "dynamite_air_post",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 86 ), ExtResource( 86 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 47 ), ExtResource( 121 ), ExtResource( 121 ), ExtResource( 121 ), ExtResource( 121 ), ExtResource( 84 ), ExtResource( 87 ) ],
 "loop": false,
-"name": "magic_crouch_post",
-"speed": 20.0
+"name": "dynamite_windup",
+"speed": 12.0
 }, {
-"frames": [ ExtResource( 60 ), ExtResource( 60 ), ExtResource( 60 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ) ],
-"loop": true,
-"name": "pistol_crouch_empty",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ) ],
+"frames": [ ExtResource( 55 ), ExtResource( 8 ), ExtResource( 24 ), ExtResource( 33 ), ExtResource( 68 ) ],
 "loop": false,
-"name": "dynamite_crouch_empty",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 60 ), ExtResource( 60 ), ExtResource( 60 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 41 ) ],
-"loop": false,
-"name": "pistol_crouch",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 134 ), ExtResource( 134 ), ExtResource( 134 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 142 ), ExtResource( 136 ), ExtResource( 136 ), ExtResource( 136 ) ],
-"loop": false,
-"name": "attack_air_post",
-"speed": 40.0
-}, {
-"frames": [ ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ) ],
-"loop": false,
-"name": "lift_throw",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ), ExtResource( 83 ) ],
-"loop": true,
-"name": "dynamite_crouch_post",
-"speed": 20.0
+"name": "fall",
+"speed": 14.0
 }, {
 "frames": [ ExtResource( 44 ) ],
 "loop": true,
 "name": "fall_long",
 "speed": 12.0
 }, {
+"frames": [ ExtResource( 8 ), ExtResource( 24 ), ExtResource( 33 ), ExtResource( 68 ) ],
+"loop": true,
+"name": "fall_loop",
+"speed": 12.5
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 50 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "hug",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 46 ), ExtResource( 58 ) ],
+"loop": true,
+"name": "idle",
+"speed": 9.1
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 62 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "idle_bored",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 90 ), ExtResource( 55 ) ],
 "loop": false,
 "name": "jump",
 "speed": 16.0
+}, {
+"frames": [ ExtResource( 127 ) ],
+"loop": true,
+"name": "land",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 110 ), ExtResource( 111 ), ExtResource( 117 ), ExtResource( 120 ), ExtResource( 122 ), ExtResource( 123 ), ExtResource( 69 ), ExtResource( 135 ) ],
+"loop": true,
+"name": "ledge",
+"speed": 15.4
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 37 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "lift",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 71 ) ],
+"loop": true,
+"name": "lift_charge",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 37 ) ],
+"loop": false,
+"name": "lift_idle",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ), ExtResource( 74 ) ],
+"loop": false,
+"name": "lift_throw",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 29 ), ExtResource( 29 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 67 ), ExtResource( 34 ), ExtResource( 34 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "lift_walk",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 78 ), ExtResource( 94 ) ],
 "loop": false,
 "name": "look_up",
 "speed": 40.0
 }, {
-"frames": [ ExtResource( 137 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 52 ), ExtResource( 52 ), ExtResource( 52 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 22 ), ExtResource( 18 ) ],
 "loop": false,
-"name": "dynamite_throw",
+"name": "magic",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 99 ), ExtResource( 115 ) ],
+"loop": false,
+"name": "magic_air",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 99 ), ExtResource( 105 ) ],
+"loop": false,
+"name": "magic_air_empty",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 99 ), ExtResource( 105 ) ],
+"loop": false,
+"name": "magic_air_post",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 104 ), ExtResource( 104 ), ExtResource( 86 ), ExtResource( 86 ) ],
+"loop": false,
+"name": "magic_crouch",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 86 ), ExtResource( 86 ) ],
+"loop": false,
+"name": "magic_crouch_empty",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 86 ), ExtResource( 86 ), ExtResource( 86 ), ExtResource( 86 ), ExtResource( 86 ) ],
+"loop": false,
+"name": "magic_crouch_post",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "magic_empty",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 105 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 115 ), ExtResource( 99 ), ExtResource( 105 ) ],
+"loop": false,
+"name": "magic_fall",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "magic_post",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "pickup",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 36 ), ExtResource( 23 ), ExtResource( 59 ) ],
+"loop": false,
+"name": "pistol",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 51 ), ExtResource( 64 ) ],
+"loop": false,
+"name": "pistol_air",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 51 ) ],
+"loop": false,
+"name": "pistol_air_empty",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 64 ), ExtResource( 64 ), ExtResource( 106 ), ExtResource( 106 ), ExtResource( 106 ), ExtResource( 77 ), ExtResource( 77 ), ExtResource( 77 ) ],
+"loop": false,
+"name": "pistol_air_post",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 60 ), ExtResource( 60 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 41 ) ],
+"loop": false,
+"name": "pistol_crouch",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 60 ), ExtResource( 60 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "pistol_crouch_empty",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 60 ), ExtResource( 60 ) ],
+"loop": true,
+"name": "pistol_crouch_empty_post",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 41 ), ExtResource( 107 ), ExtResource( 107 ), ExtResource( 107 ), ExtResource( 108 ), ExtResource( 108 ), ExtResource( 108 ), ExtResource( 108 ), ExtResource( 107 ), ExtResource( 107 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 27 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 56 ), ExtResource( 60 ) ],
+"loop": false,
+"name": "pistol_crouch_post",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 39 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "pistol_empty",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "pistol_empty_post",
+"speed": 40.0
+}, {
+"frames": [ ExtResource( 59 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 65 ), ExtResource( 65 ), ExtResource( 65 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 23 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 39 ) ],
+"loop": false,
+"name": "pistol_post",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 80 ), ExtResource( 81 ), ExtResource( 95 ), ExtResource( 129 ), ExtResource( 124 ), ExtResource( 113 ), ExtResource( 130 ), ExtResource( 82 ), ExtResource( 88 ), ExtResource( 91 ) ],
+"loop": true,
+"name": "running",
+"speed": 12.5
+}, {
+"frames": [ ExtResource( 63 ) ],
+"loop": true,
+"name": "stunned",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 141 ), ExtResource( 138 ), ExtResource( 143 ), ExtResource( 139 ), ExtResource( 133 ), ExtResource( 144 ), ExtResource( 140 ) ],
+"loop": true,
+"name": "swing",
+"speed": 8.0
 } ]

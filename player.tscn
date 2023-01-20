@@ -346,6 +346,12 @@ script = ExtResource( 24 )
 [node name="PlayerSounds" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 
+[node name="PlayerSounds2" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="PlayerSounds3" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
 [node name="Labels" type="Node2D" parent="."]
 
 [node name="StateLabel" type="Label" parent="Labels"]

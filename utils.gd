@@ -15,25 +15,37 @@ static func update_sprites(value : int, digits : int, base : Node2D, sprites : D
 		x += 1
 
 
-#checks whether a given audiostreamplayer is currently playing. If so, creates a temporary one
+#checks whether a given audiostreamplayer (or group of) is currently playing. If so, creates a temporary one
 #if not, plays the given stream on that inactive player
 #can't set the type of the sound_player argument to AudioStreamPlayer because there's also the 2D version
-static func decide_player(sound_player, stream : Resource) -> void:
-	assert(sound_player is AudioStreamPlayer or sound_player is AudioStreamPlayer2D)
-	if sound_player.playing:
-		var temp_player
-		if sound_player is AudioStreamPlayer:
-			temp_player = AudioStreamPlayer.new()
-		else:
-			temp_player = AudioStreamPlayer2D.new()
-		sound_player.owner.add_child(temp_player)
-		temp_player.connect("finished", temp_player, "queue_free")
-		temp_player.set_volume_db(Settings.EFFECTS_VOLUME)
-		temp_player.set_stream(stream) 
-		temp_player.play()
+#---
+#set_stream() is the slowest part of this by far, now it checks if it's already loaded
+static func decide_player(sound_players, stream) -> void:
+	if sound_players is Array:
+		for sound_player in sound_players:
+			assert(sound_player is AudioStreamPlayer or sound_player is AudioStreamPlayer2D)
+			if !sound_player.playing:
+				if sound_player.stream != stream:
+					sound_player.set_stream(stream)
+				sound_player.play()
+				return
+			elif sound_player.playing:
+				if sound_player == sound_players.back(): #if it's the last in the array
+					var temp_player
+					if sound_player is AudioStreamPlayer:
+						temp_player = AudioStreamPlayer.new()
+					else:
+						temp_player = AudioStreamPlayer2D.new()
+					sound_player.owner.add_child(temp_player)
+					temp_player.connect("finished", temp_player, "queue_free")
+					temp_player.set_volume_db(Settings.EFFECTS_VOLUME)
+					temp_player.set_stream(stream) 
+					temp_player.play()
 	else:
-		sound_player.set_stream(stream) 
-		sound_player.play()
+		assert(sound_players is AudioStreamPlayer or sound_players is AudioStreamPlayer2D)
+		if sound_players.stream != stream:
+			sound_players.set_stream(stream) 
+		sound_players.play()
 
 
 #returns the center point of the overlapping area between two collision rectangles (not rect2s)

@@ -212,6 +212,7 @@ func _on_projectile_fired(projectile, pos, orientation, _rotation, impulse) -> v
 
 
 func _on_spawn_explosion(explosion, pos) -> void:
+	#gotta check where exactly to spawn explosions, if it matters
 	add_child(explosion)
 	explosion.global_position = pos
 
@@ -256,6 +257,7 @@ func _on_spawn_dummy(dummy, pos, orientation) -> void:
 	add_child(dummy)
 	dummy.get_node("Sprite").flip_h = orientation == -1
 	dummy.global_position = pos
+
 
 func _on_enemy_kill_by_player() -> void:
 	player._on_enemy_kill()
