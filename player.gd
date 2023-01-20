@@ -57,85 +57,85 @@ const ATTACK_DAMAGE = { #according to the design document, not tested
 #soon(tm) 
 const dialogue = { #Lines that trigger the exclamation bubble
 	
-	"enemy_kill_1" : preload("res://sounds/claw/1001.wav"), #"Hah hah, take that!"
-	"enemy_kill_2" : preload("res://sounds/claw/1110058.wav"), #"Touche! (?)"
-	"enemy_kill_3" : preload("res://sounds/claw/1110059.wav"), #"Weakling! (?)"
-	"enemy_kill_4" : preload("res://sounds/claw/1004a.wav"), #"Ssscallywag!"
-	"enemy_kill_5" : preload("res://sounds/claw/1004b.wav"), #"Scallywaaaag"!
-	"enemy_kill_6" : preload("res://sounds/claw/1007a.wav"), #"Land lover!"
-	"enemy_kill_7" : preload("res://sounds/claw/1007b.wav"), #"Laaaaand loveeeer!"
-	"enemy_kill_8" : preload("res://sounds/claw/1010.wav"), #"Chew on DAT!"
-	"enemy_kill_9" : preload("res://sounds/claw/1110063.wav"), #"YUS!"
-	"enemy_kill_10" : preload("res://sounds/claw/1110033.wav"), #"Ha hah!" #on kill?
-	"ledge" : preload("res://sounds/claw/1021.wav"), #"Wooow" (ledge)
-	"powerup_fire_sword" : preload("res://sounds/claw/1110001.wav"), #"Yes! Fire Sword!"
-	"powerup_ice_sword" : preload("res://sounds/claw/1110012.wav"), #"Ha hah, Frost Sword!"
-	"powerup_lightning_sword" : preload("res://sounds/claw/1110022.wav"), #"Ha hah, Lightning Sword!"
-	"powerup" : preload("res://sounds/claw/1110064.wav"), #"YES!" #invulnerable and invisible powerups
-	"idle_1" : preload("res://sounds/claw/1054.wav"), #"Don't waste my time"
-	"idle_2" : preload("res://sounds/claw/1056.wav"), #"Hello? I'm in the middle of an adventure here!"
-	"idle_3" : preload("res://sounds/claw/1057.wav"), #"I don't have all day!"
-	"idle_4" : preload("res://sounds/claw/1058.wav"), #"Excuse me! I have someplace to go!"
-	"idle_5" : preload("res://sounds/claw/1110035.wav"), #"Hellooo?"
-	"idle_6" : preload("res://sounds/claw/1110037.wav"), #"I'm NOT getting any younger!"
-	"idle_7" : preload("res://sounds/claw/1110038.wav"), #"At least bring me something back from the kitchen!"
-	"idle_8" : preload("res://sounds/claw/1110043.wav"), #"I'm growing impatient!"
-	"idle_9" : preload("res://sounds/claw/1110045.wav"), #"I'm waiting..."
-	"idle_10" : preload("res://sounds/claw/1110056.wav"), #"The gems won't find themselves!"
-	"idle_11" : preload("res://sounds/claw/1110057.wav"), #"The amulet awaits!"
-	"idle_12" : preload("res://sounds/claw/1062.wav"), #"Not this cat, jack" #trigger
+	"enemy_kill_1" : preload("res://sounds/claw/1001.ogg"), #"Hah hah, take that!"
+	"enemy_kill_2" : preload("res://sounds/claw/1110058.ogg"), #"Touche! (?)"
+	"enemy_kill_3" : preload("res://sounds/claw/1110059.ogg"), #"Weakling! (?)"
+	"enemy_kill_4" : preload("res://sounds/claw/1004a.ogg"), #"Ssscallywag!"
+	"enemy_kill_5" : preload("res://sounds/claw/1004b.ogg"), #"Scallywaaaag"!
+	"enemy_kill_6" : preload("res://sounds/claw/1007a.ogg"), #"Land lover!"
+	"enemy_kill_7" : preload("res://sounds/claw/1007b.ogg"), #"Laaaaand loveeeer!"
+	"enemy_kill_8" : preload("res://sounds/claw/1010.ogg"), #"Chew on DAT!"
+	"enemy_kill_9" : preload("res://sounds/claw/1110063.ogg"), #"YUS!"
+	"enemy_kill_10" : preload("res://sounds/claw/1110033.ogg"), #"Ha hah!" #on kill?
+	"ledge" : preload("res://sounds/claw/1021.ogg"), #"Wooow" (ledge)
+	"powerup_fire_sword" : preload("res://sounds/claw/1110001.ogg"), #"Yes! Fire Sword!"
+	"powerup_ice_sword" : preload("res://sounds/claw/1110012.ogg"), #"Ha hah, Frost Sword!"
+	"powerup_lightning_sword" : preload("res://sounds/claw/1110022.ogg"), #"Ha hah, Lightning Sword!"
+	"powerup" : preload("res://sounds/claw/1110064.ogg"), #"YES!" #invulnerable and invisible powerups
+	"idle_1" : preload("res://sounds/claw/1054.ogg"), #"Don't waste my time"
+	"idle_2" : preload("res://sounds/claw/1056.ogg"), #"Hello? I'm in the middle of an adventure here!"
+	"idle_3" : preload("res://sounds/claw/1057.ogg"), #"I don't have all day!"
+	"idle_4" : preload("res://sounds/claw/1058.ogg"), #"Excuse me! I have someplace to go!"
+	"idle_5" : preload("res://sounds/claw/1110035.ogg"), #"Hellooo?"
+	"idle_6" : preload("res://sounds/claw/1110037.ogg"), #"I'm NOT getting any younger!"
+	"idle_7" : preload("res://sounds/claw/1110038.ogg"), #"At least bring me something back from the kitchen!"
+	"idle_8" : preload("res://sounds/claw/1110043.ogg"), #"I'm growing impatient!"
+	"idle_9" : preload("res://sounds/claw/1110045.ogg"), #"I'm waiting..."
+	"idle_10" : preload("res://sounds/claw/1110056.ogg"), #"The gems won't find themselves!"
+	"idle_11" : preload("res://sounds/claw/1110057.ogg"), #"The amulet awaits!"
+	"idle_12" : preload("res://sounds/claw/1062.ogg"), #"Not this cat, jack" #trigger
 
-	"fire_pistol" : preload("res://sounds/claw/1003.wav"), #"Eat lead!" #pistol
-	"fire_dynamite" : preload("res://sounds/claw/1009.wav"), #"Chew(?) on this!"#dynamite
+	"fire_pistol" : preload("res://sounds/claw/1003.ogg"), #"Eat lead!" #pistol
+	"fire_dynamite" : preload("res://sounds/claw/1009.ogg"), #"Chew(?) on this!"#dynamite
 	
 	#all these triggers could be ignored because they are just called from the audiotrigger objects
 	#and both this and the audiotrigger's contents reference the same resource when used
 	#leaving this here for now just because the voice lines are written down
-	"trigger_food" : preload("res://sounds/claw/1000.wav"), #"Yum, looks yummy" #trigger
-	"trigger_death_trap" : preload("res://sounds/claw/death_trap.wav"), #"What a death trap" #trigger
-	"trigger_tough" : preload("res://sounds/claw/1004.wav"), #"NYEH, this'll be tough" #trigger
-	"trigger_challenging" : preload("res://sounds/claw/1005.wav"), #"This looks challenging..." #trigger
-	"trigger_was_close" : preload("res://sounds/claw/1006.wav"), #"Phew, that was close" #trigger
-	"trigger_way_out" : preload("res://sounds/claw/1007.wav"), #"There's got to be a way out" #trigger
-	"trigger_getting_close" : preload("res://sounds/claw/1013.wav"), #"I'm getting close, I can feel it" #trigger
-	"trigger_catnapping" : preload("res://sounds/claw/1032.wav"), #"I must be catnapping" #trigger
-	"trigger_nuisance" : preload("res://sounds/claw/1040.wav"), #"Meh, this is a minor nuisance" #trigger
-	"trigger_fight_way_out" : preload("res://sounds/claw/1044.wav"), #"I'll have to fight my way out of this one" #trigger
-	"trigger_strategy" : preload("res://sounds/claw/1045.wav"), #"Ah, this will take some careful strategy..." #trigger
-	"trigger_pointless_exercise" : preload("res://sounds/claw/1052.wav"), #"*yawn*... pointless exercise" #trigger
-	"trigger_waste_of_time" : preload("res://sounds/claw/1053.wav"), #"Waste of time" #trigger?
-	"trigger_mirror" : preload("res://sounds/claw/1055.wav"), #"Mirror mirror on the wall...  who's the handsomest cat of all?" #trigger?
-	"trigger_circles" : preload("res://sounds/claw/1060.wav"), #"I don't have all day to run around in circles!" #trigger
-	"trigger_jack" : preload("res://sounds/claw/1062.wav"), #"Not this cat, jack" #trigger
-	"trigger_so_far" : preload("res://sounds/claw/so_far_so_good.wav"), #"So far so good!" #trigger
-	"trigger_gold" : preload("res://sounds/claw/smell_gold.wav"), #"Ohh, is that gold I smell?" #trigger
-	"trigger_timing" : preload("res://sounds/claw/timing.wav"), #"This will take perfect timing!" #trigger
+	"trigger_food" : preload("res://sounds/claw/1000.ogg"), #"Yum, looks yummy" #trigger
+	"trigger_death_trap" : preload("res://sounds/claw/death_trap.ogg"), #"What a death trap" #trigger
+	"trigger_tough" : preload("res://sounds/claw/1004.ogg"), #"NYEH, this'll be tough" #trigger
+	"trigger_challenging" : preload("res://sounds/claw/1005.ogg"), #"This looks challenging..." #trigger
+	"trigger_was_close" : preload("res://sounds/claw/1006.ogg"), #"Phew, that was close" #trigger
+	"trigger_way_out" : preload("res://sounds/claw/1007.ogg"), #"There's got to be a way out" #trigger
+	"trigger_getting_close" : preload("res://sounds/claw/1013.ogg"), #"I'm getting close, I can feel it" #trigger
+	"trigger_catnapping" : preload("res://sounds/claw/1032.ogg"), #"I must be catnapping" #trigger
+	"trigger_nuisance" : preload("res://sounds/claw/1040.ogg"), #"Meh, this is a minor nuisance" #trigger
+	"trigger_fight_way_out" : preload("res://sounds/claw/1044.ogg"), #"I'll have to fight my way out of this one" #trigger
+	"trigger_strategy" : preload("res://sounds/claw/1045.ogg"), #"Ah, this will take some careful strategy..." #trigger
+	"trigger_pointless_exercise" : preload("res://sounds/claw/1052.ogg"), #"*yawn*... pointless exercise" #trigger
+	"trigger_waste_of_time" : preload("res://sounds/claw/1053.ogg"), #"Waste of time" #trigger?
+	"trigger_mirror" : preload("res://sounds/claw/1055.ogg"), #"Mirror mirror on the wall...  who's the handsomest cat of all?" #trigger?
+	"trigger_circles" : preload("res://sounds/claw/1060.ogg"), #"I don't have all day to run around in circles!" #trigger
+	"trigger_jack" : preload("res://sounds/claw/1062.ogg"), #"Not this cat, jack" #trigger
+	"trigger_so_far" : preload("res://sounds/claw/so_far_so_good.ogg"), #"So far so good!" #trigger
+	"trigger_gold" : preload("res://sounds/claw/smell_gold.ogg"), #"Ohh, is that gold I smell?" #trigger
+	"trigger_timing" : preload("res://sounds/claw/timing.ogg"), #"This will take perfect timing!" #trigger
 	}
 const action_sounds = { #sound effects, hit sounds
-	0 : preload("res://sounds/claw/left_foot.wav"), #footstep 1
-	1 : preload("res://sounds/claw/right_foot.wav"), #footstep 2
-	2 : preload("res://sounds/claw/1110048.wav"), # hit
-	3 : preload("res://sounds/claw/1110049.wav"), # hit 2
-	4 : preload("res://sounds/claw/1110050.wav"), # hit 3
-	5 : preload("res://sounds/claw/1110051.wav"), # hit 4
-	6 : preload("res://sounds/claw/dry_gunshot.wav"), #empty pistol
-	7 : preload("res://sounds/claw/dynamite_throw.wav"), #dynamite throw
-	8 : preload("res://sounds/claw/empty_magic.wav"), #empty magic
-	9 : preload("res://sounds/claw/fall_death.wav"), #death by hit
-	10 : preload("res://sounds/generic/death_spikes.wav"), #death by spikes
-	11 : preload("res://sounds/generic/death_liquid.wav"), #death by liquid
-	12 : preload("res://sounds/claw/fire_sword.wav"), #fire sword attack
-	13 : preload("res://sounds/claw/ice_sword.wav"), #ice sword attack 
-	14 : preload("res://sounds/claw/lightning_sword.wav"), #lightning sword attack
-	15 : preload("res://sounds/claw/land.wav"), #hard landing 
-	16 : preload("res://sounds/claw/sword_swish.wav"), #sword swipe sound
-	17 : preload("res://sounds/claw/left_swing.wav"), #punch sound
-	18 : preload("res://sounds/claw/uppercut.wav"), #hook, kick sound
-	19 : preload("res://sounds/claw/grunt.wav"), #pickup sound
-	20 : preload("res://sounds/claw/grunt_throw.wav"), #throw sound
-	21 : preload("res://sounds/generic/click.wav"), #switch ranged type
-	22 : preload("res://sounds/claw/gunshot.wav"), #pistol shot
-	23 : preload("res://sounds/claw/1002.wav"), #"magic claw"
+	0 : preload("res://sounds/claw/left_foot.ogg"), #footstep 1
+	1 : preload("res://sounds/claw/right_foot.ogg"), #footstep 2
+	2 : preload("res://sounds/claw/1110048.ogg"), # hit
+	3 : preload("res://sounds/claw/1110049.ogg"), # hit 2
+	4 : preload("res://sounds/claw/1110050.ogg"), # hit 3
+	5 : preload("res://sounds/claw/1110051.ogg"), # hit 4
+	6 : preload("res://sounds/claw/dry_gunshot.ogg"), #empty pistol
+	7 : preload("res://sounds/claw/dynamite_throw.ogg"), #dynamite throw
+	8 : preload("res://sounds/claw/empty_magic.ogg"), #empty magic
+	9 : preload("res://sounds/claw/fall_death.ogg"), #death by hit
+	10 : preload("res://sounds/generic/death_spikes.ogg"), #death by spikes
+	11 : preload("res://sounds/generic/death_liquid.ogg"), #death by liquid
+	12 : preload("res://sounds/claw/fire_sword.ogg"), #fire sword attack
+	13 : preload("res://sounds/claw/ice_sword.ogg"), #ice sword attack 
+	14 : preload("res://sounds/claw/lightning_sword.ogg"), #lightning sword attack
+	15 : preload("res://sounds/claw/land.ogg"), #hard landing 
+	16 : preload("res://sounds/claw/sword_swish.ogg"), #sword swipe sound
+	17 : preload("res://sounds/claw/left_swing.ogg"), #punch sound
+	18 : preload("res://sounds/claw/uppercut.ogg"), #hook, kick sound
+	19 : preload("res://sounds/claw/grunt.ogg"), #pickup sound
+	20 : preload("res://sounds/claw/grunt_throw.ogg"), #throw sound
+	21 : preload("res://sounds/generic/click.ogg"), #switch ranged type
+	22 : preload("res://sounds/claw/gunshot.ogg"), #pistol shot
+	23 : preload("res://sounds/claw/1002.ogg"), #"magic claw"
 	}
 const Sword_Projectile = preload("res://objects/generic/sword_projectile.tscn")
 const Pistol_Bullet = preload("res://objects/generic/pistol_bullet.tscn")
@@ -321,7 +321,6 @@ func _ready() -> void:
 	add_to_group("player")
 
 
-
 func _process(delta) -> void:
 	if Input.is_action_just_pressed("ui_debug"):
 		show_labels = !show_labels
@@ -337,7 +336,7 @@ func _process(delta) -> void:
 		change_ammo()
 		
 	if damage_cooldown > 0:
-		damage_cooldown = damage_cooldown - delta if damage_cooldown > 0 else 0
+		damage_cooldown = max(damage_cooldown - delta, 0)
 		
 	if on_elevator:
 		max_floor_y_velocity = max(max_floor_y_velocity, abs(get_floor_velocity().y))
@@ -631,7 +630,6 @@ func spawn_sword_projectile(stance : int) -> void:
 func spawn_pistol_projectile(stance : int) -> void:
 	var projectile = Pistol_Bullet.instance()
 	var node_name = "PistolStanding" if stance == 1 else "PistolCrouch" if stance == 2 else "PistolAir"
-	projectile.connect("bullet_enemy_kill", self, "_on_enemy_kill")
 	Utils.decide_player(player_sounds, action_sounds[22]) 
 	emit_signal("projectile_fired", projectile,
 			projectile_spawns.get_node(node_name).global_position,

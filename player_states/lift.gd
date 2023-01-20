@@ -74,7 +74,9 @@ func _update(_delta) -> void:
 				owner.lifted_object.sleeping = false
 				owner.lifted_object.contact_monitor = true
 				owner.lifted_object.contacts_reported = 1
+				owner.lifted_object.throw_direction = owner.orientation
 				owner.lifted_object._on_throw()
+				
 				if !object_animation.get_parent().is_class("Enemy"):
 					object_animation.play("thrown")
 				yield(owner.animation, "animation_finished")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://objects/generic/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tiles/test_arena/tile_map_test_arena.tscn" type="PackedScene" id=2]
@@ -13,9 +13,8 @@
 [ext_resource path="res://objects/generic/treasure.tscn" type="PackedScene" id=12]
 [ext_resource path="res://objects/generic/restore.tscn" type="PackedScene" id=13]
 [ext_resource path="res://objects/generic/audio_trigger.tscn" type="PackedScene" id=14]
-[ext_resource path="res://sounds/claw/timing.wav" type="AudioStream" id=15]
-[ext_resource path="res://sounds/booty_screen/gem.wav" type="AudioStream" id=16]
-[ext_resource path="res://objects/generic/explosive_barrel.tscn" type="PackedScene" id=17]
+[ext_resource path="res://sounds/claw/timing.ogg" type="AudioStream" id=15]
+[ext_resource path="res://sounds/booty_screen/gem.ogg" type="AudioStream" id=16]
 [ext_resource path="res://objects/generic/teleporter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/generic/end_item.tscn" type="PackedScene" id=19]
 [ext_resource path="res://objects/generic/crate.tscn" type="PackedScene" id=20]
@@ -218,13 +217,7 @@ contents = [ [ 1, "Magic", "Large" ], [ 1, "Ammo", "Large" ], [ 1, "Dynamite" ],
 position = Vector2( 332, -89 )
 patrol = true
 patrol_width = Vector2( 50, 50 )
-contents = [ [ 0, "Skull", "Purple" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Red" ], [ 0, "Skull", "Red" ], [ 2, 6, 2, true, true ], [ 3, "Generic", Vector2( 500, -450 ), "Horizontal", true ] ]
-
-[node name="ExplosiveBarrel" parent="Objects/ExplosiveBarrels" index="0" instance=ExtResource( 17 )]
-position = Vector2( -31.8633, -633.766 )
-
-[node name="ExplosiveBarrel2" parent="Objects/ExplosiveBarrels" index="1" instance=ExtResource( 17 )]
-position = Vector2( 16.1367, -633.766 )
+contents = [ [ 0, "Skull", "Purple" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Blue" ], [ 0, "Skull", "Green" ], [ 0, "Skull", "Red" ], [ 0, "Skull", "Red" ], [ 2, 6, 2, true, true ] ]
 
 [node name="Treasure" parent="Objects/Pickups" index="0" instance=ExtResource( 12 )]
 position = Vector2( 608.952, -398.051 )
@@ -408,7 +401,7 @@ collision_layer = 0
 static_glitter = true
 one_use = false
 type = "Generic"
-destination = Vector2( 2080, -200 )
+destination = Vector2( 1200, -150 )
 orientation = "Vertical"
 
 [node name="SpawnPoint" parent="." index="3"]

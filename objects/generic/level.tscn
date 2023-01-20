@@ -5,21 +5,6 @@
 [ext_resource path="res://objects/generic/spawn_point.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tiles/level_1/foreground/tileset_foreground_l1.tres" type="TileSet" id=4]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
 

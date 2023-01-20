@@ -24,7 +24,7 @@ func is_class(name) -> bool:
 func set_destination(value) -> void:
 	destination = value
 	if is_instance_valid(destination_helper):
-		get_node("destination_helper").global_position = value
+		get_node("DestinationHelper").global_position = value
 	update()
 
 

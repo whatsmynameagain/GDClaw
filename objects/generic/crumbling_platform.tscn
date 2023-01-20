@@ -13,10 +13,15 @@
 [ext_resource path="res://sprites/objects/crumbling_platform/level_1/frame010.png" type="Texture" id=11]
 [ext_resource path="res://sprites/objects/crumbling_platform/level_1/frame011.png" type="Texture" id=12]
 [ext_resource path="res://sprites/objects/crumbling_platform/level_1/frame012.png" type="Texture" id=13]
-[ext_resource path="res://sounds/crumbling_platform/peg_crumble.wav" type="AudioStream" id=14]
+[ext_resource path="res://sounds/crumbling_platform/peg_crumble.ogg" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "Crumbling",
+"speed": 19.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "Idle",
@@ -26,11 +31,6 @@ animations = [ {
 "loop": true,
 "name": "Used",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": false,
-"name": "Crumbling",
-"speed": 19.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -57,4 +57,5 @@ volume_db = -25.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

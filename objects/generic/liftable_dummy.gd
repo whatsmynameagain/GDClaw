@@ -12,7 +12,7 @@ var dropped := false
 var checked := false
 var original_gravity_scale := 0.0
 var linked_enemy setget set_linked_enemy
-var x_velocity_safe := 0.0
+var throw_direction := 0
 
 
 func set_linked_enemy(value) -> void:
@@ -47,16 +47,13 @@ func _integrate_forces(state) -> void:
 		
 	if !checked and (thrown or dropped) and state.get_contact_count() > 0:
 		var angle = rad2deg(state.get_contact_local_normal(0).angle())
-		if angle < -85 and angle > -95: 
+		if angle < -85 and angle > -95:  #if not hitting a wall
 			_on_land()
 			checked = true
-		else:
-			if abs(linear_velocity.x) >= 0: #I don't think this part works
-				if abs(linear_velocity.x) >= abs(x_velocity_safe):
-					x_velocity_safe = linear_velocity.x
-				elif sign(x_velocity_safe) != sign(linear_velocity.x):
-					linear_velocity.x *= -1
-	
+		#weird bounces happen because of a general physics issue related to tilemaps having
+		#multiple collision shapes close to each other. If the dummy hits the area between two
+		#tiles, it can bounce backwards. Only way to really fix it is to convert the tilemap
+		#surface collision shapes into single larger collision shapes that cover the entire area
 	if checked and is_equal_approx(linear_velocity.x, 0.0):
 		_on_movement_stop()
 
@@ -76,14 +73,13 @@ func _on_throw() -> void:
 	thrown = true
 	lifted = false
 	gravity_scale = original_gravity_scale
-	
 	if is_instance_valid(linked_enemy):
 		linked_enemy.enable_thrown_hitbox()
 		physics_material_override = load("res://objects/generic/enemy_physics_material_bounce.tres")
 	else:
 		physics_material_override = load("res://objects/generic/pickup_physics_material_bounce.tres")
 
-
+	
 func _on_dropped() -> void: 
 	gravity_scale = original_gravity_scale
 	lifted = false

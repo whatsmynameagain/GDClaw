@@ -14,6 +14,7 @@ signal drop_loot(loot)
 signal enemy_dead#used for the linked liftable_dummy, could add (self) as an argument for other stuff
 # warning-ignore:unused_signal
 signal spawn_projectile(pew) #change later
+signal killed_by_player
 
 enum States {IDLE, PATROL, ATTACK_MELEE, 
 		ATTACK_RANGED, CHASE, LEAP, 
@@ -63,14 +64,14 @@ var override := false
 
 
 var sound_effects_generic = { #temp contents
-	"land" : preload("res://sounds/generic/throw_land.wav"),
-	"swing" : preload("res://sounds/enemy/officer/officer_swing.wav"),
-	"hit_high" : preload("res://sounds/generic/enemy_hit_high.wav"),
-	"hit_mid" : preload("res://sounds/generic/enemy_hit_mid.wav"),
-	"drop_loot" : preload("res://sounds/generic/pickup_release.wav"),
-	"splash" : preload("res://sounds/generic/splash.wav"),
-	"death_liquid" : preload("res://sounds/generic/death_liquid.wav"),
-	"death_spikes" : preload("res://sounds/generic/death_spikes.wav"),
+	"land" : preload("res://sounds/generic/throw_land.ogg"),
+	"swing" : preload("res://sounds/enemy/officer/officer_swing.ogg"),
+	"hit_high" : preload("res://sounds/generic/enemy_hit_high.ogg"),
+	"hit_mid" : preload("res://sounds/generic/enemy_hit_mid.ogg"),
+	"drop_loot" : preload("res://sounds/generic/pickup_release.ogg"),
+	"splash" : preload("res://sounds/generic/splash.ogg"),
+	"death_liquid" : preload("res://sounds/generic/death_liquid.ogg"),
+	"death_spikes" : preload("res://sounds/generic/death_spikes.ogg"),
 }
 var voice_lines = {} setget , _get_voice_lines
 
@@ -334,9 +335,7 @@ func _physics_process(delta):
 						if thrown_stop and !thrown_stop_checked and !dead:
 							thrown_stop_checked = true
 							yield(get_tree().create_timer(1), "timeout") #gotta check the timing, seems ok-ish for now
-							#rare error here, entity sometimes is killed somewhere else before the yield returns?
-							#resume: Resumed function '_physics_process()' after yield, but class instance is gone. At script: res://objects/generic/enemy.gd:361
-							#gotta figure out how to reproduce
+							#resetting the stage quickly via debug after the enemy hits the ground can cause an error here
 							if !dropped:
 								print("enemy taking throw damage")
 								health -= Settings.THROW_DAMAGE 
@@ -385,9 +384,13 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 		if health <= 0:
 			if source.is_class("PistolBullet"): #pistol bullets disappear after killing one enemy
 				source.queue_free()
-			elif source.is_class("Player"):
-				source._on_enemy_kill() #probably should be a signal
+				emit_signal("killed_by_player")
+			#not sure if thrown kegs also trigger the voiceline, gotta test it	
+			elif (source.is_class("Player") or source.is_class("SwordProjectile")
+					or source.is_class("MagicProjectile") or source.is_class("DynamiteExplosion")):
+				emit_signal("killed_by_player")
 			on_death(_type, orientation)
+			
 		else:
 			#dunno if the sword projectiles trigger a hit sound aside from the elemental hit sound in the original
 			var hit_type = "high" if source.is_class("Player") and source.melee_attack == 4 else "mid"

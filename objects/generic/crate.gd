@@ -12,8 +12,8 @@ signal spawn_subcrates(crates, pos, z)
 signal drop_loot(spawner, pos, z, only, contents)
 
 
-const BreakSoundA = preload("res://sounds/crate/crate_break.wav")
-const BreakSoundB = preload("res://sounds/crate/crate_break.wav")
+const BreakSoundA = preload("res://sounds/crate/crate_break.ogg")
+const BreakSoundB = preload("res://sounds/crate/crate_break_2.ogg")
 
 export(String, "Front", "Back", "Stack") var z_position = "Stack" setget set_z_position
 export(Array, Array) var contents setget set_contents #can be edited from the export var or from the plugin

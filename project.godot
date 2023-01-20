@@ -35,9 +35,9 @@ _global_script_classes=[ {
 "path": "res://objects/generic/enemy.gd"
 }, {
 "base": "LiftableDummy",
-"class": "ExplosiveBarrel",
+"class": "ExplosiveKeg",
 "language": "GDScript",
-"path": "res://objects/generic/explosive_barrel.gd"
+"path": "res://objects/generic/explosive_keg.gd"
 }, {
 "base": "Node2D",
 "class": "HUDElement",
@@ -125,7 +125,7 @@ _global_script_class_icons={
 "DynamiteExplosion": "",
 "EndItem": "res://sprites/objects/pickup/end_item/map_piece/map_fragment.png",
 "Enemy": "",
-"ExplosiveBarrel": "",
+"ExplosiveKeg": "",
 "HUDElement": "",
 "HitEffect": "",
 "Ladder": "",

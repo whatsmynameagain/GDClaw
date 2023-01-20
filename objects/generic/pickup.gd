@@ -8,22 +8,22 @@ export(String, "None", "Gold", "Green", "Purple", "Red") var glitter_color = "Go
 export(bool) var one_use = true
 
 var pickup_sounds = {
-	"Coin" : preload("res://sounds/pickups/treasure/coin.wav"),
-	"Bars" : preload("res://sounds/pickups/treasure/bars.wav"),
-	"Ring" : preload("res://sounds/pickups/treasure/ring.wav"),
-	"Chalice" : preload("res://sounds/pickups/treasure/chalice.wav"), # & crown & skull
-	"Cross" : preload("res://sounds/pickups/treasure/cross.wav"),
-	"Scepter" : preload("res://sounds/pickups/treasure/scepter.wav"),
-	"Gecko" : preload("res://sounds/pickups/treasure/gecko.wav"),
-	"Health" : preload("res://sounds/pickups/restore/health.wav"),
-	"Health_Food" : preload("res://sounds/pickups/restore/food_item.wav"),
-	"Ammo" : preload("res://sounds/pickups/restore/ammunition.wav"), # & dynamite
-	"Magic" : preload("res://sounds/pickups/restore/magic_powerup.wav"),
-	"Extra_Life" : preload("res://sounds/pickups/restore/extra_life.wav"),
-	"Catnip" : preload("res://sounds/pickups/powerup/catnip.wav"), # & catnip_red
-	"Ghost" : preload("res://sounds/pickups/powerup/pickup_1.wav"), # & invuln, all swords
-	"EndItem" : preload("res://sounds/pickups/map_piece.wav"),
-	"Bounce" : preload("res://sounds/pickups/pickup_bounce.wav")
+	"Coin" : preload("res://sounds/pickups/treasure/coin.ogg"),
+	"Bars" : preload("res://sounds/pickups/treasure/bars.ogg"),
+	"Ring" : preload("res://sounds/pickups/treasure/ring.ogg"),
+	"Chalice" : preload("res://sounds/pickups/treasure/chalice.ogg"), # & crown & skull
+	"Cross" : preload("res://sounds/pickups/treasure/cross.ogg"),
+	"Scepter" : preload("res://sounds/pickups/treasure/scepter.ogg"),
+	"Gecko" : preload("res://sounds/pickups/treasure/gecko.ogg"),
+	"Health" : preload("res://sounds/pickups/restore/health.ogg"),
+	"Health_Food" : preload("res://sounds/pickups/restore/food_item.ogg"),
+	"Ammo" : preload("res://sounds/pickups/restore/ammunition.ogg"), # & dynamite
+	"Magic" : preload("res://sounds/pickups/restore/magic_powerup.ogg"),
+	"Extra_Life" : preload("res://sounds/pickups/restore/extra_life.ogg"),
+	"Catnip" : preload("res://sounds/pickups/powerup/catnip.ogg"), # & catnip_red
+	"Ghost" : preload("res://sounds/pickups/powerup/pickup_1.ogg"), # & invuln, all swords
+	"EndItem" : preload("res://sounds/pickups/map_piece.ogg"),
+	"Bounce" : preload("res://sounds/pickups/pickup_bounce.ogg")
 	}
 	
 var initial_impulse := Vector2.ZERO

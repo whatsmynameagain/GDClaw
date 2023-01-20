@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://objects/generic/crate.gd" type="Script" id=1]
 [ext_resource path="res://sprites/objects/crate/1/crate008.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://sprites/objects/crate/1/crate004.png" type="Texture" id=7]
 [ext_resource path="res://sprites/objects/crate/1/crate002.png" type="Texture" id=8]
 [ext_resource path="res://sprites/objects/crate/1/crate007.png" type="Texture" id=9]
-[ext_resource path="res://sounds/crate/crate_break.wav" type="AudioStream" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 absorbent = true
@@ -75,4 +74,3 @@ disabled = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = ExtResource( 10 )

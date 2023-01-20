@@ -1,12 +1,37 @@
-extends Node
+#current goal: playable level 1 including menus, intro video cutscene and booty-map cutscene-results
+#to-do: 
+#	-quick:
+#		-move tile sprites to /sprites/tiles
+#	--features: (in order)
+#		-officer player detection and attacks (mid and low, high isn't used)
+#		-create soldier enemy and add mechanics
+#		-claw look up state and crouch camera movement
+#		-game over screen
+#		-special footstep sounds (remember that bad framerate can affect animation frame detections)
+#		-menus (limited)
+#		-loading screen + loading mechanic(?)
+#		-video cutscenes
+#		-map cutscene
+#		-treasure results
+#		(...)
+#	--lower priority features:
+#		-menu animated claw
+#		-remapping controls
+#		(...)
+#	--eventual fixes:
+#		-figure out sprite offsets with atlas
+#		-recreate tilesets with the new editor
+#		-create script to unify tilemap collisions
+#		-figure out how to extract info from original maps for easier object/tile placing
+#		-look into the rolling and teleporter shaders, would be nice to have them
+#		-general optimizations
+#		(...)
 
-#---------------------------
-#Note: anything that is a string comparison will probably be eventually switched to enums
-#---------------------------
+
+extends Node
 
 
 enum GameStates {Intro, Menu, Playing, Pause, Booty} 
-
 
 
 #for debug spawning
@@ -20,9 +45,9 @@ const powerup_type_dict  = {1:"Catnip", 2:"Catnip_Red", 3:"Ghost", 4:"Invulnerab
 		6:"Ice_Sword", 7:"Lightning_Sword"}
 #res
 const powerup_music = preload("res://music/powerup.ogg")
-const circle_close_sound = preload("res://sounds/generic/circle_fade.wav")
-const circle_open_sound = preload("res://sounds/checkpoint/flag_wave.wav")
-const teleporter_sound = preload("res://sounds/teleporter/warp.wav")
+const circle_close_sound = preload("res://sounds/generic/circle_fade.ogg")
+const circle_open_sound = preload("res://sounds/checkpoint/flag_wave.ogg")
+const teleporter_sound = preload("res://sounds/teleporter/warp.ogg")
 const teleporter_transition_mask = preload("res://objects/ui/teleporter_transition_mask.png")
 const teleporter_transition_mask_2 = preload("res://objects/ui/teleporter_transition_mask_2.png")
 const values = {
@@ -60,6 +85,7 @@ onready var game_sounds = $GameSounds
 
 
 func _ready() -> void:
+	print(_level)
 	level = load("res://levels/%s.tscn" % _level).instance()
 	level.music_enabled = music_enabled
 	game_sounds.volume_db = Settings.EFFECTS_VOLUME
@@ -128,6 +154,7 @@ func _input(_event) -> void:
 	if Input.is_action_pressed("ui_quit"):
 		get_tree().quit()
 	
+	#this assplodes if you use it while teleporting
 	if Input.is_action_pressed("ui_restart"):
 		level.queue_free()
 		level = load("res://levels/%s.tscn" % _level).instance()

@@ -1,6 +1,6 @@
 extends LiftableDummy
 
-class_name ExplosiveBarrel
+class_name ExplosiveKeg
 
 
 var exploding = false
@@ -13,11 +13,11 @@ onready var audio = $AudioStreamPlayer2D
 
 
 func get_class() -> String:
-	return "ExplosiveBarrel"
+	return "ExplosiveKeg"
 
 
 func is_class(name) -> bool:
-	return name == "ExplosiveBarrel" or .is_class(name)
+	return name == "ExplosiveKeg" or .is_class(name)
 
 
 func _ready() -> void:

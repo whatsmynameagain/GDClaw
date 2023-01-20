@@ -68,6 +68,7 @@ func _ready() -> void:
 		enemy.gravity = GRAVITY
 		#enemy.connect("projectile_fired", self, _on_projectile_fired") #soon(tm)
 		enemy.connect("drop_loot", self,  "_on_spawn_spawner")
+		enemy.connect("killed_by_player", self, "_on_enemy_kill_by_player")
 		for item in enemy.contents:
 			if item[0] == 0:
 				#add to treasure list count
@@ -255,3 +256,6 @@ func _on_spawn_dummy(dummy, pos, orientation) -> void:
 	add_child(dummy)
 	dummy.get_node("Sprite").flip_h = orientation == -1
 	dummy.global_position = pos
+
+func _on_enemy_kill_by_player() -> void:
+	player._on_enemy_kill()

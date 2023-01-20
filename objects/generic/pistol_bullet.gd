@@ -2,8 +2,6 @@ extends RigidBody2D
 
 class_name PistolBullet
 
-signal bullet_enemy_kill
-
 var queued := false #queued for despawning
 var orientation : int
 
@@ -43,9 +41,6 @@ func _on_body_entered(body):
 		
 		if body.has_method("on_hit"):
 			body.on_hit(Settings.Damage_Types.COMBAT, self, Settings.PISTOL_DAMAGE, global_position)
-			if "dead" in body:
-				if body.dead:
-					emit_signal("bullet_enemy_kill")
 	else:
 		queue_free()
 
