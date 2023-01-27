@@ -90,7 +90,8 @@ func _update(delta) -> void:
 		
 		#if landing without reaching the stun landing time
 		if owner.is_on_floor() and owner.action_time <= 1.18:
-			Utils.decide_player(owner.player_sounds, owner.action_sounds[0]) 
+			Utils.decide_player([owner.player_sounds, owner.player_sounds_2, owner.player_sounds_3], 
+					owner.action_sounds[0]) 
 			if (Input.is_action_pressed("ui_right") and Input.is_action_pressed("ui_left") 
 					or Input.is_action_pressed("ui_left")):
 				move(false, anim)

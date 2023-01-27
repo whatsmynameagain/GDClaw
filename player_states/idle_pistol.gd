@@ -64,7 +64,6 @@ func shoot() -> void:
 		owner.pistol -= 1
 		owner.emit_signal("ammo_updated", owner.pistol)
 		owner.animation.play("pistol_post")
-		print("print to true")
 		fired = true
 	else:
 		Utils.decide_player(owner.player_sounds, owner.action_sounds[6])

@@ -10,11 +10,13 @@ func play_footsteps() -> void:
 	#add a check for if the player is in an area that triggers a different footstep sound 
 	#(like water puddles)
 	if owner.animation.get_frame() == 4 and !played_l:
-		Utils.decide_player(owner.player_sounds, owner.action_sounds[0]) 
+		Utils.decide_player([owner.player_sounds, owner.player_sounds_2, owner.player_sounds_3], 
+			owner.action_sounds[0]) 
 		played_l = true
 		played_r = false
 	elif owner.animation.get_frame() == 9 and !played_r: 
-		Utils.decide_player(owner.player_sounds, owner.action_sounds[1]) 
+		Utils.decide_player([owner.player_sounds, owner.player_sounds_2, owner.player_sounds_3], 
+			owner.action_sounds[1]) 
 		played_r = true
 		played_l = false
 

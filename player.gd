@@ -141,6 +141,7 @@ const Sword_Projectile = preload("res://objects/generic/sword_projectile.tscn")
 const Pistol_Bullet = preload("res://objects/generic/pistol_bullet.tscn")
 const Magic_Projectile = preload("res://objects/generic/magic_projectile.tscn")
 const Dynamite_Projectile = preload("res://objects/generic/dynamite_projectile.tscn")
+const Player_Glitter_Material = preload("res://objects/generic/player_glitter_material.tres")
 
 
 export(int) var health = 100 setget set_health
@@ -308,6 +309,7 @@ func set_powerup(value) -> void:
 			Utils.decide_player(player_voice, dialogue["powerup"])
 
 # -------------OVERRIDE METHODS-------------
+	
 func _ready() -> void:
 	z_index = Settings.PLAYER_Z
 	player_sounds.set_volume_db(Settings.EFFECTS_VOLUME)
@@ -323,6 +325,7 @@ func _ready() -> void:
 	player_voice.connect("finished", self, "_on_dialogue_end")
 	add_child(hit_effect)
 	add_to_group("player")
+	player_glitter.material = Player_Glitter_Material
 
 
 func _process(delta) -> void:
@@ -755,6 +758,8 @@ func _on_damage_taken(_source: CollisionObject2D, _damage : int) -> void:
 
 
 func on_death(cause : int) -> void:
+	powerup_time = 0
+	_on_powerup_timer_end()
 	match cause:
 		Settings.Damage_Types.SPIKES:
 			health = 0 

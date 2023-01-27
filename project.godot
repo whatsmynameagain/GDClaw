@@ -167,7 +167,7 @@ enabled=PoolStringArray( "res://addons/inventory_manager/plugin.cfg" )
 
 [global]
 
-vsync=false
+vsync=true
 
 [importer_defaults]
 

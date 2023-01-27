@@ -12,8 +12,6 @@ func _on_enter() -> void:
 	owner.emit_signal("spawn_dummy", dummy, owner.global_position, owner.orientation)
 	owner.set_stance_collision(true, true)
 	Utils.decide_player(owner.player_sounds, owner.action_sounds[9]) 
-	if owner.powerup != owner.Powerup_enum.NONE:
-		owner._on_powerup_timer_end() 
 	wait_timer = Timer.new()
 	add_child(wait_timer)
 	wait_timer.one_shot = true

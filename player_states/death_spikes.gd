@@ -10,8 +10,6 @@ func _on_enter() -> void:
 	Utils.decide_player(owner.player_sounds, owner.action_sounds[10]) 
 	owner.animation.play("death_env")
 	owner.set_stance_collision(true, true)
-	if owner.powerup != owner.Powerup_enum.NONE:
-		owner._on_powerup_timer_end()
 	wait_timer = Timer.new()
 	add_child(wait_timer)
 	wait_timer.one_shot = true

@@ -2,12 +2,6 @@
 
 [ext_resource path="res://tiles/level_1/main/tile_set_main_l1_b.tres" type="TileSet" id=1]
 
-
-
-
-
-
-
 [node name="TileMap" type="TileMap"]
 tile_set = ExtResource( 1 )
 collision_mask = 118

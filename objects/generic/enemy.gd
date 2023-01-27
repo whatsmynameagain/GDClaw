@@ -235,7 +235,6 @@ func set_state(value) -> void:
 				if chance == 3: #1/3 chance of saying something
 					#this breaks if there aren't exactly two lift lines (good enough for testing)
 					on_voice_trigger(_get_voice_lines()["lift_%s" % str(randi()%2+1)])
-					
 				collision_lifted.call_deferred("set_disabled", false) #hm, future problems if an enemy is lifted
 				collision.call_deferred("set_disabled", true) #in a small vertical space?
 		States.THROW_LAND:
@@ -419,7 +418,8 @@ func set_patrol_limit_points() -> Vector2:
 func on_voice_trigger(audio) -> void:
 	if !voice.playing:
 		exclamation.visible = true
-		voice.stream = audio
+		if voice.stream != audio:
+			voice.stream = audio
 		voice.play()
 
 #source = type, side = (-1, 0, 1)
@@ -479,7 +479,7 @@ func death_throw() -> void:
 func death_combat(side : int, modifier := "") -> void:
 	set_state(States.DEATH_COMBAT)
 	damage_cooldown = false
-	if modifier == "":
+	if !modifier:
 		animation.play("dead")
 	else:
 		animation.play("dead_%s" % (modifier if modifier != "lightning" else "fire"))
@@ -490,20 +490,16 @@ func death_combat(side : int, modifier := "") -> void:
 		#or could add an empty frame at the end of the animations
 		elem_expl.play(modifier)
 		
-	#I think there's a chance to not play a voice line, check later (and during juggle)	
+	#I think there's a chance to not play a voice line, check later (and during juggle)
 	randomize()
 	Utils.decide_player(voice, _get_voice_lines()["death_%s" % str(randi()%2+1)]) 
 	if !contents.empty() and !juggle:
 		drop_loot()
 			
-
 	#disable map collision
 	set_collision_mask_bit(0, false)
 	set_collision_mask_bit(3, false)
-	
 	motion = Vector2(150 * side, -750)
-	
-	pass
 
 
 func drop_loot():
@@ -727,9 +723,3 @@ func _death_spikes_update() -> bool:
 func _death_liquid_update() -> bool:
 	
 	return false
-
-#enum States {IDLE, PATROL, ATTACK_MELEE, 
-#		ATTACK_RANGED, CHASE, LEAP, 
-#		LIFTED, THROW_LAND, DAMAGE, DEATH_COMBAT, 
-#		DEATH_SPIKES, DEATH_LIQUID,
-#		 DEAD_THROW}
