@@ -17,5 +17,5 @@ animation = "CATNIP"
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
 
-[node name="Area" parent="." index="2"]
+[node name="Area3D" parent="." index="2"]
 visible = false

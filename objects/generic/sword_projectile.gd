@@ -3,18 +3,18 @@ extends RigidBody2D
 class_name SwordProjectile
 
 
-var type = Settings.Damage_Types.FIRE setget set_type
+var type = Settings.Damage_Types.FIRE: set = set_type
 var orientation : int
 
-onready var animation = $AnimatedSprite
+@onready var animation = $AnimatedSprite2D
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "SwordProjectile"
 
 
-func is_class(name) -> bool:
-	return name == "SwordProjectile" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "SwordProjectile" or super.is_class(name)
 
 
 func set_type(value) -> void:
@@ -39,7 +39,7 @@ func _integrate_forces(_state) -> void:
 
 
 func _on_body_entered(body) -> void:
-	if body.is_class("Crate"):
+	if body._is_class("Crate"):
 		body.on_break()
 	if body.has_method("on_hit"):
 		#-add elemental hit effect to body

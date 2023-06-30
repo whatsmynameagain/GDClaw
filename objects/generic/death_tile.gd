@@ -7,18 +7,20 @@ enum Death_Types {SET_BY_LEVEL = 0,
 		SPIKES = Settings.Damage_Types.SPIKES, 
 		LIQUID = Settings.Damage_Types.LIQUID}
 		
-export(Death_Types) var death_type = Death_Types.SPIKES
-export(int, 1, 999) var size setget set_size
+@export var death_type: Death_Types = Death_Types.SPIKES
+@export var size : int :
+	set(value):
+		set_size(value)
 
-onready var area = $DeathArea
+@onready var area = $DeathArea
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "DeathTile"
 
 
-func is_class(name) -> bool:
-	return name == "DeathTile" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "DeathTile" or super.is_class(name)
 
 
 func set_size(value) -> void:

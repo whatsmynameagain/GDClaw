@@ -37,7 +37,7 @@ static func decide_player(sound_players, stream) -> void:
 					else:
 						temp_player = AudioStreamPlayer2D.new()
 					sound_player.owner.add_child(temp_player)
-					temp_player.connect("finished", temp_player, "queue_free")
+					temp_player.connect("finished", Callable(temp_player, "queue_free"))
 					temp_player.set_volume_db(Settings.EFFECTS_VOLUME)
 					temp_player.set_stream(stream) 
 					temp_player.play()
@@ -97,8 +97,8 @@ func rect_center_to_corner(rect : Rect2) -> Rect2:
 
 #returns the four position points of a rectangleshape2d
 func rect_2d_points(rect : RectangleShape2D, pos : Vector2) -> Dictionary:
-	var l = pos.x - rect.extents.x
-	var r = pos.x + rect.extents.x
-	var u = pos.y - rect.extents.y
-	var d = pos.y + rect.extents.y
+	var l = pos.x - rect.size.x
+	var r = pos.x + rect.size.x
+	var u = pos.y - rect.size.y
+	var d = pos.y + rect.size.y
 	return {"l":float(l), "u":float(u), "r":float(r),"d":float(d)}

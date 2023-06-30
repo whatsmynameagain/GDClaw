@@ -21,13 +21,13 @@ func _on_enter() -> void:
 	object_animation = (owner.lifted_object.animation if !is_instance_valid(owner.lifted_object.linked_enemy) 
 			else owner.lifted_object.linked_enemy.animation)
 	object_animation.owner._flip_anim(true if owner.orientation == owner.Orientations.LEFT else false)
-	yield(owner.animation, "frame_changed") #wait for the frame to change before playing the sound
+	await owner.animation.frame_changed #wait for the frame to change before playing the sound
 	if is_instance_valid(owner.lifted_object): #in case damage happened in that yield time (onExit sets lifted_object to null)
 		object_animation.play("held")
 		owner.player_sounds.stream = owner.action_sounds[19]
 		owner.player_sounds.play()
 		owner.lifted_object.global_position = owner.lift_position_2.global_position
-		yield(owner.animation, "frame_changed") #wait for the extra frame before being able to throw
+		await owner.animation.frame_changed #wait for the extra frame before being able to throw
 		lifting = true
 
 
@@ -73,13 +73,13 @@ func _update(_delta) -> void:
 				owner.lifted_object.apply_central_impulse(impulse)
 				owner.lifted_object.sleeping = false
 				owner.lifted_object.contact_monitor = true
-				owner.lifted_object.contacts_reported = 1
+				owner.lifted_object.max_contacts_reported = 1
 				owner.lifted_object.throw_direction = owner.orientation
 				owner.lifted_object._on_throw()
 				
 				if !object_animation.get_parent().is_class("Enemy"):
 					object_animation.play("thrown")
-				yield(owner.animation, "animation_finished")
+				await owner.animation.animation_finished
 				emit_signal("finished", "Idle")
 		elif ((Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")) 
 				and !moving and !throwing):
@@ -122,6 +122,6 @@ func _on_exit()  -> void:
 		owner.lifted_object._on_dropped()
 	owner.lifted_object.sleeping = false
 	owner.lifted_object.contact_monitor = true
-	owner.lifted_object.contacts_reported = 1
+	owner.lifted_object.max_contacts_reported = 1
 	owner.lifted_object = null
 	owner.lifting = false

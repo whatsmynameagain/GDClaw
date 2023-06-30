@@ -15,9 +15,9 @@ func _ready() -> void:
 		9 : preload("res://sprites/ui/hud/ammo_lives_numbers/009.png")
 	}
 	animation.play()
-	position.x = ProjectSettings.get_setting("display/window/size/width")
+	position.x = ProjectSettings.get_setting("display/window/size/viewport_width")
 # warning-ignore:return_value_discarded
-	get_parent().connect("resized", self, "update_position")
+	get_parent().connect("resized", Callable(self, "update_position"))
 
 
 func change_ranged(new : String, ammo : int) -> void:

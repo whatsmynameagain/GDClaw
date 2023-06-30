@@ -147,13 +147,13 @@ func start_attack(attack : int) -> void:
 			else:
 				anim = "dynamite_air_empty"
 	
-	if !owner.animation.is_connected("animation_finished", self, "_on_exit"):
-		owner.animation.connect("animation_finished", self, "_on_exit")
+	if !owner.animation.is_connected("animation_finished", Callable(self, "_on_exit")):
+		owner.animation.connect("animation_finished", Callable(self, "_on_exit"))
 
 
 func shoot() -> void:
-	if owner.animation.is_connected("animation_finished", self, "shoot"):
-		owner.animation.disconnect("animation_finished", self, "shoot")
+	if owner.animation.is_connected("animation_finished", Callable(self, "shoot")):
+		owner.animation.disconnect("animation_finished", Callable(self, "shoot"))
 	start_attack(2 if pistol else 3 if magic else 4)
 
 
@@ -164,12 +164,12 @@ func set_attacks() -> void:
 		elif (Input.is_action_just_pressed("ui_pistol") 
 				or (Input.is_action_just_pressed("ui_ranged") and owner.active_ranged == owner.Ranged.PISTOL)):
 			owner.active_ranged = owner.Ranged.PISTOL
-			if owner.animation.is_connected("animation_finished", self, "_on_exit"):
+			if owner.animation.is_connected("animation_finished", Callable(self, "_on_exit")):
 				if owner.animation.frame >= 4 and owner.animation.frame <= 7: #not checked, good enough for now
 					start_attack(2)
 					owner.animation.frame = 0
 			pistol = true
-			owner.animation.connect("animation_finished", self, "shoot")
+			owner.animation.connect("animation_finished", Callable(self, "shoot"))
 			if owner.pistol > 0: 
 				anim = "pistol_air" 
 			else:
@@ -180,7 +180,7 @@ func set_attacks() -> void:
 				or (Input.is_action_just_pressed("ui_ranged") and owner.active_ranged == owner.Ranged.MAGIC)):
 			owner.active_ranged = owner.Ranged.MAGIC
 			magic = true
-			owner.animation.connect("animation_finished", self, "shoot")
+			owner.animation.connect("animation_finished", Callable(self, "shoot"))
 			if owner.magic > 0: 
 				anim = "magic_air" 
 			else:
@@ -192,7 +192,7 @@ func set_attacks() -> void:
 				or (Input.is_action_just_pressed("ui_ranged") and owner.active_ranged == owner.Ranged.DYNAMITE)):
 			owner.active_ranged = owner.Ranged.DYNAMITE
 			dynamite = true
-			owner.animation.connect("animation_finished", self, "shoot")
+			owner.animation.connect("animation_finished", Callable(self, "shoot"))
 			anim = "dynamite_air" if owner.dynamite > 0 else "dynamite_air_empty"
 			owner.emit_signal("ranged_changed", "dynamite", owner.dynamite)
 	elif owner.attacking and !melee_checked:
@@ -215,10 +215,10 @@ func check_lateral() -> void:
 #doubles as a replacement for the _on_animation_complete method inherited from State 
 #(can't use that because it ends the state too) and as an exit state method
 func _on_exit() -> void:
-	if owner.animation.is_connected("animation_finished", self, "shoot"):
-		owner.animation.disconnect("animation_finished", self, "shoot")
-	if owner.animation.is_connected("animation_finished", self, "_on_exit"):
-		owner.animation.disconnect("animation_finished", self, "_on_exit")
+	if owner.animation.is_connected("animation_finished", Callable(self, "shoot")):
+		owner.animation.disconnect("animation_finished", Callable(self, "shoot"))
+	if owner.animation.is_connected("animation_finished", Callable(self, "_on_exit")):
+		owner.animation.disconnect("animation_finished", Callable(self, "_on_exit"))
 	owner.melee_attack = 0
 	owner.attacking = false
 	owner.falling = !(owner.is_on_floor() or owner.on_ladder)
@@ -227,5 +227,5 @@ func _on_exit() -> void:
 	dynamite = false
 	for child in owner.attack_areas.get_children():
 		if !child.disabled:
-			 child.call_deferred("set_disabled", true) #in case the player lands right after checking the attack
+			child.call_deferred("set_disabled", true) #in case the player lands right after checking the attack
 	anim = "jump" if !owner.falling else "fall"

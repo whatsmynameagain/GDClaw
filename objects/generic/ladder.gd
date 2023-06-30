@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node2D
 
 class_name Ladder
@@ -6,13 +6,13 @@ class_name Ladder
 #Could be done by checking the tiles but MEH
 #It's easier with signals
 
-export(int, 1, 999) var size = 2 setget set_size
+@export var size = 2: set = set_size
 
 var set := false
 
-onready var ladder_body_collision = $LadderBody/LadderBody/CollisionShape2D
-onready var ladder_body = $LadderBody
-onready var ladder_top = $LadderTop
+@onready var ladder_body_collision = $LadderBody/LadderBody/CollisionShape2D
+@onready var ladder_body = $LadderBody
+@onready var ladder_top = $LadderTop
 
 
 func set_size(value) -> void:
@@ -22,7 +22,7 @@ func set_size(value) -> void:
 	else:
 		get_node("LadderBody").visible = false
 		get_node("LadderTop").visible = false
-	update()
+	queue_redraw()
 
 
 func set_body(value: bool) -> void:

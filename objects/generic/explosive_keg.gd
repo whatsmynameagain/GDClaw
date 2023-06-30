@@ -5,19 +5,19 @@ class_name ExplosiveKeg
 
 var exploding = false
 
-onready var collision = $CollisionShape2D
-onready var area = $Area2D
-onready var explosion_area = $Area2D/CollisionShape2D
-onready var animation = $AnimatedSprite
-onready var audio = $AudioStreamPlayer2D
+@onready var collision = $CollisionShape2D
+@onready var area = $Area2D
+@onready var explosion_area = $Area2D/CollisionShape2D
+@onready var animation = $AnimatedSprite2D
+@onready var audio = $AudioStreamPlayer2D
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "ExplosiveKeg"
 
 
-func is_class(name) -> bool:
-	return name == "ExplosiveKeg" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "ExplosiveKeg" or super.is_class(name)
 
 
 func _ready() -> void:
@@ -38,30 +38,30 @@ func explode() -> void:
 	animation.play("explosion")
 	audio.play()
 	get_tree().call_group("camera", "shake", 0.8, 30, 12)
-	yield(animation, "animation_finished")
+	await animation.animation_finished
 	explosion_area.disabled = false
 	collision.disabled = true
 	animation.play("explosion_2")
-	yield(animation, "animation_finished")
+	await animation.animation_finished
 	explosion_area.disabled = true
 	animation.play("explosion_3")
-	yield(animation, "animation_finished")
+	await animation.animation_finished
 	queue_free()
 
 
 func _on_lift() -> void:
-	._on_lift()
-	area.set_collision_mask_bit(1, false)
-	area.set_collision_mask_bit(6, false)
-	area.set_collision_mask_bit(8, false)
-	area.set_collision_mask_bit(11, false)
+	super._on_lift()
+	area.set_collision_mask_value(1, false)
+	area.set_collision_mask_value(6, false)
+	area.set_collision_mask_value(8, false)
+	area.set_collision_mask_value(11, false)
 
 
 func _on_land() -> void:
-	area.set_collision_mask_bit(1, true)
-	area.set_collision_mask_bit(6, true)
-	area.set_collision_mask_bit(8, true)
-	area.set_collision_mask_bit(11, true)
+	area.set_collision_mask_value(1, true)
+	area.set_collision_mask_value(6, true)
+	area.set_collision_mask_value(8, true)
+	area.set_collision_mask_value(11, true)
 	explode()
 
 
@@ -74,9 +74,9 @@ func _on_movement_stop() -> void:
 
 #explosion effects
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body.is_class("Crate"):
+	if body._is_class("Crate"):
 		body.on_break()
-	elif body.is_class("Player") or body.is_class("Enemy"):
+	elif body._is_class("Player") or body._is_class("Enemy"):
 		body.on_hit(Settings.Damage_Types.COMBAT, self, Settings.KEG_DAMAGE, global_position)
 	else: #keg
 		if !body.lifted and !body.thrown and !body.exploding:

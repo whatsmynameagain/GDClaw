@@ -1,4 +1,4 @@
-tool
+@tool
 extends Pickup
 #script and scene inherit from Pickup
 
@@ -7,19 +7,28 @@ class_name Restore
 
 const animations = preload("res://animations/restore.tres")
 
-export(String, "Ammo", "Magic", "Dynamite", 
-		"Health_Food", "Health", "Extra_Life") var type = "Health_Food" setget set_type
-export(String, "None", "Small", "Medium", "Large") var size = "None" setget set_size
-export(String, "None", "1-2", "3-4", "5-6", "7-8", 
-		"9-10", "11-12", "13", "14") var food_model = "1-2" setget set_food_model
+#TO DO: cyclic call of setters here, gd4 now always calls the setter functions
+#this is going to be a pain in the ass to solve
+
+@export_enum("Ammo", "Magic", "Dynamite", 
+		"Health_Food", "Health", "Extra_Life") var type : String = "Health_Food": 
+	set(value):
+		set_type(value)
+@export var size = "None": 
+	set(value):
+		set_size(value)
+@export_enum("None", "1-2", "3-4", "5-6", "7-8", 
+		"9-10", "11-12", "13", "14") var food_model : String = "1-2": 
+	set(value):
+		set_food_model(value)
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "Restore"
 
 
-func is_class(name) -> bool:
-	return name == "Restore" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "Restore" or super.is_class(name)
 
 
 func set_type(value) -> void:
@@ -33,8 +42,8 @@ func set_type(value) -> void:
 	else:
 		size = "Small"
 		food_model = "None"
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func set_size(value) -> void:
@@ -44,8 +53,8 @@ func set_size(value) -> void:
 		food_model = "1-2"
 	elif size != "None" and not type in ["Ammo", "Magic", "Health"]: 
 		type = "Health"
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func set_food_model(value) ->void:
@@ -56,8 +65,8 @@ func set_food_model(value) ->void:
 	elif food_model == "None" and type == "Health_Food":
 		type = "Health"
 		size = "Small"
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func _ready():
@@ -75,7 +84,7 @@ func _ready():
 		
 	if !physics:
 		if static_glitter:
-			add_child(preload("res://objects/generic/glitter.tscn").instance()) 
+			add_child(preload("res://objects/generic/glitter.tscn").instantiate()) 
 			get_node("Glitter").play(glitter_color)
 
 
@@ -96,7 +105,7 @@ func _draw() -> void:
 	if !physics:
 		if static_glitter:
 			if !has_node("Glitter"):
-					add_child(preload("res://objects/generic/glitter.tscn").instance()) 
+					add_child(preload("res://objects/generic/glitter.tscn").instantiate()) 
 			get_node("Glitter").play(glitter_color)
 		else:
 			if has_node("Glitter"):
@@ -111,8 +120,8 @@ func _on_pickup() -> void:
 			audio.stream = pickup_sounds[type]
 	audio.play()
 	if type == "Extra_Life":
-		set_collision_mask_bit(0, false)
-		area.set_collision_mask_bit(1, false)
+		set_collision_mask_value(0, false)
+		area.set_collision_mask_value(1, false)
 		stopped = true
 		linear_velocity = Vector2(750, -750)
 		gravity_scale = 0.0 
@@ -124,8 +133,8 @@ func _on_pickup() -> void:
 		timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
 		timer.one_shot = true
 		timer.start(1.0)
-		timer.connect("timeout", self, "queue_free")
+		timer.connect("timeout", Callable(self, "queue_free"))
 	else:
 		if one_use:
-			audio.connect("finished", self, "queue_free")
+			audio.connect("finished", Callable(self, "queue_free"))
 			disable()

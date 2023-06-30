@@ -4,24 +4,24 @@ extends StaticBody2D
 #the edge of a surface while falling, the body will go through the surface's one way collision
 # -> the player can activate the platform while passing through it
 
-export var reusable := false
+@export var reusable := false
 
-var active := true setget set_active
+var active := true: set = set_active
 var sound_played := false 
 var activated := false
 
-onready var collision = $CollisionShape2D
-onready var animation = $AnimatedSprite
-onready var sound = $Sound
-onready var timer = $Timer
+@onready var collision = $CollisionShape2D
+@onready var animation = $AnimatedSprite2D
+@onready var sound = $Sound
+@onready var timer = $Timer
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "CrumblingPlatform"
 
 
-func is_class(name) -> bool:
-	return name == "CrumblingPlatform" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "CrumblingPlatform" or super.is_class(name)
 
 
 func set_active(value) -> void:
@@ -43,7 +43,7 @@ func _ready() -> void:
 
 func activate() -> void:
 	activated = true
-	animation.connect("animation_finished", self, "_on_animation_finished")
+	animation.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	animation.play("Crumbling")
 	sound.play()
 	timer.start()
@@ -53,7 +53,7 @@ func _on_animation_finished() -> void:
 	if !reusable:
 		queue_free()
 	else:
-		animation.disconnect("animation_finished", self, "_on_animation_finished")
+		animation.disconnect("animation_finished", Callable(self, "_on_animation_finished"))
 		animation.play("Used")
 
 

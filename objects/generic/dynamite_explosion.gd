@@ -5,17 +5,17 @@ class_name DynamiteExplosion
 
 var overlap_local = Rect2(Vector2.ZERO, Vector2.ZERO)
 
-onready var audio = $AudioStreamPlayer
-onready var animation = $AnimatedSprite
-onready var collision = $CollisionShape2D
+@onready var audio = $AudioStreamPlayer
+@onready var animation = $AnimatedSprite2D
+@onready var collision = $CollisionShape2D
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "DynamiteExplosion"
 
 
-func is_class(name) -> bool:
-	return name == "DynamiteExplosion" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "DynamiteExplosion" or super.is_class(name)
 
 
 func _ready() -> void:
@@ -25,7 +25,7 @@ func _ready() -> void:
 	audio.set_volume_db(Settings.EFFECTS_VOLUME)
 	audio.play()
 	#duration, frequency, amplitude
-	yield(get_tree().create_timer(0.15), "timeout") #slight delay before cam shake
+	await get_tree().create_timer(0.15).timeout #slight delay before cam shake
 	get_tree().call_group("camera", "shake", 0.8, 30, 12)
 
 
@@ -39,9 +39,9 @@ func _process(_delta) -> void:
 
 
 func _on_body_entered(body) -> void:
-	if body.is_class("Crate"):
+	if body._is_class("Crate"):
 		body.on_break()
-	elif body.is_class("ExplosiveBarrel"):
+	elif body._is_class("ExplosiveBarrel"):
 		body.explode()
 	else:
 		#SHIT WILL BREAK IF THE EXPLOSION AREA IS NOT A RECTANGLE

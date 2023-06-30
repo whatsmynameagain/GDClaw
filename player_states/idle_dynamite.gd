@@ -16,12 +16,12 @@ func _on_enter() -> void:
 	owner.emit_signal("ranged_changed", "dynamite", owner.dynamite)
 	if owner.dynamite > 0:
 		owner.on_dynamite_prepared()
-		if !owner.animation.is_connected("animation_finished", self, "_next_anim"):
-			owner.animation.connect("animation_finished", self, "_next_anim")
+		if !owner.animation.is_connected("animation_finished", Callable(self, "_next_anim")):
+			owner.animation.connect("animation_finished", Callable(self, "_next_anim"))
 		owner.animation.play("dynamite_windup")
 		
 	else:
-		owner.animation.connect("animation_finished", self, "_on_animation_complete")
+		owner.animation.connect("animation_finished", Callable(self, "_on_animation_complete"))
 		owner.animation.play("dynamite_empty")
 
 
@@ -53,14 +53,14 @@ func _update(delta) -> void:
 
 
 func _next_anim() -> void:
-	owner.animation.disconnect("animation_finished", self, "_next_anim")
+	owner.animation.disconnect("animation_finished", Callable(self, "_next_anim"))
 	if owner.animation.animation == "dynamite_windup":
 		owner.animation.animation = "dynamite_charge"
 
 
 func shoot() -> void:
-	if owner.animation.is_connected("animation_finished", self, "shoot"):
-		owner.animation.disconnect("animation_finished", self, "shoot")
+	if owner.animation.is_connected("animation_finished", Callable(self, "shoot")):
+		owner.animation.disconnect("animation_finished", Callable(self, "shoot"))
 	
 	if owner.dynamite > 0:
 		var impulse = Settings.DYNAMITE_PROJECTILE_SPEED * (charge / Settings.DYNAMITE_CHARGE_TIME)
@@ -73,12 +73,12 @@ func shoot() -> void:
 	else:
 		emit_signal("finished", "Idle")
 	
-	if !owner.animation.is_connected("animation_finished", self, "_on_animation_complete"):
-		owner.animation.connect("animation_finished", self, "_on_animation_complete")
+	if !owner.animation.is_connected("animation_finished", Callable(self, "_on_animation_complete")):
+		owner.animation.connect("animation_finished", Callable(self, "_on_animation_complete"))
 
 
 func _on_animation_complete() -> void:
-	owner.animation.disconnect("animation_finished", self, "_on_animation_complete")
+	owner.animation.disconnect("animation_finished", Callable(self, "_on_animation_complete"))
 	owner.attacking = false
 	emit_signal("finished", "Idle")
 
@@ -88,8 +88,8 @@ func _on_exit() -> void:
 	fired = false
 	released = false
 	owner.attacking = false
-	if owner.animation.is_connected("animation_finished", self, "shoot"):
-		owner.animation.disconnect("animation_finished", self, "shoot")
+	if owner.animation.is_connected("animation_finished", Callable(self, "shoot")):
+		owner.animation.disconnect("animation_finished", Callable(self, "shoot"))
 	
-	if owner.animation.is_connected("animation_finished", self, "_on_animation_complete"):
-		owner.animation.disconnect("animation_finished", self, "_on_animation_complete")
+	if owner.animation.is_connected("animation_finished", Callable(self, "_on_animation_complete")):
+		owner.animation.disconnect("animation_finished", Callable(self, "_on_animation_complete"))

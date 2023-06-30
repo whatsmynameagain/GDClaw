@@ -1,5 +1,3 @@
-tool #(?)
-
 extends Node
 
 #mix of user settings and global variables
@@ -13,7 +11,7 @@ enum Powerups {CATNIP = 1, CATNIP_RED,  GHOST , INVULNERABLE, FIRE_SWORD, ICE_SW
 var EFFECTS_VOLUME = -20
 var MUSIC_VOLUME  = -20
 
-#global variables
+#global variables #not const in case they are modifiable in game options eventually?
 var PLAYER_Z = 14
 var ENEMY_Z = 15
 var TILEMAP_Z = 0
@@ -56,3 +54,4 @@ var ENEMY_PATROL_WAIT_CHANCE = 0.5 #seems to be right
 var ENEMY_PATROL_VOICE_CHANCE = 0.5 #not tested
 var ENEMY_CONTACT_DAMAGE = 5 #not tested
 var LEDGE_VOICE_CHANCE = 0.5 #not tested
+var ENEMY_OFFICER_MELEE_DAMAGE = 10 #not tested

@@ -26,7 +26,7 @@ func _on_enter() -> void:
 	else: 
 		randomize()
 		owner.melee_attack = randi()%3+2 #punch, hook or kick
-	owner.animation.connect("animation_finished", self, "_check_attack")
+	owner.animation.connect("animation_finished", Callable(self, "_check_attack"))
 	owner.animation.play("attack_%s" % animation_strings[owner.melee_attack])
 	Utils.decide_player(owner.player_sounds, owner.action_sounds[sounds_numbers[owner.melee_attack]]) 
 
@@ -36,8 +36,8 @@ func _update(_delta) -> void:
 	if !owner.is_on_floor():
 		emit_signal("finished", "Jump")
 	elif Input.is_action_just_pressed("ui_down"):
-		if owner.animation.is_connected("animation_finished", self, "_check_attack"):
-			owner.animation.disconnect("animation_finished", self, "_check_attack")
+		if owner.animation.is_connected("animation_finished", Callable(self, "_check_attack")):
+			owner.animation.disconnect("animation_finished", Callable(self, "_check_attack"))
 		emit_signal("finished", "Crouch")
 
 
@@ -51,14 +51,14 @@ func _check_attack() -> void:
 			check_attack(owner.attack_kick)
 		4: #hook
 			check_attack(owner.attack_hook)
-	owner.animation.disconnect("animation_finished", self, "_check_attack")
-	if !owner.animation.is_connected("animation_finished", self, "_on_animation_complete"):
-		owner.animation.connect("animation_finished", self, "_on_animation_complete")
+	owner.animation.disconnect("animation_finished", Callable(self, "_check_attack"))
+	if !owner.animation.is_connected("animation_finished", Callable(self, "_on_animation_complete")):
+		owner.animation.connect("animation_finished", Callable(self, "_on_animation_complete"))
 	if owner.melee_attack != 0:
 		owner.animation.play("attack_%s_post" % animation_strings[owner.melee_attack])
 
 
 func _on_exit() -> void:
-	if owner.animation.is_connected("animation_finished", self, "_on_animation_complete"):
-		owner.animation.disconnect("animation_finished", self, "_on_animation_complete")
+	if owner.animation.is_connected("animation_finished", Callable(self, "_on_animation_complete")):
+		owner.animation.disconnect("animation_finished", Callable(self, "_on_animation_complete"))
 	owner.attacking = false

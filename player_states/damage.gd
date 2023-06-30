@@ -11,7 +11,7 @@ func _on_enter() -> void:
 	random = randi() % 4 + 2
 	Utils.decide_player(owner.player_sounds, owner.action_sounds[random]) 
 	stun_time = owner.DAMAGE_STUN_DURATION
-	random = rand_range(1,11)
+	random = randf_range(1,11)
 	if random > 5: #temp, update later
 		owner.animation.play("damage_high")
 	else:

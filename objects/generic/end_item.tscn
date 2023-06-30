@@ -8,7 +8,10 @@
 z_index = 13
 gravity_scale = 0.0
 script = ExtResource( 2 )
-staticGlitter = true
+static_glitter = true
+type = "Map"
+drop_anim = false
+drop_anim_pos = Vector2( 0, 0 )
 
 [node name="Animation" parent="." index="0"]
 frames = ExtResource( 3 )

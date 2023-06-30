@@ -1,19 +1,19 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/generic/enemy.gd" type="Script" id=1]
-[ext_resource path="res://sprites/objects/exclamation/exclamation.png" type="Texture" id=2]
-[ext_resource path="res://sprites/enemies/officer/frame102.png" type="Texture" id=3]
+[ext_resource path="res://sprites/objects/exclamation/exclamation.png" type="Texture2D" id=2]
+[ext_resource path="res://sprites/enemies/officer/frame102.png" type="Texture2D" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 56 )
+size = Vector2( 16, 56 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 21 )
+size = Vector2( 16, 21 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16, 21 )
+size = Vector2( 16, 21 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 192
 collision_mask = 9
 script = ExtResource( 1 )
@@ -21,12 +21,12 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Exclamation" type="Sprite" parent="."]
+[node name="Exclamation" type="Sprite2D" parent="."]
 visible = false
 position = Vector2( 2.84402, -99.541 )
 texture = ExtResource( 2 )
@@ -59,12 +59,12 @@ shape = SubResource( 1 )
 [node name="EdgeCheckL" type="RayCast2D" parent="."]
 position = Vector2( -20, 50 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+target_position = Vector2( 0, 10 )
 
 [node name="EdgeCheckR" type="RayCast2D" parent="."]
 position = Vector2( 20, 50 )
 enabled = true
-cast_to = Vector2( 0, 10 )
+target_position = Vector2( 0, 10 )
 
 [node name="Voice" type="AudioStreamPlayer2D" parent="."]
 volume_db = -25.0
@@ -76,38 +76,38 @@ volume_db = -25.0
 volume_db = -25.0
 
 [node name="StateLabel" type="Label" parent="."]
-margin_left = -16.3975
-margin_top = -121.51
-margin_right = 23.6025
-margin_bottom = -107.51
+offset_left = -16.3975
+offset_top = -121.51
+offset_right = 23.6025
+offset_bottom = -107.51
 text = "state"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthLabel" type="Label" parent="."]
-margin_left = 42.7631
-margin_top = -93.5444
-margin_right = 82.7631
-margin_bottom = -79.5444
+offset_left = 42.7631
+offset_top = -93.5444
+offset_right = 82.7631
+offset_bottom = -79.5444
 text = "health"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 
 [node name="Label" type="Label" parent="."]
-margin_left = 43.0
-margin_top = -34.0
-margin_right = 107.0
-margin_bottom = -9.0
+offset_left = 43.0
+offset_top = -34.0
+offset_right = 107.0
+offset_bottom = -9.0
 
 [connection signal="body_entered" from="ThrowHitbox" to="." method="_on_throw_hitbox_body_entered"]
 [connection signal="body_entered" from="ContactHitbox" to="." method="_on_contact_hitbox_body_entered"]
 [connection signal="finished" from="Voice" to="." method="_on_dialogue_end"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited_dead"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited_dead"]
 [connection signal="timeout" from="Timer" to="." method="_on_patrol_idle_timer_timeout"]

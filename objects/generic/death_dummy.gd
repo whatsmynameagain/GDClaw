@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 const MAXSPEED := 1000
@@ -6,8 +6,8 @@ const MAXSPEED := 1000
 var fall := false
 var speed := 0.0
 
-onready var hang_timer = $HangTimer
-onready var despawn_timer = $DespawnTimer
+@onready var hang_timer = $HangTimer
+@onready var despawn_timer = $DespawnTimer
 
 
 func _ready() -> void:
@@ -21,7 +21,8 @@ func _physics_process(_delta) -> void:
 		if speed < MAXSPEED:
 			speed += get_parent().GRAVITY * _delta #this would despawn the dummy on screen if the level's gravity is low enough, meh
 # warning-ignore:return_value_discarded
-		move_and_slide(Vector2(0, speed))
+		set_velocity(Vector2(0, speed))
+		move_and_slide()
 
 
 func _on_hang_timeout() -> void:

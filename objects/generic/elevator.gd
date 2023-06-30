@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node2D
 
 #still not completely decided on what the tool info should look like
@@ -10,11 +10,11 @@ extends Node2D
 
 #-to do: needs a reset on death option
 
-export(String, "Standard", "Start", "Stop", "Trigger") var type = "Standard" #to-do: change to enum
-export(bool) var one_way = false
-export(Texture) var texture = preload("res://sprites/objects/elevator/level1.png")
-export(bool) var preview  = true setget set_preview
-export(PoolVector3Array) var steps = PoolVector3Array() setget set_steps
+@export var type = "Standard" #to-do: change to enum # (String, "Standard", "Start", "Stop", "Trigger")
+@export var one_way: bool = false
+@export var texture: Texture2D = preload("res://sprites/objects/elevator/level1.png")
+@export var preview: bool  = true: set = set_preview
+@export var steps: PackedVector3Array = PackedVector3Array(): set = set_steps
 
 var follow = Vector2.ZERO
 var shadow_offset = Vector2(-44, -17)
@@ -22,22 +22,22 @@ var move_from = Vector2.ZERO
 var move_to : Vector2
 var carrying : bool = false
 
-onready var elevator_body = $ElevatorBody
-onready var tween = $ElevatorTween
-onready var sprite = $ElevatorBody/Sprite
-onready var carry_check = $ElevatorBody/DetectCarry
-onready var carry_check_safe = $ElevatorBody/DetectCarrySafe
-onready var carry_check_break = $ElevatorBody/DetectCarryBreak
+@onready var elevator_body = $ElevatorBody
+@onready var tween = $ElevatorTween
+@onready var sprite = $ElevatorBody/Sprite2D
+@onready var carry_check = $ElevatorBody/DetectCarry
+@onready var carry_check_safe = $ElevatorBody/DetectCarrySafe
+@onready var carry_check_break = $ElevatorBody/DetectCarryBreak
 
 
 func set_preview(value) -> void:
 	preview = value
-	update()
+	queue_redraw()
 
 
 func set_steps(value) -> void:
 	steps = value
-	update()
+	queue_redraw()
 
 
 func _ready():
@@ -66,12 +66,12 @@ func init_tween() -> void:
 		move_from = move_to
 	tween.set_repeat(!one_way)
 	if type != "Start":
-		 tween.start()
+		tween.start()
 
 
 func _physics_process(_delta) -> void:
 	if !Engine.is_editor_hint():
-		elevator_body.position = elevator_body.position.linear_interpolate(follow, 1)
+		elevator_body.position = elevator_body.position.lerp(follow, 1)
 		carry_check_break.enabled = true if !carrying else false
 		if !carry_check_break.is_colliding():
 			if carry_check.is_colliding(): 
@@ -113,8 +113,12 @@ func _draw() -> void:
 				draw_texture(texture, Vector2(move_to.x + shadow_offset.x, move_to.y + shadow_offset.y), 
 						Color(1,1,1,0.6))
 				#doesn't really work with looping elevator paths that only have 2 steps (text overlaps in the middle)
-				draw_string(font, Vector2((move_to.x + move_from.x)/2 + 4, 
-						(move_to.y + move_from.y)/2  + 16), "Step %s, Speed %s" % [i, step.z], 
+				draw_string(font, 
+						Vector2((move_to.x + move_from.x)/2 + 4, (move_to.y + move_from.y)/2  + 16), 
+						"Step %s, Speed %s" % [i, step.z], 
+						HORIZONTAL_ALIGNMENT_LEFT,
+						-1, #default values
+						16,
 						Color("#ffffff"))
 				draw_line(move_from, move_to, Color(1,1,1,0.5), 4.0)
 				move_from = move_to

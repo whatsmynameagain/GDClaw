@@ -5,20 +5,20 @@ extends Area2D
 
 signal level_sound_trigger(audio)
 
-export(AudioStream) var audio
-export(bool) var enabled = false
-export(bool) var exclamation = false #player voice line or level sound
-export(int) var uses = 1 setget set_uses #-1 for infinite
+@export var audio: AudioStream
+@export var enabled: bool = false
+@export var exclamation: bool = false #player voice line or level sound
+@export var uses: int = 1: set = set_uses
 
 
 func set_uses(value) -> void:
 	if !value <= -1:
 		uses = value
-	property_list_changed_notify()
+	notify_property_list_changed()
 
 
 func _ready() -> void:
-	$Sprite.visible = Engine.is_editor_hint()
+	$Sprite2D.visible = Engine.is_editor_hint()
 
 
 #when a body (player) enters the area:

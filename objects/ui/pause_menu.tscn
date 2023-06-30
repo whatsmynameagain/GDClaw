@@ -11,7 +11,7 @@
 
 
 [node name="PauseMenu" type="Control"]
-pause_mode = 2
+process_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -28,11 +28,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 493.332
-margin_top = 48.8519
-margin_right = 544.332
-margin_bottom = 62.8519
-custom_colors/font_color = Color( 0.741176, 0.635294, 0.14902, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+offset_left = 493.332
+offset_top = 48.8519
+offset_right = 544.332
+offset_bottom = 62.8519
+theme_override_colors/font_color = Color( 0.741176, 0.635294, 0.14902, 1 )
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "PAUSED"
 uppercase = true

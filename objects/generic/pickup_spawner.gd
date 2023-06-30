@@ -1,12 +1,12 @@
-extends Position2D
+extends Marker2D
 
 signal pickup_spawned(pickup, pos, z)
 
-var spawn_list := [] setget set_spawn_list
+var spawn_list := []: set = set_spawn_list
 var play_loot_sound := true #single crates don't play the loot spawn sound
 var impulse = Vector2.ZERO #for custom initial impulses
 
-onready var sound = $AudioStreamPlayer2D
+@onready var sound = $AudioStreamPlayer2D
 
 
 #called after instancing
@@ -18,7 +18,7 @@ func set_spawn_list(value) -> void:
 	else:
 		sound.volume_db = Settings.EFFECTS_VOLUME
 		sound.play()
-		sound.connect("finished", self, "queue_free") #self destruct after the lootspawn sound ends
+		sound.connect("finished", Callable(self, "queue_free")) #self destruct after the lootspawn sound ends
 		spawn_elements()
 
 
@@ -27,28 +27,28 @@ func spawn_elements() -> void:
 		var item
 		match elem[0]:
 			0:
-				item = preload("res://objects/generic/treasure.tscn").instance()
+				item = preload("res://objects/generic/treasure.tscn").instantiate()
 				item.type = elem[1]
 				item.color = elem[2] if not (item.type in ["Coin", "Bars", "Pearls"]) else "None"
 			1:
-				item = preload("res://objects/generic/restore.tscn").instance()
+				item = preload("res://objects/generic/restore.tscn").instantiate()
 				item.type = elem[1]
 				item.size = elem[2] if !(item.type in ["Dynamite", "Health_Food", "Extra_Life"]) else "None"
 				item.food_model = elem[2] if item.type == "Health_Food" else "None"
 			2:
-				item = preload("res://objects/generic/powerup.tscn").instance()
+				item = preload("res://objects/generic/powerup.tscn").instantiate()
 				item.type = elem[1]
 				item.duration = elem[2]
 				item.stack_duration = elem[3]
 				item.one_use = elem[4]
 			3:
-				item = preload("res://objects/generic/teleporter.tscn").instance()
+				item = preload("res://objects/generic/teleporter.tscn").instantiate()
 				item.type = elem[1]
 				item.destination = elem[2]
 				item.orientation = elem[3]
 				item.one_use = elem[4]
 			4:
-				item = preload("res://objects/generic/end_item.tscn").instance()
+				item = preload("res://objects/generic/end_item.tscn").instantiate()
 				item.type = elem[1]
 				item.drop_anim = elem[2]
 				item.drop_anim_pos = elem[3]

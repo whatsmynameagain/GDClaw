@@ -1,5 +1,6 @@
-tool
-extends KinematicBody2D
+#tool
+
+extends CharacterBody2D
 
 class_name Enemy
 
@@ -26,11 +27,11 @@ enum Orientations {LEFT = 1 , RIGHT = -1}
 
 const MAXVELOCITY := 1024 #needs testing
 const hit_effect = preload("res://objects/generic/hit_effect.tscn")
-export(int) var health = 10 setget set_health
-export(bool) var patrol = false setget set_patrol
-export(Vector2) var patrol_width = Vector2.ZERO setget set_patrol_width #not a real 2d vector, it's (x1, x2)
-export(Color) var patrol_color setget set_patrol_color
-export(Array, Array) var contents
+@export var health: int = 10: set = set_health
+@export var patrol: bool = false: set = set_patrol
+@export var patrol_width: Vector2 = Vector2.ZERO: set = set_patrol_width
+@export var patrol_color: Color: set = set_patrol_color
+@export var contents : Array[Array]
 
 var type := ""
 var has_melee := false
@@ -57,8 +58,8 @@ var dead_offscreen := false
 #var logic #: Node #variable to load the enemy type's logic
 var player #for tracking once the player is detected?
 var gravity := 0.0
-var state = States.IDLE setget set_state
-var orientation = Orientations.LEFT setget set_orientation #shouldn't this be an export? though it's
+var state = States.IDLE: set = set_state
+var orientation = Orientations.LEFT: set = set_orientation
 	#kinda irrelevant because of patrols and enemies don't have blind spots
 var override := false
 
@@ -73,30 +74,30 @@ var sound_effects_generic = { #temp contents
 	"death_liquid" : preload("res://sounds/generic/death_liquid.ogg"),
 	"death_spikes" : preload("res://sounds/generic/death_spikes.ogg"),
 }
-var voice_lines = {} setget , _get_voice_lines
+var voice_lines = {}: get = _get_voice_lines
 
 var hit
 
-onready var sprite = $Sprite
-onready var animation = $AnimationPlayer
-onready var animation_player = $AnimationPlayer
-onready var collision = $Collision
-onready var collision_lifted = $CollisionLifted
-onready var throw_hitbox = $ThrowHitbox
-onready var contact_hitbox = $ContactHitbox
-onready var voice = $Voice
-onready var sounds = $Sounds
-onready var sounds_2 = $Sounds2
-onready var exclamation = $Exclamation
-onready var patrol_idle_timer = $Timer
+@onready var sprite = $Sprite2D
+@onready var animation = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
+@onready var collision = $Collision
+@onready var collision_lifted = $CollisionLifted
+@onready var throw_hitbox = $ThrowHitbox
+@onready var contact_hitbox = $ContactHitbox
+@onready var voice = $Voice
+@onready var sounds = $Sounds
+@onready var sounds_2 = $Sounds2
+@onready var exclamation = $Exclamation
+@onready var patrol_idle_timer = $Timer
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "Enemy"
 
 
-func is_class(name) -> bool:
-	return name == "Enemy" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "Enemy" or super.is_class(name)
 
 
 func set_health(value) -> void:
@@ -113,15 +114,15 @@ func set_orientation(value) -> void:
 
 func set_patrol_color(value) -> void:
 	patrol_color = value
-	update()
+	queue_redraw()
 
 
 func set_patrol(value) -> void:
 	patrol = value
 	if !value:
 		patrol_width = Vector2.ZERO
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func set_patrol_width(value : Vector2) -> void:
@@ -134,8 +135,8 @@ func set_patrol_width(value : Vector2) -> void:
 		patrol = patrol_width != Vector2.ZERO
 	else:
 		pass
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func _get_voice_lines() -> Dictionary:
@@ -145,7 +146,7 @@ func _get_voice_lines() -> Dictionary:
 func set_state(value) -> void:
 	#print("Prev state: %s, Next state: %s" % [States.keys()[state], States.keys()[value]])
 	
-	 #basically state.on_exit()
+	#basically state.on_exit()
 	match state:
 		
 		#all state machine parts (on_enter, update and on_exit) follow this format:
@@ -175,7 +176,7 @@ func set_state(value) -> void:
 		States.LIFTED:
 			if !_lifted_on_exit():
 				if dropped:
-					set_collision_layer_bit(6, true)
+					set_collision_layer_value(6, true)
 		States.THROW_LAND:
 			if !_throw_land_on_exit():
 				if !dead:
@@ -183,7 +184,7 @@ func set_state(value) -> void:
 						#would be to offset the sprite and collisionlifted area down 
 						#to match the base of the main collision area beforehand.
 						#might do that eventually but for now this is fine
-					set_collision_layer_bit(6, true)
+					set_collision_layer_value(6, true)
 	
 	state = value
 	
@@ -229,7 +230,7 @@ func set_state(value) -> void:
 				#temp voice line stuff, I don't know the chances
 				contact_hitbox.monitoring = false
 				animation.play("lifted")
-				set_collision_layer_bit(6, false)
+				set_collision_layer_value(6, false)
 				randomize()
 				var chance = randi()%3+1
 				if chance == 3: #1/3 chance of saying something
@@ -251,18 +252,18 @@ func set_state(value) -> void:
 				contact_hitbox.monitoring = false
 				spikes = true
 				motion = Vector2.ZERO
-				set_collision_layer_bit(6, false)
+				set_collision_layer_value(6, false)
 				Utils.decide_player([sounds, sounds_2], sound_effects_generic["death_spikes"])
-				if !contents.empty():
-					drop_loot()
+				if !contents.is_empty():
+					_drop_loot()
 				animation_player.play("despawn")
 		States.DEATH_LIQUID:
 			if !_death_liquid_on_enter():
 				contact_hitbox.monitoring = false
 		States.DEAD_THROW:
 			if !_death_throw_on_enter():
-				if !contents.empty():
-					drop_loot()
+				if !contents.is_empty():
+					_drop_loot()
 				animation_player.play("despawn")
 
 
@@ -273,7 +274,7 @@ func _ready():
 		set_orientation(1)
 		#sprite.flip_h = (orientation == -1)
 		animation.play("idle_%s" % str(randi()%3+1))
-		hit = hit_effect.instance()
+		hit = hit_effect.instantiate()
 		add_child(hit)
 		patrol_limit_positions = set_patrol_limit_points() 
 		set_state(States.IDLE)
@@ -293,11 +294,14 @@ func _physics_process(delta):
 			if state != States.LIFTED and state != States.IDLE: #plus !attacking 
 				if spikes or liquid:
 					motion = Vector2.ZERO
-				motion = move_and_slide(motion, Vector2.UP)
+				set_velocity(motion)
+				set_up_direction(Vector2.UP)
+				move_and_slide()
+				motion = velocity
 				motion.y =  motion.y + (gravity * .75 * delta) if !is_on_floor() and motion.y < MAXVELOCITY else MAXVELOCITY
 			
 			#not tested, collision mask still disabled
-			for x in get_slide_count():
+			for x in get_slide_collision_count():
 				var _collision = get_slide_collision(x)
 				if _collision.collider.is_class("CrumblingPlatform") and !_collision.collider.activated:
 					_collision.collider.activate()
@@ -338,7 +342,7 @@ func _physics_process(delta):
 					if !_throw_land_update():
 						if thrown_stop and !thrown_stop_checked and !dead:
 							thrown_stop_checked = true
-							yield(get_tree().create_timer(1), "timeout") #gotta check the timing, seems ok-ish for now
+							await get_tree().create_timer(1).timeout #gotta check the timing, seems ok-ish for now
 							#resetting the stage quickly via debug after the enemy hits the ground can cause an error here
 							if !dropped:
 								print("enemy taking throw damage")
@@ -428,7 +432,7 @@ func on_death(source, side : int) -> void:
 		print("juggled")
 	dead = true
 	emit_signal("enemy_dead")
-	set_collision_layer_bit(7, false) #disable collision with death tiles
+	set_collision_layer_value(7, false) #disable collision with death tiles
 	print("enemy death by %s" % Settings.Damage_Types.keys()[source])
 	match source:
 		Settings.Damage_Types.COMBAT: #melee
@@ -479,32 +483,32 @@ func death_throw() -> void:
 func death_combat(side : int, modifier := "") -> void:
 	set_state(States.DEATH_COMBAT)
 	damage_cooldown = false
-	if !modifier:
+	if modifier == null or modifier.is_empty():
 		animation.play("dead")
 	else:
 		animation.play("dead_%s" % (modifier if modifier != "lightning" else "fire"))
-		var elem_expl = preload("res://objects/generic/elemental_explosion.tscn").instance()
+		var elem_expl = preload("res://objects/generic/elemental_explosion.tscn").instantiate()
 		add_child(elem_expl)
 		elem_expl.global_position = global_position
-		elem_expl.connect("animation_finished", elem_expl, "queue_free") 
+		elem_expl.connect("animation_finished", Callable(elem_expl, "queue_free")) 
 		#or could add an empty frame at the end of the animations
 		elem_expl.play(modifier)
 		
 	#I think there's a chance to not play a voice line, check later (and during juggle)
 	randomize()
 	Utils.decide_player(voice, _get_voice_lines()["death_%s" % str(randi()%2+1)]) 
-	if !contents.empty() and !juggle:
-		drop_loot()
+	if !contents.is_empty() and !juggle:
+		_drop_loot()
 			
 	#disable map collision
-	set_collision_mask_bit(0, false)
-	set_collision_mask_bit(3, false)
+	set_collision_mask_value(0, false)
+	set_collision_mask_value(3, false)
 	motion = Vector2(150 * side, -750)
 
 
-func drop_loot():
+func _drop_loot():
 	Utils.decide_player([sounds, sounds_2], sound_effects_generic["drop_loot"])
-	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instance()
+	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instantiate()
 	emit_signal("drop_loot", spawner, global_position, z_index+1, false, contents)
 
 
@@ -550,8 +554,8 @@ func _on_screen_exited_dead() -> void:
 		motion = Vector2.ZERO
 		sounds.volume_db += abs(sounds.volume_db) * .20 #temporary, gonna figure out how to normalize all the soundfx later
 		sounds.stream = sound_effects_generic["splash"]
-		if !sounds.is_connected("finished", self, "queue_free"):
-			sounds.connect("finished", self, "queue_free")
+		if !sounds.is_connected("finished", Callable(self, "queue_free")):
+			sounds.connect("finished", Callable(self, "queue_free"))
 		sounds.play()
 
 
@@ -569,7 +573,7 @@ func _on_throw_hitbox_body_entered(body: Node) -> void:
 
 #player contact damage // to-do: keep damaging while inside the area 
 #(currently needs to exit and re enter to trigger)
-func _on_contact_hitbox_body_entered(body: KinematicBody2D) -> void:
+func _on_contact_hitbox_body_entered(body: CharacterBody2D) -> void:
 	if body == self:
 		return
 	else:

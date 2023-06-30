@@ -1,24 +1,25 @@
-tool
+@tool
+@icon("res://sprites/objects/pickup/end_item/map_piece/map_fragment.png")
 
 extends Pickup
 
-class_name EndItem, "res://sprites/objects/pickup/end_item/map_piece/map_fragment.png"
+class_name EndItem
 
 #to do: export setgets not really tested
 
 var animations = preload("res://animations/end_item.tres")
 
-export(String, "Map", "Blue", "Green", "Red", "RedBlue", "Center") var type = "Map" setget set_type
-export(bool) var drop_anim = false setget set_drop_anim
-export(Vector2) var drop_anim_pos = Vector2.ZERO setget set_drop_anim_pos
+@export var type = "Map": set = set_type
+@export var drop_anim: bool = false: set = set_drop_anim
+@export var drop_anim_pos: Vector2 = Vector2.ZERO: set = set_drop_anim_pos
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "EndItem"
 
 
-func is_class(name) -> bool:
-	return name == "EndItem" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "EndItem" or super.is_class(name)
 
 
 func set_type(value) -> void:
@@ -49,7 +50,7 @@ func _ready() -> void:
 	
 	if !physics:
 		if static_glitter:
-			add_child(preload("res://objects/generic/glitter.tscn").instance()) 
+			add_child(preload("res://objects/generic/glitter.tscn").instantiate()) 
 			get_node("Glitter").speed_scale = 1.6
 			get_node("Glitter").play(glitter_color)
 
@@ -65,7 +66,7 @@ func _draw() -> void:
 	if !physics:
 		if static_glitter:
 			if !has_node("Glitter"):
-					add_child(preload("res://objects/generic/glitter.tscn").instance())
+					add_child(preload("res://objects/generic/glitter.tscn").instantiate())
 			get_node("Glitter").speed_scale = 1.6 
 			get_node("Glitter").play(glitter_color)
 		else:

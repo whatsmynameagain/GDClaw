@@ -2,7 +2,7 @@ extends State
 
 #state for siren scream stun effect
 
-onready var stun_time
+@onready var stun_time
 
 #Needs checks for current motion so that you don't automatically fall straight down when stunned in the air
 #though... all stuns could just disable gravity

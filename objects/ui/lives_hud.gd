@@ -16,6 +16,6 @@ func _ready() -> void:
 	}
 	animation = $AnimationPlayer
 	animation.play("loop")
-	position.x = ProjectSettings.get_setting("display/window/size/width")
+	position.x = ProjectSettings.get_setting("display/window/size/viewport_width")
 # warning-ignore:return_value_discarded
-	get_parent().connect("resized", self, "update_position")
+	get_parent().connect("resized", Callable(self, "update_position"))

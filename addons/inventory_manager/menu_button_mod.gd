@@ -1,11 +1,11 @@
-tool
+@tool
 extends Button
 
 signal button_down_self(_self)
 
 
 func _ready() -> void:
-	connect("button_down", self, "_add_self")
+	connect("button_down", Callable(self, "_add_self"))
 
 
 func _add_self() -> void:

@@ -1,4 +1,4 @@
-tool
+@tool
 extends PanelContainer
 
 
@@ -8,10 +8,10 @@ var type := "Map"
 var drop_anim := true
 var drop_anim_position := Vector2.ZERO
 
-onready var type_list = $VBoxContainer/HBoxContainer/OptionButton
-onready var drop_anim_toggle = $VBoxContainer/HBoxContainer2/CheckBox
-onready var drop_anim_x = $VBoxContainer/HBoxContainer3/SpinBox
-onready var drop_anim_y = $VBoxContainer/HBoxContainer3/SpinBox2
+@onready var type_list = $VBoxContainer/HBoxContainer/OptionButton
+@onready var drop_anim_toggle = $VBoxContainer/HBoxContainer2/CheckBox
+@onready var drop_anim_x = $VBoxContainer/HBoxContainer3/SpinBox
+@onready var drop_anim_y = $VBoxContainer/HBoxContainer3/SpinBox2
 
 
 func set_from_item(item) -> void:

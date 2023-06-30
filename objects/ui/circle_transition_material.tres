@@ -1,10 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://7av1j3gbnxn5"]
 
-[ext_resource path="res://objects/ui/circle_transition.shader" type="Shader" id=1]
+[ext_resource type="Shader" path="res://objects/ui/circle_transition.gdshader" id="1"]
 
 [resource]
-shader = ExtResource( 1 )
-shader_param/close_position = Vector2( 0.5, 0.95 )
-shader_param/progress = 0.0
-shader_param/multiplier = 2.333
-shader_param/screen_ratio = 0.75
+shader = ExtResource("1")
+shader_parameter/close_position = Vector2(0.5, 0.95)
+shader_parameter/progress = 0.0
+shader_parameter/multiplier = 2.333
+shader_parameter/screen_ratio = 0.75

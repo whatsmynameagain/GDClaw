@@ -1,4 +1,4 @@
-tool
+#tool
 
 extends Enemy
 
@@ -12,8 +12,11 @@ var _voice_lines = {
 	"idle_2" : preload("res://sounds/enemy/officer/officer_idle_2.ogg"),
 	"lift_1" : preload("res://sounds/enemy/officer/officer_lift_1.ogg"),
 	"lift_2" : preload("res://sounds/enemy/officer/officer_lift_2.ogg"),
+} : 
+	get: _get_voice_lines()
 
-} setget , _get_voice_lines
+@onready var melee_hitbox = $MeleeHitbox
+
 
 func _get_voice_lines() -> Dictionary:
 	return _voice_lines
@@ -36,3 +39,9 @@ func _attack_melee_on_exit() -> bool:
 #	print("officer damage_on_enter")
 #	return true
 
+
+#not tested
+func _on_MeleeHitbox_body_entered(body):
+	var overlap = Utils.contact_point_2_rect(melee_hitbox, body.get_active_hitbox())
+	body.on_hit(Settings.Damage_Types.COMBAT, self, 
+		Settings.ENEMY_OFFICER_MELEE_DAMAGE, Utils.rect_corner_to_center(overlap).position)

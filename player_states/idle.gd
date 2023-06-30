@@ -78,10 +78,10 @@ func _update(delta) -> void:
 			if owner.liftable_in_close_range:
 				if owner.liftables_in_range[0].is_class("Enemy"):
 					var enemy = owner.liftables_in_range[0]
-					var dummy = preload("res://objects/generic/liftable_dummy.tscn").instance()
+					var dummy = preload("res://objects/generic/liftable_dummy.tscn").instantiate()
 					dummy.linked_enemy = enemy
 					owner.add_child(dummy)
-					dummy.set_as_toplevel(true)
+					dummy.set_as_top_level(true)
 					owner.lifted_object = dummy
 					emit_signal("finished", "Lift")
 				elif !owner.liftables_in_range[0].exploding:
@@ -102,7 +102,7 @@ func _update(delta) -> void:
 				idle_time += delta
 			elif !connected:
 				owner.animation.play("idle_bored")
-				owner.animation.connect("animation_finished", self, "_on_bored_end")
+				owner.animation.connect("animation_finished", Callable(self, "_on_bored_end"))
 				connected = true
 				
 			elif owner.animation.frame == talky_frame and !talking:
@@ -120,14 +120,14 @@ func _update(delta) -> void:
 func _on_bored_end() -> void:
 	idle_time = 0.0
 	owner.animation.play("idle")
-	owner.animation.disconnect("animation_finished", self, "_on_bored_end")
+	owner.animation.disconnect("animation_finished", Callable(self, "_on_bored_end"))
 	connected = false
 	talking = false
 
 
 func _on_exit() -> void:
 	#to avoid doing things with the signal if the animation changes before the idle_bored animation ends
-	if owner.animation.is_connected("animation_finished", self, "_on_bored_end"):
-		owner.animation.disconnect("animation_finished", self, "_on_bored_end")
+	if owner.animation.is_connected("animation_finished", Callable(self, "_on_bored_end")):
+		owner.animation.disconnect("animation_finished", Callable(self, "_on_bored_end"))
 		connected = false
 	talking = false

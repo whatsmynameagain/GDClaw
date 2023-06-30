@@ -2,10 +2,10 @@ extends RigidBody2D
 
 class_name Pickup
 
-export(bool) var physics = false setget set_physics
-export(bool) var static_glitter = false setget set_glitter
-export(String, "None", "Gold", "Green", "Purple", "Red") var glitter_color = "Gold" setget set_glitter_color
-export(bool) var one_use = true
+@export var physics: bool = false: set = set_physics
+@export var static_glitter: bool = false: set = set_glitter
+@export var glitter_color = "Gold": set = set_glitter_color
+@export var one_use: bool = true
 
 var pickup_sounds = {
 	"Coin" : preload("res://sounds/pickups/treasure/coin.ogg"),
@@ -34,20 +34,20 @@ var stopped := false
 var despawning := false
 #var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-onready var animation = $Animation
-onready var collision = $CollisionShape2D
-onready var area = $Area
-onready var audio = $Audio
-onready var audio2 = $Audio2
-onready var animation_player = $AnimationPlayer
+@onready var animation = $Animation
+@onready var collision = $CollisionShape2D
+@onready var area = $Area3D
+@onready var audio = $Audio
+@onready var audio2 = $Audio2
+@onready var animation_player = $AnimationPlayer
 
 
-func get_class() -> String:
+func _get_class() -> String:
 	return "Pickup"
 
 
-func is_class(name) -> bool:
-	return name == "Pickup" or .is_class(name)
+func _is_class(name) -> bool:
+	return name == "Pickup" or super.is_class(name)
 
 
 func set_physics(value) -> void:
@@ -68,8 +68,8 @@ func set_physics(value) -> void:
 		#even after switching the mode back to MODE_CHARACTER (or MODE_RIGID).. 
 		#...is that a bug or something I'm unaware of?
 		gravity_scale = 0
-	update() #redraw
-	property_list_changed_notify() #update the inspector value
+	queue_redraw() #redraw
+	notify_property_list_changed() #update the inspector value
 
 
 func set_glitter(value) -> void:
@@ -81,8 +81,8 @@ func set_glitter(value) -> void:
 	else:
 		glitter_color = "Gold"
 		physics = false
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func set_glitter_color(value) -> void:
@@ -92,15 +92,15 @@ func set_glitter_color(value) -> void:
 		physics = false
 	elif value == "None":
 		static_glitter = false	
-	update()
-	property_list_changed_notify()
+	queue_redraw()
+	notify_property_list_changed()
 
 
 func _init() -> void:
 	if !Engine.is_editor_hint():
-		if !is_connected("body_entered", self, "_on_bounce"):
+		if !is_connected("body_entered", Callable(self, "_on_bounce")):
 # warning-ignore:return_value_discarded
-			connect("body_entered", self, "_on_bounce") 
+			connect("body_entered", Callable(self, "_on_bounce")) 
 
 
 func _ready() -> void:
@@ -139,13 +139,13 @@ func _physics_process(_delta):
 			if initial_impulse == Vector2.ZERO:
 				randomize()
 				#fugly, will probably rework later
-				var impulse_x = (rand_range(-Settings.PICKUP_IMPULSE_RANGE_X, Settings.PICKUP_IMPULSE_RANGE_X) 
+				var impulse_x = (randf_range(-Settings.PICKUP_IMPULSE_RANGE_X, Settings.PICKUP_IMPULSE_RANGE_X) 
 						* Settings.PICKUP_IMPULSE_X_MULTIPLIER)
-				var impulse_y = (rand_range(-Settings.PICKUP_IMPULSE_RANGE_Y, Settings.PICKUP_IMPULSE_RANGE_Y) 
+				var impulse_y = (randf_range(-Settings.PICKUP_IMPULSE_RANGE_Y, Settings.PICKUP_IMPULSE_RANGE_Y) 
 					- 450) * Settings.PICKUP_IMPULSE_Y_MULTIPLIER 
-				apply_impulse(Vector2.ZERO, Vector2(impulse_x, impulse_y))
+				apply_impulse(Vector2(impulse_x, impulse_y), Vector2.ZERO)
 			else: #spawning from a single crate (no lateral movement) (assigned on spawn)
-				apply_impulse(Vector2.ZERO, initial_impulse)
+				apply_impulse(initial_impulse, Vector2.ZERO)
 			initial_impulse_applied = true
 
 
@@ -155,7 +155,7 @@ func _on_bounce(_body) -> void:
 	Utils.decide_player([audio, audio2], pickup_sounds["Bounce"])
 	if bounces == -1: #spawn glitter once it stops bouncing
 		if !has_node("Glitter") and !despawning:
-			add_child(preload("res://objects/generic/glitter.tscn").instance())
+			add_child(preload("res://objects/generic/glitter.tscn").instantiate())
 			if is_class("EndItem"):
 				get_node("Glitter").speed_scale = 1.6
 				get_node("Glitter").play("Green")
@@ -165,9 +165,9 @@ func _on_bounce(_body) -> void:
 
 func disable() -> void:
 	if !Engine.is_editor_hint():
-		disconnect("body_entered", self, "_on_bounce") 
+		disconnect("body_entered", Callable(self, "_on_bounce")) 
 		animation.visible = false
-		area.set_collision_layer_bit(2, false)
+		area.set_collision_layer_value(2, false)
 		if has_node("Glitter"):
 			get_node("Glitter").visible = false
 			get_node("Glitter").stop()

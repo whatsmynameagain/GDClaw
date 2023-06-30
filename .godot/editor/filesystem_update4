@@ -1,0 +1,5 @@
+res://default_env.tres
+res://objects/ui/teleporter_transition_material.tscn
+res://objects/ui/pause_menu_material.tres
+res://objects/ui/circle_transition_material.tres
+res://objects/generic/restore.gd

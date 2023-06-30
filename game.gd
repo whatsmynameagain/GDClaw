@@ -66,57 +66,57 @@ const values = {
 	"Skull" : 25000
 	}
 
-export(String, "test_arena", "level_1" ) var _level = "test_arena"
-export(bool) var music_enabled = true
+@export var _level = "test_arena" # (String, "test_arena", "level_1" )
+@export var music_enabled: bool = true
 
 var game_state = GameStates.Playing # temp
 var level_music_stop_time : float
 var player
 var level
-var hud = preload("res://objects/ui/hud.tscn").instance()
+var hud = preload("res://objects/ui/hud.tscn").instantiate()
 var fps_label
 var level_collected_treasure = [] 
 var music_player
 var glitter_particle_texture = preload("res://sprites/objects/player_glitter/animated_texture.tres")
 #maybe also a var for total collected treasure?
 
-onready var ui = $UI
-onready var pause_menu = $PauseMenu/PauseMenu
-onready var circle_transition = $Transitions/CircleTransition
-onready var teleporter_transition = $Transitions/TeleporterTransition
-onready var game_sounds = $GameSounds
-onready var game_sounds_2 = $GameSounds2 #check if needed
-onready var teleporter_transition_animation = teleporter_transition.get_node("AnimationPlayer")
-onready var circle_transition_animation = circle_transition.get_node("AnimationPlayer")
+@onready var ui = $UI
+@onready var pause_menu = $PauseMenu/PauseMenu
+@onready var circle_transition = $Transitions/CircleTransition
+@onready var teleporter_transition = $Transitions/TeleporterTransition
+@onready var game_sounds = $GameSounds
+@onready var game_sounds_2 = $GameSounds2 #check if needed
+@onready var teleporter_transition_animation = teleporter_transition.get_node("AnimationPlayer")
+@onready var circle_transition_animation = circle_transition.get_node("AnimationPlayer")
 
 func _ready() -> void:
-	level = load("res://levels/%s.tscn" % _level).instance()
+	level = load("res://levels/%s.tscn" % _level).instantiate()
 	level.music_enabled = music_enabled
 	game_sounds.volume_db = Settings.EFFECTS_VOLUME
 	game_sounds_2.volume_db = Settings.EFFECTS_VOLUME
 	fps_label = hud.get_node("FPSLabel")
 	ui.add_child(hud)
 	get_node("Level").add_child(level)
-	pause_menu.connect("pause_toggled", self, "_on_pause_toggled")
+	pause_menu.connect("pause_toggled", Callable(self, "_on_pause_toggled"))
 	on_level_loaded()
 
 
 func on_level_loaded() -> void:
 	player = level.get_player()
-	player.connect("treasure_collected", self, "_on_treasure_collected")
-	player.connect("teleporter_taken", self, "_on_teleporter_taken")
-	player.connect("end_item_collected", self, "_on_end_item_collected")
-	player.connect("powerup_collected", self, "_on_powerup_collected")
-	player.connect("ranged_changed", self, "_on_ranged_changed") 
-	player.connect("ammo_updated", self, "_on_ammo_updated")
-	player.connect("health_updated", self, "_on_health_updated")
-	player.connect("lives_updated", self, "_on_lives_updated")
-	player.connect("respawn", self, "_on_respawn")
-	player.connect("powerup_timer_update", self, "_on_powerup_timer_update")
-	player.connect("powerup_timer_end", self, "_on_powerup_end")
+	player.connect("treasure_collected", Callable(self, "_on_treasure_collected"))
+	player.connect("teleporter_taken", Callable(self, "_on_teleporter_taken"))
+	player.connect("end_item_collected", Callable(self, "_on_end_item_collected"))
+	player.connect("powerup_collected", Callable(self, "_on_powerup_collected"))
+	player.connect("ranged_changed", Callable(self, "_on_ranged_changed")) 
+	player.connect("ammo_updated", Callable(self, "_on_ammo_updated"))
+	player.connect("health_updated", Callable(self, "_on_health_updated"))
+	player.connect("lives_updated", Callable(self, "_on_lives_updated"))
+	player.connect("respawn", Callable(self, "_on_respawn"))
+	player.connect("powerup_timer_update", Callable(self, "_on_powerup_timer_update"))
+	player.connect("powerup_timer_end", Callable(self, "_on_powerup_end"))
 	
 	if !player.get_node("Camera2D").is_current():
-		player.get_node("Camera2D")._set_current(true)
+		player.get_node("Camera2D").set_current(true)
 	
 	level_collected_treasure.clear()
 	
@@ -162,7 +162,7 @@ func _input(_event) -> void:
 	#this assplodes if you use it while teleporting
 	if Input.is_action_pressed("ui_restart"):
 		level.queue_free()
-		level = load("res://levels/%s.tscn" % _level).instance()
+		level = load("res://levels/%s.tscn" % _level).instantiate()
 		$Level.add_child(level)
 		on_level_loaded()
 		
@@ -181,15 +181,15 @@ func _physics_process(_delta) -> void:
 
 func spawn_dynamite() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/dynamite_projectile.tscn").instance()
+	var thingy = preload("res://objects/generic/dynamite_projectile.tscn").instantiate()
 	level.add_child(thingy)
-	pause_menu.connect("pause_toggled", thingy, "_on_pause_toggled")
+	pause_menu.connect("pause_toggled", Callable(thingy, "_on_pause_toggled"))
 	thingy.global_position = pos
 
 
 func use_treasure_spawner() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instance()
+	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instantiate()
 	level.add_child(spawner)
 	spawner.global_position = pos
 	spawner.set_spawn_list([[0, "Coin"], [1, "Health", "Large"], [0, "Gecko", "Blue"]])
@@ -197,7 +197,7 @@ func use_treasure_spawner() -> void:
 
 func spawn_sword_projectile() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/sword_projectile.tscn").instance()
+	var thingy = preload("res://objects/generic/sword_projectile.tscn").instantiate()
 	level.add_child(thingy)
 	var types =  [5, 6, 7] #fire, ice, lightning
 	thingy.type = types[randi()%3]
@@ -206,7 +206,7 @@ func spawn_sword_projectile() -> void:
 
 func spawn_random_treasure() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/treasure.tscn").instance()
+	var thingy = preload("res://objects/generic/treasure.tscn").instantiate()
 	thingy.physics = true
 	
 	##for mouse placing
@@ -229,7 +229,7 @@ func spawn_random_treasure() -> void:
 
 func spawn_random_restore() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/restore.tscn").instance()
+	var thingy = preload("res://objects/generic/restore.tscn").instantiate()
 	thingy.physics = true
 	thingy.one_use = true
 	randomize()
@@ -251,7 +251,7 @@ func spawn_random_restore() -> void:
 
 func spawn_random_powerup() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/powerup.tscn").instance()
+	var thingy = preload("res://objects/generic/powerup.tscn").instantiate()
 	thingy.physics = true
 	thingy.one_use = true
 	thingy.stack_duration = true
@@ -321,24 +321,24 @@ func _on_end_item_collected() -> void:
 #the transition isn't exactly the same as the original, but close enough
 #I'll figure out how to do the pixelated gradient eventually
 func _on_teleporter_taken(teleporter) -> void:
-	teleporter_transition.material.set_shader_param("cutoff", 0.0)
-	teleporter_transition.material.set_shader_param("smoothRange", 0.25)
+	teleporter_transition.material.set_shader_parameter("cutoff", 0.0)
+	teleporter_transition.material.set_shader_parameter("smoothRange", 0.25)
 	teleporter_transition.visible = true
-	level.music_player.pause_mode = PAUSE_MODE_STOP
+	level.music_player.process_mode = PROCESS_MODE_PAUSABLE
 	_on_pause_toggled()
 	get_tree().paused = true
 	teleporter_transition_animation.play("ToBlack")
 	Utils.decide_player(game_sounds, teleporter_sound)
-	yield(teleporter_transition_animation, "animation_finished")
+	await teleporter_transition_animation.animation_finished
 	player.global_position = teleporter.destination
 	player.camera.align()
-	teleporter_transition.material.set_shader_param("mask", teleporter_transition_mask_2)
+	teleporter_transition.material.set_shader_parameter("mask", teleporter_transition_mask_2)
 	teleporter_transition_animation.play("FromBlack")
-	yield(teleporter_transition_animation, "animation_finished")
+	await teleporter_transition_animation.animation_finished
 	_on_pause_toggled()
-	teleporter_transition.material.set_shader_param("mask", teleporter_transition_mask)
+	teleporter_transition.material.set_shader_parameter("mask", teleporter_transition_mask)
 	teleporter_transition.visible = false
-	level.music_player.pause_mode = PAUSE_MODE_PROCESS
+	level.music_player.process_mode = PROCESS_MODE_ALWAYS
 	get_tree().paused = false
 
 
@@ -357,28 +357,28 @@ func _on_respawn(from, orientation) -> void:
 		1: #damage
 			close_position = Vector2(x, 0.95)
 			multiplier = 2.3
-	circle_transition.material.set_shader_param("close_position", close_position)
-	circle_transition.material.set_shader_param("progress", 0.0)
-	circle_transition.material.set_shader_param("multiplier", multiplier)
-	circle_transition.material.set_shader_param("screen_ratio", screen_ratio)
+	circle_transition.material.set_shader_parameter("close_position", close_position)
+	circle_transition.material.set_shader_parameter("progress", 0.0)
+	circle_transition.material.set_shader_parameter("multiplier", multiplier)
+	circle_transition.material.set_shader_parameter("screen_ratio", screen_ratio)
 	circle_transition.visible = true
-	level.music_player.pause_mode = PAUSE_MODE_STOP
+	level.music_player.process_mode = PROCESS_MODE_PAUSABLE
 	_on_pause_toggled()
 	get_tree().paused = true
-	circle_transition_animation .play("Close")
+	circle_transition_animation.play("Close")
 	Utils.decide_player(game_sounds, circle_close_sound)
-	yield(circle_transition_animation, "animation_finished")
+	await circle_transition_animation.animation_finished
 	Utils.decide_player(game_sounds, circle_open_sound)
-	yield(get_tree().create_timer(0.2), "timeout")
+	await get_tree().create_timer(0.2).timeout
 	player.global_position = level.spawn_point.global_position #replace with level.get_active_spawnpoint()
 	player.camera.align()
 	player.visible = true
 	#-to do: make the close position higher, it opens from claw's head
-	circle_transition.material.set_shader_param("close_position", Vector2(0.5, 0.5))
+	circle_transition.material.set_shader_parameter("close_position", Vector2(0.5, 0.5))
 	circle_transition_animation.play("Open")
-	yield(circle_transition_animation, "animation_finished")
+	await circle_transition_animation.animation_finished
 	circle_transition.visible = false
-	level.music_player.pause_mode = PAUSE_MODE_PROCESS
+	level.music_player.process_mode = PROCESS_MODE_ALWAYS
 	_on_pause_toggled()
 	get_tree().paused = false
 
