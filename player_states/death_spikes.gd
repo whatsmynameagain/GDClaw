@@ -11,6 +11,7 @@ func _on_enter() -> void:
 	owner.animation.play("death_env")
 	owner.set_stance_collision(true, true)
 	wait_timer = Timer.new()
+	wait_timer.name = "Death_spikes_timer"
 	add_child(wait_timer)
 	wait_timer.one_shot = true
 	wait_timer.start(2.5)

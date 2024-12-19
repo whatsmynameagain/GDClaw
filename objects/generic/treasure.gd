@@ -24,8 +24,7 @@ const animations = preload("res://animations/treasure.tres")
 		
 @export_enum("Coin", "Bars", "Ring", "Chalice", "Pearls", 
 		"Cross", "Scepter", "Gecko", "Crown", "Skull") var type : String = "Coin": 
-	set(value):
-		set_type(value)
+	set = set_type
 @export var color = "Red": set = set_color
 
 
@@ -33,8 +32,8 @@ func _get_class() -> String:
 	return "Treasure"
 
 
-func _is_class(name) -> bool:
-	return name == "Treasure" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Treasure" or super._is_class(_name)
 
 
 func set_type(value) -> void:
@@ -105,7 +104,7 @@ func _on_pickup() -> void:
 	#area.get_node("CollisionShape2D").disabled = true
 	#for some reason this^ doesn't work, gotta disable the collision mask instead:
 	#update: maybe the setters could be called with call_deferred, dunno, could try that sometime
-	set_collision_mask_value(0, false) #disable collision with layer 0 (tilemap) for collison box
+	set_collision_mask_value(1, false) #disable collision with layer 1 (tilemap) for collison box
 	area.set_collision_layer_value(2, false) #disable area collision with layer 1 (player) for areabox
 	stopped = true
 	_spawn_value()
@@ -124,8 +123,8 @@ func _on_pickup() -> void:
 
 
 func _draw() -> void:
-	if get_node("Animation").frames != animations:
-		get_node("Animation").frames = animations
+	if get_node("Animation").sprite_frames != animations:
+		get_node("Animation").sprite_frames = animations
 	
 	if !Engine.is_editor_hint():
 		return

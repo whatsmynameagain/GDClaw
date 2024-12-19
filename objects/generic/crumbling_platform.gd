@@ -20,8 +20,8 @@ func _get_class() -> String:
 	return "CrumblingPlatform"
 
 
-func _is_class(name) -> bool:
-	return name == "CrumblingPlatform" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "CrumblingPlatform" or super.is_class(name)
 
 
 func set_active(value) -> void:

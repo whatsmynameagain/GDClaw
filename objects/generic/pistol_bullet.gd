@@ -9,8 +9,8 @@ func _get_class() -> String:
 	return "PistolBullet"
 
 
-func _is_class(name) -> bool:
-	return name == "PistolBullet" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "PistolBullet" or super.is_class(name)
 
 
 func _ready():

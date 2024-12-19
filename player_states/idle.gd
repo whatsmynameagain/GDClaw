@@ -24,7 +24,8 @@ func _on_enter() -> void:
 
 
 func _update(delta) -> void:	
-	#could be done with only 2 edge checks that flip? #no, tried it, long story short: causes problems on elevators
+	#could be done with only 2 edge checks that flip? #no, tried it, 
+	#long story short: causes problems on elevators
 	if !owner.wall_check.is_colliding():
 		if (owner.edge_check_l.is_colliding() 
 				and !owner.edge_check_m.is_colliding() 
@@ -76,7 +77,7 @@ func _update(delta) -> void:
 				or (Input.is_action_pressed("ui_up") and Input.is_action_just_pressed("ui_attack") 
 				and !owner.powerup in [5, 6, 7])):
 			if owner.liftable_in_close_range:
-				if owner.liftables_in_range[0].is_class("Enemy"):
+				if owner.liftables_in_range[0]._is_class("Enemy"):
 					var enemy = owner.liftables_in_range[0]
 					var dummy = preload("res://objects/generic/liftable_dummy.tscn").instantiate()
 					dummy.linked_enemy = enemy

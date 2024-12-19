@@ -17,8 +17,8 @@ func _get_class() -> String:
 	return "Teleporter"
 
 
-func _is_class(name) -> bool:
-	return name == "Teleporter" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Teleporter" or super.is_class(name)
 
 
 func set_destination(value) -> void:
@@ -81,8 +81,8 @@ func _draw() -> void:
 	if !Engine.is_editor_hint():
 		return
 		
-	if get_node("Animation").frames != animations:
-		get_node("Animation").frames = animations
+	if get_node("Animation").sprite_frames != animations:
+		get_node("Animation").sprite_frames = animations
 	if get_node("Animation").visible == false:
 		get_node("Animation").visible = true
 	

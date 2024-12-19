@@ -66,7 +66,11 @@ const values = {
 	"Skull" : 25000
 	}
 
-@export var _level = "test_arena" # (String, "test_arena", "level_1" )
+#@export var _level = "test_arena" # (String, "test_arena", "level_1" )
+
+#@export_enum("Warrior", "Magician", "Thief") var character_class: int
+#@export var _level : String = ("test_arena", "level_1" )
+@export_enum ("test_arena", "level_1") var _level : String
 @export var music_enabled: bool = true
 
 var game_state = GameStates.Playing # temp
@@ -385,4 +389,4 @@ func _on_respawn(from, orientation) -> void:
 
 func _on_pause_toggled() -> void:
 	#pause the animation of the glitter particle (affects all scenes that use it)
-	glitter_particle_texture.fps = 16.0 if glitter_particle_texture.fps == 0.0 else 0.0
+	glitter_particle_texture.speed_scale = 16.0 if glitter_particle_texture.speed_scale == 0.0 else 0.0

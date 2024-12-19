@@ -36,7 +36,7 @@ var despawning := false
 
 @onready var animation = $Animation
 @onready var collision = $CollisionShape2D
-@onready var area = $Area3D
+@onready var area = $Area2D
 @onready var audio = $Audio
 @onready var audio2 = $Audio2
 @onready var animation_player = $AnimationPlayer
@@ -46,8 +46,8 @@ func _get_class() -> String:
 	return "Pickup"
 
 
-func _is_class(name) -> bool:
-	return name == "Pickup" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Pickup" or super.is_class(_name) #not _is_class for this one
 
 
 func set_physics(value) -> void:
@@ -74,7 +74,7 @@ func set_physics(value) -> void:
 
 func set_glitter(value) -> void:
 	static_glitter = value
-	if !static_glitter:
+	if !static_glitter and glitter_color != "None":
 		glitter_color = "None"
 		if has_node("Glitter"):
 			get_node("Glitter").queue_free()
@@ -91,7 +91,7 @@ func set_glitter_color(value) -> void:
 		static_glitter = true
 		physics = false
 	elif value == "None":
-		static_glitter = false	
+		static_glitter = false
 	queue_redraw()
 	notify_property_list_changed()
 

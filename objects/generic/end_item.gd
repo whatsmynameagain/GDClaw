@@ -18,8 +18,8 @@ func _get_class() -> String:
 	return "EndItem"
 
 
-func _is_class(name) -> bool:
-	return name == "EndItem" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "EndItem" or super._is_class(_name)
 
 
 func set_type(value) -> void:
@@ -56,8 +56,8 @@ func _ready() -> void:
 
 
 func _draw() -> void:
-	if get_node("Animation").frames != animations:
-		get_node("Animation").frames = animations
+	if get_node("Animation").sprite_frames != animations:
+		get_node("Animation").sprite_frames = animations
 	
 	if !Engine.is_editor_hint():
 		return

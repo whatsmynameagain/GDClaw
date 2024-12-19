@@ -21,9 +21,9 @@ var shadow_offset = Vector2(-44, -17)
 var move_from = Vector2.ZERO
 var move_to : Vector2
 var carrying : bool = false
+@onready var tween : Tween = get_tree().create_tween()
 
 @onready var elevator_body = $ElevatorBody
-@onready var tween = $ElevatorTween
 @onready var sprite = $ElevatorBody/Sprite2D
 @onready var carry_check = $ElevatorBody/DetectCarry
 @onready var carry_check_safe = $ElevatorBody/DetectCarrySafe
@@ -62,6 +62,22 @@ func init_tween() -> void:
 				move_from, move_to, duration, 
 				Tween.TRANS_LINEAR, 0,
 				delay)
+		
+		#tween.interpolate_property(self, "follow", 
+		#		Vector2.ZERO, move_to, duration, 
+		#		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, IDLE_DURATION
+		#	)
+		#tween.interpolate_property(self, "follow", 
+		#		move_to, Vector2.ZERO, duration, 
+		#		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, duration + IDLE_DURATION * 2
+		#	)
+		
+		#tween.bind_node($Platform)
+		#tween.set_loops()
+		#tween.set_ease(Tween.EASE_IN_OUT)
+		#tween.tween_property(self, "follow", move_to, duration).from(Vector2.ZERO)
+		#tween.tween_property(self, "follow", Vector2.ZERO, duration).from(move_to)
+		
 		delay += duration
 		move_from = move_to
 	tween.set_repeat(!one_way)

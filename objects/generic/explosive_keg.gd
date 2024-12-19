@@ -16,8 +16,8 @@ func _get_class() -> String:
 	return "ExplosiveKeg"
 
 
-func _is_class(name) -> bool:
-	return name == "ExplosiveKeg" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "ExplosiveKeg" or super.is_class(name)
 
 
 func _ready() -> void:

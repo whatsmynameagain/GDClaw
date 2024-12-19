@@ -4,10 +4,10 @@ extends CharacterBody2D
 
 class_name Enemy
 
-#enemies will be implemented in a different way than the player
-#-gonna try to implement a state machine without using different files
-#no way that will be a clusterfuck, right? right
-#-using animationplayer for most things
+#READ FIRST:
+#Originally I intended to create the enemy script in a different way than the player character just for variety/fun,
+#namely, using animationplayer (good idea) and not using separate state files (horrible, horrible idea)
+#####The entire enemy script is thus due for a refactor#####
 
 #--->enemy sprite size is scaled up in the original, gotta match that <--
 
@@ -96,8 +96,8 @@ func _get_class() -> String:
 	return "Enemy"
 
 
-func _is_class(name) -> bool:
-	return name == "Enemy" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Enemy" or super.is_class(name)
 
 
 func set_health(value) -> void:
@@ -303,8 +303,8 @@ func _physics_process(delta):
 			#not tested, collision mask still disabled
 			for x in get_slide_collision_count():
 				var _collision = get_slide_collision(x)
-				if _collision.collider.is_class("CrumblingPlatform") and !_collision.collider.activated:
-					_collision.collider.activate()
+				if _collision.get_collider().is_class("CrumblingPlatform") and !_collision.collider.activated:
+					_collision.get_collider().activate()
 		
 			match state: #state.update()
 				States.IDLE:

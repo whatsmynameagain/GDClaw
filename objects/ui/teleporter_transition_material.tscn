@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdh27uj7hcm2p"]
 
-[ext_resource type="Material" path="res://objects/ui/teleporter_transition.tres" id="1"]
+[ext_resource type="Material" uid="uid://b5t7jjh7dkh38" path="res://objects/ui/teleporter_transition.tres" id="1"]
 
 [node name="TeleporterTransition" type="ColorRect"]
 material = ExtResource("1")

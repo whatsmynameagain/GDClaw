@@ -155,7 +155,7 @@ const Player_Glitter_Material = preload("res://objects/generic/player_glitter_ma
 #---normal variables---
 var gravity := 42.0 # or set by the level init
 var climb_speed := CLIMB
-var show_labels := false
+var show_labels := true #false
 var damage_cooldown := 0.0
 var active_state #state
 var previous_state #state
@@ -236,27 +236,29 @@ var powerup_time := 0
 @onready var lift_position_2 = $LiftPositions/Lift2
 @onready var lift_position_charge = $LiftPositions/Charge
 @onready var camera = $Camera2D
+@onready var attack_timer = $AttackTimer
 @onready var state_list = {
+	"Climb": $State/Climb,
 	"Crouch" : $State/Crouch,
 	"Crouch_Attack" : $State/Crouch_Attack,
 	"Crouch_Pistol" : $State/Crouch_Pistol,
 	"Crouch_Magic" : $State/Crouch_Magic,
 	"Crouch_Dynamite" : $State/Crouch_Dynamite,
+	"Damage" : $State/Damage,
+	"Death_Damage" : $State/Death_Damage,
+	"Death_Spikes" : $State/Death_Spikes,
 	"Idle" : $State/Idle,
 	"Idle_Attack" : $State/Idle_Attack,
+	"Idle_Bored" : $State/Idle_Bored,
 	"Idle_Pistol" : $State/Idle_Pistol,
 	"Idle_Magic" : $State/Idle_Magic,
 	"Idle_Dynamite" :$State/Idle_Dynamite,
-	"Death_Damage" : $State/Death_Damage,
-	"Death_Spikes" : $State/Death_Spikes,
 	"Jump" : $State/Jump,
-	"Move" : $State/Move,
 	"Land" : $State/Land,
 	"Lift" : $State/Lift,
-	"Stun" : $State/Stun,
-	"Damage" : $State/Damage,
-	"Climb": $State/Climb,
+	"Move" : $State/Move,
 	"Noclip": $State/Noclip,
+	"Stun" : $State/Stun,
 	}
 
 #--------------OVERRIDES---------------
@@ -264,8 +266,8 @@ func _get_class() -> String:
 	return "Player"
 
 
-func _is_class(name) -> bool:
-	return name == "Player" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Player" or super.is_class(name)
 
 
 # -------------SETTERS/GETTERS-------------
@@ -318,8 +320,9 @@ func _ready() -> void:
 	player_sounds_2.set_volume_db(Settings.EFFECTS_VOLUME)
 	player_sounds_3.set_volume_db(Settings.EFFECTS_VOLUME)
 	player_voice.set_volume_db(Settings.EFFECTS_VOLUME)
+		
 	for state_node in $State.get_children():
-		if state_node.is_class("State"):
+		if state_node._is_class("State"):
 			state_node.connect("finished", Callable(self, "_change_state"))
 	active_state = state_list["Idle"]
 	previous_state = state_list["Idle"]
@@ -382,8 +385,10 @@ func _physics_process(delta):
 	
 	for x in get_slide_collision_count():
 		var collision = get_slide_collision(x)
-		if collision.collider.is_class("CrumblingPlatform") and !collision.collider.activated:
-			collision.collider.activate()
+		if ( collision.get_collider().has_method("_is_class") and 
+				collision.get_collider()._is_class("CrumblingPlatform") and 
+				!collision.get_collider().activated):
+			collision.get_collider().activate()
 
 	#this doesn't happen in the original, running against a wall still charges the boost
 	#I guess that makes sense for that secret area at the beginning of level 11
@@ -517,7 +522,7 @@ func use_pickup(pickup : Pickup) -> void:
 				emit_signal("lives_updated", lives)
 			
 	#set the powerup and the timer
-	elif pickup.is_class("Powerup"):
+	elif pickup._is_class("Powerup"):
 		if pickup.type in [Powerup_enum.CATNIP, 2] and powerup != Powerup_enum.CATNIP: #2 = catnip_red
 			climb_speed = CLIMB_CATNIP
 			run_boost_charge = 0.0
@@ -716,6 +721,7 @@ func _change_state(state_name) -> void:
 
 func _on_area_entered(area) -> void:
 	var area_owner = area.get_parent()
+	"""
 	match area.name:
 		"LadderBody":
 			on_ladder = true
@@ -724,19 +730,20 @@ func _on_area_entered(area) -> void:
 			on_ladder_top = true
 			ladder_x_pos = area.global_position.x
 		_:
-			if (area_owner.is_class("Pickup") and !area_owner.is_class("Teleporter")):
-				#don't use health items if health is full
-				if !(health == 100 and (area_owner.type in ["Health", "Health_Food"])):
-					use_pickup(area.get_parent())
-				if area_owner.is_class("Treasure"):
-					emit_signal("treasure_collected", area_owner)
-				elif area_owner.is_class("EndItem"):
-					emit_signal("end_item_collected")
-			elif area_owner.is_class("Teleporter"):
-				use_pickup(area.get_parent())
-				emit_signal("teleporter_taken", area_owner)
-			else:
-				print("No action for this area '%s'" % area.name)
+	"""
+	if (area_owner._is_class("Pickup") and !area_owner._is_class("Teleporter")):
+		#don't use health items if health is full
+		if !(health == 100 and (area_owner.type in ["Health", "Health_Food"])):
+			use_pickup(area.get_parent())
+		if area_owner._is_class("Treasure"):
+			emit_signal("treasure_collected", area_owner)
+		elif area_owner._is_class("EndItem"):
+			emit_signal("end_item_collected")
+	elif area_owner._is_class("Teleporter"):
+		use_pickup(area.get_parent())
+		emit_signal("teleporter_taken", area_owner)
+	else:
+		print("No action for this area '%s'" % area.name)
 
 
 func _on_area_exited(area) -> void:
@@ -817,7 +824,7 @@ func _on_longrange_body_exited(body) -> void:
 
 #signals from MeleeRangeCheck, if there's an enemy in close melee range (punch, kick, hook)
 func _on_closerange_body_entered(body) -> void:
-	if body.is_class("Crate"):
+	if body._is_class("Crate"):
 		if !enemy_in_close_range:
 			crates_in_close_range = !crates_in_range.is_empty()
 	else:
@@ -826,7 +833,7 @@ func _on_closerange_body_entered(body) -> void:
 
 
 func _on_closerange_body_exited(body) -> void:
-	if body.is_class("Crate"):
+	if body._is_class("Crate"):
 		crates_in_range.erase(body)
 		crates_in_close_range = !crates_in_range.is_empty()
 	else:
@@ -836,7 +843,7 @@ func _on_closerange_body_exited(body) -> void:
 
 func _on_liftablecheck_body_entered(body: Node) -> void:
 	#enemies also can't be lifted in certain states (while attacking at least)
-	if body.is_class("Enemy") and body.throwable: 
+	if body._is_class("Enemy") and body.throwable: 
 		liftables_in_range.append(body)
 	elif !body.exploding and !body.lifted:
 		liftables_in_range.append(body)
@@ -888,7 +895,7 @@ func _on_check_enemy_hit(body) -> void:
 		5: attack_area = attack_sword #attack_air #these use the same area (this and crouch
 		6: attack_area = attack_crouch # are accurate to the original)
 	var damage = ATTACK_DAMAGE[melee_attack] if powerup != Powerup_enum.CATNIP else 10
-	if !body.is_class("Crate"):
+	if !body._is_class("Crate"):
 		var overlap = Utils.contact_point_2_rect(attack_area, body.get_active_hitbox())
 		overlap_local = Rect2(to_local(overlap.position), overlap.size)
 		if body.has_method("on_hit"):

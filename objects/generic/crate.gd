@@ -20,9 +20,7 @@ const BreakSoundA = preload("res://sounds/crate/crate_break.ogg")
 const BreakSoundB = preload("res://sounds/crate/crate_break_2.ogg")
 
 @export var z_position = "Front": set = set_z_position
-@export var contents : Array[Array]:
-	set(value):
-		set_contents(value)
+@export var contents : Array[Array]: set = set_contents
 
 var collision
 var only_stack := true 
@@ -41,8 +39,8 @@ func _get_class() -> String:
 	return "Crate"
 
 
-func _is_class(name) -> bool:
-	return name == "Crate" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Crate" or super.is_class(_name)
 
 
 func set_z_position(value) -> void:
@@ -82,7 +80,7 @@ func _ready() -> void:
 		if contents.size() > 1:
 			call_deferred("spawn_sub_crates")
 	else:
-		tool_texture = $AnimatedSprite2D.frames.get_frame("Idle", 0) 
+		tool_texture = $AnimatedSprite2D.sprite_frames.get_frame_texture("Idle", 0) 
 
 
 func toggle_sprite_visibility(x : bool) -> void:

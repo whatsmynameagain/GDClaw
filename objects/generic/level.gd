@@ -42,7 +42,7 @@ var treasure = {
 
 
 func _ready() -> void:
-	add_objects() #27.5 ms run time avg. #add ladder and deathTile objects based on the tilenames arrays
+	#add_objects() #27.5 ms run time avg. #add ladder and deathTile objects based on the tilenames arrays
 	#following the original game logic, only one type of deathTile can be active in a level (I think)
 	for object in death_tiles.get_children():
 		if object.death_type == 0: #"SET_BY_LEVEL" in deathTile
@@ -95,6 +95,8 @@ func _ready() -> void:
 func add_objects() -> void:
 	#assumes all objects are properly constructed (start -> end) and tiles are properly named
 	#with the name variables updated
+	pass
+	"""
 	for type in ["ladder", "death_tile"]:
 		var start_names := []
 		var mid_names := []
@@ -121,6 +123,7 @@ func add_objects() -> void:
 				offset = Vector2(0,46)
 				bool_type = false
 		
+		#*_names are assigned in scripts from levels that inherit from this script
 		var top_ids := []
 		for _name in start_names:
 			top_ids.append(tile_map.tile_set.find_tile_by_name(_name))
@@ -157,7 +160,7 @@ func add_objects() -> void:
 					assert(size <= Settings.MAX_OBJECT_SIZE)
 				_position += Vector2(0, 1) if bool_type else Vector2(1, 0)
 			new_object.size = size if bool_type else size+1
-
+"""
 
 #called when the player respawns or loads a save
 func init(_score : int = 0, _player_health := 100, _player_ammo := 10, _player_magic := 5, 

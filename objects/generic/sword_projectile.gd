@@ -13,8 +13,8 @@ func _get_class() -> String:
 	return "SwordProjectile"
 
 
-func _is_class(name) -> bool:
-	return name == "SwordProjectile" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "SwordProjectile" or super.is_class(name)
 
 
 func set_type(value) -> void:

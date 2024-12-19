@@ -3,7 +3,7 @@ extends Node
 
 #manages the sprites for a given num value (showing 0s depending on how many digits there are on the counter)
 #used for hud elements and booty scene scores
-static func update_sprites(value : int, digits : int, base : Node2D, sprites : Dictionary) -> void:
+func update_sprites(value : int, digits : int, base : Node2D, sprites : Dictionary) -> void:
 	var element_array = base.get_node("Sprites").get_children()
 	if str(value).length() < digits: #if there are less digits than the amount of sprites 
 		for i in range(element_array.size() - str(value).length()):
@@ -20,7 +20,7 @@ static func update_sprites(value : int, digits : int, base : Node2D, sprites : D
 #can't set the type of the sound_player argument to AudioStreamPlayer because there's also the 2D version
 #---
 #set_stream() is the slowest part of this by far, now it checks if it's already loaded
-static func decide_player(sound_players, stream) -> void:
+func decide_player(sound_players, stream) -> void:
 	if sound_players is Array:
 		for sound_player in sound_players:
 			assert(sound_player is AudioStreamPlayer or sound_player is AudioStreamPlayer2D)

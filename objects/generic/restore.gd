@@ -12,23 +12,20 @@ const animations = preload("res://animations/restore.tres")
 
 @export_enum("Ammo", "Magic", "Dynamite", 
 		"Health_Food", "Health", "Extra_Life") var type : String = "Health_Food": 
-	set(value):
-		set_type(value)
+	set = set_type
 @export var size = "None": 
-	set(value):
-		set_size(value)
+	set = set_size
 @export_enum("None", "1-2", "3-4", "5-6", "7-8", 
 		"9-10", "11-12", "13", "14") var food_model : String = "1-2": 
-	set(value):
-		set_food_model(value)
+	set = set_food_model
 
 
 func _get_class() -> String:
 	return "Restore"
 
 
-func _is_class(name) -> bool:
-	return name == "Restore" or super.is_class(name)
+func _is_class(_name) -> bool:
+	return _name == "Restore" or super.is_class(name)
 
 
 func set_type(value) -> void:
@@ -89,8 +86,8 @@ func _ready():
 
 
 func _draw() -> void:
-	if get_node("Animation").frames != animations:
-		get_node("Animation").frames = animations
+	if get_node("Animation").sprite_frames != animations:
+		get_node("Animation").sprite_frames = animations
 	
 	if !Engine.is_editor_hint():
 		return

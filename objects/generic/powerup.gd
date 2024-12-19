@@ -17,8 +17,8 @@ func _get_class() -> String:
 	return "Powerup"
 
 
-func _is_class(name) -> bool:
-	return name == "Powerup" or super.is_class(name)
+func _is_class(_name : String ) -> bool:
+	return _name == "Powerup" or super._is_class(_name)
 
 
 func set_type(value) -> void:

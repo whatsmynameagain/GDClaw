@@ -13,6 +13,7 @@ func _on_enter() -> void:
 	owner.set_stance_collision(true, true)
 	Utils.decide_player(owner.player_sounds, owner.action_sounds[9]) 
 	wait_timer = Timer.new()
+	wait_timer.name = "Death_damage_timer"
 	add_child(wait_timer)
 	wait_timer.one_shot = true
 	wait_timer.start(2)

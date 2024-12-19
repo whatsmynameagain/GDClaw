@@ -22,7 +22,9 @@ func _exit_tree():
 func _on_selection_changed():
 	selection = editor_selection.get_selected_nodes() 
 	if not (selection.is_empty() or len(selection) > 1):
-		if selection[0].is_class("Crate") or selection[0].is_class("Enemy"):
+		if !selection[0].has_method("_is_class"):
+			return
+		if selection[0]._is_class("Crate") or selection[0]._is_class("Enemy"):
 			dock.toggle(true)
 			dock.set_selection_contents(selection[0].contents) #duplicate made in the method
 		else:
