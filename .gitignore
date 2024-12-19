@@ -1,5 +1,7 @@
 *.md5
 *.import
 *.exe
-/.godot/*
-/.import/*
+.godot/*
+.import/*
+.godot
+.import
