@@ -1,12 +1,5 @@
 *.md5
 *.import
 *.exe
-*.pck
-*.wav
-*.png
-*.ogg
-*.WAV
-sounds/
-sprites/
-video/
-music/
+/.godot/*
+/.import/*
