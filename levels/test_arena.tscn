@@ -57,6 +57,8 @@ tracks/1/keys = {
 
 [node name="Test_Arena" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
+GRAVITY = 3200
+death_type = 1
 
 [node name="TileMap" parent="." index="1" instance=ExtResource( 2 )]
 collision_mask = 0
@@ -266,32 +268,32 @@ position = Vector2( 798.003, -63.6502 )
 z_index = 15
 physics_material_override = ExtResource( 9 )
 gravity_scale = 1.0
-physics = true
-glitter_color = "None"
 type = "Crown"
 color = "Green"
+physics = true
+glitter_color = "None"
 
 [node name="Restore" parent="Objects/Pickups" index="3" instance=ExtResource( 13 )]
 position = Vector2( 926.253, -66.5002 )
 collision_layer = 0
-static_glitter = true
 size = "Large"
+static_glitter = true
 food_model = "None"
 
 [node name="Restore2" parent="Objects/Pickups" index="4" instance=ExtResource( 13 )]
 position = Vector2( 924.353, -127.3 )
 collision_layer = 0
-static_glitter = true
 type = "Ammo"
 size = "Medium"
+static_glitter = true
 food_model = "None"
 
 [node name="Restore3" parent="Objects/Pickups" index="5" instance=ExtResource( 13 )]
 position = Vector2( 1053.55, -66.5002 )
 collision_layer = 0
-static_glitter = true
 type = "Extra_Life"
 size = "None"
+static_glitter = true
 food_model = "None"
 
 [node name="Teleporter" parent="Objects/Pickups" index="6" instance=ExtResource( 18 )]
@@ -306,16 +308,16 @@ collision_layer = 0
 [node name="Treasure4" parent="Objects/Pickups" index="8" instance=ExtResource( 12 )]
 position = Vector2( 756.373, -353.687 )
 collision_layer = 0
-static_glitter = true
 type = "Scepter"
 color = "Red"
+static_glitter = true
 
 [node name="Treasure5" parent="Objects/Pickups" index="9" instance=ExtResource( 12 )]
 position = Vector2( 746.856, -353.721 )
 collision_layer = 0
-static_glitter = true
 type = "Scepter"
 color = "Red"
+static_glitter = true
 
 [node name="Animation" parent="Objects/Pickups/Treasure5" index="0"]
 animation = "Scepter_Red"
@@ -390,30 +392,35 @@ stack_duration = true
 [node name="Restore5" parent="Objects/Pickups" index="17" instance=ExtResource( 13 )]
 position = Vector2( 161.039, -860.284 )
 collision_layer = 0
-static_glitter = true
 type = "Health"
 size = "Large"
+static_glitter = true
 food_model = "None"
 
 [node name="Restore6" parent="Objects/Pickups" index="18" instance=ExtResource( 13 )]
 position = Vector2( 34.165, -791.951 )
 collision_layer = 0
-static_glitter = true
 type = "Health"
 size = "Large"
+static_glitter = true
 food_model = "None"
 
 [node name="Teleporter2" parent="Objects/Pickups" index="19" instance=ExtResource( 18 )]
 position = Vector2( 2308.88, 332.504 )
 collision_layer = 0
-one_use = false
 destination = Vector2( 1200, -200 )
 orientation = "Vertical"
+one_use = false
 
 [node name="SpawnPoint" parent="." index="3"]
 position = Vector2( -101, -132 )
 
 [node name="Officer" parent="." index="7" instance=ExtResource( 4 )]
 position = Vector2( 241, -90 )
+health = 10
+patrol = false
+patrol_width = Vector2( 0, 0 )
+patrol_color = Color( 0, 0, 0, 1 )
+contents = [  ]
 
 [editable path="Objects/Pickups/Treasure5"]
