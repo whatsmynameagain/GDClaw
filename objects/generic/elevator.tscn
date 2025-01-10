@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://busf5ysregm8l"]
 
 [ext_resource type="Script" path="res://objects/generic/elevator.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://dqnjsxbcqhwqt" path="res://sprites/objects/elevator/level1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b5d46mp7akub7" path="res://sprites/objects/elevator/level1.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(32, 10)

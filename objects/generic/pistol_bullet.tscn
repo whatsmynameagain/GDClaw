@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://objects/generic/pistol_bullet.gd" type="Script" id=1]
-[ext_resource path="res://sprites/objects/pistol_projectile/claw_bullet.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://objects/generic/pistol_bullet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bldvt1ao6qqqa" path="res://sprites/objects/pistol_projectile/claw_bullet.png" id="2"]
 
 
 

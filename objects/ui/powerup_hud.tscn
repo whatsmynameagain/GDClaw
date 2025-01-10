@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://objects/ui/powerup_hud.gd" type="Script" id=1]
-[ext_resource path="res://sprites/ui/hud/score_timer_numbers/000.png" type="Texture2D" id=2]
-[ext_resource path="res://animations/powerup_hud.tres" type="SpriteFrames" id=3]
+[ext_resource type="Script" path="res://objects/ui/powerup_hud.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cq8md1c77ywka" path="res://sprites/ui/hud/score_timer_numbers/000.png" id="2"]
+[ext_resource type="SpriteFrames" path="res://animations/powerup_hud.tres" id="3"]
 
 
 

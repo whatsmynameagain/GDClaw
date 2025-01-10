@@ -94,7 +94,7 @@ var glitter_particle_texture = preload("res://sprites/objects/player_glitter/ani
 @onready var circle_transition_animation = circle_transition.get_node("AnimationPlayer")
 
 func _ready() -> void:
-	level = load("res://levels/%s.tscn" % _level).instantiate()
+	level = load("res://src/levels/%s.tscn" % _level).instantiate()
 	level.music_enabled = music_enabled
 	game_sounds.volume_db = Settings.EFFECTS_VOLUME
 	game_sounds_2.volume_db = Settings.EFFECTS_VOLUME

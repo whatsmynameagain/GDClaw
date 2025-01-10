@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://objects/generic/binary_platform.gd" type="Script" id=1]
-[ext_resource path="res://animations/binary_platform.tres" type="SpriteFrames" id=2]
-[ext_resource path="res://sounds/binary_platform/peg_slide.ogg" type="AudioStream" id=3]
+[ext_resource type="Script" path="res://objects/generic/binary_platform.gd" id="1"]
+[ext_resource type="SpriteFrames" path="res://animations/binary_platform.tres" id="2"]
+[ext_resource type="AudioStream" uid="uid://d30km264skn5w" path="res://sounds/binary_platform/peg_slide.ogg" id="3"]
 
 [sub_resource type="RectangleShape2D" id=1]
 size = Vector2( 22.3127, 10.1447 )

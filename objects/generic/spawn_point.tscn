@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://objects/generic/spawn_point.gd" type="Script" id=1]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame001.png" type="Texture2D" id=2]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame002.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame003.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame004.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame005.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame006.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame007.png" type="Texture2D" id=8]
+[ext_resource type="Script" path="res://objects/generic/spawn_point.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dltu3s26sb884" path="res://sprites/objects/pickup/restore/extra_life/frame001.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://1ygsuwn04bjc" path="res://sprites/objects/pickup/restore/extra_life/frame002.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dmiyt0jvanf8f" path="res://sprites/objects/pickup/restore/extra_life/frame003.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://w14cj1kllu5u" path="res://sprites/objects/pickup/restore/extra_life/frame004.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dtftsgi1rniti" path="res://sprites/objects/pickup/restore/extra_life/frame005.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://8m6f3kdwb7da" path="res://sprites/objects/pickup/restore/extra_life/frame006.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dtqwuqk1gnkp7" path="res://sprites/objects/pickup/restore/extra_life/frame007.png" id="8"]
 
 
 

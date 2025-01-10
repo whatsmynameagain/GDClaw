@@ -13,7 +13,7 @@ void fragment(){
 	if (texture(TEXTURE, UV).a > 0.0001){ //gd4 why
 		switch(int(switcher)){
 			case 0:
-				COLOR = red; 
+				COLOR = red;
 				break;
 			case 1:
 				COLOR = blue;

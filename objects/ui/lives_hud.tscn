@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://sprites/ui/hud/ammo_lives_numbers/000.png" type="Texture2D" id=1]
-[ext_resource path="res://objects/ui/lives_hud.gd" type="Script" id=2]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame02.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame05.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame08.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame07.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame01.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame03.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame06.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/ui/hud/bases/lives_base/frame04.png" type="Texture2D" id=10]
+[ext_resource type="Texture2D" uid="uid://cxgilwbwj4oig" path="res://sprites/ui/hud/ammo_lives_numbers/000.png" id="1"]
+[ext_resource type="Script" path="res://objects/ui/lives_hud.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://c2mm6f2acuufw" path="res://sprites/ui/hud/bases/lives_base/frame02.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://imc45n0syqkm" path="res://sprites/ui/hud/bases/lives_base/frame05.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dw3k0j4fywk6v" path="res://sprites/ui/hud/bases/lives_base/frame08.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c4w0msxbflu2o" path="res://sprites/ui/hud/bases/lives_base/frame07.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://blbd0heimi8n3" path="res://sprites/ui/hud/bases/lives_base/frame01.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://csois2a50pek5" path="res://sprites/ui/hud/bases/lives_base/frame03.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://cl6bt0pxbb6cg" path="res://sprites/ui/hud/bases/lives_base/frame06.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bc4wgf8oq11qt" path="res://sprites/ui/hud/bases/lives_base/frame04.png" id="10"]
 
 
 

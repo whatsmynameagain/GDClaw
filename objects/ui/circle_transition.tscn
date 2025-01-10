@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://objects/ui/circle_transition_material.tres" type="Material" id=1]
+[ext_resource type="Material" uid="uid://7av1j3gbnxn5" path="res://objects/ui/circle_transition_material.tres" id="1"]
 
 
 

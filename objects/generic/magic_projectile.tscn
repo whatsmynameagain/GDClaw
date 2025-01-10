@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://sprites/objects/player_glitter/animated_texture.tres" type="Texture2D" id=1]
-[ext_resource path="res://objects/generic/magic_projectile.gd" type="Script" id=2]
-[ext_resource path="res://sprites/objects/magic_projectile/frame003.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/objects/magic_projectile/frame005.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/objects/magic_projectile/frame002.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/objects/magic_projectile/frame006.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/objects/magic_projectile/frame007.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/objects/magic_projectile/frame008.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/objects/magic_projectile/frame004.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/objects/magic_projectile/frame001.png" type="Texture2D" id=10]
+[ext_resource type="Texture2D" uid="uid://wlgno5xtke8n" path="res://sprites/objects/player_glitter/animated_texture.tres" id="1"]
+[ext_resource type="Script" path="res://objects/generic/magic_projectile.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dfa4p47unipum" path="res://sprites/objects/magic_projectile/frame003.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://i4mcfpfbdcqa" path="res://sprites/objects/magic_projectile/frame005.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cvts61brb2g6v" path="res://sprites/objects/magic_projectile/frame002.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bpqxt2so0mins" path="res://sprites/objects/magic_projectile/frame006.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://chkr0go5ah565" path="res://sprites/objects/magic_projectile/frame007.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dg0jyms1qbq3a" path="res://sprites/objects/magic_projectile/frame008.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dikxhlw7d8658" path="res://sprites/objects/magic_projectile/frame004.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://db7762d4sfnof" path="res://sprites/objects/magic_projectile/frame001.png" id="10"]
 
 
 

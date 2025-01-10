@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://objects/generic/pickup_spawner.gd" type="Script" id=1]
-[ext_resource path="res://sounds/generic/pickup_release.ogg" type="AudioStream" id=2]
+[ext_resource type="Script" path="res://objects/generic/pickup_spawner.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://d138l77o6ehtk" path="res://sounds/generic/pickup_release.ogg" id="2"]
 
 [node name="PickupSpawner" type="Marker2D"]
 script = ExtResource( 1 )

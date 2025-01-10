@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://objects/generic/ladder.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://objects/generic/ladder.gd" id="1"]
 
 [sub_resource type="RectangleShape2D" id=1]
 size = Vector2( 32, 32 )

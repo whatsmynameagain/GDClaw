@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://b84kvpmv4qfen"]
 
 [ext_resource type="Script" path="res://objects/generic/crate.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bqoyecffeimxb" path="res://sprites/objects/crate/1/crate008.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://d36l0g4j08abe" path="res://sprites/objects/crate/1/crate001.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://cusoymqg6kjnq" path="res://sprites/objects/crate/1/crate005.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://c6md4d1d6xclh" path="res://sprites/objects/crate/1/crate006.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://d154pqg5abcd3" path="res://sprites/objects/crate/1/crate003.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://dsmv6ws2gmqid" path="res://sprites/objects/crate/1/crate004.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://dfw7q4hl5drfv" path="res://sprites/objects/crate/1/crate002.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://dpa3fkaomg7c8" path="res://sprites/objects/crate/1/crate007.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://c7oukhi6lr1my" path="res://sprites/objects/crate/1/crate008.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://byi8si8kidpng" path="res://sprites/objects/crate/1/crate001.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d3ey7yffa3ixn" path="res://sprites/objects/crate/1/crate005.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://r56hcacdxy7w" path="res://sprites/objects/crate/1/crate006.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://0mumr4eqhikn" path="res://sprites/objects/crate/1/crate003.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bguu71edipw73" path="res://sprites/objects/crate/1/crate004.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c5pvxxujqkuba" path="res://sprites/objects/crate/1/crate002.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://b2nmajpmx051r" path="res://sprites/objects/crate/1/crate007.png" id="9"]
 
 [sub_resource type="PhysicsMaterial" id="1"]
 absorbent = true

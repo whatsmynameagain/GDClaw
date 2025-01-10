@@ -74,7 +74,7 @@ func _ready() -> void:
 				#add to treasure list count
 				pass
 	#----------
-	player = preload("res://player.tscn").instantiate()
+	player = preload("res://src/player.tscn").instantiate()
 	level_sounds.set_volume_db(Settings.EFFECTS_VOLUME)
 	music_player.set_volume_db(Settings.MUSIC_VOLUME)
 	music_player.stream = music

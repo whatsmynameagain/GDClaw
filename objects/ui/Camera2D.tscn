@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://objects/ui/camera_2d_shake.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://objects/ui/camera_2d_shake.gd" id="1"]
 
 [node name="Camera2D" type="Camera2D"]
 offset = Vector2( 0, -12 )

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://objects/generic/death_dummy.gd" type="Script" id=1]
-[ext_resource path="res://sprites/claw/frame402.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://objects/generic/death_dummy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bf33lcja2iwty" path="res://sprites/claw/frame402.png" id="2"]
 
 [node name="DeathDummy" type="CharacterBody2D"]
 script = ExtResource( 1 )
