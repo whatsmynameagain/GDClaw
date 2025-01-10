@@ -1,73 +1,73 @@
-[gd_scene load_steps=42 format=3 uid="uid://4ebi8clp204i"]
+[gd_scene load_steps=42 format=2]
 
-[ext_resource type="Script" path="res://player.gd" id="1"]
-[ext_resource type="SpriteFrames" path="res://animations/player.tres" id="2"]
-[ext_resource type="Texture2D" uid="uid://bjriy3ilimjwa" path="res://sprites/objects/exclamation/exclamation.png" id="3"]
-[ext_resource type="Script" path="res://player_states/state.gd" id="4"]
-[ext_resource type="Script" path="res://player_states/climb.gd" id="5"]
-[ext_resource type="Script" path="res://player_states/crouch.gd" id="6"]
-[ext_resource type="Script" path="res://player_states/crouch_attack.gd" id="7"]
-[ext_resource type="Script" path="res://player_states/crouch_pistol.gd" id="8"]
-[ext_resource type="Script" path="res://player_states/crouch_magic.gd" id="9"]
-[ext_resource type="Script" path="res://player_states/crouch_dynamite.gd" id="10"]
-[ext_resource type="Script" path="res://player_states/damage.gd" id="11"]
-[ext_resource type="Script" path="res://player_states/death_damage.gd" id="12"]
-[ext_resource type="Script" path="res://player_states/death_spikes.gd" id="13"]
-[ext_resource type="Script" path="res://player_states/idle.gd" id="14"]
-[ext_resource type="Script" path="res://player_states/idle_attack.gd" id="15"]
-[ext_resource type="Script" path="res://player_states/idle_dynamite.gd" id="16"]
-[ext_resource type="PackedScene" path="res://objects/ui/Camera2D.tscn" id="17"]
-[ext_resource type="Script" path="res://player_states/idle_magic.gd" id="18"]
-[ext_resource type="Script" path="res://player_states/idle_pistol.gd" id="19"]
-[ext_resource type="Script" path="res://player_states/jump.gd" id="20"]
-[ext_resource type="Script" path="res://player_states/land.gd" id="21"]
-[ext_resource type="Script" path="res://player_states/move.gd" id="22"]
-[ext_resource type="Script" path="res://player_states/noclip.gd" id="23"]
-[ext_resource type="Script" path="res://player_states/stun.gd" id="24"]
-[ext_resource type="PackedScene" uid="uid://bnkgcr0agx142" path="res://objects/generic/player_glitter.tscn" id="26"]
-[ext_resource type="Script" path="res://player_states/lift.gd" id="27"]
-[ext_resource type="Material" uid="uid://cnl22m00vfaqb" path="res://objects/generic/player_glitter_material.tres" id="28"]
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://animations/player.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://sprites/objects/exclamation/exclamation.png" type="Texture" id=3]
+[ext_resource path="res://player_states/state.gd" type="Script" id=4]
+[ext_resource path="res://player_states/climb.gd" type="Script" id=5]
+[ext_resource path="res://player_states/crouch.gd" type="Script" id=6]
+[ext_resource path="res://player_states/crouch_attack.gd" type="Script" id=7]
+[ext_resource path="res://player_states/crouch_pistol.gd" type="Script" id=8]
+[ext_resource path="res://player_states/crouch_magic.gd" type="Script" id=9]
+[ext_resource path="res://player_states/crouch_dynamite.gd" type="Script" id=10]
+[ext_resource path="res://player_states/damage.gd" type="Script" id=11]
+[ext_resource path="res://player_states/death_damage.gd" type="Script" id=12]
+[ext_resource path="res://player_states/death_spikes.gd" type="Script" id=13]
+[ext_resource path="res://player_states/idle.gd" type="Script" id=14]
+[ext_resource path="res://player_states/idle_attack.gd" type="Script" id=15]
+[ext_resource path="res://player_states/idle_dynamite.gd" type="Script" id=16]
+[ext_resource path="res://objects/ui/Camera2D.tscn" type="PackedScene" id=17]
+[ext_resource path="res://player_states/idle_magic.gd" type="Script" id=18]
+[ext_resource path="res://player_states/idle_pistol.gd" type="Script" id=19]
+[ext_resource path="res://player_states/jump.gd" type="Script" id=20]
+[ext_resource path="res://player_states/land.gd" type="Script" id=21]
+[ext_resource path="res://player_states/move.gd" type="Script" id=22]
+[ext_resource path="res://player_states/noclip.gd" type="Script" id=23]
+[ext_resource path="res://player_states/stun.gd" type="Script" id=24]
+[ext_resource path="res://objects/generic/player_glitter.tscn" type="PackedScene" id=26]
+[ext_resource path="res://player_states/lift.gd" type="Script" id=27]
+[ext_resource path="res://objects/generic/player_glitter_material.tres" type="Material" id=28]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(16, 52)
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 52 )
 
-[sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(16, 29)
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 29 )
 
-[sub_resource type="RectangleShape2D" id="3"]
-size = Vector2(16, 52)
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 52 )
 
-[sub_resource type="RectangleShape2D" id="4"]
-size = Vector2(47.9859, 52)
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 47.9859, 52 )
 
-[sub_resource type="RectangleShape2D" id="5"]
-size = Vector2(28, 52)
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 28, 52 )
 
-[sub_resource type="RectangleShape2D" id="6"]
-size = Vector2(17.8968, 22.1714)
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 17.8968, 22.1714 )
 
-[sub_resource type="RectangleShape2D" id="7"]
-size = Vector2(16, 3.7626)
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16, 3.7626 )
 
-[sub_resource type="RectangleShape2D" id="8"]
-size = Vector2(41.7582, 10.345)
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 41.7582, 10.345 )
 
-[sub_resource type="RectangleShape2D" id="9"]
-size = Vector2(28, 6)
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 28, 6 )
 
-[sub_resource type="RectangleShape2D" id="10"]
-size = Vector2(22, 6)
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 22, 6 )
 
-[sub_resource type="RectangleShape2D" id="11"]
-size = Vector2(23, 6)
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 23, 6 )
 
-[sub_resource type="RectangleShape2D" id="12"]
-size = Vector2(37.2887, 7.56999)
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 37.2887, 7.56999 )
 
-[sub_resource type="RectangleShape2D" id="13"]
-size = Vector2(5.8774, 33.1687)
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 5.8774, 33.1687 )
 
-[sub_resource type="GDScript" id="14"]
+[sub_resource type="GDScript" id=14]
 script/source = "extends State
 
 
@@ -76,31 +76,29 @@ func _ready():
 	pass 
 "
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 1033
-script = ExtResource("1")
+script = ExtResource( 1 )
 
-[node name="Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -6.48614)
-sprite_frames = ExtResource("2")
-animation = &"idle"
+[node name="Animation" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -6.48614 )
+frames = ExtResource( 2 )
+animation = "idle"
 
-[node name="Exclamation" type="Sprite2D" parent="."]
+[node name="Exclamation" type="Sprite" parent="."]
 visible = false
-position = Vector2(0.0141401, -88.7646)
-texture = ExtResource("3")
+position = Vector2( 0.0141401, -88.7646 )
+texture = ExtResource( 3 )
 
 [node name="CollisionStanding" type="CollisionShape2D" parent="."]
 visible = false
-scale = Vector2(2, 2)
-shape = SubResource("1")
+shape = SubResource( 1 )
 
 [node name="CollisionCrouch" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, 23)
-scale = Vector2(2, 2)
-shape = SubResource("2")
+position = Vector2( 0, 23 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="AreaCheck" type="Area2D" parent="."]
@@ -109,243 +107,238 @@ collision_layer = 0
 collision_mask = 1068
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCheck"]
-scale = Vector2(2, 2)
-shape = SubResource("3")
+shape = SubResource( 3 )
 
 [node name="ObjectRangeCheck" type="Area2D" parent="."]
 visible = false
-position = Vector2(68, 0)
+position = Vector2( 68, 0 )
 collision_layer = 0
 collision_mask = 2368
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectRangeCheck"]
-position = Vector2(4, -0.76465)
-scale = Vector2(2, 2)
-shape = SubResource("4")
+position = Vector2( 4, -0.76465 )
+shape = SubResource( 4 )
 
 [node name="MeleeRangeCheck" type="Area2D" parent="."]
 visible = false
-position = Vector2(28, -0.76465)
+position = Vector2( 28, -0.76465 )
 collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeRangeCheck"]
-position = Vector2(-1.90735e-06, 0)
-scale = Vector2(2, 2)
-shape = SubResource("5")
+position = Vector2( -1.90735e-06, 0 )
+shape = SubResource( 5 )
 
 [node name="LiftableCheck" type="Area2D" parent="."]
 visible = false
-position = Vector2(26.3509, 27.3441)
+position = Vector2( 26.3509, 27.3441 )
 collision_layer = 0
 collision_mask = 2112
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LiftableCheck"]
-position = Vector2(-3.37117, 1.96558)
-scale = Vector2(2, 2)
-shape = SubResource("6")
+position = Vector2( -3.37117, 1.96558 )
+shape = SubResource( 6 )
 
 [node name="FloorCheck" type="Area2D" parent="."]
 visible = false
-position = Vector2(-1.28, 56.603)
+position = Vector2( -1.28, 56.603 )
 collision_layer = 0
 collision_mask = 1033
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCheck"]
-position = Vector2(1.29414, -0.647064)
-scale = Vector2(2, 2)
-shape = SubResource("7")
+position = Vector2( 1.29414, -0.647064 )
+shape = SubResource( 7 )
 
 [node name="AttackAreas" type="Area2D" parent="."]
-visible = false
-position = Vector2(0.0141401, 0)
+position = Vector2( 0.0141401, 0 )
 collision_layer = 0
 collision_mask = 320
 
 [node name="AttackSword" type="CollisionShape2D" parent="AttackAreas"]
 visible = false
-position = Vector2(77.616, -0.218955)
-scale = Vector2(2, 2)
-shape = SubResource("8")
+position = Vector2( 77.616, -0.218955 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="AttackPunch" type="CollisionShape2D" parent="AttackAreas"]
 visible = false
-position = Vector2(31.4583, -17.116)
-scale = Vector2(2, 2)
-shape = SubResource("9")
+position = Vector2( 31.4583, -17.116 )
+shape = SubResource( 9 )
 disabled = true
 
 [node name="AttackHook" type="CollisionShape2D" parent="AttackAreas"]
 visible = false
-position = Vector2(35.9068, -31.3465)
-scale = Vector2(2, 2)
-shape = SubResource("10")
+position = Vector2( 35.9068, -31.3465 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="AttackKick" type="CollisionShape2D" parent="AttackAreas"]
 visible = false
-position = Vector2(33.4262, -21.9644)
-scale = Vector2(2, 2)
-shape = SubResource("11")
+position = Vector2( 33.4262, -21.9644 )
+shape = SubResource( 11 )
 disabled = true
 
 [node name="AttackCrouch" type="CollisionShape2D" parent="AttackAreas"]
 visible = false
-position = Vector2(71.7595, 14.7234)
-scale = Vector2(2, 2)
-shape = SubResource("12")
+position = Vector2( 71.7595, 14.7234 )
+shape = SubResource( 12 )
 disabled = true
 
 [node name="AttackAir" type="CollisionShape2D" parent="AttackAreas"]
 visible = false
-position = Vector2(67.2332, -13.683)
+position = Vector2( 67.2332, -13.683 )
 rotation = -1.5708
-scale = Vector2(2, 2)
-shape = SubResource("13")
+shape = SubResource( 13 )
 disabled = true
 
 [node name="EdgeCheckL" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(-18, 48)
-target_position = Vector2(0, 10)
+position = Vector2( -18, 48 )
+enabled = true
+cast_to = Vector2( 0, 10 )
 collision_mask = 1025
 
 [node name="EdgeCheckM" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(0, 48)
-target_position = Vector2(0, 10)
+position = Vector2( 0, 48 )
+enabled = true
+cast_to = Vector2( 0, 10 )
 collision_mask = 1025
 
 [node name="EdgeCheckR" type="RayCast2D" parent="."]
-visible = false
-position = Vector2(18, 48)
-target_position = Vector2(0, 10)
+position = Vector2( 18, 48 )
+enabled = true
+cast_to = Vector2( 0, 10 )
 collision_mask = 1025
 
 [node name="WallCheck" type="RayCast2D" parent="."]
 visible = false
-position = Vector2(19.9525, 48.041)
+position = Vector2( 19.9525, 48.041 )
 rotation = 1.5708
-target_position = Vector2(0, 40)
+enabled = true
+cast_to = Vector2( 0, 40 )
 
 [node name="ProjectileSpawns" type="Node2D" parent="."]
 visible = false
-position = Vector2(0, 3.23535)
+position = Vector2( 0, 3.23535 )
 
-[node name="PistolStanding" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(65.1701, -33.9644)
+[node name="PistolStanding" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 65.1701, -33.9644 )
 
-[node name="PistolCrouch" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(64.7519, 10.3565)
+[node name="PistolCrouch" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 64.7519, 10.3565 )
 
-[node name="PistolAir" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(66.0063, -24.3476)
+[node name="PistolAir" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 66.0063, -24.3476 )
 
-[node name="MagicClawStanding" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(53.2134, -15.8523)
+[node name="MagicClawStanding" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 53.2134, -15.8523 )
 
-[node name="MagicClawCrouch" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(61.4069, 11.6109)
+[node name="MagicClawCrouch" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 61.4069, 11.6109 )
 
-[node name="MagicClawAir" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(54.2989, -23.5114)
+[node name="MagicClawAir" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 54.2989, -23.5114 )
 
-[node name="DynamiteStanding" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(62.2433, -24.3476)
+[node name="DynamiteStanding" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 62.2433, -24.3476 )
 
-[node name="DynamiteCrouch" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(56.8076, 11.6109)
+[node name="DynamiteCrouch" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 56.8076, 11.6109 )
 
-[node name="DynamiteAir" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(52.2083, -34.8007)
+[node name="DynamiteAir" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 52.2083, -34.8007 )
 
-[node name="SwordStanding" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(77.7138, 4.92095)
+[node name="SwordStanding" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 77.7138, 4.92095 )
 
-[node name="SwordCrouch" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(77.7137, 10.7747)
+[node name="SwordCrouch" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 77.7137, 10.7747 )
 
-[node name="SwordAir" type="Marker2D" parent="ProjectileSpawns"]
-position = Vector2(58.062, -6.78647)
+[node name="SwordAir" type="Position2D" parent="ProjectileSpawns"]
+position = Vector2( 58.062, -6.78647 )
 
 [node name="LiftPositions" type="Node2D" parent="."]
 visible = false
 
-[node name="Lift1" type="Marker2D" parent="LiftPositions"]
-position = Vector2(28.0803, -23.3609)
+[node name="Lift1" type="Position2D" parent="LiftPositions"]
+position = Vector2( 28.0803, -23.3609 )
 
-[node name="Lift2" type="Marker2D" parent="LiftPositions"]
-position = Vector2(-4.76578, -66.5903)
+[node name="Lift2" type="Position2D" parent="LiftPositions"]
+position = Vector2( -4.76578, -66.5903 )
 
-[node name="Charge" type="Marker2D" parent="LiftPositions"]
-position = Vector2(-10.1369, -61.5903)
+[node name="Charge" type="Position2D" parent="LiftPositions"]
+position = Vector2( -10.1369, -61.5903 )
 
 [node name="State" type="Node" parent="."]
-script = ExtResource("4")
+script = ExtResource( 4 )
+
+[node name="To-Do" type="Node" parent="State"]
+
+[node name="Death_Liquid" type="Node" parent="State/To-Do"]
+
+[node name="Swing" type="Node" parent="State/To-Do"]
 
 [node name="Climb" type="Node" parent="State"]
-script = ExtResource("5")
+script = ExtResource( 5 )
 
 [node name="Crouch" type="Node" parent="State"]
-script = ExtResource("6")
+script = ExtResource( 6 )
 
 [node name="Crouch_Attack" type="Node" parent="State"]
-script = ExtResource("7")
+script = ExtResource( 7 )
 
 [node name="Crouch_Pistol" type="Node" parent="State"]
-script = ExtResource("8")
+script = ExtResource( 8 )
 
 [node name="Crouch_Magic" type="Node" parent="State"]
-script = ExtResource("9")
+script = ExtResource( 9 )
 
 [node name="Crouch_Dynamite" type="Node" parent="State"]
-script = ExtResource("10")
+script = ExtResource( 10 )
 
 [node name="Damage" type="Node" parent="State"]
-script = ExtResource("11")
+script = ExtResource( 11 )
 
 [node name="Death_Damage" type="Node" parent="State"]
-script = ExtResource("12")
+script = ExtResource( 12 )
 
 [node name="Death_Spikes" type="Node" parent="State"]
-script = ExtResource("13")
+script = ExtResource( 13 )
 
 [node name="Idle" type="Node" parent="State"]
-script = ExtResource("14")
+script = ExtResource( 14 )
 
 [node name="Idle_Attack" type="Node" parent="State"]
-script = ExtResource("15")
+script = ExtResource( 15 )
 
 [node name="Idle_Bored" type="Node" parent="State"]
-script = SubResource("14")
-
-[node name="Idle_Pistol" type="Node" parent="State"]
-script = ExtResource("19")
-
-[node name="Idle_Magic" type="Node" parent="State"]
-script = ExtResource("18")
+script = SubResource( 14 )
 
 [node name="Idle_Dynamite" type="Node" parent="State"]
-script = ExtResource("16")
+script = ExtResource( 16 )
+
+[node name="Idle_Magic" type="Node" parent="State"]
+script = ExtResource( 18 )
+
+[node name="Idle_Pistol" type="Node" parent="State"]
+script = ExtResource( 19 )
 
 [node name="Jump" type="Node" parent="State"]
-script = ExtResource("20")
+script = ExtResource( 20 )
 
 [node name="Land" type="Node" parent="State"]
-script = ExtResource("21")
+script = ExtResource( 21 )
 
 [node name="Lift" type="Node" parent="State"]
-script = ExtResource("27")
+script = ExtResource( 27 )
 
 [node name="Move" type="Node" parent="State"]
-script = ExtResource("22")
+script = ExtResource( 22 )
 
 [node name="Noclip" type="Node" parent="State"]
-script = ExtResource("23")
+script = ExtResource( 23 )
 
 [node name="Stun" type="Node" parent="State"]
-script = ExtResource("24")
+script = ExtResource( 24 )
 
 [node name="PlayerVoice" type="AudioStreamPlayer" parent="."]
 
@@ -361,65 +354,67 @@ volume_db = -10.0
 [node name="Labels" type="Node2D" parent="."]
 
 [node name="StateLabel" type="Label" parent="Labels"]
-offset_left = -20.8482
-offset_top = -124.626
-offset_right = 19.1518
-offset_bottom = -110.626
+margin_left = -20.8482
+margin_top = -124.626
+margin_right = 19.1518
+margin_bottom = -110.626
 
 [node name="ElevatorLabel" type="Label" parent="Labels"]
-offset_left = -143.421
-offset_top = -3.5036
-offset_right = -103.421
-offset_bottom = 10.4964
+margin_left = -143.421
+margin_top = -3.5036
+margin_right = -103.421
+margin_bottom = 10.4964
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FloorLabel" type="Label" parent="Labels"]
-offset_left = -131.112
-offset_top = -52.3521
-offset_right = -91.112
-offset_bottom = -38.3521
+margin_left = -131.112
+margin_top = -52.3521
+margin_right = -91.112
+margin_bottom = -38.3521
 
 [node name="SnapLabel" type="Label" parent="Labels"]
-offset_left = 62.0051
-offset_top = 39.312
-offset_right = 102.005
-offset_bottom = 53.312
+margin_left = 62.0051
+margin_top = 39.312
+margin_right = 102.005
+margin_bottom = 53.312
 
 [node name="MotionLabel" type="Label" parent="Labels"]
-offset_left = 57.4635
-offset_top = -9.36964
-offset_right = 97.4635
-offset_bottom = 4.63036
+margin_left = 57.4635
+margin_top = -9.36964
+margin_right = 97.4635
+margin_bottom = 4.63036
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PositionLabel" type="Label" parent="Labels"]
-offset_left = 59.5823
-offset_top = -54.618
-offset_right = 99.5823
-offset_bottom = -40.618
+margin_left = 59.5823
+margin_top = -54.618
+margin_right = 99.5823
+margin_bottom = -40.618
 
 [node name="FloorVLabel" type="Label" parent="Labels"]
-offset_left = -21.3115
-offset_top = 78.7598
-offset_right = 18.6885
-offset_bottom = 92.7598
+margin_left = -21.3115
+margin_top = 78.7598
+margin_right = 18.6885
+margin_bottom = 92.7598
 
 [node name="LadderLabel" type="Label" parent="Labels"]
-offset_left = -138.09
-offset_top = 46.201
-offset_right = -98.0896
-offset_bottom = 60.201
+margin_left = -138.09
+margin_top = 46.201
+margin_right = -98.0896
+margin_bottom = 60.201
 
 [node name="LadderTopLabel" type="Label" parent="Labels"]
-offset_left = -149.383
-offset_top = 29.2606
-offset_right = -109.383
-offset_bottom = 43.2606
+margin_left = -149.383
+margin_top = 29.2606
+margin_right = -109.383
+margin_bottom = 43.2606
 
-[node name="PlayerGlitter" parent="." instance=ExtResource("26")]
-process_material = ExtResource("28")
-fixed_fps = 0
-collision_base_size = 0.0
-visibility_rect = Rect2(-32, -64, 64, 128)
-draw_order = 0
+[node name="PlayerGlitter" parent="." instance=ExtResource( 26 )]
+process_material = ExtResource( 28 )
 
 [node name="PowerupTimer" type="Timer" parent="."]
 one_shot = true
@@ -428,10 +423,9 @@ one_shot = true
 
 [node name="InvulnSwitcher" type="Timer" parent="."]
 
-[node name="AttackTimer" type="Timer" parent="."]
-
-[node name="Camera2D" parent="." instance=ExtResource("17")]
-position_smoothing_speed = 15.0
+[node name="Camera2D" parent="." instance=ExtResource( 17 )]
+process_mode = 0
+smoothing_speed = 15.0
 
 [connection signal="area_entered" from="AreaCheck" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="AreaCheck" to="." method="_on_area_exited"]

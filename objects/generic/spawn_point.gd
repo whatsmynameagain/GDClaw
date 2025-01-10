@@ -1,7 +1,7 @@
-@tool
+tool
 extends Node2D
 
-@onready var animation = get_node("AnimatedSprite2D")
+onready var animation = get_node("AnimatedSprite")
 
 
 func _ready() -> void:

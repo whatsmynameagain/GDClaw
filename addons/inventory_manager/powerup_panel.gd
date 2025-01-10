@@ -1,4 +1,4 @@
-@tool
+tool
 extends PanelContainer
 
 
@@ -8,15 +8,15 @@ var duration := 15
 var stack_duration := true
 var use := false
 
-@onready var duration_value = $VBoxContainer/HBoxContainer/SpinBox
-@onready var stack_duration_toggle = $VBoxContainer/HBoxContainer2/CheckButton
-@onready var one_use = $VBoxContainer/HBoxContainer3/CheckBox
+onready var duration_value = $VBoxContainer/HBoxContainer/SpinBox
+onready var stack_duration_toggle = $VBoxContainer/HBoxContainer2/CheckButton
+onready var one_use = $VBoxContainer/HBoxContainer3/CheckBox
 
 
 func set_from_item(item) -> void:
 	duration_value.value = item[2]
 	stack_duration = item[3]
-	one_use.button_pressed = item[4]
+	one_use.pressed = item[4]
 
 
 func _on_duration_value_changed(value: float) -> void:

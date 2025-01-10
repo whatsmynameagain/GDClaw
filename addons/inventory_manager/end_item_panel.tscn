@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/red_blue.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/center.png" type="Texture2D" id=2]
-[ext_resource path="res://sprites/objects/pickup/end_item/map_piece/map_fragment.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/blue.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/green.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/red.png" type="Texture2D" id=6]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/red_blue.png" type="Texture" id=1]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/center.png" type="Texture" id=2]
+[ext_resource path="res://sprites/objects/pickup/end_item/map_piece/map_fragment.png" type="Texture" id=3]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/blue.png" type="Texture" id=4]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/green.png" type="Texture" id=5]
+[ext_resource path="res://sprites/objects/pickup/end_item/gem/red.png" type="Texture" id=6]
 [ext_resource path="res://addons/inventory_manager/end_item_panel.gd" type="Script" id=7]
 
 
@@ -22,35 +22,35 @@
 
 
 [node name="PanelContainer" type="PanelContainer"]
-offset_top = 26.0
-offset_right = 248.0
-offset_bottom = 132.0
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 132.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 257.0
-offset_bottom = 105.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 257.0
+margin_bottom = 105.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-offset_right = 250.0
-offset_bottom = 42.0
+margin_right = 250.0
+margin_bottom = 42.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-offset_top = 14.0
-offset_right = 123.0
-offset_bottom = 28.0
+margin_top = 14.0
+margin_right = 123.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 text = "Type: "
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
-offset_left = 127.0
-offset_right = 250.0
-offset_bottom = 42.0
+margin_left = 127.0
+margin_right = 250.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 text = "Map"
 icon = ExtResource( 3 )
@@ -58,50 +58,50 @@ items = [ "Map", ExtResource( 3 ), false, 0, null, "Blue", ExtResource( 4 ), fal
 selected = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 46.0
-offset_right = 250.0
-offset_bottom = 70.0
+margin_top = 46.0
+margin_right = 250.0
+margin_bottom = 70.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
-offset_top = 5.0
-offset_right = 123.0
-offset_bottom = 19.0
+margin_top = 5.0
+margin_right = 123.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Drop Animation:"
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
-offset_left = 127.0
-offset_right = 250.0
-offset_bottom = 24.0
+margin_left = 127.0
+margin_right = 250.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 pressed = true
 text = "On"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 74.0
-offset_right = 250.0
-offset_bottom = 98.0
+margin_top = 74.0
+margin_right = 250.0
+margin_bottom = 98.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
-offset_top = 5.0
-offset_right = 94.0
-offset_bottom = 19.0
+margin_top = 5.0
+margin_right = 94.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Anim Position:"
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
-offset_left = 98.0
-offset_right = 172.0
-offset_bottom = 24.0
+margin_left = 98.0
+margin_right = 172.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 min_value = -999999.0
 max_value = 999999.0
 prefix = "X:"
 
 [node name="SpinBox2" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
-offset_left = 176.0
-offset_right = 250.0
-offset_bottom = 24.0
+margin_left = 176.0
+margin_right = 250.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 min_value = -999999.0
 max_value = 999999.0

@@ -1,4 +1,4 @@
-@tool
+tool
 extends PanelContainer
 
 
@@ -6,7 +6,7 @@ signal item_modified(property, value)
 
 var model := "1-2"
 
-@onready var model_list = $VBoxContainer/HBoxContainer/CheckBox
+onready var model_list = $VBoxContainer/HBoxContainer/CheckBox
 
 
 func set_from_item(item) -> void:

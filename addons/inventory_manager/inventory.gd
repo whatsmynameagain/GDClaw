@@ -1,4 +1,4 @@
-@tool
+tool
 
 extends Control
 
@@ -16,23 +16,23 @@ const powerup_animations = preload("res://animations/powerup.tres")
 const teleporter_animations = preload("res://animations/teleporter.tres")
 const end_item_animations = preload("res://animations/end_item.tres")
 
-var selection_contents = []: set = set_selection_contents
-var temp_contents = []: set = set_temp_contents
+var selection_contents = [] setget set_selection_contents
+var temp_contents = [] setget set_temp_contents
 var selected : int
 var valid_selection := false
-var list = preload("res://addons/inventory_manager/pickup_list.tscn").instantiate()
-var teleporter_panel = preload("res://addons/inventory_manager/teleporter_panel.tscn").instantiate()
-var powerup_panel = preload("res://addons/inventory_manager/powerup_panel.tscn").instantiate()
-var end_item_panel = preload("res://addons/inventory_manager/end_item_panel.tscn").instantiate()
-var food_item_panel = preload("res://addons/inventory_manager/food_item_panel.tscn").instantiate()
+var list = preload("res://addons/inventory_manager/pickup_list.tscn").instance()
+var teleporter_panel = preload("res://addons/inventory_manager/teleporter_panel.tscn").instance()
+var powerup_panel = preload("res://addons/inventory_manager/powerup_panel.tscn").instance()
+var end_item_panel = preload("res://addons/inventory_manager/end_item_panel.tscn").instance()
+var food_item_panel = preload("res://addons/inventory_manager/food_item_panel.tscn").instance()
 var edited_item = []
 
-@onready var inventory_slots = $VBoxContainer/HBoxContainer/GridContainer
-@onready var item_properties = $VBoxContainer/PanelContainer/VBoxContainer
-@onready var confirmed_label = $VBoxContainer/HBoxContainer/VBoxContainer/Label3
-@onready var confirm_button = $VBoxContainer/HBoxContainer/VBoxContainer/Button
-@onready var discard_button = $VBoxContainer/HBoxContainer/VBoxContainer/Button2
-@onready var valid_object_label = $VBoxContainer/Label
+onready var inventory_slots = $VBoxContainer/HBoxContainer/GridContainer
+onready var item_properties = $VBoxContainer/PanelContainer/VBoxContainer
+onready var confirmed_label = $VBoxContainer/HBoxContainer/VBoxContainer/Label3
+onready var confirm_button = $VBoxContainer/HBoxContainer/VBoxContainer/Button
+onready var discard_button = $VBoxContainer/HBoxContainer/VBoxContainer/Button2
+onready var valid_object_label = $VBoxContainer/Label
 
 
 func set_selection_contents(value) -> void:
@@ -44,11 +44,11 @@ func set_temp_contents(value) -> void:
 	temp_contents = value.duplicate(true)
 	var slots = inventory_slots.get_children()
 	for slot in slots:
-		slot.get_node("AnimatedSprite2D").play("Empty")
-	if !temp_contents.is_empty():
+		slot.get_node("AnimatedSprite").play("Empty")
+	if !temp_contents.empty():
 		var index := 0
 		for item in temp_contents:
-			var slot_animation = slots[index].get_node("AnimatedSprite2D")
+			var slot_animation = slots[index].get_node("AnimatedSprite")
 			slot_animation.rotation_degrees = 0 #reset from vertical teleporter switch
 			match item[0]:
 				0: #treasure
@@ -89,7 +89,7 @@ func set_temp_contents(value) -> void:
 			index += 1
 	else:
 		for slot in inventory_slots.get_children():
-			slot.get_node("AnimatedSprite2D").play("Empty")
+			slot.get_node("AnimatedSprite").play("Empty")
 	confirm_button.disabled = selection_contents == temp_contents and !item_properties.visible
 	discard_button.disabled = confirm_button.disabled 
 
@@ -99,14 +99,14 @@ func _ready() -> void:
 		set_temp_contents(selection_contents)
 		add_child(list)
 		list.visible = false
-		list.connect("selected", Callable(self, "_on_list_item_selected"))
+		list.connect("selected", self, "_on_list_item_selected")
 		for button in inventory_slots.get_children():
-			button.connect("button_down_self", Callable(self, "_get_selected_slot"))
-			button.get_popup().connect("id_pressed", Callable(self, "_on_menu_option_pressed"))
+			button.connect("button_down_self", self, "_get_selected_slot")
+			button.get_popup().connect("id_pressed", self, "_on_menu_option_pressed")
 		
 		for panel in [teleporter_panel, powerup_panel, end_item_panel, food_item_panel]:
 			item_properties.add_child(panel)
-			panel.connect("item_modified", Callable(self, "_on_item_modified"))
+			panel.connect("item_modified", self, "_on_item_modified")
 			panel.visible = false
 		confirm_button.disabled = true
 		discard_button.disabled = true
@@ -120,7 +120,7 @@ func toggle(x) -> void:
 	valid_selection = x
 	for slot in inventory_slots.get_children():
 		slot.disabled = !x
-		slot.get_node("AnimatedSprite2D").play("Empty")
+		slot.get_node("AnimatedSprite").play("Empty")
 	valid_object_label.text = "Valid Item" if x else "Invalid Item"
 
 

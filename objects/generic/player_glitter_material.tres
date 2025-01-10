@@ -1,6 +1,10 @@
-[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://cnl22m00vfaqb"]
+[gd_resource type="ParticlesMaterial" format=2]
 
 [resource]
-emission_shape = 3
-emission_box_extents = Vector3(16, 54, 1)
-gravity = Vector3(0, 0, 0)
+emission_shape = 2
+emission_box_extents = Vector3( 16, 54, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.05
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0

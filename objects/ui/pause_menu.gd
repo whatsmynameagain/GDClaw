@@ -3,7 +3,7 @@ extends Control
 signal pause_toggled
 
 
-#var _paused : bool = false
+var _paused : bool = false
 
 
 func _input(event) -> void:

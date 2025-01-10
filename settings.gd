@@ -1,3 +1,5 @@
+tool #(?)
+
 extends Node
 
 #mix of user settings and global variables

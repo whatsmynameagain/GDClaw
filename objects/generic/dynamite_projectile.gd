@@ -10,15 +10,15 @@ var impulse_applied := false
 var checked := false
 var orientation : int
 
-@onready var projectile_glitter = $ProjectileGlitter
-@onready var timer = $Timer
+onready var projectile_glitter = $ProjectileGlitter
+onready var timer = $Timer
 
-func _get_class() -> String:
+func get_class() -> String:
 	return "DynamiteProjectile"
 
 
-func _is_class(_name) -> bool:
-	return _name == "DynamiteProjectile" or super.is_class(name)
+func is_class(name) -> bool:
+	return name == "DynamiteProjectile" or .is_class(name)
 
 
 func _ready() -> void:
@@ -34,13 +34,13 @@ func _integrate_forces(state):
 	#note: haven't tested it yet but this will fail if the projectile hits a ceiling
 	#it'll have to be changed
 	if state.get_contact_count() > 0 and !checked:
-		var angle = rad_to_deg(state.get_contact_local_normal(0).angle())
+		var angle = rad2deg(state.get_contact_local_normal(0).angle())
 		if angle < -85 and angle > -95: 
 			checked = true
-			$AnimatedSprite2D.animation = "bounce"
+			$AnimatedSprite.animation = "bounce"
 
 
 func _on_Timer_timeout() -> void:
-	var explosion = preload("res://objects/generic/dynamite_explosion.tscn").instantiate()
+	var explosion = preload("res://objects/generic/dynamite_explosion.tscn").instance()
 	emit_signal("spawn_explosion", explosion, global_position)
 	queue_free()

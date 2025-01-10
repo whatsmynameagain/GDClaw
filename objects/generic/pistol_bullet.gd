@@ -5,12 +5,12 @@ class_name PistolBullet
 var queued := false #queued for despawning
 var orientation : int
 
-func _get_class() -> String:
+func get_class() -> String:
 	return "PistolBullet"
 
 
-func _is_class(_name) -> bool:
-	return _name == "PistolBullet" or super.is_class(name)
+func is_class(name) -> bool:
+	return name == "PistolBullet" or .is_class(name)
 
 
 func _ready():
@@ -30,11 +30,11 @@ func _on_Timer_timeout():
 
 func _on_body_entered(body):
 	if not queued: #to avoid double crate impacts
-		if body._is_class("Crate"):
+		if body.is_class("Crate"):
 			body.on_break()
 			queued = true
 			queue_free()
-		elif body._is_class("ExplosiveBarrel"):
+		elif body.is_class("ExplosiveBarrel"):
 			body.explode()
 			queued = true
 			queue_free()

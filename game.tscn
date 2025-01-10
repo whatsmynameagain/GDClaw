@@ -1,23 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://6lyc01hbugm4"]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource type="Script" path="res://game.gd" id="1"]
-[ext_resource type="PackedScene" path="res://objects/ui/pause_menu.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://objects/ui/circle_transition.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://hsielfcx14wg" path="res://objects/ui/teleporter_transition.tscn" id="4"]
+[ext_resource path="res://game.gd" type="Script" id=1]
+[ext_resource path="res://objects/ui/pause_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/ui/circle_transition.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/ui/teleporter_transition.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node"]
-process_mode = 2
-script = ExtResource("1")
-_level = "test_arena"
+pause_mode = 2
+script = ExtResource( 1 )
+music_enabled = false
 
 [node name="Level" type="Node2D" parent="."]
-process_mode = 1
+pause_mode = 1
 
 [node name="GameSounds" type="AudioStreamPlayer" parent="."]
-process_mode = 2
+pause_mode = 2
 
 [node name="GameSounds2" type="AudioStreamPlayer" parent="."]
-process_mode = 2
+pause_mode = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
@@ -25,18 +25,13 @@ layer = 2
 [node name="Transitions" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="TeleporterTransition" parent="Transitions" instance=ExtResource("4")]
+[node name="TeleporterTransition" parent="Transitions" instance=ExtResource( 4 )]
 visible = false
 
-[node name="CircleTransition" parent="Transitions" instance=ExtResource("3")]
-anchors_preset = 15
+[node name="CircleTransition" parent="Transitions" instance=ExtResource( 3 )]
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 layer = 4
 
-[node name="PauseMenu" parent="PauseMenu" instance=ExtResource("2")]
+[node name="PauseMenu" parent="PauseMenu" instance=ExtResource( 2 )]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2

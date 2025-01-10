@@ -1,4 +1,4 @@
-@tool
+tool
 extends Pickup
 
 class_name Teleporter
@@ -6,39 +6,39 @@ class_name Teleporter
 #maybe make the helper moveable with the mouse
 const animations = preload("res://animations/teleporter.tres")
 
-@export var type = "Generic": set = set_type
-@export var destination: Vector2 = Vector2.ZERO: set = set_destination
-@export var orientation = "Horizontal": set = set_orientation
+export(String, "Generic", "Boss") var type = "Generic" setget set_type
+export(Vector2) var destination = Vector2.ZERO setget set_destination
+export(String, "Horizontal", "Vertical") var orientation = "Horizontal" setget set_orientation
 
-@onready var destination_helper = $DestinationHelper
+onready var destination_helper = $DestinationHelper
 
 
-func _get_class() -> String:
+func get_class() -> String:
 	return "Teleporter"
 
 
-func _is_class(_name) -> bool:
-	return _name == "Teleporter" or super.is_class(name)
+func is_class(name) -> bool:
+	return name == "Teleporter" or .is_class(name)
 
 
 func set_destination(value) -> void:
 	destination = value
 	if is_instance_valid(destination_helper):
 		destination_helper.global_position = value
-	queue_redraw()
+	update()
 
 
 func set_type(value) ->void:
 	type = value
 	if type == "Boss":
 		one_use = false
-	queue_redraw()
-	notify_property_list_changed()
+	update()
+	property_list_changed_notify()
 
 
 func set_orientation(value) -> void:
 	orientation = value
-	queue_redraw()
+	update()
 
 
 func _ready() -> void:
@@ -60,7 +60,7 @@ func _ready() -> void:
 	
 	if !physics:
 		if static_glitter:
-			add_child(preload("res://objects/generic/glitter.tscn").instantiate()) 
+			add_child(preload("res://objects/generic/glitter.tscn").instance()) 
 			get_node("Glitter").play(glitter_color)
 	#if destination_helper != null:
 	#destination = destination_helper.global_position
@@ -73,7 +73,7 @@ func _process(_delta) -> void:
 	if is_instance_valid(destination_helper):
 		destination_helper.global_position = destination
 		
-	queue_redraw()
+	update()
 
 
 
@@ -81,8 +81,8 @@ func _draw() -> void:
 	if !Engine.is_editor_hint():
 		return
 		
-	if get_node("Animation").sprite_frames != animations:
-		get_node("Animation").sprite_frames = animations
+	if get_node("Animation").frames != animations:
+		get_node("Animation").frames = animations
 	if get_node("Animation").visible == false:
 		get_node("Animation").visible = true
 	
@@ -96,7 +96,7 @@ func _draw() -> void:
 	if !physics:
 		if static_glitter:
 			if !has_node("Glitter"):
-					add_child(preload("res://objects/generic/glitter.tscn").instantiate() ) 
+					add_child(preload("res://objects/generic/glitter.tscn").instance() ) 
 			get_node("Glitter").play(glitter_color)
 		else:
 			if has_node("Glitter"):
@@ -107,5 +107,5 @@ func _draw() -> void:
 func _on_pickup() -> void: 
 	if one_use: 
 		#give the game time to get the destination info before self destructing
-		await get_tree().create_timer(1.5).timeout
+		yield(get_tree().create_timer(1.5), "timeout")
 		queue_free()

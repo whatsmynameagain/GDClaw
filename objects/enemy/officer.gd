@@ -1,4 +1,4 @@
-@tool
+#tool
 
 extends Enemy
 
@@ -12,16 +12,15 @@ var _voice_lines = {
 	"idle_2" : preload("res://sounds/enemy/officer/officer_idle_2.ogg"),
 	"lift_1" : preload("res://sounds/enemy/officer/officer_lift_1.ogg"),
 	"lift_2" : preload("res://sounds/enemy/officer/officer_lift_2.ogg"),
-} 
 
-@onready var melee_hitbox = $MeleeHitbox
+} setget , _get_voice_lines
 
-func _is_class(_name) -> bool:
-	return _name == "Officer" or super._is_class(_name)
+onready var melee_hitbox = $MeleeHitbox
+
 
 func _get_voice_lines() -> Dictionary:
 	return _voice_lines
-
+	
 
 func _init() -> void:
 	type = "officer"

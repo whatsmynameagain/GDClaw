@@ -1,4 +1,4 @@
-@tool
+tool
 
 extends PopupPanel
 
@@ -84,13 +84,13 @@ var contents = [
 	#multiplayer stuff goes here (soon(tm))
 ]
 	
-@onready var item_list = $VBoxContainer/HBoxContainer/ScrollContainer/ItemList
+onready var item_list = $VBoxContainer/HBoxContainer/ScrollContainer/ItemList
 
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		#populate the list
-		if item_list.get_item_count() == 0 and !contents.is_empty():
+		if item_list.get_item_count() == 0 and !contents.empty():
 			var animation_set = treasure_animations
 			for item in contents:
 				match item[0]:
@@ -127,4 +127,4 @@ func _ready() -> void:
 func _on_item_selected(index) -> void:
 	emit_signal("selected", contents[index])
 	visible = false
-	item_list.deselect_all()
+	item_list.unselect_all()

@@ -5,7 +5,7 @@ class_name HUDElement
 
 var sprites = {}
 
-@onready var animation = get_node("AnimatedSprite2D")
+onready var animation = get_node("AnimatedSprite")
 
 
 func _ready() -> void:
@@ -17,4 +17,4 @@ func update_value(num : int) -> void:
 
 
 func update_position():
-	position.x = get_parent().size.x
+	position.x = get_parent().rect_size.x

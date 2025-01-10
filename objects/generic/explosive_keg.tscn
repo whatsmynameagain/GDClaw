@@ -6,7 +6,7 @@
 [ext_resource path="res://objects/generic/liftable_dummy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-size = Vector2( 48.3214, 54.9753 )
+extents = Vector2( 48.3214, 54.9753 )
 
 [node name="ExplosiveBarrel" instance=ExtResource( 4 )]
 collision_layer = 2048
@@ -15,7 +15,7 @@ script = ExtResource( 2 )
 [node name="AudioStreamPlayer2D" parent="." index="0"]
 stream = ExtResource( 3 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 frames = ExtResource( 1 )
 animation = "idle"
 offset = Vector2( 0, -24.764 )

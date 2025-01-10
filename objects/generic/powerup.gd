@@ -1,4 +1,4 @@
-@tool
+tool
 extends Pickup
 #script and scene inherit from Pickup
 
@@ -8,22 +8,22 @@ class_name Powerup
 
 const animations = preload("res://animations/powerup.tres")
 
-@export var type := Settings.Powerups.CATNIP: set = set_type
-@export var duration: int = 15
-@export var stack_duration: bool = true
+export(Settings.Powerups) var type := Settings.Powerups.CATNIP setget set_type
+export(int) var duration = 15
+export(bool) var stack_duration = true
 
 
-func _get_class() -> String:
+func get_class() -> String:
 	return "Powerup"
 
 
-func _is_class(_name : String ) -> bool:
-	return _name == "Powerup" or super._is_class(_name)
+func is_class(name) -> bool:
+	return name == "Powerup" or .is_class(name)
 
 
 func set_type(value) -> void:
 	type = value
-	queue_redraw()
+	update()
 
 
 func _ready() -> void:
@@ -34,7 +34,7 @@ func _ready() -> void:
 	animation.play(Settings.Powerups.keys()[type-1])
 	if !physics:
 		if static_glitter:
-			add_child(preload("res://objects/generic/glitter.tscn").instantiate()) 
+			add_child(preload("res://objects/generic/glitter.tscn").instance()) 
 			get_node("Glitter").play(glitter_color)
 
 
@@ -45,7 +45,7 @@ func _draw() -> void:
 	if !physics: 
 		if static_glitter:
 			if !has_node("Glitter"):
-				add_child(preload("res://objects/generic/glitter.tscn").instantiate()) 
+				add_child(preload("res://objects/generic/glitter.tscn").instance()) 
 			get_node("Glitter").play(glitter_color)
 		else:
 			if has_node("Glitter"):
@@ -60,5 +60,5 @@ func _on_pickup() -> void:
 			audio.stream = pickup_sounds["Ghost"]
 	audio.play()
 	if one_use:
-		audio.connect("finished", Callable(self, "queue_free")) #destroy once it's done playing the pickup sound
+		audio.connect("finished", self, "queue_free") #destroy once it's done playing the pickup sound
 		disable() #disable so that it can't be picked up again

@@ -1,4 +1,4 @@
-@tool
+tool
 extends PanelContainer
 
 
@@ -7,11 +7,11 @@ signal item_modified(property, value)
 var destination = Vector2.ZERO
 var use := false
 
-@onready var type_list = $VBoxContainer/HBoxContainer/CheckBox
-@onready var orientation_list = $VBoxContainer/HBoxContainer3/CheckBox
-@onready var destination_x = $VBoxContainer/HBoxContainer2/SpinBox
-@onready var destination_y = $VBoxContainer/HBoxContainer2/SpinBox2
-@onready var one_use = $VBoxContainer/HBoxContainer4/CheckBox
+onready var type_list = $VBoxContainer/HBoxContainer/CheckBox
+onready var orientation_list = $VBoxContainer/HBoxContainer3/CheckBox
+onready var destination_x = $VBoxContainer/HBoxContainer2/SpinBox
+onready var destination_y = $VBoxContainer/HBoxContainer2/SpinBox2
+onready var one_use = $VBoxContainer/HBoxContainer4/CheckBox
 
 
 func set_from_item(item) -> void:
@@ -19,7 +19,7 @@ func set_from_item(item) -> void:
 	orientation_list.selected = 0 if item[3] == "Horizontal" else 1
 	destination_x.value = item[2].x
 	destination_y.value = item[2].y
-	one_use.button_pressed = item[4]
+	one_use.pressed = item[4]
 
 
 func _on_type_selected(id: int) -> void:

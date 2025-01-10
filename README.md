@@ -11,6 +11,6 @@ Project in hiatus.
 
 ## Latest update 
 
-Experimentally added resources (sprites, sounds, etc) to the repository for (hopefully) easier setup.
+Added a 'godot3' branch that is mostly playable (aside from some bugs introduced when updating to Godot 3.x versions) until the main branch (Godot 4) is playable.
 
 

@@ -1,10 +1,8 @@
-@tool
-@icon("res://sprites/objects/crate/1/crate001.png")
+tool
 
 extends RigidBody2D
 
-class_name Crate
-
+class_name Crate, "res://sprites/objects/crate/1/crate001.png"
 
 #-collision positions are not perfect
 #-small issue with overlapping sprite areas when trying to place crates on the map
@@ -19,28 +17,28 @@ signal drop_loot(spawner, pos, z, only, contents)
 const BreakSoundA = preload("res://sounds/crate/crate_break.ogg")
 const BreakSoundB = preload("res://sounds/crate/crate_break_2.ogg")
 
-@export var z_position = "Front": set = set_z_position
-@export var contents : Array[Array]: set = set_contents
+export(String, "Front", "Back", "Stack") var z_position = "Front" setget set_z_position
+export(Array, Array) var contents setget set_contents #can be edited from the export var or from the plugin
 
 var collision
 var only_stack := true 
-var tool_texture : Texture2D
+var tool_texture : Texture
 var broken := false
 var sub_crates = []
 
-@onready var animation = $AnimatedSprite2D
-@onready var sound = $AudioStreamPlayer2D
-@onready var collision_front = $CollisionFront
-@onready var collision_stack = $CollisionStack
-@onready var collision_back = $CollisionBack
+onready var animation = $AnimatedSprite
+onready var sound = $AudioStreamPlayer2D
+onready var collision_front = $CollisionFront
+onready var collision_stack = $CollisionStack
+onready var collision_back = $CollisionBack
 
 
-func _get_class() -> String:
+func get_class() -> String:
 	return "Crate"
 
 
-func _is_class(_name) -> bool:
-	return _name == "Crate" or super.is_class(_name)
+func is_class(_name) -> bool:
+	return _name == "Crate" or .is_class(_name)
 
 
 func set_z_position(value) -> void:
@@ -53,15 +51,15 @@ func set_z_position(value) -> void:
 				"Back", "Stack_Back":
 					z_index = Settings.BG_OBJECT_Z
 		call_deferred("set_collisions")
-		queue_redraw()
+		update()
 
 
 func set_contents(value) -> void:
 	contents = value
 	if Engine.is_editor_hint(): 
 		call_deferred("toggle_sprite_visibility", !contents.size() > 0) #I hate this
-	queue_redraw()
-	update_configuration_warnings()
+	update()
+	update_configuration_warning()
 
 
 func _ready() -> void:
@@ -80,7 +78,7 @@ func _ready() -> void:
 		if contents.size() > 1:
 			call_deferred("spawn_sub_crates")
 	else:
-		tool_texture = $AnimatedSprite2D.sprite_frames.get_frame_texture("Idle", 0) 
+		tool_texture = $AnimatedSprite.frames.get_frame("Idle", 0) 
 
 
 func toggle_sprite_visibility(x : bool) -> void:
@@ -111,7 +109,7 @@ func set_collisions() -> void:
 func spawn_sub_crates() -> void:
 	only_stack = false
 	for x in range(1, contents.size()):
-		var sub_crate = load("res://objects/generic/crate.tscn").instantiate()
+		var sub_crate = load("res://objects/generic/crate.tscn").instance()
 		sub_crate.contents = [contents[x].duplicate(true)]
 		sub_crate.only_stack = false
 		sub_crate.z_position = "Stack"
@@ -134,12 +132,12 @@ func on_break() -> void:
 	collision.call_deferred("set_disabled", true)
 	gravity_scale = 0
 	linear_velocity = Vector2.ZERO
-	if !animation.is_connected("animation_finished", Callable(self, "queue_free")):
-		animation.connect("animation_finished", Callable(self, "queue_free"))
+	if !animation.is_connected("animation_finished", self, "queue_free"):
+		animation.connect("animation_finished", self, "queue_free")
 	animation.play("Break")
 	sound.play()
 	#having a pool of instantiated spawners could improve performance a bit here
-	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instantiate()
+	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instance()
 	emit_signal("drop_loot", spawner, global_position, z_index+1, only_stack, contents)
 
 
@@ -149,5 +147,5 @@ func _draw() -> void:
 			draw_texture(tool_texture, Vector2(-69, -58 -42*x)) #weird offset because of the texture's empty space
 
 
-func _get_configuration_warnings() -> PackedStringArray:
-	return ["Contents not set, crate is empty."] if contents.is_empty() else []
+func _get_configuration_warning() -> String:
+	return "Contents not set, crate is empty." if contents.empty() else ""

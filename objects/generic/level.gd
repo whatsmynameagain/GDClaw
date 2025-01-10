@@ -5,8 +5,8 @@ class_name Level
 enum Death_Types {SPIKES = Settings.Damage_Types.SPIKES, 
 		LIQUID = Settings.Damage_Types.LIQUID}
 
-@export var GRAVITY: int = 3200 #less than 3k
-@export var death_type: Death_Types = Death_Types.SPIKES
+export(int) var GRAVITY = 3200 #less than 3k
+export(Death_Types) var death_type = Death_Types.SPIKES
 
 var music = preload("res://music/la_roca.ogg") #default
 var music_enabled = true
@@ -32,17 +32,17 @@ var treasure = {
 	"Skull" : 0
 }
 
-@onready var spawn_point = get_node("SpawnPoint")
-@onready var level_sounds = $LevelSounds
-@onready var music_player = $MusicPlayer
-@onready var crates = $Objects/Crates
-@onready var projectiles = $Objects/Projectiles
-@onready var death_tiles = $Objects/DeathTileColliders
-@onready var tile_map = $TileMap
+onready var spawn_point = get_node("SpawnPoint")
+onready var level_sounds = $LevelSounds
+onready var music_player = $MusicPlayer
+onready var crates = $Objects/Crates
+onready var projectiles = $Objects/Projectiles
+onready var death_tiles = $Objects/DeathTileColliders
+onready var tile_map = $TileMap
 
 
 func _ready() -> void:
-	#add_objects() #27.5 ms run time avg. #add ladder and deathTile objects based on the tilenames arrays
+	add_objects() #27.5 ms run time avg. #add ladder and deathTile objects based on the tilenames arrays
 	#following the original game logic, only one type of deathTile can be active in a level (I think)
 	for object in death_tiles.get_children():
 		if object.death_type == 0: #"SET_BY_LEVEL" in deathTile
@@ -51,15 +51,15 @@ func _ready() -> void:
 	
 	#signal connections and counting
 	for trigger in $Objects/AudioTriggers.get_children():
-		trigger.connect("level_sound_trigger", Callable(self, "_on_audio_trigger"))
+		trigger.connect("level_sound_trigger", self, "_on_audio_trigger")
 	#to do: get level treasure count
 	for pickup in $Objects/Pickups.get_children():
 		if pickup.is_class("Treasure"):
-			pickup.connect("spawn_value", Callable(self, "_on_spawn_value"))
+			pickup.connect("spawn_value", self, "_on_spawn_value")
 			#add to treasure list count
 	for crate in $Objects/Crates.get_children():
-		crate.connect("spawn_subcrates", Callable(self, "_on_spawn_subcrates"))
-		crate.connect("drop_loot", Callable(self, "_on_spawn_spawner"))
+		crate.connect("spawn_subcrates", self, "_on_spawn_subcrates")
+		crate.connect("drop_loot", self, "_on_spawn_spawner")
 		for item in crate.contents:
 			if item[0] == 0:
 				#add to treasure list count
@@ -67,14 +67,14 @@ func _ready() -> void:
 	for enemy in $Objects/Enemies.get_children():
 		enemy.gravity = GRAVITY
 		#enemy.connect("projectile_fired", self, _on_projectile_fired") #soon(tm)
-		enemy.connect("drop_loot", Callable(self, "_on_spawn_spawner"))
-		enemy.connect("killed_by_player", Callable(self, "_on_enemy_kill_by_player"))
+		enemy.connect("drop_loot", self,  "_on_spawn_spawner")
+		enemy.connect("killed_by_player", self, "_on_enemy_kill_by_player")
 		for item in enemy.contents:
 			if item[0] == 0:
 				#add to treasure list count
 				pass
 	#----------
-	player = preload("res://player.tscn").instantiate()
+	player = preload("res://player.tscn").instance()
 	level_sounds.set_volume_db(Settings.EFFECTS_VOLUME)
 	music_player.set_volume_db(Settings.MUSIC_VOLUME)
 	music_player.stream = music
@@ -82,9 +82,9 @@ func _ready() -> void:
 		music_player.play()
 		
 	add_child(player)
-	player.connect("projectile_fired", Callable(self, "_on_projectile_fired"))
-	player.connect("spawn_dummy", Callable(self, "_on_spawn_dummy"))
-	player.connect("respawn", Callable(self, "_on_player_respawn"))
+	player.connect("projectile_fired", self, "_on_projectile_fired")
+	player.connect("spawn_dummy", self, "_on_spawn_dummy")
+	player.connect("respawn", self, "_on_player_respawn")
 	player.gravity = GRAVITY
 	if is_instance_valid(spawn_point):
 		player.global_position = spawn_point.global_position #or both local?
@@ -95,8 +95,6 @@ func _ready() -> void:
 func add_objects() -> void:
 	#assumes all objects are properly constructed (start -> end) and tiles are properly named
 	#with the name variables updated
-	pass
-	"""
 	for type in ["ladder", "death_tile"]:
 		var start_names := []
 		var mid_names := []
@@ -123,7 +121,6 @@ func add_objects() -> void:
 				offset = Vector2(0,46)
 				bool_type = false
 		
-		#*_names are assigned in scripts from levels that inherit from this script
 		var top_ids := []
 		for _name in start_names:
 			top_ids.append(tile_map.tile_set.find_tile_by_name(_name))
@@ -138,9 +135,9 @@ func add_objects() -> void:
 			starts += tile_map.get_used_cells_by_id(id)
 		
 		for x in range(starts.size()):
-			var new_object = load(resource_string).instantiate()
+			var new_object = load(resource_string).instance()
 			get_node(node_name).add_child(new_object)
-			new_object.global_position = tile_map.map_to_local(starts[x]) + offset
+			new_object.global_position = tile_map.map_to_world(starts[x]) + offset
 			var size := 1
 			var warned := false
 			var _position := (Vector2(starts[x].x, starts[x].y + size) if bool_type
@@ -160,7 +157,7 @@ func add_objects() -> void:
 					assert(size <= Settings.MAX_OBJECT_SIZE)
 				_position += Vector2(0, 1) if bool_type else Vector2(1, 0)
 			new_object.size = size if bool_type else size+1
-"""
+
 
 #called when the player respawns or loads a save
 func init(_score : int = 0, _player_health := 100, _player_ammo := 10, _player_magic := 5, 
@@ -204,7 +201,7 @@ func _on_projectile_fired(projectile, pos, orientation, _rotation, impulse) -> v
 	projectile.orientation = orientation
 	projectiles.add_child(projectile)
 	if projectile.has_signal("spawn_explosion"): 
-		projectile.connect("spawn_explosion", Callable(self, "_on_spawn_explosion"))
+		projectile.connect("spawn_explosion", self, "_on_spawn_explosion")
 	projectile.global_position = pos
 	if orientation != null: 
 		projectile.linear_velocity *= orientation
@@ -224,7 +221,7 @@ func _on_spawn_subcrates(sub_crates, pos, z) -> void:
 	var x := 1
 	for crate in sub_crates:
 		$Objects/Crates.add_child(crate)
-		crate.connect("drop_loot", Callable(self, "_on_spawn_spawner"))
+		crate.connect("drop_loot", self, "_on_spawn_spawner")
 		crate.global_position = Vector2(pos.x, pos.y - 42 * x)
 		crate.z_index = z + x
 		x += 1
@@ -237,7 +234,7 @@ func _on_spawn_value(value, pos) -> void:
 
 func _on_spawn_spawner(spawner, pos, z, only_stack, contents) -> void:
 	add_child(spawner)
-	spawner.connect("pickup_spawned", Callable(self, "_on_pickup_spawned"))
+	spawner.connect("pickup_spawned", self, "_on_pickup_spawned")
 	spawner.global_position = pos
 	spawner.z_index = z + 3
 	if only_stack: 
@@ -251,14 +248,14 @@ func _on_spawn_spawner(spawner, pos, z, only_stack, contents) -> void:
 func _on_pickup_spawned(pickup, pos, z) -> void:
 	add_child(pickup)
 	if pickup.is_class("Treasure"):
-		pickup.connect("spawn_value", Callable(self, "_on_spawn_value"))
+		pickup.connect("spawn_value", self, "_on_spawn_value")
 	pickup.global_position = pos
 	pickup.z_index = z
 
 
 func _on_spawn_dummy(dummy, pos, orientation) -> void:
 	add_child(dummy)
-	dummy.get_node("Sprite2D").flip_h = orientation == -1
+	dummy.get_node("Sprite").flip_h = orientation == -1
 	dummy.global_position = pos
 
 

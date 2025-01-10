@@ -3,7 +3,7 @@ extends Node
 
 #manages the sprites for a given num value (showing 0s depending on how many digits there are on the counter)
 #used for hud elements and booty scene scores
-func update_sprites(value : int, digits : int, base : Node2D, sprites : Dictionary) -> void:
+static func update_sprites(value : int, digits : int, base : Node2D, sprites : Dictionary) -> void:
 	var element_array = base.get_node("Sprites").get_children()
 	if str(value).length() < digits: #if there are less digits than the amount of sprites 
 		for i in range(element_array.size() - str(value).length()):
@@ -20,7 +20,7 @@ func update_sprites(value : int, digits : int, base : Node2D, sprites : Dictiona
 #can't set the type of the sound_player argument to AudioStreamPlayer because there's also the 2D version
 #---
 #set_stream() is the slowest part of this by far, now it checks if it's already loaded
-func decide_player(sound_players, stream) -> void:
+static func decide_player(sound_players, stream) -> void:
 	if sound_players is Array:
 		for sound_player in sound_players:
 			assert(sound_player is AudioStreamPlayer or sound_player is AudioStreamPlayer2D)
@@ -37,7 +37,7 @@ func decide_player(sound_players, stream) -> void:
 					else:
 						temp_player = AudioStreamPlayer2D.new()
 					sound_player.owner.add_child(temp_player)
-					temp_player.connect("finished", Callable(temp_player, "queue_free"))
+					temp_player.connect("finished", temp_player, "queue_free")
 					temp_player.set_volume_db(Settings.EFFECTS_VOLUME)
 					temp_player.set_stream(stream) 
 					temp_player.play()
@@ -97,8 +97,8 @@ func rect_center_to_corner(rect : Rect2) -> Rect2:
 
 #returns the four position points of a rectangleshape2d
 func rect_2d_points(rect : RectangleShape2D, pos : Vector2) -> Dictionary:
-	var l = pos.x - rect.size.x
-	var r = pos.x + rect.size.x
-	var u = pos.y - rect.size.y
-	var d = pos.y + rect.size.y
+	var l = pos.x - rect.extents.x
+	var r = pos.x + rect.extents.x
+	var u = pos.y - rect.extents.y
+	var d = pos.y + rect.extents.y
 	return {"l":float(l), "u":float(u), "r":float(r),"d":float(d)}

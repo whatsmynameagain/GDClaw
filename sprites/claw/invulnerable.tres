@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d1uutqc5y2a80"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource type="Shader" path="res://sprites/claw/invulnerable.gdshader" id="1"]
+[ext_resource path="res://sprites/claw/invulnerable.shader" type="Shader" id=1]
 
 [resource]
-shader = ExtResource("1")
-shader_parameter/switcher = null
+shader = ExtResource( 1 )
+shader_param/switcher = null

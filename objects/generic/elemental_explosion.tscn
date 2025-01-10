@@ -2,7 +2,7 @@
 
 [ext_resource path="res://animations/elemental_explosions.tres" type="SpriteFrames" id=1]
 
-[node name="elemental_explosion" type="AnimatedSprite2D"]
+[node name="elemental_explosion" type="AnimatedSprite"]
 frames = ExtResource( 1 )
 animation = "lightning"
 frame = 4

@@ -1,8 +1,6 @@
-@icon("res://sprites/objects/pickup/restore/extra_life/frame001.png")
+extends KinematicBody2D
 
-extends CharacterBody2D
-
-class_name Player 
+class_name Player, "res://sprites/objects/pickup/restore/extra_life/frame001.png"
 
 signal powerup_timer_end
 signal ranged_changed(_type, _ammo)
@@ -146,16 +144,16 @@ const Dynamite_Projectile = preload("res://objects/generic/dynamite_projectile.t
 const Player_Glitter_Material = preload("res://objects/generic/player_glitter_material.tres")
 
 
-@export var health: int = 100: set = set_health
-@export var pistol: int = 10: set = set_pistol
-@export var magic: int = 5: set = set_magic
-@export var dynamite: int = 3: set = set_dynamite
-@export var lives: int = 3: set = set_lives
+export(int) var health = 100 setget set_health
+export(int) var pistol = 10 setget set_pistol
+export(int) var magic = 5 setget set_magic
+export(int) var dynamite = 3 setget set_dynamite
+export(int) var lives = 3 setget set_lives
 
 #---normal variables---
 var gravity := 42.0 # or set by the level init
 var climb_speed := CLIMB
-var show_labels := true #false
+var show_labels := false
 var damage_cooldown := 0.0
 var active_state #state
 var previous_state #state
@@ -169,8 +167,8 @@ var on_floor := false
 var falling := false
 var above_ladder_top := false
 var ladder_x_pos := 0.0
-var orientation = Orientations.RIGHT: set = set_orientation
-var powerup = Powerup_enum.NONE: set = set_powerup
+var orientation = Orientations.RIGHT setget set_orientation
+var powerup = Powerup_enum.NONE setget set_powerup
 var motion : Vector2
 var action_time := 0.0
 var floor_velocity := Vector2.ZERO
@@ -197,77 +195,75 @@ var overlap_local : Rect2 #for showing overlaps between hitboxes
 var knockback = KnockBackSide.NONE
 var lifting := false
 var lifted_object
-var hit_effect = preload("res://objects/generic/hit_effect.tscn").instantiate()
+var hit_effect = preload("res://objects/generic/hit_effect.tscn").instance()
 var snap := Vector2.ZERO
 var powerup_time := 0
 
 
 #nodes
-@onready var animation = $Animation
-@onready var edge_check_m = $EdgeCheckM
-@onready var edge_check_l= $EdgeCheckL
-@onready var edge_check_r = $EdgeCheckR
-@onready var wall_check = $WallCheck
-@onready var floor_check = $FloorCheck
-@onready var collision_standing = $CollisionStanding
-@onready var collision_crouch = $CollisionCrouch
-@onready var area_check = $AreaCheck
-@onready var attack_air = $AttackAreas/AttackAir
-@onready var attack_crouch = $AttackAreas/AttackCrouch
-@onready var attack_hook = $AttackAreas/AttackHook
-@onready var attack_kick = $AttackAreas/AttackKick
-@onready var attack_punch = $AttackAreas/AttackPunch
-@onready var attack_sword = $AttackAreas/AttackSword
-@onready var player_sounds = $PlayerSounds
-@onready var player_sounds_2 = $PlayerSounds2
-@onready var player_sounds_3 = $PlayerSounds3
-@onready var player_voice = $PlayerVoice
-@onready var attack_areas = $AttackAreas
-@onready var player_glitter = $PlayerGlitter
-@onready var invuln_switcher = $InvulnSwitcher
-@onready var exclamation = $Exclamation
-@onready var powerup_timer = $PowerupTimer
-@onready var object_range_check = $ObjectRangeCheck
-@onready var melee_range_check = $MeleeRangeCheck
-@onready var liftable_check = $LiftableCheck
-@onready var projectile_spawns = $ProjectileSpawns
-@onready var lift_positions = $LiftPositions
-@onready var lift_position_1 = $LiftPositions/Lift1
-@onready var lift_position_2 = $LiftPositions/Lift2
-@onready var lift_position_charge = $LiftPositions/Charge
-@onready var camera = $Camera2D
-@onready var attack_timer = $AttackTimer
-@onready var state_list = {
-	"Climb": $State/Climb,
+onready var animation = $Animation
+onready var edge_check_m = $EdgeCheckM
+onready var edge_check_l= $EdgeCheckL
+onready var edge_check_r = $EdgeCheckR
+onready var wall_check = $WallCheck
+onready var floor_check = $FloorCheck
+onready var collision_standing = $CollisionStanding
+onready var collision_crouch = $CollisionCrouch
+onready var area_check = $AreaCheck
+onready var attack_air = $AttackAreas/AttackAir
+onready var attack_crouch = $AttackAreas/AttackCrouch
+onready var attack_hook = $AttackAreas/AttackHook
+onready var attack_kick = $AttackAreas/AttackKick
+onready var attack_punch = $AttackAreas/AttackPunch
+onready var attack_sword = $AttackAreas/AttackSword
+onready var player_sounds = $PlayerSounds
+onready var player_sounds_2 = $PlayerSounds2
+onready var player_sounds_3 = $PlayerSounds3
+onready var player_voice = $PlayerVoice
+onready var attack_areas = $AttackAreas
+onready var player_glitter = $PlayerGlitter
+onready var invuln_switcher = $InvulnSwitcher
+onready var exclamation = $Exclamation
+onready var powerup_timer = $PowerupTimer
+onready var object_range_check = $ObjectRangeCheck
+onready var melee_range_check = $MeleeRangeCheck
+onready var liftable_check = $LiftableCheck
+onready var projectile_spawns = $ProjectileSpawns
+onready var lift_positions = $LiftPositions
+onready var lift_position_1 = $LiftPositions/Lift1
+onready var lift_position_2 = $LiftPositions/Lift2
+onready var lift_position_charge = $LiftPositions/Charge
+onready var camera = $Camera2D
+onready var state_list = {
 	"Crouch" : $State/Crouch,
 	"Crouch_Attack" : $State/Crouch_Attack,
 	"Crouch_Pistol" : $State/Crouch_Pistol,
 	"Crouch_Magic" : $State/Crouch_Magic,
 	"Crouch_Dynamite" : $State/Crouch_Dynamite,
-	"Damage" : $State/Damage,
-	"Death_Damage" : $State/Death_Damage,
-	"Death_Spikes" : $State/Death_Spikes,
 	"Idle" : $State/Idle,
 	"Idle_Attack" : $State/Idle_Attack,
-	"Idle_Bored" : $State/Idle_Bored,
 	"Idle_Pistol" : $State/Idle_Pistol,
 	"Idle_Magic" : $State/Idle_Magic,
 	"Idle_Dynamite" :$State/Idle_Dynamite,
+	"Death_Damage" : $State/Death_Damage,
+	"Death_Spikes" : $State/Death_Spikes,
 	"Jump" : $State/Jump,
+	"Move" : $State/Move,
 	"Land" : $State/Land,
 	"Lift" : $State/Lift,
-	"Move" : $State/Move,
-	"Noclip": $State/Noclip,
 	"Stun" : $State/Stun,
+	"Damage" : $State/Damage,
+	"Climb": $State/Climb,
+	"Noclip": $State/Noclip,
 	}
 
 #--------------OVERRIDES---------------
-func _get_class() -> String:
+func get_class() -> String:
 	return "Player"
 
 
-func _is_class(_name) -> bool:
-	return _name == "Player" or super.is_class(name)
+func is_class(name) -> bool:
+	return name == "Player" or .is_class(name)
 
 
 # -------------SETTERS/GETTERS-------------
@@ -320,14 +316,13 @@ func _ready() -> void:
 	player_sounds_2.set_volume_db(Settings.EFFECTS_VOLUME)
 	player_sounds_3.set_volume_db(Settings.EFFECTS_VOLUME)
 	player_voice.set_volume_db(Settings.EFFECTS_VOLUME)
-		
 	for state_node in $State.get_children():
-		if state_node._is_class("State"):
-			state_node.connect("finished", Callable(self, "_change_state"))
+		if state_node.is_class("State"):
+			state_node.connect("finished", self, "_change_state")
 	active_state = state_list["Idle"]
 	previous_state = state_list["Idle"]
-	invuln_switcher.connect("timeout", Callable(self, "_on_color_switch"))
-	player_voice.connect("finished", Callable(self, "_on_dialogue_end"))
+	invuln_switcher.connect("timeout", self, "_on_color_switch")
+	player_voice.connect("finished", self, "_on_dialogue_end")
 	add_child(hit_effect)
 	add_to_group("player")
 	player_glitter.material = Player_Glitter_Material
@@ -351,7 +346,7 @@ func _process(delta) -> void:
 		damage_cooldown = max(damage_cooldown - delta, 0)
 		
 	if on_elevator:
-		max_floor_y_velocity = max(max_floor_y_velocity, abs(get_floor_normal().y))
+		max_floor_y_velocity = max(max_floor_y_velocity, abs(get_floor_velocity().y))
 	else:
 		max_floor_y_velocity = 0
 
@@ -373,22 +368,16 @@ func _physics_process(delta):
 					and active_state.name != "Jump") else motion.y
 	
 	snap = Vector2.DOWN * 4 if !active_state.name in ["Jump", "Climb"] else Vector2.ZERO
-	set_velocity(motion)
-	# TODOConverter40 looks that snap in Godot 4.0 is float, not vector like in Godot 3 - previous value `snap`
-	set_up_direction(Vector2.UP)
-	move_and_slide()
-	motion = velocity
+	motion = move_and_slide_with_snap(motion, snap, Vector2.UP)
 	
 	#temp (?) fix for jiggling physicsbodies when moving laterally
 	#(seems to be caused by small changes in position.y float values after calling 
 	#move_and_slide functions)
 	
-	for x in get_slide_collision_count():
+	for x in get_slide_count():
 		var collision = get_slide_collision(x)
-		if ( collision.get_collider().has_method("_is_class") and 
-				collision.get_collider()._is_class("CrumblingPlatform") and 
-				!collision.get_collider().activated):
-			collision.get_collider().activate()
+		if collision.collider.is_class("CrumblingPlatform") and !collision.collider.activated:
+			collision.collider.activate()
 
 	#this doesn't happen in the original, running against a wall still charges the boost
 	#I guess that makes sense for that secret area at the beginning of level 11
@@ -399,7 +388,7 @@ func _physics_process(delta):
 	
 	on_floor = is_on_floor()
 	if on_floor:
-		floor_velocity = get_floor_normal() 
+		floor_velocity = get_floor_velocity() 
 	else:
 		floor_velocity = Vector2.ZERO
 	
@@ -473,7 +462,7 @@ func get_run_speed() -> float:
 func use_pickup(pickup : Pickup) -> void:
 	pickup._on_pickup() #do stuff defined in the pickup
 	#increase values
-	if pickup._is_class("Restore"):
+	if pickup.is_class("Restore"):
 		match pickup.type:
 			"Ammo":
 				var x
@@ -522,7 +511,7 @@ func use_pickup(pickup : Pickup) -> void:
 				emit_signal("lives_updated", lives)
 			
 	#set the powerup and the timer
-	elif pickup._is_class("Powerup"):
+	elif pickup.is_class("Powerup"):
 		if pickup.type in [Powerup_enum.CATNIP, 2] and powerup != Powerup_enum.CATNIP: #2 = catnip_red
 			climb_speed = CLIMB_CATNIP
 			run_boost_charge = 0.0
@@ -569,7 +558,7 @@ func change_ammo() -> void:
 func flip_checks() -> void:
 	for elem in attack_areas.get_children() + projectile_spawns.get_children() + lift_positions.get_children():
 		elem.position.x *= (-1) #move to the opposite side
-		elem.rotation_degrees += 180 if !elem.is_class("Marker2D") else 0 #rotate if it's not a projectile spawn point
+		elem.rotation_degrees += 180 if !elem.is_class("Position2D") else 0 #rotate if it's not a projectile spawn point
 		#^ maybe it's faster to just let it rotate the points, dunno
 	object_range_check.position.x *= (-1)
 	melee_range_check.position.x *= (-1)
@@ -627,7 +616,7 @@ func on_dynamite_prepared() -> void:
 #check if the original has 2d sound for the sword projectile
 func spawn_sword_projectile(stance : int) -> void:
 	if powerup in [Powerup_enum.FIRE_SWORD, Powerup_enum.ICE_SWORD, Powerup_enum.LIGHTNING_SWORD]:
-		var projectile = Sword_Projectile.instantiate()
+		var projectile = Sword_Projectile.instance()
 		projectile.type = powerup
 		var id = 12 if projectile.type == Powerup_enum.FIRE_SWORD else 13 if projectile.type == Powerup_enum.ICE_SWORD else 14
 		Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[id]) 
@@ -641,7 +630,7 @@ func spawn_sword_projectile(stance : int) -> void:
 
 
 func spawn_pistol_projectile(stance : int) -> void:
-	var projectile = Pistol_Bullet.instantiate()
+	var projectile = Pistol_Bullet.instance()
 	var node_name = "PistolStanding" if stance == 1 else "PistolCrouch" if stance == 2 else "PistolAir"
 	Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[22]) 
 	emit_signal("projectile_fired", projectile,
@@ -652,7 +641,7 @@ func spawn_pistol_projectile(stance : int) -> void:
 
 
 func spawn_magic_projectile(stance : int) -> void:
-	var projectile = Magic_Projectile.instantiate()
+	var projectile = Magic_Projectile.instance()
 	var node_name = "MagicClawStanding" if stance == 1 else "MagicClawCrouch" if stance == 2 else "MagicClawAir"
 	var _rotation = 180 if orientation == Orientations.LEFT else 0
 	Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[23]) 
@@ -664,7 +653,7 @@ func spawn_magic_projectile(stance : int) -> void:
 
 
 func spawn_dynamite_projectile(stance : int, charge : Vector2) -> void:
-	var projectile = Dynamite_Projectile.instantiate()
+	var projectile = Dynamite_Projectile.instance()
 	var node_name = "DynamiteStanding" if stance == 1 else "DynamiteCrouch" if stance == 2 else "DynamiteAir"
 	Utils.decide_player([player_sounds, player_sounds_2, player_sounds_3], action_sounds[7]) 
 	emit_signal("projectile_fired", projectile,
@@ -721,7 +710,6 @@ func _change_state(state_name) -> void:
 
 func _on_area_entered(area) -> void:
 	var area_owner = area.get_parent()
-	"""
 	match area.name:
 		"LadderBody":
 			on_ladder = true
@@ -730,20 +718,19 @@ func _on_area_entered(area) -> void:
 			on_ladder_top = true
 			ladder_x_pos = area.global_position.x
 		_:
-	"""
-	if (area_owner._is_class("Pickup") and !area_owner._is_class("Teleporter")):
-		#don't use health items if health is full
-		if !(health == 100 and (area_owner.type in ["Health", "Health_Food"])):
-			use_pickup(area.get_parent())
-		if area_owner._is_class("Treasure"):
-			emit_signal("treasure_collected", area_owner)
-		elif area_owner._is_class("EndItem"):
-			emit_signal("end_item_collected")
-	elif area_owner._is_class("Teleporter"):
-		use_pickup(area.get_parent())
-		emit_signal("teleporter_taken", area_owner)
-	else:
-		print("No action for this area '%s'" % area.name)
+			if (area_owner.is_class("Pickup") and !area_owner.is_class("Teleporter")):
+				#don't use health items if health is full
+				if !(health == 100 and (area_owner.type in ["Health", "Health_Food"])):
+					use_pickup(area.get_parent())
+				if area_owner.is_class("Treasure"):
+					emit_signal("treasure_collected", area_owner)
+				elif area_owner.is_class("EndItem"):
+					emit_signal("end_item_collected")
+			elif area_owner.is_class("Teleporter"):
+				use_pickup(area.get_parent())
+				emit_signal("teleporter_taken", area_owner)
+			else:
+				print("No action for this area '%s'" % area.name)
 
 
 func _on_area_exited(area) -> void:
@@ -814,45 +801,45 @@ func _on_body_exited(body) -> void:
 #signals from ObjectRangeCheck, if there's a crate or enemy in swipe range (also barrels, the original does that)
 func _on_longrange_body_entered(body) -> void:
 	objects_in_range.append(body)
-	object_in_swipe_range = !objects_in_range.is_empty()
+	object_in_swipe_range = !objects_in_range.empty()
 
 
 func _on_longrange_body_exited(body) -> void:
 	objects_in_range.erase(body)
-	object_in_swipe_range = !objects_in_range.is_empty()
+	object_in_swipe_range = !objects_in_range.empty()
 
 
 #signals from MeleeRangeCheck, if there's an enemy in close melee range (punch, kick, hook)
 func _on_closerange_body_entered(body) -> void:
-	if body._is_class("Crate"):
+	if body.is_class("Crate"):
 		if !enemy_in_close_range:
-			crates_in_close_range = !crates_in_range.is_empty()
+			crates_in_close_range = !crates_in_range.empty()
 	else:
 		enemies_in_range.append(body)
-		enemy_in_close_range = !enemies_in_range.is_empty()
+		enemy_in_close_range = !enemies_in_range.empty()
 
 
 func _on_closerange_body_exited(body) -> void:
-	if body._is_class("Crate"):
+	if body.is_class("Crate"):
 		crates_in_range.erase(body)
-		crates_in_close_range = !crates_in_range.is_empty()
+		crates_in_close_range = !crates_in_range.empty()
 	else:
 		enemies_in_range.erase(body)
-		enemy_in_close_range = !enemies_in_range.is_empty()
+		enemy_in_close_range = !enemies_in_range.empty()
 
 
 func _on_liftablecheck_body_entered(body: Node) -> void:
 	#enemies also can't be lifted in certain states (while attacking at least)
-	if body._is_class("Enemy") and body.throwable: 
+	if body.is_class("Enemy") and body.throwable: 
 		liftables_in_range.append(body)
 	elif !body.exploding and !body.lifted:
 		liftables_in_range.append(body)
-	liftable_in_close_range = !liftables_in_range.is_empty()
+	liftable_in_close_range = !liftables_in_range.empty()
 
 
 func _on_liftablecheck_body_exited(body: Node) -> void:
 	liftables_in_range.erase(body)
-	liftable_in_close_range = !liftables_in_range.is_empty()
+	liftable_in_close_range = !liftables_in_range.empty()
 
 
 #-1 seconds on counter
@@ -871,7 +858,7 @@ func _on_powerup_timer_end() -> void:
 func _on_color_switch() -> void:
 	current_switcher += 1
 	current_switcher %= 5
-	animation.material.set_shader_parameter("switcher", current_switcher)
+	animation.material.set_shader_param("switcher", current_switcher)
 
 
 #called by the player_sounds finished signal to automatically hide the thingy when the dialogue line ends
@@ -895,7 +882,7 @@ func _on_check_enemy_hit(body) -> void:
 		5: attack_area = attack_sword #attack_air #these use the same area (this and crouch
 		6: attack_area = attack_crouch # are accurate to the original)
 	var damage = ATTACK_DAMAGE[melee_attack] if powerup != Powerup_enum.CATNIP else 10
-	if !body._is_class("Crate"):
+	if !body.is_class("Crate"):
 		var overlap = Utils.contact_point_2_rect(attack_area, body.get_active_hitbox())
 		overlap_local = Rect2(to_local(overlap.position), overlap.size)
 		if body.has_method("on_hit"):

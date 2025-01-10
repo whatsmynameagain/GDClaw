@@ -11,20 +11,20 @@ var thrown := false
 var dropped := false
 var checked := false
 var original_gravity_scale := 0.0
-var linked_enemy : set = set_linked_enemy
+var linked_enemy setget set_linked_enemy
 var throw_direction := 0
 
 
 func set_linked_enemy(value) -> void:
 	linked_enemy = value
-	linked_enemy.connect("enemy_dead", Callable(self, "_on_linked_enemy_death"))
+	linked_enemy.connect("enemy_dead", self, "_on_linked_enemy_death")
 
-func _get_class() -> String:
+func get_class() -> String:
 	return "LiftableDummy"
 
 
-func _is_class(_name) -> bool:
-	return _name == "LiftableDummy" or super.is_class(name)
+func is_class(name) -> bool:
+	return name == "LiftableDummy" or .is_class(name)
 
 
 func _ready() -> void:
@@ -46,7 +46,7 @@ func _integrate_forces(state) -> void:
 		sleeping = true
 		
 	if !checked and (thrown or dropped) and state.get_contact_count() > 0:
-		var angle = rad_to_deg(state.get_contact_local_normal(0).angle())
+		var angle = rad2deg(state.get_contact_local_normal(0).angle())
 		if angle < -85 and angle > -95:  #if not hitting a wall
 			_on_land()
 			checked = true

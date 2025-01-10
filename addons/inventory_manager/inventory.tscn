@@ -3,57 +3,57 @@
 [ext_resource path="res://addons/inventory_manager/menu_button_mod.gd" type="Script" id=1]
 [ext_resource path="res://addons/inventory_manager/inventory.gd" type="Script" id=2]
 [ext_resource path="res://animations/treasure.tres" type="SpriteFrames" id=3]
-[ext_resource path="res://sprites/objects/pickup/treasure/coin/frame001.png" type="Texture2D" id=4]
+[ext_resource path="res://sprites/objects/pickup/treasure/coin/frame001.png" type="Texture" id=4]
 [ext_resource path="res://addons/inventory_manager/slot_hover.tres" type="StyleBox" id=5]
 [ext_resource path="res://addons/inventory_manager/slot_normal.tres" type="StyleBox" id=6]
 [ext_resource path="res://addons/inventory_manager/slot_focus.tres" type="StyleBox" id=7]
 [ext_resource path="res://addons/inventory_manager/slot_disabled.tres" type="StyleBox" id=8]
 [ext_resource path="res://addons/inventory_manager/slot_pressed.tres" type="StyleBox" id=9]
-[ext_resource path="res://addons/inventory_manager/x.png" type="Texture2D" id=10]
-[ext_resource path="res://sprites/objects/exclamation/exclamation.png" type="Texture2D" id=11]
+[ext_resource path="res://addons/inventory_manager/x.png" type="Texture" id=10]
+[ext_resource path="res://sprites/objects/exclamation/exclamation.png" type="Texture" id=11]
 
 [node name="Inventory" type="PanelContainer"]
 anchor_right = 0.375
 anchor_bottom = 0.346
-offset_right = -28.0
-offset_bottom = 30.4
-custom_minimum_size = Vector2( 272, 238 )
+margin_right = -28.0
+margin_bottom = 30.4
+rect_min_size = Vector2( 272, 238 )
 script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 265.0
-offset_bottom = 231.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 265.0
+margin_bottom = 231.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-offset_right = 258.0
-offset_bottom = 14.0
+margin_right = 258.0
+margin_bottom = 14.0
 text = "Valid / Invalid item"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 18.0
-offset_right = 258.0
-offset_bottom = 206.0
+margin_top = 18.0
+margin_right = 258.0
+margin_bottom = 206.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
-offset_top = 63.0
-offset_right = 62.0
-offset_bottom = 125.0
+margin_top = 63.0
+margin_right = 62.0
+margin_bottom = 125.0
 size_flags_vertical = 4
 
 [node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
-offset_top = 24.0
-offset_right = 62.0
-offset_bottom = 38.0
+margin_top = 24.0
+margin_right = 62.0
+margin_bottom = 38.0
 text = "Done"
 align = 1
 
@@ -61,48 +61,48 @@ align = 1
 autostart = true
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-offset_right = 62.0
-offset_bottom = 20.0
+margin_right = 62.0
+margin_bottom = 20.0
 disabled = true
 text = "Confirm"
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-offset_top = 24.0
-offset_right = 62.0
-offset_bottom = 38.0
+margin_top = 24.0
+margin_right = 62.0
+margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
-offset_top = 42.0
-offset_right = 62.0
-offset_bottom = 62.0
+margin_top = 42.0
+margin_right = 62.0
+margin_bottom = 62.0
 disabled = true
 text = "Discard"
 
 [node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
-offset_left = 66.0
-offset_top = 87.0
-offset_right = 66.0
-offset_bottom = 101.0
+margin_left = 66.0
+margin_top = 87.0
+margin_right = 66.0
+margin_bottom = 101.0
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer"]
-offset_left = 70.0
-offset_right = 258.0
-offset_bottom = 188.0
-custom_minimum_size = Vector2( 120, 120 )
+margin_left = 70.0
+margin_right = 258.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 120, 120 )
 columns = 3
 
 [node name="Button1" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_right = 60.0
-offset_bottom = 60.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -110,7 +110,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button1"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -118,15 +118,15 @@ frame = -1
 playing = true
 
 [node name="Button2" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_left = 64.0
-offset_right = 124.0
-offset_bottom = 60.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -134,7 +134,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button2"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button2"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -142,15 +142,15 @@ frame = -1
 playing = true
 
 [node name="Button3" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_left = 128.0
-offset_right = 188.0
-offset_bottom = 60.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_left = 128.0
+margin_right = 188.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -158,7 +158,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button3"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button3"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -166,15 +166,15 @@ frame = -1
 playing = true
 
 [node name="Button4" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_top = 64.0
-offset_right = 60.0
-offset_bottom = 124.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -182,7 +182,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button4"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button4"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -190,16 +190,16 @@ frame = -1
 playing = true
 
 [node name="Button5" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 124.0
-offset_bottom = 124.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 124.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -207,7 +207,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button5"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button5"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -215,16 +215,16 @@ frame = -1
 playing = true
 
 [node name="Button6" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_left = 128.0
-offset_top = 64.0
-offset_right = 188.0
-offset_bottom = 124.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 188.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -232,7 +232,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button6"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button6"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -240,15 +240,15 @@ frame = -1
 playing = true
 
 [node name="Button7" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_top = 128.0
-offset_right = 60.0
-offset_bottom = 188.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_top = 128.0
+margin_right = 60.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -256,7 +256,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button7"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button7"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -264,16 +264,16 @@ frame = -1
 playing = true
 
 [node name="Button8" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_left = 64.0
-offset_top = 128.0
-offset_right = 124.0
-offset_bottom = 188.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_left = 64.0
+margin_top = 128.0
+margin_right = 124.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -281,7 +281,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button8"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button8"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -289,16 +289,16 @@ frame = -1
 playing = true
 
 [node name="Button9" type="MenuButton" parent="VBoxContainer/HBoxContainer/GridContainer"]
-offset_left = 128.0
-offset_top = 128.0
-offset_right = 188.0
-offset_bottom = 188.0
-custom_minimum_size = Vector2( 60, 60 )
-theme_override_styles/hover = ExtResource( 5 )
-theme_override_styles/pressed = ExtResource( 9 )
-theme_override_styles/focus = ExtResource( 7 )
-theme_override_styles/disabled = ExtResource( 8 )
-theme_override_styles/normal = ExtResource( 6 )
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 188.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 60, 60 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 6 )
 toggle_mode = false
 action_mode = 1
 button_mask = 3
@@ -306,7 +306,7 @@ flat = false
 items = [ "Add Item (not replace)", ExtResource( 4 ), 0, false, false, 0, 0, null, "", false, "Remove Item", ExtResource( 10 ), 0, false, false, 1, 0, null, "", false, "Edit Item Properties", ExtResource( 11 ), 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 1 )
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer/HBoxContainer/GridContainer/Button9"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="VBoxContainer/HBoxContainer/GridContainer/Button9"]
 position = Vector2( 30.1435, 30.2278 )
 frames = ExtResource( 3 )
 animation = "Empty"
@@ -314,48 +314,48 @@ frame = -1
 playing = true
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
-offset_top = 210.0
-offset_right = 258.0
-offset_bottom = 224.0
+margin_top = 210.0
+margin_right = 258.0
+margin_bottom = 224.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer"]
 visible = false
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 251.0
-offset_bottom = 53.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 251.0
+margin_bottom = 53.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/VBoxContainer"]
-offset_right = 244.0
-offset_bottom = 22.0
+margin_right = 244.0
+margin_bottom = 22.0
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
-offset_right = 244.0
-offset_bottom = 4.0
+margin_right = 244.0
+margin_bottom = 4.0
 
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer"]
-offset_top = 8.0
-offset_right = 244.0
-offset_bottom = 22.0
+margin_top = 8.0
+margin_right = 244.0
+margin_bottom = 22.0
 text = "Item Properties"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/VBoxContainer"]
-offset_top = 26.0
-offset_right = 244.0
-offset_bottom = 46.0
+margin_top = 26.0
+margin_right = 244.0
+margin_bottom = 46.0
 
 [node name="Button" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-offset_right = 120.0
-offset_bottom = 20.0
+margin_right = 120.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Apply"
 
 [node name="Button2" type="Button" parent="VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-offset_left = 124.0
-offset_right = 244.0
-offset_bottom = 20.0
+margin_left = 124.0
+margin_right = 244.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Cancel"
 
