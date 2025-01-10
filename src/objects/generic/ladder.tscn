@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/objects/generic/ladder.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 24 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 32 )
+
+[node name="Ladder" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="LadderTop" type="Node2D" parent="."]
+visible = false
+
+[node name="LadderTopCollision" type="StaticBody2D" parent="LadderTop"]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderTop/LadderTopCollision"]
+shape = SubResource( 1 )
+one_way_collision = true
+
+[node name="LadderTop" type="Area2D" parent="LadderTop"]
+collision_layer = 1032
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LadderTop/LadderTop"]
+position = Vector2( 0, -24 )
+shape = SubResource( 2 )
+
+[node name="LadderBody" type="Area2D" parent="LadderTop"]
+position = Vector2( 0.0189209, -0.0378113 )
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderTop/LadderBody"]
+position = Vector2( -0.0189209, 8.03781 )
+shape = SubResource( 3 )
+
+[node name="LadderBody" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, 64 )
+
+[node name="LadderBody" type="Area2D" parent="LadderBody"]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderBody/LadderBody"]
+shape = SubResource( 4 )

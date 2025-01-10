@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/objects/generic/pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/objects/generic/treasure.gd" type="Script" id=2]
+[ext_resource path="res://animations/treasure.tres" type="SpriteFrames" id=3]
+
+
+
+[node name="Treasure" instance=ExtResource( 1 )]
+z_index = 13
+gravity_scale = 0.0
+script = ExtResource( 2 )
+staticGlitter = true
+type = "Ring"
+color = "Purple"
+
+[node name="Animation" parent="." index="0"]
+frames = ExtResource( 3 )
+animation = "Ring_Purple"

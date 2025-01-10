@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/objects/ui/teleporter_transition.tres" type="Material" id=1]
+
+
+
+
+
+
+[node name="TeleporterTransition" type="ColorRect"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

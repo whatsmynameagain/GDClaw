@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/objects/generic/enemy.gd" type="Script" id=1]
+[ext_resource path="res://sprites/objects/exclamation/exclamation.png" type="Texture" id=2]
+[ext_resource path="res://sprites/enemies/officer/frame102.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 56 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 21 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 21 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 192
+collision_mask = 9
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Exclamation" type="Sprite" parent="."]
+visible = false
+position = Vector2( 2.84402, -99.541 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="CollisionLifted" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 2 )
+disabled = true
+
+[node name="ThrowHitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 320
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThrowHitbox"]
+shape = SubResource( 3 )
+
+[node name="ContactHitbox" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 2
+
+[node name="Collision2" type="CollisionShape2D" parent="ContactHitbox"]
+shape = SubResource( 1 )
+
+[node name="EdgeCheckL" type="RayCast2D" parent="."]
+position = Vector2( -20, 50 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="EdgeCheckR" type="RayCast2D" parent="."]
+position = Vector2( 20, 50 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="."]
+volume_db = -25.0
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+volume_db = -25.0
+
+[node name="Sounds2" type="AudioStreamPlayer2D" parent="."]
+volume_db = -25.0
+
+[node name="StateLabel" type="Label" parent="."]
+margin_left = -16.3975
+margin_top = -121.51
+margin_right = 23.6025
+margin_bottom = -107.51
+text = "state"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthLabel" type="Label" parent="."]
+margin_left = 42.7631
+margin_top = -93.5444
+margin_right = 82.7631
+margin_bottom = -79.5444
+text = "health"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 43.0
+margin_top = -34.0
+margin_right = 107.0
+margin_bottom = -9.0
+
+[connection signal="body_entered" from="ThrowHitbox" to="." method="_on_throw_hitbox_body_entered"]
+[connection signal="body_entered" from="ContactHitbox" to="." method="_on_contact_hitbox_body_entered"]
+[connection signal="finished" from="Voice" to="." method="_on_dialogue_end"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_patrol_idle_timer_timeout"]

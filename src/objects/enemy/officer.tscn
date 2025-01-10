@@ -1,0 +1,141 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://src/objects/generic/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://animations/officer/dead_fire.tres" type="Animation" id=2]
+[ext_resource path="res://animations/despawn_enemy.tres" type="Animation" id=3]
+[ext_resource path="res://src/objects/enemy/officer.gd" type="Script" id=4]
+[ext_resource path="res://animations/officer/idle_2.tres" type="Animation" id=5]
+[ext_resource path="res://animations/officer/dead.tres" type="Animation" id=6]
+[ext_resource path="res://animations/officer/held.tres" type="Animation" id=7]
+[ext_resource path="res://animations/officer/idle_3.tres" type="Animation" id=8]
+[ext_resource path="res://animations/officer/dead_ice.tres" type="Animation" id=9]
+[ext_resource path="res://animations/officer/idle_1.tres" type="Animation" id=10]
+[ext_resource path="res://animations/officer/land.tres" type="Animation" id=11]
+[ext_resource path="res://animations/officer/lifted.tres" type="Animation" id=12]
+[ext_resource path="res://animations/officer/hit_high.tres" type="Animation" id=13]
+[ext_resource path="res://sprites/enemies/officer/frame204.png" type="Texture" id=14]
+[ext_resource path="res://animations/officer/hit_mid.tres" type="Animation" id=15]
+[ext_resource path="res://animations/officer/walk.tres" type="Animation" id=16]
+[ext_resource path="res://sprites/enemies/officer/frame202.png" type="Texture" id=18]
+[ext_resource path="res://sprites/enemies/officer/frame203.png" type="Texture" id=19]
+[ext_resource path="res://sprites/enemies/officer/frame200.png" type="Texture" id=20]
+[ext_resource path="res://sprites/enemies/officer/frame201.png" type="Texture" id=21]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack_high"
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack_low"
+
+[sub_resource type="Animation" id=3]
+resource_name = "attack_mid"
+length = 0.82
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.45, 0.5, 0.75, 0.8, 0.83 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 20 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sounds:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sounds:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeleeHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.48, 0.73 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 33.5, 17 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 49, 24 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 49, 24 )
+
+[node name="Officer" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 20 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+anims/attack_high = SubResource( 1 )
+anims/attack_low = SubResource( 2 )
+anims/attack_mid = SubResource( 3 )
+anims/dead = ExtResource( 6 )
+anims/dead_fire = ExtResource( 2 )
+anims/dead_ice = ExtResource( 9 )
+anims/despawn = ExtResource( 3 )
+anims/held = ExtResource( 7 )
+anims/hit_high = ExtResource( 13 )
+anims/hit_mid = ExtResource( 15 )
+anims/idle_1 = ExtResource( 10 )
+anims/idle_2 = ExtResource( 5 )
+anims/idle_3 = ExtResource( 8 )
+anims/land = ExtResource( 11 )
+anims/lifted = ExtResource( 12 )
+anims/walk = ExtResource( 16 )
+
+[node name="MeleeHitbox" type="Area2D" parent="." index="9"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeHitbox" index="0"]
+position = Vector2( -81.5, -17 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="DetectionAreaUp" type="Area2D" parent="." index="10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionAreaUp" index="0"]
+position = Vector2( -66, -32 )
+shape = SubResource( 5 )
+
+[node name="DetectionAreaDown" type="Area2D" parent="." index="11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionAreaDown" index="0"]
+position = Vector2( -66, 32 )
+shape = SubResource( 6 )
+
+[node name="Timer" parent="." index="18"]
+one_shot = true
+
+[connection signal="body_entered" from="MeleeHitbox" to="." method="_on_MeleeHitbox_body_entered"]

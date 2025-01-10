@@ -12,67 +12,67 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Crate",
 "language": "GDScript",
-"path": "res://objects/generic/crate.gd"
+"path": "res://src/objects/generic/crate.gd"
 }, {
 "base": "Node2D",
 "class": "DeathTile",
 "language": "GDScript",
-"path": "res://objects/generic/death_tile.gd"
+"path": "res://src/objects/generic/death_tile.gd"
 }, {
 "base": "Area2D",
 "class": "DynamiteExplosion",
 "language": "GDScript",
-"path": "res://objects/generic/dynamite_explosion.gd"
+"path": "res://src/objects/generic/dynamite_explosion.gd"
 }, {
 "base": "Pickup",
 "class": "EndItem",
 "language": "GDScript",
-"path": "res://objects/generic/end_item.gd"
+"path": "res://src/objects/generic/end_item.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://objects/generic/enemy.gd"
+"path": "res://src/objects/generic/enemy.gd"
 }, {
 "base": "LiftableDummy",
 "class": "ExplosiveKeg",
 "language": "GDScript",
-"path": "res://objects/generic/explosive_keg.gd"
+"path": "res://src/objects/generic/explosive_keg.gd"
 }, {
 "base": "Node2D",
 "class": "HUDElement",
 "language": "GDScript",
-"path": "res://objects/ui/hud_element.gd"
+"path": "res://src/objects/ui/hud_element.gd"
 }, {
 "base": "AnimatedSprite",
 "class": "HitEffect",
 "language": "GDScript",
-"path": "res://objects/generic/hit_effect.gd"
+"path": "res://src/objects/generic/hit_effect.gd"
 }, {
 "base": "Node2D",
 "class": "Ladder",
 "language": "GDScript",
-"path": "res://objects/generic/ladder.gd"
+"path": "res://src/objects/generic/ladder.gd"
 }, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
-"path": "res://objects/generic/level.gd"
+"path": "res://src/objects/generic/level.gd"
 }, {
 "base": "RigidBody2D",
 "class": "LiftableDummy",
 "language": "GDScript",
-"path": "res://objects/generic/liftable_dummy.gd"
+"path": "res://src/objects/generic/liftable_dummy.gd"
 }, {
 "base": "RigidBody2D",
 "class": "MagicProjectile",
 "language": "GDScript",
-"path": "res://objects/generic/magic_projectile.gd"
+"path": "res://src/objects/generic/magic_projectile.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Pickup",
 "language": "GDScript",
-"path": "res://objects/generic/pickup.gd"
+"path": "res://src/objects/generic/pickup.gd"
 }, {
 "base": "PopupPanel",
 "class": "PickupList",
@@ -82,42 +82,42 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "PistolBullet",
 "language": "GDScript",
-"path": "res://objects/generic/pistol_bullet.gd"
+"path": "res://src/objects/generic/pistol_bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://player.gd"
+"path": "res://src/player.gd"
 }, {
 "base": "Pickup",
 "class": "Powerup",
 "language": "GDScript",
-"path": "res://objects/generic/powerup.gd"
+"path": "res://src/objects/generic/powerup.gd"
 }, {
 "base": "Pickup",
 "class": "Restore",
 "language": "GDScript",
-"path": "res://objects/generic/restore.gd"
+"path": "res://src/objects/generic/restore.gd"
 }, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://player_states/state.gd"
+"path": "res://src/player_states/state.gd"
 }, {
 "base": "RigidBody2D",
 "class": "SwordProjectile",
 "language": "GDScript",
-"path": "res://objects/generic/sword_projectile.gd"
+"path": "res://src/objects/generic/sword_projectile.gd"
 }, {
 "base": "Pickup",
 "class": "Teleporter",
 "language": "GDScript",
-"path": "res://objects/generic/teleporter.gd"
+"path": "res://src/objects/generic/teleporter.gd"
 }, {
 "base": "Pickup",
 "class": "Treasure",
 "language": "GDScript",
-"path": "res://objects/generic/treasure.gd"
+"path": "res://src/objects/generic/treasure.gd"
 } ]
 _global_script_class_icons={
 "Crate": "res://sprites/objects/crate/1/crate001.png",
@@ -152,8 +152,8 @@ config/icon="res://sprites/objects/pickup/restore/extra_life/frame007.png"
 
 [autoload]
 
-Utils="*res://utils.gd"
-Settings="*res://settings.gd"
+Utils="*res://src/utils.gd"
+Settings="*res://src/settings.gd"
 
 [display]
 

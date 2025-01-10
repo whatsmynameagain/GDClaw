@@ -1,0 +1,53 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://src/objects/generic/dynamite_explosion.gd" type="Script" id=1]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame15.png" type="Texture" id=2]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame03.png" type="Texture" id=3]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame16.png" type="Texture" id=4]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame07.png" type="Texture" id=5]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame02.png" type="Texture" id=6]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame08.png" type="Texture" id=7]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame17.png" type="Texture" id=8]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame18.png" type="Texture" id=9]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame06.png" type="Texture" id=10]
+[ext_resource path="res://sounds/barrel/keg_boom.ogg" type="AudioStream" id=11]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame13.png" type="Texture" id=12]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame11.png" type="Texture" id=13]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame01.png" type="Texture" id=14]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame09.png" type="Texture" id=15]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame10.png" type="Texture" id=16]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame04.png" type="Texture" id=17]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame14.png" type="Texture" id=18]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame05.png" type="Texture" id=19]
+[ext_resource path="res://sprites/objects/dynamite_explosion/frame12.png" type="Texture" id=20]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "default",
+"speed": 16.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 51.5801, 44.4649 )
+
+[node name="DynamiteExplosion" type="Area2D"]
+collision_layer = 0
+collision_mask = 2370
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -27.207 )
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3.05176e-05, -26.1805 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_animation_finished"]
