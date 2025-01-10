@@ -22,3 +22,9 @@ Added a 'godot3' branch that is mostly playable (aside from some bugs introduced
 ## How to run
 
 Just clone the repo and it *should* work out of the box. (Still testing)
+
+If there are any sound looping bugs, open the godot editor and go to Project -> Project Settings -> Import Defaults -> OGGVorbis and set Loop to false, then reimport the sound assets. (Or manually set the loop flag for each problematic sound file by selecting it on the FileSystem tab and changing the import options on the Import tab)
+
+## Bugs in Godot 3 version
+
+-Enemies fly away when defeated instead of bouncing and falling off.
