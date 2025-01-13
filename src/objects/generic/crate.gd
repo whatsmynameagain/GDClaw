@@ -50,8 +50,8 @@ func set_z_position(value) -> void:
 					z_index = Settings.FG_OBJECT_Z
 				"Back", "Stack_Back":
 					z_index = Settings.BG_OBJECT_Z
-		call_deferred("set_collisions")
-		update()
+	call_deferred("set_collisions")
+	update()
 
 
 func set_contents(value) -> void:
@@ -65,7 +65,7 @@ func set_contents(value) -> void:
 func _ready() -> void:
 	#choose a random break sound
 	if !Engine.is_editor_hint():
-		collision = collision_back
+		#collision = collision_back
 		set_z_position(z_position)
 		var x = randi()%2 + 1
 		sound.stream = BreakSoundA if x%2 == 0 else BreakSoundB

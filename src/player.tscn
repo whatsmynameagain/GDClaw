@@ -217,7 +217,6 @@ enabled = true
 cast_to = Vector2( 0, 40 )
 
 [node name="ProjectileSpawns" type="Node2D" parent="."]
-visible = false
 position = Vector2( 0, 3.23535 )
 
 [node name="PistolStanding" type="Position2D" parent="ProjectileSpawns"]
@@ -233,7 +232,7 @@ position = Vector2( 66.0063, -24.3476 )
 position = Vector2( 53.2134, -15.8523 )
 
 [node name="MagicClawCrouch" type="Position2D" parent="ProjectileSpawns"]
-position = Vector2( 61.4069, 11.6109 )
+position = Vector2( 61.407, 11.611 )
 
 [node name="MagicClawAir" type="Position2D" parent="ProjectileSpawns"]
 position = Vector2( 54.2989, -23.5114 )

@@ -8,6 +8,7 @@
 [ext_resource path="res://sprites/objects/player_glitter/frame003.png" type="Texture" id=6]
 
 [resource]
+flags = 4
 frames = 6
 fps = 16.0
 frame_0/texture = ExtResource( 2 )

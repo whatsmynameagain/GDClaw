@@ -29,5 +29,10 @@ If there are any sound looping bugs, open the godot editor and go to Project -> 
 
 ## Bugs introduced in Godot 3.x updates
 
--Enemies fly away when defeated instead of bouncing and falling off.
--Inventory add-on fails to correctly detect valid selected objects (likely a problem with class names and inheritance)
+- Enemies fly away when defeated instead of bouncing and falling off.
+
+- Inventory add-on fails to correctly detect valid selected objects (likely a problem with class names and inheritance)
+
+- > second crate in a stack has the wrong z value when the bottom crates are broken.
+
+- Inventory manager is broken
