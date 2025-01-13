@@ -33,6 +33,6 @@ If there are any sound looping bugs, open the godot editor and go to Project -> 
 
 - Inventory add-on fails to correctly detect valid selected objects (likely a problem with class names and inheritance)
 
-- > second crate in a stack has the wrong z value when the bottom crates are broken.
+- Second+ crate in a stack has the wrong z value when the bottom crates are broken.
 
 - Inventory manager is broken
