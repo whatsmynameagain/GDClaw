@@ -15,3 +15,7 @@
 -inventory_manager is broken. At least it kinda shows contents
 
 -sprites aren't being imported correctly (blurry)
+
+-projectiles aren't being instantiated
+
+-lots of warnings and errors in the debugger
