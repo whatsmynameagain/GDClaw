@@ -17,5 +17,7 @@
 -sprites aren't being imported correctly (blurry)
 
 -projectiles aren't being instantiated
+    -actually, they are but they despawn immediately
 
--lots of warnings and errors in the debugger
+-dynamite throw animation gets stuck on the last frame
+

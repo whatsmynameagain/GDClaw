@@ -1,91 +1,122 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=22 format=3 uid="uid://bwfsxkcloe341"]
 
 [ext_resource type="Script" path="res://objects/generic/dynamite_projectile.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://uk47mdt5hmc1" path="res://sprites/objects/dynamite_projectile/frame05.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://cka3wxm8teyuh" path="res://sprites/objects/dynamite_projectile/frame06.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://c1klki81a1063" path="res://sprites/objects/dynamite_projectile/frame07.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://0slufgug6y55" path="res://sprites/objects/dynamite_projectile/frame09.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://b1hsv2g5wby8a" path="res://sprites/objects/dynamite_projectile/frame11.png" id="6"]
-[ext_resource type="Texture2D" uid="uid://bequmohcpybfy" path="res://sprites/objects/dynamite_projectile/frame10.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://g7mw1dtqmvya" path="res://sprites/objects/dynamite_projectile/frame12.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://wh2hulp3u7co" path="res://sprites/objects/dynamite_projectile/frame13.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://bx5m04qnhkw4n" path="res://sprites/objects/dynamite_projectile/frame14.png" id="10"]
-[ext_resource type="Texture2D" uid="uid://d4k6a5pw1j1a0" path="res://sprites/objects/dynamite_projectile/frame01.png" id="11"]
-[ext_resource type="Texture2D" uid="uid://bgoaqogo2b4r3" path="res://sprites/objects/dynamite_projectile/frame15.png" id="12"]
-[ext_resource type="Texture2D" uid="uid://du68m7cxvjmr1" path="res://sprites/objects/dynamite_projectile/frame02.png" id="13"]
-[ext_resource type="Texture2D" uid="uid://q4dyxvlbmln6" path="res://sprites/objects/dynamite_projectile/frame03.png" id="14"]
-[ext_resource type="Texture2D" uid="uid://b8lauguqmyrcm" path="res://sprites/objects/dynamite_projectile/frame04.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://dwa55suy13ur3" path="res://sprites/objects/dynamite_projectile/frame05.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dysc8t30lietd" path="res://sprites/objects/dynamite_projectile/frame06.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dbwklvmhpg8jv" path="res://sprites/objects/dynamite_projectile/frame07.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cv65qipusxqw4" path="res://sprites/objects/dynamite_projectile/frame09.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dpyqoiemhpl35" path="res://sprites/objects/dynamite_projectile/frame11.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cwffmu16vkg1a" path="res://sprites/objects/dynamite_projectile/frame10.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://cv11s3khi274" path="res://sprites/objects/dynamite_projectile/frame12.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://drehlx8wlbxvl" path="res://sprites/objects/dynamite_projectile/frame13.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dtk4giijofvep" path="res://sprites/objects/dynamite_projectile/frame14.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://d213lvm6clvbu" path="res://sprites/objects/dynamite_projectile/frame01.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://hq5mtmv53wuv" path="res://sprites/objects/dynamite_projectile/frame15.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://dx3e13axcdgb2" path="res://sprites/objects/dynamite_projectile/frame02.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://ipauwkbusa7f" path="res://sprites/objects/dynamite_projectile/frame03.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://dwc4ooasjyy3" path="res://sprites/objects/dynamite_projectile/frame04.png" id="15"]
 [ext_resource type="Texture2D" uid="uid://wlgno5xtke8n" path="res://sprites/objects/player_glitter/animated_texture.tres" id="16"]
-[ext_resource type="Texture2D" uid="uid://dr3ksuuyv3cd1" path="res://sprites/objects/dynamite_projectile/frame08.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://bigscv8r3ey1n" path="res://sprites/objects/dynamite_projectile/frame08.png" id="17"]
 
-
-
-
-
-
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id="1"]
 friction = 0.09
 bounce = 0.5
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ) ],
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17")
+}],
 "loop": true,
-"name": "bounce",
+"name": &"air",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 17 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12")
+}],
 "loop": true,
-"name": "air",
+"name": &"bounce",
 "speed": 12.0
-} ]
+}]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id="3"]
 
-[sub_resource type="ParticleProcessMaterial" id=4]
+[sub_resource type="ParticleProcessMaterial" id="4"]
 emission_shape = 2
-emission_box_extents = Vector3( 8, 8, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-angular_velocity = 1.05
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
 
 [node name="DynamiteProjectile" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 9
-mode = 2
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource("1")
 gravity_scale = 1.5
-max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 1 )
+max_contacts_reported = 1
+script = ExtResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource( 2 )
-animation = "air"
+sprite_frames = SubResource("2")
+animation = &"air"
 frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource("3")
 
 [node name="ProjectileGlitter" type="GPUParticles2D" parent="."]
 amount = 16
+process_material = SubResource("4")
+texture = ExtResource("16")
 lifetime = 0.4
 randomness = 1.0
-local_coords = false
-process_material = SubResource( 4 )
-texture = ExtResource( 16 )
 
-[node name="Timer" type="Timer" parent="." groups=[
-"camera",
-"player",
-]]
+[node name="Timer" type="Timer" parent="." groups=["camera", "player"]]
 wait_time = 1.5
 one_shot = true
 autostart = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2( 0, 12 )
+target_position = Vector2(0, 12)
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

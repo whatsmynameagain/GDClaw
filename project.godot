@@ -20,6 +20,10 @@ config/icon="res://sprites/objects/pickup/restore/extra_life/frame007.png"
 Utils="*res://src/utils.gd"
 Settings="*res://src/settings.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=800

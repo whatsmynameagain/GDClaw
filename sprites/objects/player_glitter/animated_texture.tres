@@ -1,11 +1,11 @@
 [gd_resource type="AnimatedTexture" load_steps=7 format=3 uid="uid://wlgno5xtke8n"]
 
-[ext_resource type="Texture2D" uid="uid://bc3pshgubu8gn" path="res://sprites/objects/player_glitter/frame002.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://dsg1ljerdx25i" path="res://sprites/objects/player_glitter/frame001.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://bocodh5pbhr1n" path="res://sprites/objects/player_glitter/frame004.png" id="3"]
-[ext_resource type="Texture2D" uid="uid://cj0unkje4q7jo" path="res://sprites/objects/player_glitter/frame006.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://cpveys7x6gwsw" path="res://sprites/objects/player_glitter/frame005.png" id="5"]
-[ext_resource type="Texture2D" uid="uid://g5y6p5iqgsy0" path="res://sprites/objects/player_glitter/frame003.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dn6g50st2podx" path="res://sprites/objects/player_glitter/frame002.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcvf1aa0kj7va" path="res://sprites/objects/player_glitter/frame001.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b5yjtxiyyo23n" path="res://sprites/objects/player_glitter/frame004.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://muxjdcq18svp" path="res://sprites/objects/player_glitter/frame006.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://durmhsj5gglnk" path="res://sprites/objects/player_glitter/frame005.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://caqslq6wbk0bf" path="res://sprites/objects/player_glitter/frame003.png" id="6"]
 
 [resource]
 frames = 6

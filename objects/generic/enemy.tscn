@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ds0pke6aneftb"]
 
 [ext_resource type="Script" path="res://objects/generic/enemy.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://co383aek4n2ae" path="res://sprites/objects/exclamation/exclamation.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://ctamdd3t0py08" path="res://sprites/enemies/officer/frame102.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bykfobc26qnfl" path="res://sprites/objects/exclamation/exclamation.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b888q5x6a01jg" path="res://sprites/enemies/officer/frame102.png" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 56)
