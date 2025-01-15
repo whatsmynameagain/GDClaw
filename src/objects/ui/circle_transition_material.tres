@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://7av1j3gbnxn5"]
+
+[ext_resource type="Shader" path="res://src/objects/ui/circle_transition.gdshader" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/close_position = Vector2(0.5, 0.95)
+shader_parameter/progress = 0.0
+shader_parameter/multiplier = 2.333
+shader_parameter/screen_ratio = 0.75

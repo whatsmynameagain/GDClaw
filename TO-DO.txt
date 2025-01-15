@@ -1,17 +1,28 @@
  
+
+
 -hit animations still visible after animation over
+
 -enemies don't take damage
+
 -anything but the player that uses physics for being thrown or jumping never stops moving (thrown enemies and I suspect jumping treasure)
     -still gotta test barrels
+
 -some tile collisions are broken (pegs and ceiling are the ones I noticed)
+
 -ladders and death tile areas aren't being generated because they removed a tileset function I used for getting positions
     might be a good thing, gotta look up how to detect tiles directly... but I'm not sure it's better than using area signals... we'll see.
+
 -saw a leak when closing the game: "ERROR: 2 RID allocations of type 'P11GodotBody2D' were leaked at exit."
+
 -res://objects/generic/powerup.gd:49 - Invalid type in function 'play' in base 'AnimatedSprite2D'. Cannot convert argument 1 from Nil to StringName.
     -this is related to the glitter effect and /might/ have been an editor/tool error
+
 -res://objects/generic/elevator.gd:123 - Invalid call. Nonexistent function 'get_font' in base 'Label'.
+
 -something is triggering this when loading test_arena:
     "scene/resources/sprite_frames.cpp:216 - Condition "!f.has("texture")" is true. Continuing."
+
 -inventory_manager is broken. At least it kinda shows contents
 
 -sprites aren't being imported correctly (blurry)
@@ -20,4 +31,7 @@
     -actually, they are but they despawn immediately
 
 -dynamite throw animation gets stuck on the last frame
+
+-health items cannot be picked up, "no action for this area 'area2d'" (class name issue)
+
 

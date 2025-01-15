@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b5t7jjh7dkh38"]
+
+[ext_resource type="Shader" path="res://src/objects/ui/teleporter_transition.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://dg2k4c6xtwofw" path="res://src/objects/ui/teleporter_transition_mask.png" id="2"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/cutoff = 0.0
+shader_parameter/smoothRange = 0.181
+shader_parameter/mask = ExtResource("2")

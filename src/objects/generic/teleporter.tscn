@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh4b23eidplkf"]
+
+[ext_resource type="PackedScene" uid="uid://b115328nf4036" path="res://src/objects/generic/pickup.tscn" id="1"]
+[ext_resource type="Script" path="res://src/objects/generic/teleporter.gd" id="2"]
+[ext_resource type="SpriteFrames" path="res://animations/teleporter.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://3pcqqxgesxq6" path="res://sprites/objects/teleporter/destination.png" id="4"]
+
+[node name="Teleporter" instance=ExtResource("1")]
+z_index = 13
+gravity_scale = 0.0
+script = ExtResource("2")
+type = "Generic"
+destination = Vector2(128, 0)
+orientation = "Horizontal"
+static_glitter = true
+
+[node name="Animation" parent="." index="0"]
+sprite_frames = ExtResource("3")
+animation = &"Generic"
+frame_progress = 0.701773
+
+[node name="DestinationHelper" type="Node2D" parent="." index="4"]
+position = Vector2(128, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="DestinationHelper" index="0"]
+texture = ExtResource("4")

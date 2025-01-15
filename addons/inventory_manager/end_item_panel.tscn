@@ -1,111 +1,63 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://ck6e0oiv115wm"]
 
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/red_blue.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/center.png" type="Texture2D" id=2]
-[ext_resource path="res://sprites/objects/pickup/end_item/map_piece/map_fragment.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/blue.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/green.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/red.png" type="Texture2D" id=6]
-[ext_resource path="res://addons/inventory_manager/end_item_panel.gd" type="Script" id=7]
-
-
-
-
-
-
-
-
-
-
-
-
-
+[ext_resource type="Script" path="res://addons/inventory_manager/end_item_panel.gd" id="7"]
 
 [node name="PanelContainer" type="PanelContainer"]
 offset_top = 26.0
 offset_right = 248.0
 offset_bottom = 132.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 257.0
-offset_bottom = 105.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-offset_right = 250.0
-offset_bottom = 42.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-offset_top = 14.0
-offset_right = 123.0
-offset_bottom = 28.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Type: "
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
-offset_left = 127.0
-offset_right = 250.0
-offset_bottom = 42.0
+layout_mode = 2
 size_flags_horizontal = 3
-text = "Map"
-icon = ExtResource( 3 )
-items = [ "Map", ExtResource( 3 ), false, 0, null, "Blue", ExtResource( 4 ), false, 1, null, "Green", ExtResource( 5 ), false, 2, null, "Red", ExtResource( 6 ), false, 3, null, "RedBlue", ExtResource( 1 ), false, 4, null, "Center", ExtResource( 2 ), false, 5, null ]
-selected = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 46.0
-offset_right = 250.0
-offset_bottom = 70.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
-offset_top = 5.0
-offset_right = 123.0
-offset_bottom = 19.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Drop Animation:"
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
-offset_left = 127.0
-offset_right = 250.0
-offset_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
-pressed = true
 text = "On"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-offset_top = 74.0
-offset_right = 250.0
-offset_bottom = 98.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
-offset_top = 5.0
-offset_right = 94.0
-offset_bottom = 19.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Anim Position:"
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
-offset_left = 98.0
-offset_right = 172.0
-offset_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
 min_value = -999999.0
 max_value = 999999.0
 prefix = "X:"
 
 [node name="SpinBox2" type="SpinBox" parent="VBoxContainer/HBoxContainer3"]
-offset_left = 176.0
-offset_right = 250.0
-offset_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
 min_value = -999999.0
 max_value = 999999.0
 prefix = "Y:"
+
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_type_item_selected"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer2/CheckBox" to="." method="_on_drop_animation_toggled"]
 [connection signal="value_changed" from="VBoxContainer/HBoxContainer3/SpinBox" to="." method="_on_x_value_changed"]

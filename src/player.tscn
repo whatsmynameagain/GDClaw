@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://src/player_states/idle.gd" id="14"]
 [ext_resource type="Script" path="res://src/player_states/idle_attack.gd" id="15"]
 [ext_resource type="Script" path="res://src/player_states/idle_dynamite.gd" id="16"]
-[ext_resource type="PackedScene" path="res://objects/ui/Camera2D.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://src/objects/ui/Camera2D.tscn" id="17"]
 [ext_resource type="Script" path="res://src/player_states/idle_magic.gd" id="18"]
 [ext_resource type="Script" path="res://src/player_states/idle_pistol.gd" id="19"]
 [ext_resource type="Script" path="res://src/player_states/jump.gd" id="20"]
@@ -24,9 +24,9 @@
 [ext_resource type="Script" path="res://src/player_states/move.gd" id="22"]
 [ext_resource type="Script" path="res://src/player_states/noclip.gd" id="23"]
 [ext_resource type="Script" path="res://src/player_states/stun.gd" id="24"]
-[ext_resource type="PackedScene" uid="uid://bnkgcr0agx142" path="res://objects/generic/player_glitter.tscn" id="26"]
+[ext_resource type="PackedScene" uid="uid://bnkgcr0agx142" path="res://src/objects/generic/player_glitter.tscn" id="26"]
 [ext_resource type="Script" path="res://src/player_states/lift.gd" id="27"]
-[ext_resource type="Material" uid="uid://cnl22m00vfaqb" path="res://objects/generic/player_glitter_material.tres" id="28"]
+[ext_resource type="Material" uid="uid://cnl22m00vfaqb" path="res://src/objects/generic/player_glitter_material.tres" id="28"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 52)

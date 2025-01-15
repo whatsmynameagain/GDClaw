@@ -79,7 +79,7 @@ func _update(delta) -> void:
 			if owner.liftable_in_close_range:
 				if owner.liftables_in_range[0]._is_class("Enemy"):
 					var enemy = owner.liftables_in_range[0]
-					var dummy = preload("res://objects/generic/liftable_dummy.tscn").instantiate()
+					var dummy = preload("res://src/objects/generic/liftable_dummy.tscn").instantiate()
 					dummy.linked_enemy = enemy
 					owner.add_child(dummy)
 					dummy.set_as_top_level(true)

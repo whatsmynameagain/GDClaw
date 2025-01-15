@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://crvw7kkaxndhd"]
+
+[ext_resource type="PackedScene" uid="uid://dvy7ftukw0438" path="res://src/objects/ui/score_hud.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dd3f3ucycsnol" path="res://src/objects/ui/lives_hud.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dkvfw06ga3apb" path="res://src/objects/ui/powerup_hud.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cbnuyg58ggmrc" path="res://src/objects/ui/ammo_hud.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dajx8rrnkbjrw" path="res://src/objects/ui/health_hud.tscn" id="5"]
+
+[node name="HUD" type="Control"]
+process_mode = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPSLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.1534
+offset_top = 574.091
+offset_right = 11.1534
+offset_bottom = 588.091
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.0392157, 0.976471, 0.207843, 1)
+
+[node name="AmmoHUD" parent="." instance=ExtResource("4")]
+position = Vector2(800, 45)
+
+[node name="HealthHUD" parent="." instance=ExtResource("5")]
+position = Vector2(800, 15)
+
+[node name="LivesHUD" parent="." instance=ExtResource("2")]
+position = Vector2(800, 70)
+
+[node name="PowerupHUD" parent="." instance=ExtResource("3")]
+position = Vector2(0, 50)
+
+[node name="ScoreHUD" parent="." instance=ExtResource("1")]
+position = Vector2(0, 18)

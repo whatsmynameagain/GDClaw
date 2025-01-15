@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7faxudvp0if2"]
 
-[ext_resource type="PackedScene" path="res://objects/generic/level.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://src/objects/generic/level.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dppyevnx8vys5" path="res://tiles/level_1/main/tile_map_level_1.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://objects/generic/explosive_keg.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://ygegcwkygxpk" path="res://objects/generic/powerup.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://src/objects/generic/explosive_keg.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ygegcwkygxpk" path="res://src/objects/generic/powerup.tscn" id="4"]
 [ext_resource type="Script" path="res://src/levels/level_1.gd" id="5"]
 
 [node name="Level_1" instance=ExtResource("1")]

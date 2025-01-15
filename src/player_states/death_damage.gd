@@ -8,7 +8,7 @@ func _on_enter() -> void:
 	owner.motion = Vector2.ZERO
 	owner.visible = false
 	owner.set_collision_layer_value(1, false)
-	var dummy = preload("res://objects/generic/death_dummy.tscn").instantiate()
+	var dummy = preload("res://src/objects/generic/death_dummy.tscn").instantiate()
 	owner.emit_signal("spawn_dummy", dummy, owner.global_position, owner.orientation)
 	owner.set_stance_collision(true, true)
 	Utils.decide_player(owner.player_sounds, owner.action_sounds[9]) 

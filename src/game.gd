@@ -51,8 +51,8 @@ const powerup_music = preload("res://music/powerup.ogg")
 const circle_close_sound = preload("res://sounds/generic/circle_fade.ogg")
 const circle_open_sound = preload("res://sounds/checkpoint/flag_wave.ogg")
 const teleporter_sound = preload("res://sounds/teleporter/warp.ogg")
-const teleporter_transition_mask = preload("res://objects/ui/teleporter_transition_mask.png")
-const teleporter_transition_mask_2 = preload("res://objects/ui/teleporter_transition_mask_2.png")
+const teleporter_transition_mask = preload("res://src/objects/ui/teleporter_transition_mask.png")
+const teleporter_transition_mask_2 = preload("res://src/objects/ui/teleporter_transition_mask_2.png")
 const values = {
 	"Coin" : 100, 
 	"Bars": 500, 
@@ -77,7 +77,7 @@ var game_state = GameStates.Playing # temp
 var level_music_stop_time : float
 var player
 var level
-var hud = preload("res://objects/ui/hud.tscn").instantiate()
+var hud = preload("res://src/objects/ui/hud.tscn").instantiate()
 var fps_label
 var level_collected_treasure = [] 
 var music_player
@@ -185,7 +185,7 @@ func _physics_process(_delta) -> void:
 
 func spawn_dynamite() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/dynamite_projectile.tscn").instantiate()
+	var thingy = preload("res://src/objects/generic/dynamite_projectile.tscn").instantiate()
 	level.add_child(thingy)
 	pause_menu.connect("pause_toggled", Callable(thingy, "_on_pause_toggled"))
 	thingy.global_position = pos
@@ -193,7 +193,7 @@ func spawn_dynamite() -> void:
 
 func use_treasure_spawner() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var spawner = preload("res://objects/generic/pickup_spawner.tscn").instantiate()
+	var spawner = preload("res://src/objects/generic/pickup_spawner.tscn").instantiate()
 	level.add_child(spawner)
 	spawner.global_position = pos
 	spawner.set_spawn_list([[0, "Coin"], [1, "Health", "Large"], [0, "Gecko", "Blue"]])
@@ -201,7 +201,7 @@ func use_treasure_spawner() -> void:
 
 func spawn_sword_projectile() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/sword_projectile.tscn").instantiate()
+	var thingy = preload("res://src/objects/generic/sword_projectile.tscn").instantiate()
 	level.add_child(thingy)
 	var types =  [5, 6, 7] #fire, ice, lightning
 	thingy.type = types[randi()%3]
@@ -210,7 +210,7 @@ func spawn_sword_projectile() -> void:
 
 func spawn_random_treasure() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/treasure.tscn").instantiate()
+	var thingy = preload("res://src/objects/generic/treasure.tscn").instantiate()
 	thingy.physics = true
 	
 	##for mouse placing
@@ -233,7 +233,7 @@ func spawn_random_treasure() -> void:
 
 func spawn_random_restore() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/restore.tscn").instantiate()
+	var thingy = preload("res://src/objects/generic/restore.tscn").instantiate()
 	thingy.physics = true
 	thingy.one_use = true
 	randomize()
@@ -255,7 +255,7 @@ func spawn_random_restore() -> void:
 
 func spawn_random_powerup() -> void:
 	var pos = $Level.get_global_mouse_position()
-	var thingy = preload("res://objects/generic/powerup.tscn").instantiate()
+	var thingy = preload("res://src/objects/generic/powerup.tscn").instantiate()
 	thingy.physics = true
 	thingy.one_use = true
 	thingy.stack_duration = true

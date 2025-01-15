@@ -139,11 +139,11 @@ const action_sounds = { #sound effects, hit sounds
 	22 : preload("res://sounds/claw/gunshot.ogg"), #pistol shot
 	23 : preload("res://sounds/claw/1002.ogg"), #"magic claw"
 	}
-const Sword_Projectile = preload("res://objects/generic/sword_projectile.tscn")
-const Pistol_Bullet = preload("res://objects/generic/pistol_bullet.tscn")
-const Magic_Projectile = preload("res://objects/generic/magic_projectile.tscn")
-const Dynamite_Projectile = preload("res://objects/generic/dynamite_projectile.tscn")
-const Player_Glitter_Material = preload("res://objects/generic/player_glitter_material.tres")
+const Sword_Projectile = preload("res://src/objects/generic/sword_projectile.tscn")
+const Pistol_Bullet = preload("res://src/objects/generic/pistol_bullet.tscn")
+const Magic_Projectile = preload("res://src/objects/generic/magic_projectile.tscn")
+const Dynamite_Projectile = preload("res://src/objects/generic/dynamite_projectile.tscn")
+const Player_Glitter_Material = preload("res://src/objects/generic/player_glitter_material.tres")
 
 
 @export var health: int = 100: set = set_health
@@ -197,7 +197,7 @@ var overlap_local : Rect2 #for showing overlaps between hitboxes
 var knockback = KnockBackSide.NONE
 var lifting := false
 var lifted_object
-var hit_effect = preload("res://objects/generic/hit_effect.tscn").instantiate()
+var hit_effect = preload("res://src/objects/generic/hit_effect.tscn").instantiate()
 var snap := Vector2.ZERO
 var powerup_time := 0
 

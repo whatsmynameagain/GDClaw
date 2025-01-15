@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbg7xvabfeor2"]
+
+[ext_resource type="PackedScene" uid="uid://b115328nf4036" path="res://src/objects/generic/pickup.tscn" id="1"]
+[ext_resource type="Script" path="res://src/objects/generic/treasure.gd" id="2"]
+[ext_resource type="SpriteFrames" path="res://animations/treasure.tres" id="3"]
+[ext_resource type="Animation" path="res://animations/despawn.tres" id="4_avte1"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrmu5"]
+_data = {
+"despawn": ExtResource("4_avte1")
+}
+
+[node name="Treasure" instance=ExtResource("1")]
+z_index = 13
+gravity_scale = 0.0
+script = ExtResource("2")
+type = "Ring"
+color = "Purple"
+static_glitter = true
+
+[node name="Animation" parent="." index="0"]
+sprite_frames = ExtResource("3")
+animation = &"Ring_Purple"
+frame_progress = 1.0
+
+[node name="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_qrmu5")
+}

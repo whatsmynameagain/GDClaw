@@ -1,0 +1,168 @@
+[gd_scene load_steps=17 format=3 uid="uid://cbnuyg58ggmrc"]
+
+[ext_resource type="Texture2D" uid="uid://bgcvgr7xeeemr" path="res://sprites/ui/hud/ammo_lives_numbers/000.png" id="1"]
+[ext_resource type="Script" path="res://src/objects/ui/ammo_hud.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://t5oopkotro36" path="res://sprites/ui/hud/bases/pistol_base/pistol6.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d10w7xpfs2scq" path="res://sprites/ui/hud/bases/dynamite_base/dynamite3.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bemvvheqa3o16" path="res://sprites/ui/hud/bases/magic_base/magic_claw1.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bdhmp0g8bw4lm" path="res://sprites/ui/hud/bases/magic_base/magic_claw4.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c23428x8ew3cs" path="res://sprites/ui/hud/bases/pistol_base/pistol5.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://hfb8f30utqu8" path="res://sprites/ui/hud/bases/pistol_base/pistol1.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://dylv4tystyb0a" path="res://sprites/ui/hud/bases/dynamite_base/dynamite4.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://be4bh60clxgdb" path="res://sprites/ui/hud/bases/magic_base/magic_claw2.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://pwlb0k63g6h" path="res://sprites/ui/hud/bases/dynamite_base/dynamite2.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://dl7bdyvtu4scp" path="res://sprites/ui/hud/bases/pistol_base/pistol3.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://d2pd5aelps7k0" path="res://sprites/ui/hud/bases/pistol_base/pistol2.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://cxpxrqmwierc5" path="res://sprites/ui/hud/bases/pistol_base/pistol4.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://drkxp7i0c3cah" path="res://sprites/ui/hud/bases/magic_base/magic_claw3.png" id="15"]
+
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
+"loop": true,
+"name": &"dynamite",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
+"loop": true,
+"name": &"magic",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}],
+"loop": true,
+"name": &"pistol",
+"speed": 5.0
+}]
+
+[node name="AmmoHUD" type="Node2D"]
+script = ExtResource("2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-26, -2)
+sprite_frames = SubResource("1")
+animation = &"pistol"
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(-26, -1.69264)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+position = Vector2(-17.6028, 1.98607)
+texture = ExtResource("1")
+
+[node name="Sprite2" type="Sprite2D" parent="Sprites"]
+position = Vector2(-9.82795, 1.98607)
+texture = ExtResource("1")
