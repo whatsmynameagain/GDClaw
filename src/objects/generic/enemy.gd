@@ -528,7 +528,7 @@ func disable_thrown_hitbox() -> void:
 	throw_hitbox.monitoring = false
 
 
-func _flip_anim(x) -> void: #has to match the method on the barrel script
+func _flip_anim(x) -> void: #has to match the method on the keg script
 	sprite.flip_h = x
 
 

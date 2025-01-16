@@ -41,7 +41,7 @@ func _process(_delta) -> void:
 func _on_body_entered(body) -> void:
 	if body._is_class("Crate"):
 		body.on_break()
-	elif body._is_class("ExplosiveBarrel"):
+	elif body._is_class("ExplosiveKeg"):
 		body.explode()
 	else:
 		#SHIT WILL BREAK IF THE EXPLOSION AREA IS NOT A RECTANGLE

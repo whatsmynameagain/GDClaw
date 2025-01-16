@@ -31,6 +31,7 @@
     -actually, they are but they despawn immediately
 
 -dynamite throw animation gets stuck on the last frame
+    ->it was the animation being set to loop
 
 -health items cannot be picked up, "no action for this area 'area2d'" (class name issue)
 

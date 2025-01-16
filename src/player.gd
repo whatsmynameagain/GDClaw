@@ -140,7 +140,7 @@ const action_sounds = { #sound effects, hit sounds
 	23 : preload("res://sounds/claw/1002.ogg"), #"magic claw"
 	}
 const Sword_Projectile = preload("res://src/objects/generic/sword_projectile.tscn")
-const Pistol_Bullet = preload("res://src/objects/generic/pistol_bullet.tscn")
+const Pistol_Bullet = preload("res://src/objects/generic/pistol_projectile.tscn")
 const Magic_Projectile = preload("res://src/objects/generic/magic_projectile.tscn")
 const Dynamite_Projectile = preload("res://src/objects/generic/dynamite_projectile.tscn")
 const Player_Glitter_Material = preload("res://src/objects/generic/player_glitter_material.tres")
@@ -811,7 +811,7 @@ func _on_body_exited(body) -> void:
 		on_elevator_area = false
 
 
-#signals from ObjectRangeCheck, if there's a crate or enemy in swipe range (also barrels, the original does that)
+#signals from ObjectRangeCheck, if there's a crate or enemy in swipe range (also kegs, the original does that)
 func _on_longrange_body_entered(body) -> void:
 	objects_in_range.append(body)
 	object_in_swipe_range = !objects_in_range.is_empty()

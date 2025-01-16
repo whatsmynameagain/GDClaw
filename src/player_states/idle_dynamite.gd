@@ -75,7 +75,7 @@ func shoot() -> void:
 	
 	if !owner.animation.is_connected("animation_finished", Callable(self, "_on_animation_complete")):
 		owner.animation.connect("animation_finished", Callable(self, "_on_animation_complete"))
-
+		
 
 func _on_animation_complete() -> void:
 	owner.animation.disconnect("animation_finished", Callable(self, "_on_animation_complete"))
