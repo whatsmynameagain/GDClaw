@@ -385,7 +385,10 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 		
 		print("%s hit for %s by %s" % [type, damage, source.name])
 		
+		#this should be in the hit_effect script
+		#and be called with a signal
 		hit.position = to_local(point)
+		hit.visible = true
 		hit.play("enemy_%s" % str(randi()%3+1))
 		health -= damage
 		

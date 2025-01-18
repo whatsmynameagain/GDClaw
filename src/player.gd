@@ -682,9 +682,14 @@ func on_hit(_type: int, source : CollisionObject2D, damage : int, point : Vector
 	#print("%s hit for %s at point %s by %s" % [_type, damage, point, source.name])
 	if !powerup == Powerup_enum.INVULNERABLE and damage_cooldown <= 0:
 		damage_cooldown = DAMAGE_STUN_COOLDOWN
+		
+		#this should be in the hit_effect script
+		#and be called with a signal
+		hit_effect.visible = true
 		hit_effect.position = to_local(point)
 		hit_effect.play("claw_%s" % str(randi()%3+1)) 
 		hit_effect.z_index = Settings.PLAYER_Z+1
+		
 		if is_on_floor():
 			#left or right
 			knockback = KnockBackSide.RIGHT if source.global_position.x < global_position.x else KnockBackSide.LEFT

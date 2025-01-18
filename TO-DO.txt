@@ -2,6 +2,7 @@
 
 
 -hit animations still visible after animation over
+    -fixed, but the whole hit_effect thing should be moved to the hit_effect script instead of handling it in the player and enemy scripts
 
 -enemies don't take damage
 
@@ -29,6 +30,8 @@
 
 -projectiles aren't being instantiated
     -actually, they are but they despawn immediately
+        ->it happens because the original check for despawning them is checking if the current speed is < original speed
+        and godot4 changed something about the way these projectiles were given velocity, maybe added some sort of drag?
 
 -dynamite throw animation gets stuck on the last frame
     ->it was the animation being set to loop

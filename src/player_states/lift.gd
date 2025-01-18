@@ -78,7 +78,8 @@ func _update(_delta) -> void:
 				owner.lifted_object._on_throw()
 				
 				if !object_animation.get_parent().is_class("Enemy"):
-					object_animation.play("thrown")
+					#object_animation.play("thrown") #test
+					object_animation.play("held")
 				await owner.animation.animation_finished
 				emit_signal("finished", "Idle")
 		elif ((Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right")) 

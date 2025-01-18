@@ -8,4 +8,4 @@ var loops := 1
 
 
 func _on_animation_finished():
-	play("empty")
+	visible = false
