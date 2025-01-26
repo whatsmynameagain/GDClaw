@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3 uid="uid://4ebi8clp204i"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1"]
-[ext_resource type="SpriteFrames" path="res://animations/player.tres" id="2"]
+[ext_resource type="SpriteFrames" uid="uid://bcot6kimeb0df" path="res://animations/player.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://bykfobc26qnfl" path="res://sprites/objects/exclamation/exclamation.png" id="3"]
 [ext_resource type="Script" path="res://src/player_states/state.gd" id="4"]
 [ext_resource type="Script" path="res://src/player_states/climb.gd" id="5"]

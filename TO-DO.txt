@@ -38,4 +38,11 @@
 
 -health items cannot be picked up, "no action for this area 'area2d'" (class name issue)
 
+-fps hud only updates after taking teleporter
+    -> _process in game.gd isn't working
 
+-can't die from damage (health stays at 1)
+
+-pause action isn't working (_input method in pause_menu.gd)
+    -> _input on game.gd isn't working either
+    -is_processing_input() returns true

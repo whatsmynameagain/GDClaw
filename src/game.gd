@@ -132,7 +132,10 @@ func on_level_loaded() -> void:
 	hud.get_node("LivesHUD").update_value(player.lives)
 
 
+#this isn't working anymore
+#is_processing_input() returns true
 func _input(_event) -> void:
+
 	if Input.is_action_pressed("ui_spawntreasure"): #hold for STUFF
 		spawn_random_treasure()
 	if Input.is_action_pressed("ui_spawnrestore"): 
@@ -178,7 +181,9 @@ func _input(_event) -> void:
 		#on_level_loaded()
 
 
-func _physics_process(_delta) -> void:
+#this method isn't being called anymore
+#and setting set_process(true) isn't working either
+func _process(_delta) -> void:
 	fps_label.set_text("FPS: %s" % str(Engine.get_frames_per_second()))
 
 #-------debug stuff---------

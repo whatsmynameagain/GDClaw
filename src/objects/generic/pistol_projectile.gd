@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-class_name PistolBullet
+class_name PistolProjectile
 
 var queued := false #queued for despawning
 var orientation : int

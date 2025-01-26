@@ -6,6 +6,7 @@ signal pause_toggled
 #var _paused : bool = false
 
 
+#this isn't working anymore
 func _input(event) -> void:
 	if event.is_action_pressed("ui_pause"):
 		emit_signal("pause_toggled")

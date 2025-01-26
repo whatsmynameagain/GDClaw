@@ -1,38 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://de7akorv6tv2y"]
 
 [ext_resource type="Script" path="res://src/objects/ui/pause_menu.gd" id="1"]
 [ext_resource type="Material" uid="uid://drvgbykaj38da" path="res://src/objects/ui/pause_menu_material.tres" id="2"]
 
-
-
-
-
-
-
-
 [node name="PauseMenu" type="Control"]
 process_mode = 2
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="MenuElementsGoHere" type="Node2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = ExtResource( 2 )
+material = ExtResource("2")
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 493.332
 offset_top = 48.8519
 offset_right = 544.332
 offset_bottom = 62.8519
-theme_override_colors/font_color = Color( 0.741176, 0.635294, 0.14902, 1 )
-theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+theme_override_colors/font_color = Color(0.741176, 0.635294, 0.14902, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "PAUSED"
 uppercase = true
