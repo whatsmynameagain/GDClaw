@@ -5,7 +5,8 @@ extends Node
 #temp pseudo global enum(s), should figure out how to actually make it global sometime
 #don't use value 0, it's used by death tiles
 enum Damage_Types {THROW, SPIKES, LIQUID, COMBAT, OTHER, FIRE = 5, ICE, LIGHTNING}
-enum Powerups {CATNIP = 1, CATNIP_RED,  GHOST , INVULNERABLE, FIRE_SWORD, ICE_SWORD, LIGHTNING_SWORD}
+enum Powerups {CATNIP = 1, CATNIP_RED, GHOST, INVULNERABLE,
+	 FIRE_SWORD, ICE_SWORD, LIGHTNING_SWORD}
 
 #user settings
 var EFFECTS_VOLUME = -20

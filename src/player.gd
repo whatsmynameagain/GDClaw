@@ -20,8 +20,8 @@ signal respawn(from, orientation)
 # warning-ignore:unused_signal
 signal spawn_dummy(dummy, pos, orientation)
 
-enum Powerup_enum {NONE = 0, CATNIP, GHOST = 3, INVULNERABLE, 
-		FIRE_SWORD, ICE_SWORD, LIGHTNING_SWORD} 
+enum Powerup_enum {NONE = 0, CATNIP = 1, CATNIP_RED = 2, GHOST = 3, INVULNERABLE = 4, 
+		FIRE_SWORD = 5, ICE_SWORD = 6, LIGHTNING_SWORD = 7} 
 enum Orientations {LEFT = -1 , RIGHT = 1}
 enum Ranged {PISTOL, MAGIC, DYNAMITE}
 enum KnockBackSide {LEFT = -1, RIGHT = 1, NONE = 0}
@@ -523,7 +523,7 @@ func use_pickup(pickup : Pickup) -> void:
 			
 	#set the powerup and the timer
 	elif pickup._is_class("Powerup"):
-		if pickup.type in [Powerup_enum.CATNIP, 2] and powerup != Powerup_enum.CATNIP: #2 = catnip_red
+		if pickup.type in [Powerup_enum.CATNIP, Powerup_enum.CATNIP_RED] and powerup != Powerup_enum.CATNIP: #2 = catnip_red
 			climb_speed = CLIMB_CATNIP
 			run_boost_charge = 0.0
 			player_glitter.emitting = true 

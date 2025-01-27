@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hsielfcx14wg" path="res://src/objects/ui/teleporter_transition.tscn" id="4"]
 
 [node name="Game" type="Node"]
-process_mode = 2
+process_mode = 3
 script = ExtResource("1")
 _level = "test_arena"
 

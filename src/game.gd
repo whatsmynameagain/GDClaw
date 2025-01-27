@@ -103,7 +103,7 @@ func _ready() -> void:
 	get_node("Level").add_child(level)
 	pause_menu.connect("pause_toggled", Callable(self, "_on_pause_toggled"))
 	on_level_loaded()
-
+	
 
 func on_level_loaded() -> void:
 	player = level.get_player()

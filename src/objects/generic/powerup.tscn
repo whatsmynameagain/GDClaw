@@ -8,18 +8,16 @@
 z_index = 13
 gravity_scale = 0.0
 script = ExtResource("2")
-type = null
-duration = null
-stack_duration = null
-physics = null
+type = 6
+duration = 15
+stack_duration = true
 static_glitter = true
 glitter_color = null
-one_use = null
 
 [node name="Animation" parent="." index="0"]
 sprite_frames = ExtResource("3")
-animation = &"CATNIP"
-frame_progress = 1.0
+animation = &"ICE_SWORD"
+frame_progress = 0.271112
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false
