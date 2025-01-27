@@ -36,5 +36,3 @@ layer = 4
 
 [node name="PauseMenu" parent="PauseMenu" instance=ExtResource("2")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
