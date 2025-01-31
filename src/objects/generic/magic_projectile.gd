@@ -1,3 +1,5 @@
+@tool 
+
 extends RigidBody2D
 
 class_name MagicProjectile
@@ -5,6 +7,7 @@ class_name MagicProjectile
 var orientation : int
 
 @onready var projectile_glitter = $ProjectileGlitter
+@onready var animation = $AnimatedSprite2D
 
 
 func _get_class() -> String:
@@ -18,6 +21,8 @@ func _is_class(_name) -> bool:
 func _ready():
 	linear_velocity = Settings.MAGIC_PROJECTILE_SPEED
 	z_index = Settings.PLAYER_Z+1
+	animation.play()
+	
 
 
 #delete after hitting a wall

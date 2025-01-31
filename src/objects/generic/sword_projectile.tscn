@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c0cjdyg5cqjry"]
 
-[ext_resource type="Script" path="res://src/objects/generic/sword_projectile.gd" id="1"]
+[ext_resource type="Script" uid="uid://b5323qh7f50dw" path="res://src/objects/generic/sword_projectile.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://db7gvcnadbyj" path="res://sprites/objects/sword_projectile/ice_sword/frame03.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://can5xo0jkkl0c" path="res://sprites/objects/sword_projectile/ice_sword/frame06.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dhx4un86vvef2" path="res://sprites/objects/sword_projectile/fire_sword/frame01.png" id="4"]
@@ -96,6 +96,7 @@ height = 40.0
 collision_layer = 16
 mass = 0.0001
 gravity_scale = 0.0
+custom_integrator = true
 max_contacts_reported = 1
 script = ExtResource("1")
 
