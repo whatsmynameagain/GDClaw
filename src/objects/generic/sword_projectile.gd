@@ -33,11 +33,6 @@ func _ready() -> void:
 
 #delete after hitting a wall
 func _integrate_forces(_state) -> void:
-	#change if something is added to affect proj speed
-	
-	#^^turns out I predicted it
-	#this broke because the projectile is losing linear_velocity over time.
-	#figure out why
 	if abs(linear_velocity.x) != Settings.SWORD_PROJECTILE_SPEED.x:
 		queue_free()
 
