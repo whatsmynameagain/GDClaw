@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cvdrvec4y1ccw"]
 
-[ext_resource type="Script" path="res://src/objects/generic/dynamite_explosion.gd" id="1"]
+[ext_resource type="Script" uid="uid://dhlqxlk47v0oe" path="res://src/objects/generic/dynamite_explosion.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bb3x836swcwhh" path="res://sprites/objects/dynamite_explosion/frame15.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://b2entn60oolvr" path="res://sprites/objects/dynamite_explosion/frame03.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dlp3pt2eg003n" path="res://sprites/objects/dynamite_explosion/frame16.png" id="4"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dm1h6tstrcb6y" path="res://sprites/objects/dynamite_explosion/frame17.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://v3yg8k5hf5t1" path="res://sprites/objects/dynamite_explosion/frame18.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://c00kp2jn8p156" path="res://sprites/objects/dynamite_explosion/frame06.png" id="10"]
-[ext_resource type="AudioStream" uid="uid://dl11iwcxjrebk" path="res://sounds/barrel/keg_boom.ogg" id="11"]
+[ext_resource type="AudioStream" uid="uid://dl11iwcxjrebk" path="res://sounds/explosive_keg/keg_boom.ogg" id="11"]
 [ext_resource type="Texture2D" uid="uid://cb8e68g4wfc7l" path="res://sprites/objects/dynamite_explosion/frame13.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://d2e8anm6r6jbs" path="res://sprites/objects/dynamite_explosion/frame11.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://cymp8ye6ajugx" path="res://sprites/objects/dynamite_explosion/frame01.png" id="14"]
