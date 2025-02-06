@@ -117,8 +117,8 @@ func _on_pickup() -> void:
 			audio.stream = pickup_sounds[type]
 	audio.play()
 	if type == "Extra_Life":
-		set_collision_mask_value(0, false)
-		area.set_collision_mask_value(1, false)
+		set_collision_mask_value(1, false)
+		area.set_collision_mask_value(2, false)
 		stopped = true
 		linear_velocity = Vector2(750, -750)
 		gravity_scale = 0.0 

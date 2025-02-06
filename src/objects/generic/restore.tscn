@@ -16,4 +16,4 @@ static_glitter = true
 [node name="Animation" parent="." index="0"]
 sprite_frames = ExtResource("3")
 animation = &"Magic_Small"
-frame_progress = 0.486759
+frame_progress = 0.230299

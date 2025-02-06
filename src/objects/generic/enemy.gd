@@ -504,8 +504,8 @@ func death_combat(side : int, modifier := "") -> void:
 		_drop_loot()
 			
 	#disable map collision
-	set_collision_mask_value(0, false)
-	set_collision_mask_value(3, false)
+	set_collision_mask_value(1, false)
+	set_collision_mask_value(4, false)
 	motion = Vector2(150 * side, -750)
 
 

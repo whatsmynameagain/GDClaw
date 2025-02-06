@@ -27,15 +27,7 @@
 -inventory_manager is broken. At least it kinda shows contents
 
 -sprites aren't being imported correctly (blurry)
-
-
--dynamite throw animation gets stuck on the last frame
-    ->it was the animation being set to loop
-
--health items cannot be picked up, "no action for this area 'area2d'" (class name issue)
-
--fps hud only updates after taking teleporter
-    -> _process in game.gd isn't working
+    -was this fixed?
 
 -can't die from damage (health stays at 1)
 

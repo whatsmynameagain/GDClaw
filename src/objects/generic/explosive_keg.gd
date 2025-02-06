@@ -51,17 +51,17 @@ func explode() -> void:
 
 func _on_lift() -> void:
 	super._on_lift()
-	area.set_collision_mask_value(1, false)
-	area.set_collision_mask_value(6, false)
-	area.set_collision_mask_value(8, false)
-	area.set_collision_mask_value(11, false)
+	area.set_collision_mask_value(2, false)
+	area.set_collision_mask_value(7, false)
+	area.set_collision_mask_value(9, false)
+	area.set_collision_mask_value(12, false)
 
 
 func _on_land() -> void:
-	area.set_collision_mask_value(1, true)
-	area.set_collision_mask_value(6, true)
-	area.set_collision_mask_value(8, true)
-	area.set_collision_mask_value(11, true)
+	area.set_collision_mask_value(2, true)
+	area.set_collision_mask_value(7, true)
+	area.set_collision_mask_value(9, true)
+	area.set_collision_mask_value(12, true)
 	explode()
 
 
