@@ -120,7 +120,7 @@ func on_level_loaded() -> void:
 	player.connect("powerup_timer_end", Callable(self, "_on_powerup_end"))
 	
 	if !player.get_node("Camera2D").is_current():
-		player.get_node("Camera2D").set_current(true)
+		player.get_node("Camera2D").make_current()
 	
 	level_collected_treasure.clear()
 	
@@ -169,7 +169,7 @@ func _input(_event) -> void:
 	#this assplodes if you use it while teleporting
 	if Input.is_action_pressed("ui_restart"):
 		level.queue_free()
-		level = load("res://levels/%s.tscn" % _level).instantiate()
+		level = load("res://src/levels/%s.tscn" % _level).instantiate()
 		$Level.add_child(level)
 		on_level_loaded()
 		

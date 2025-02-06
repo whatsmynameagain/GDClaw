@@ -96,7 +96,7 @@ func add_objects() -> void:
 	#assumes all objects are properly constructed (start -> end) and tiles are properly named
 	#with the name variables updated
 	pass
-	"""
+	""" this broke after godot4 update
 	for type in ["ladder", "death_tile"]:
 		var start_names := []
 		var mid_names := []
