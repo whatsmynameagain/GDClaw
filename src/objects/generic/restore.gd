@@ -25,7 +25,7 @@ func _get_class() -> String:
 
 
 func _is_class(_name) -> bool:
-	return _name == "Restore" or super.is_class(name)
+	return _name == "Restore" or super._is_class(_name) 
 
 
 func set_type(value) -> void:
