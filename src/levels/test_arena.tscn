@@ -178,6 +178,7 @@ color = "Red"
 
 [node name="Animation" parent="Objects/Pickups/Treasure5" index="0"]
 animation = &"Scepter_Red"
+frame_progress = 0.502989
 flip_h = true
 
 [node name="AnimationPlayer" parent="Objects/Pickups/Treasure5" index="5"]

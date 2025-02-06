@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://dvy7ftukw0438"]
 
-[ext_resource type="Script" path="res://src/objects/ui/score_hud.gd" id="1"]
+[ext_resource type="Script" uid="uid://bxwf2m0am3fce" path="res://src/objects/ui/score_hud.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://jf88qt6w8qjt" path="res://sprites/ui/hud/score_chest/chest012.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://cr5cbkr6q8f3m" path="res://sprites/ui/hud/score_chest/chest003.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://ckuqwx8aqmk0d" path="res://sprites/ui/hud/score_chest/chest010.png" id="4"]

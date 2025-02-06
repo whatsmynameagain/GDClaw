@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4jh7d2g1st0k" path="res://src/game.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://de7akorv6tv2y" path="res://src/objects/ui/pause_menu.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://src/objects/ui/circle_transition.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dr0kiw46oj40p" path="res://src/objects/ui/circle_transition.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://hsielfcx14wg" path="res://src/objects/ui/teleporter_transition.tscn" id="4"]
 
 [node name="Game" type="Node"]
@@ -29,7 +29,6 @@ layer = 3
 visible = false
 
 [node name="CircleTransition" parent="Transitions" instance=ExtResource("3")]
-anchors_preset = 15
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 layer = 4

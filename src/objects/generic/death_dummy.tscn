@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl3mg5hrwrs5"]
 
-[ext_resource type="Script" path="res://src/objects/generic/death_dummy.gd" id="1"]
+[ext_resource type="Script" uid="uid://dcmwfge1udvmg" path="res://src/objects/generic/death_dummy.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cyb1sdork6wwp" path="res://sprites/claw/frame402.png" id="2"]
 
 [node name="DeathDummy" type="CharacterBody2D"]

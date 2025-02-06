@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b115328nf4036"]
 
-[ext_resource type="Script" path="res://src/objects/generic/pickup.gd" id="1"]
+[ext_resource type="Script" uid="uid://cjcve41d1vyqy" path="res://src/objects/generic/pickup.gd" id="1"]
 [ext_resource type="Animation" path="res://animations/despawn.tres" id="2"]
 [ext_resource type="AudioStream" uid="uid://ds1nqi87c5323" path="res://sounds/pickups/pickup_bounce.ogg" id="3"]
 
@@ -12,7 +12,7 @@ radius = 20.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2x6y"]
 _data = {
-"despawn": ExtResource("2")
+&"despawn": ExtResource("2")
 }
 
 [node name="Pickup" type="RigidBody2D"]
@@ -44,5 +44,5 @@ volume_db = -20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_v2x6y")
+&"": SubResource("AnimationLibrary_v2x6y")
 }

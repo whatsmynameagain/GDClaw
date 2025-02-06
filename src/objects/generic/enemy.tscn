@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ds0pke6aneftb"]
 
-[ext_resource type="Script" path="res://src/objects/generic/enemy.gd" id="1"]
+[ext_resource type="Script" uid="uid://c7u4i4yw24o4h" path="res://src/objects/generic/enemy.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bykfobc26qnfl" path="res://sprites/objects/exclamation/exclamation.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://b888q5x6a01jg" path="res://sprites/enemies/officer/frame102.png" id="3"]
 

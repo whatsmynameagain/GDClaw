@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ck6e0oiv115wm"]
 
-[ext_resource type="Script" path="res://addons/inventory_manager/end_item_panel.gd" id="7"]
+[ext_resource type="Script" uid="uid://d2h5s8cnuvx7d" path="res://addons/inventory_manager/end_item_panel.gd" id="7"]
 
 [node name="PanelContainer" type="PanelContainer"]
 offset_top = 26.0

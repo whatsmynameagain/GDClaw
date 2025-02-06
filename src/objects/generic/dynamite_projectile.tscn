@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bwfsxkcloe341"]
 
-[ext_resource type="Script" path="res://src/objects/generic/dynamite_projectile.gd" id="1"]
+[ext_resource type="Script" uid="uid://clkelo7kou64d" path="res://src/objects/generic/dynamite_projectile.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dwa55suy13ur3" path="res://sprites/objects/dynamite_projectile/frame05.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dysc8t30lietd" path="res://sprites/objects/dynamite_projectile/frame06.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dbwklvmhpg8jv" path="res://sprites/objects/dynamite_projectile/frame07.png" id="4"]
@@ -106,10 +106,10 @@ shape = SubResource("3")
 
 [node name="ProjectileGlitter" type="GPUParticles2D" parent="."]
 amount = 16
-process_material = SubResource("4")
 texture = ExtResource("16")
 lifetime = 0.4
 randomness = 1.0
+process_material = SubResource("4")
 
 [node name="Timer" type="Timer" parent="." groups=["camera", "player"]]
 wait_time = 1.5

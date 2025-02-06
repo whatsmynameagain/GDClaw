@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ceo7kersisrb3"]
 
 [ext_resource type="SpriteFrames" path="res://animations/hit_effect.tres" id="1"]
-[ext_resource type="Script" path="res://src/objects/generic/hit_effect.gd" id="11"]
+[ext_resource type="Script" uid="uid://d4ktgvr26jffo" path="res://src/objects/generic/hit_effect.gd" id="11"]
 
 [node name="HitEffect" type="AnimatedSprite2D"]
 z_index = 5

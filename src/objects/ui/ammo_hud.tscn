@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cbnuyg58ggmrc"]
 
 [ext_resource type="Texture2D" uid="uid://bgcvgr7xeeemr" path="res://sprites/ui/hud/ammo_lives_numbers/000.png" id="1"]
-[ext_resource type="Script" path="res://src/objects/ui/ammo_hud.gd" id="2"]
+[ext_resource type="Script" uid="uid://d22kr1tokf6bc" path="res://src/objects/ui/ammo_hud.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://t5oopkotro36" path="res://sprites/ui/hud/bases/pistol_base/pistol6.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://d10w7xpfs2scq" path="res://sprites/ui/hud/bases/dynamite_base/dynamite3.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bemvvheqa3o16" path="res://sprites/ui/hud/bases/magic_base/magic_claw1.png" id="5"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ds0pke6aneftb" path="res://src/objects/generic/enemy.tscn" id="1"]
 [ext_resource type="Animation" path="res://animations/officer/dead_fire.tres" id="2"]
 [ext_resource type="Animation" path="res://animations/despawn_enemy.tres" id="3"]
-[ext_resource type="Script" path="res://src/objects/enemy/officer.gd" id="4"]
+[ext_resource type="Script" uid="uid://2j3jux7f3l33" path="res://src/objects/enemy/officer.gd" id="4"]
 [ext_resource type="Animation" path="res://animations/officer/idle_2.tres" id="5"]
 [ext_resource type="Animation" path="res://animations/officer/dead.tres" id="6"]
 [ext_resource type="Animation" path="res://animations/officer/held.tres" id="7"]
@@ -84,22 +84,22 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6wpk0"]
 _data = {
-"attack_high": SubResource("1"),
-"attack_low": SubResource("2"),
-"attack_mid": SubResource("3"),
-"dead": ExtResource("6"),
-"dead_fire": ExtResource("2"),
-"dead_ice": ExtResource("9"),
-"despawn": ExtResource("3"),
-"held": ExtResource("7"),
-"hit_high": ExtResource("13"),
-"hit_mid": ExtResource("15"),
-"idle_1": ExtResource("10"),
-"idle_2": ExtResource("5"),
-"idle_3": ExtResource("8"),
-"land": ExtResource("11"),
-"lifted": ExtResource("12"),
-"walk": ExtResource("16")
+&"attack_high": SubResource("1"),
+&"attack_low": SubResource("2"),
+&"attack_mid": SubResource("3"),
+&"dead": ExtResource("6"),
+&"dead_fire": ExtResource("2"),
+&"dead_ice": ExtResource("9"),
+&"despawn": ExtResource("3"),
+&"held": ExtResource("7"),
+&"hit_high": ExtResource("13"),
+&"hit_mid": ExtResource("15"),
+&"idle_1": ExtResource("10"),
+&"idle_2": ExtResource("5"),
+&"idle_3": ExtResource("8"),
+&"land": ExtResource("11"),
+&"lifted": ExtResource("12"),
+&"walk": ExtResource("16")
 }
 
 [sub_resource type="RectangleShape2D" id="4"]
@@ -119,7 +119,7 @@ texture = ExtResource("20")
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_6wpk0")
+&"": SubResource("AnimationLibrary_6wpk0")
 }
 
 [node name="Collision" parent="." index="3"]

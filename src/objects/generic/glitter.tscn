@@ -1,95 +1,286 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=66 format=3 uid="uid://cwf2net4bb1ej"]
 
-[ext_resource path="res://sprites/objects/glitter/purple/frame001.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/objects/glitter/purple/frame002.png" type="Texture2D" id=2]
-[ext_resource path="res://sprites/objects/glitter/purple/frame003.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/objects/glitter/purple/frame004.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/objects/glitter/purple/frame005.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/objects/glitter/purple/frame006.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/objects/glitter/purple/frame007.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/objects/glitter/purple/frame008.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/objects/glitter/purple/frame009.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/objects/glitter/purple/frame010.png" type="Texture2D" id=10]
-[ext_resource path="res://sprites/objects/glitter/purple/frame011.png" type="Texture2D" id=11]
-[ext_resource path="res://sprites/objects/glitter/purple/frame012.png" type="Texture2D" id=12]
-[ext_resource path="res://sprites/objects/glitter/purple/frame013.png" type="Texture2D" id=13]
-[ext_resource path="res://sprites/objects/glitter/purple/frame014.png" type="Texture2D" id=14]
-[ext_resource path="res://sprites/objects/glitter/purple/frame015.png" type="Texture2D" id=15]
-[ext_resource path="res://sprites/objects/glitter/purple/frame016.png" type="Texture2D" id=16]
-[ext_resource path="res://sprites/objects/glitter/gold/cir1.png" type="Texture2D" id=17]
-[ext_resource path="res://sprites/objects/glitter/gold/cir2.png" type="Texture2D" id=18]
-[ext_resource path="res://sprites/objects/glitter/gold/cir3.png" type="Texture2D" id=19]
-[ext_resource path="res://sprites/objects/glitter/gold/cir4.png" type="Texture2D" id=20]
-[ext_resource path="res://sprites/objects/glitter/gold/cir5.png" type="Texture2D" id=21]
-[ext_resource path="res://sprites/objects/glitter/gold/cir6.png" type="Texture2D" id=22]
-[ext_resource path="res://sprites/objects/glitter/gold/cir7.png" type="Texture2D" id=23]
-[ext_resource path="res://sprites/objects/glitter/gold/cir8.png" type="Texture2D" id=24]
-[ext_resource path="res://sprites/objects/glitter/gold/cir9.png" type="Texture2D" id=25]
-[ext_resource path="res://sprites/objects/glitter/gold/cir10.png" type="Texture2D" id=26]
-[ext_resource path="res://sprites/objects/glitter/gold/cir11.png" type="Texture2D" id=27]
-[ext_resource path="res://sprites/objects/glitter/gold/cir12.png" type="Texture2D" id=28]
-[ext_resource path="res://sprites/objects/glitter/gold/cir13.png" type="Texture2D" id=29]
-[ext_resource path="res://sprites/objects/glitter/gold/cir14.png" type="Texture2D" id=30]
-[ext_resource path="res://sprites/objects/glitter/gold/cir15.png" type="Texture2D" id=31]
-[ext_resource path="res://sprites/objects/glitter/gold/cir16.png" type="Texture2D" id=32]
-[ext_resource path="res://sprites/objects/glitter/green/cir1.png" type="Texture2D" id=33]
-[ext_resource path="res://sprites/objects/glitter/green/cir2.png" type="Texture2D" id=34]
-[ext_resource path="res://sprites/objects/glitter/green/cir3.png" type="Texture2D" id=35]
-[ext_resource path="res://sprites/objects/glitter/green/cir4.png" type="Texture2D" id=36]
-[ext_resource path="res://sprites/objects/glitter/green/cir5.png" type="Texture2D" id=37]
-[ext_resource path="res://sprites/objects/glitter/green/cir6.png" type="Texture2D" id=38]
-[ext_resource path="res://sprites/objects/glitter/green/cir7.png" type="Texture2D" id=39]
-[ext_resource path="res://sprites/objects/glitter/green/cir8.png" type="Texture2D" id=40]
-[ext_resource path="res://sprites/objects/glitter/green/cir9.png" type="Texture2D" id=41]
-[ext_resource path="res://sprites/objects/glitter/green/cir10.png" type="Texture2D" id=42]
-[ext_resource path="res://sprites/objects/glitter/green/cir11.png" type="Texture2D" id=43]
-[ext_resource path="res://sprites/objects/glitter/green/cir12.png" type="Texture2D" id=44]
-[ext_resource path="res://sprites/objects/glitter/green/cir13.png" type="Texture2D" id=45]
-[ext_resource path="res://sprites/objects/glitter/green/cir14.png" type="Texture2D" id=46]
-[ext_resource path="res://sprites/objects/glitter/green/cir15.png" type="Texture2D" id=47]
-[ext_resource path="res://sprites/objects/glitter/green/cir16.png" type="Texture2D" id=48]
-[ext_resource path="res://sprites/objects/glitter/red/cir1.png" type="Texture2D" id=49]
-[ext_resource path="res://sprites/objects/glitter/red/cir2.png" type="Texture2D" id=50]
-[ext_resource path="res://sprites/objects/glitter/red/cir3.png" type="Texture2D" id=51]
-[ext_resource path="res://sprites/objects/glitter/red/cir4.png" type="Texture2D" id=52]
-[ext_resource path="res://sprites/objects/glitter/red/cir5.png" type="Texture2D" id=53]
-[ext_resource path="res://sprites/objects/glitter/red/cir6.png" type="Texture2D" id=54]
-[ext_resource path="res://sprites/objects/glitter/red/cir7.png" type="Texture2D" id=55]
-[ext_resource path="res://sprites/objects/glitter/red/cir8.png" type="Texture2D" id=56]
-[ext_resource path="res://sprites/objects/glitter/red/cir9.png" type="Texture2D" id=57]
-[ext_resource path="res://sprites/objects/glitter/red/cir10.png" type="Texture2D" id=58]
-[ext_resource path="res://sprites/objects/glitter/red/cir11.png" type="Texture2D" id=59]
-[ext_resource path="res://sprites/objects/glitter/red/cir12.png" type="Texture2D" id=60]
-[ext_resource path="res://sprites/objects/glitter/red/cir13.png" type="Texture2D" id=61]
-[ext_resource path="res://sprites/objects/glitter/red/cir14.png" type="Texture2D" id=62]
-[ext_resource path="res://sprites/objects/glitter/red/cir15.png" type="Texture2D" id=63]
-[ext_resource path="res://sprites/objects/glitter/red/cir16.png" type="Texture2D" id=64]
+[ext_resource type="Texture2D" uid="uid://chgb6u7idioms" path="res://sprites/objects/glitter/purple/frame001.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dieu302jbiupv" path="res://sprites/objects/glitter/purple/frame002.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b2yxl15v8pd4r" path="res://sprites/objects/glitter/purple/frame003.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dhrakg1ixbhwq" path="res://sprites/objects/glitter/purple/frame004.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b0dyyqih11n3a" path="res://sprites/objects/glitter/purple/frame005.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://biahmrbd037bt" path="res://sprites/objects/glitter/purple/frame006.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://0l1yuar2inoe" path="res://sprites/objects/glitter/purple/frame007.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bylnlwubi50ti" path="res://sprites/objects/glitter/purple/frame008.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://djkdf7suu1xsk" path="res://sprites/objects/glitter/purple/frame009.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://chm8r7v8n4y4s" path="res://sprites/objects/glitter/purple/frame010.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://bnx3sducsb584" path="res://sprites/objects/glitter/purple/frame011.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://1m8vppbysxxl" path="res://sprites/objects/glitter/purple/frame012.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://y0lujsmbbii" path="res://sprites/objects/glitter/purple/frame013.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://wjo67kmtso8o" path="res://sprites/objects/glitter/purple/frame014.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://deomso1sobhnf" path="res://sprites/objects/glitter/purple/frame015.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://cq5oep0uwlivd" path="res://sprites/objects/glitter/purple/frame016.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://g0jtcnwpnr67" path="res://sprites/objects/glitter/gold/cir1.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://cykmp465dehwc" path="res://sprites/objects/glitter/gold/cir2.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://dt1u0glqhskio" path="res://sprites/objects/glitter/gold/cir3.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://dpjy34atcsjp8" path="res://sprites/objects/glitter/gold/cir4.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://csh3fg3yvtbno" path="res://sprites/objects/glitter/gold/cir5.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://8qq6ucud3tvs" path="res://sprites/objects/glitter/gold/cir6.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://vyq3fit27n0d" path="res://sprites/objects/glitter/gold/cir7.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://gsp3qxeg5t68" path="res://sprites/objects/glitter/gold/cir8.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://bnafsicv3s1oi" path="res://sprites/objects/glitter/gold/cir9.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://cyix7ntxebw4n" path="res://sprites/objects/glitter/gold/cir10.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://fhgwx8fmknx" path="res://sprites/objects/glitter/gold/cir11.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://htm2cyro0okj" path="res://sprites/objects/glitter/gold/cir12.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://ccfnw3nfyg4ao" path="res://sprites/objects/glitter/gold/cir13.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://hoj3ak1lf5oa" path="res://sprites/objects/glitter/gold/cir14.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://dorsho46dxjfq" path="res://sprites/objects/glitter/gold/cir15.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://bgyaauyqpsiii" path="res://sprites/objects/glitter/gold/cir16.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://dvkji3u57fr8s" path="res://sprites/objects/glitter/green/cir1.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://cwn5iethtkp02" path="res://sprites/objects/glitter/green/cir2.png" id="34"]
+[ext_resource type="Texture2D" uid="uid://cp1shvjwcuwt7" path="res://sprites/objects/glitter/green/cir3.png" id="35"]
+[ext_resource type="Texture2D" uid="uid://bcsaloe18h23m" path="res://sprites/objects/glitter/green/cir4.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://ca4otm5s71od6" path="res://sprites/objects/glitter/green/cir5.png" id="37"]
+[ext_resource type="Texture2D" uid="uid://d16ebyk7wobex" path="res://sprites/objects/glitter/green/cir6.png" id="38"]
+[ext_resource type="Texture2D" uid="uid://bucv75jn38cgt" path="res://sprites/objects/glitter/green/cir7.png" id="39"]
+[ext_resource type="Texture2D" uid="uid://bep8kfqhncvng" path="res://sprites/objects/glitter/green/cir8.png" id="40"]
+[ext_resource type="Texture2D" uid="uid://c0qxkadvwt5pk" path="res://sprites/objects/glitter/green/cir9.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://wv6egywoy5xm" path="res://sprites/objects/glitter/green/cir10.png" id="42"]
+[ext_resource type="Texture2D" uid="uid://s0fjtljmqba2" path="res://sprites/objects/glitter/green/cir11.png" id="43"]
+[ext_resource type="Texture2D" uid="uid://d2g6jl0a1whhb" path="res://sprites/objects/glitter/green/cir12.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://cxdac4veesa4t" path="res://sprites/objects/glitter/green/cir13.png" id="45"]
+[ext_resource type="Texture2D" uid="uid://dhmguinp04lrs" path="res://sprites/objects/glitter/green/cir14.png" id="46"]
+[ext_resource type="Texture2D" uid="uid://cvnigerunx5y2" path="res://sprites/objects/glitter/green/cir15.png" id="47"]
+[ext_resource type="Texture2D" uid="uid://dv3vfa1ubjgro" path="res://sprites/objects/glitter/green/cir16.png" id="48"]
+[ext_resource type="Texture2D" uid="uid://brbc2nwd4kat7" path="res://sprites/objects/glitter/red/cir1.png" id="49"]
+[ext_resource type="Texture2D" uid="uid://b4svga2icsvna" path="res://sprites/objects/glitter/red/cir2.png" id="50"]
+[ext_resource type="Texture2D" uid="uid://bvidj3m0jitx5" path="res://sprites/objects/glitter/red/cir3.png" id="51"]
+[ext_resource type="Texture2D" uid="uid://cockyvjitidnb" path="res://sprites/objects/glitter/red/cir4.png" id="52"]
+[ext_resource type="Texture2D" uid="uid://clku5sx4tbjaj" path="res://sprites/objects/glitter/red/cir5.png" id="53"]
+[ext_resource type="Texture2D" uid="uid://b0bnvhwsgrm7m" path="res://sprites/objects/glitter/red/cir6.png" id="54"]
+[ext_resource type="Texture2D" uid="uid://b3tvbmtt35acb" path="res://sprites/objects/glitter/red/cir7.png" id="55"]
+[ext_resource type="Texture2D" uid="uid://c6yb072hc82yb" path="res://sprites/objects/glitter/red/cir8.png" id="56"]
+[ext_resource type="Texture2D" uid="uid://cs85c1spp8im0" path="res://sprites/objects/glitter/red/cir9.png" id="57"]
+[ext_resource type="Texture2D" uid="uid://cj0finhlspfaw" path="res://sprites/objects/glitter/red/cir10.png" id="58"]
+[ext_resource type="Texture2D" uid="uid://b7jdnr7u2ox7r" path="res://sprites/objects/glitter/red/cir11.png" id="59"]
+[ext_resource type="Texture2D" uid="uid://dk17xhietvpfb" path="res://sprites/objects/glitter/red/cir12.png" id="60"]
+[ext_resource type="Texture2D" uid="uid://bg2fft067g73r" path="res://sprites/objects/glitter/red/cir13.png" id="61"]
+[ext_resource type="Texture2D" uid="uid://cq2krf2yguf1p" path="res://sprites/objects/glitter/red/cir14.png" id="62"]
+[ext_resource type="Texture2D" uid="uid://ip71neg1p07x" path="res://sprites/objects/glitter/red/cir15.png" id="63"]
+[ext_resource type="Texture2D" uid="uid://bveb8sflny68o" path="res://sprites/objects/glitter/red/cir16.png" id="64"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32")
+}],
 "loop": true,
-"name": "Purple",
+"name": &"Gold",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48")
+}],
 "loop": true,
-"name": "Green",
+"name": &"Green",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16")
+}],
 "loop": true,
-"name": "Gold",
+"name": &"Purple",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 63 ), ExtResource( 64 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64")
+}],
 "loop": true,
-"name": "Red",
+"name": &"Red",
 "speed": 12.0
-} ]
+}]
 
 [node name="Glitter" type="AnimatedSprite2D"]
-frames = SubResource( 1 )
-animation = "Green"
+sprite_frames = SubResource("1")
+animation = &"Green"
 frame = 9
-playing = true

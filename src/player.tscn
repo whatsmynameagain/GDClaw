@@ -1,31 +1,31 @@
 [gd_scene load_steps=42 format=3 uid="uid://4ebi8clp204i"]
 
-[ext_resource type="Script" path="res://src/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://bcmae3qiru64f" path="res://src/player.gd" id="1"]
 [ext_resource type="SpriteFrames" uid="uid://bcot6kimeb0df" path="res://animations/player.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://bykfobc26qnfl" path="res://sprites/objects/exclamation/exclamation.png" id="3"]
-[ext_resource type="Script" path="res://src/player_states/state.gd" id="4"]
-[ext_resource type="Script" path="res://src/player_states/climb.gd" id="5"]
-[ext_resource type="Script" path="res://src/player_states/crouch.gd" id="6"]
-[ext_resource type="Script" path="res://src/player_states/crouch_attack.gd" id="7"]
-[ext_resource type="Script" path="res://src/player_states/crouch_pistol.gd" id="8"]
-[ext_resource type="Script" path="res://src/player_states/crouch_magic.gd" id="9"]
-[ext_resource type="Script" path="res://src/player_states/crouch_dynamite.gd" id="10"]
-[ext_resource type="Script" path="res://src/player_states/damage.gd" id="11"]
-[ext_resource type="Script" path="res://src/player_states/death_damage.gd" id="12"]
-[ext_resource type="Script" path="res://src/player_states/death_spikes.gd" id="13"]
-[ext_resource type="Script" path="res://src/player_states/idle.gd" id="14"]
-[ext_resource type="Script" path="res://src/player_states/idle_attack.gd" id="15"]
-[ext_resource type="Script" path="res://src/player_states/idle_dynamite.gd" id="16"]
-[ext_resource type="PackedScene" path="res://src/objects/ui/Camera2D.tscn" id="17"]
-[ext_resource type="Script" path="res://src/player_states/idle_magic.gd" id="18"]
-[ext_resource type="Script" path="res://src/player_states/idle_pistol.gd" id="19"]
-[ext_resource type="Script" path="res://src/player_states/jump.gd" id="20"]
-[ext_resource type="Script" path="res://src/player_states/land.gd" id="21"]
-[ext_resource type="Script" path="res://src/player_states/move.gd" id="22"]
-[ext_resource type="Script" path="res://src/player_states/noclip.gd" id="23"]
-[ext_resource type="Script" path="res://src/player_states/stun.gd" id="24"]
+[ext_resource type="Script" uid="uid://dr5h0bypvxf5a" path="res://src/player_states/state.gd" id="4"]
+[ext_resource type="Script" uid="uid://bnlvxtin02gs3" path="res://src/player_states/climb.gd" id="5"]
+[ext_resource type="Script" uid="uid://c7nwv4a5fmbuc" path="res://src/player_states/crouch.gd" id="6"]
+[ext_resource type="Script" uid="uid://d27q3d6uvkhkl" path="res://src/player_states/crouch_attack.gd" id="7"]
+[ext_resource type="Script" uid="uid://drurff5yvdy3o" path="res://src/player_states/crouch_pistol.gd" id="8"]
+[ext_resource type="Script" uid="uid://cbtxjxeaf5a" path="res://src/player_states/crouch_magic.gd" id="9"]
+[ext_resource type="Script" uid="uid://bj41fg205w6k3" path="res://src/player_states/crouch_dynamite.gd" id="10"]
+[ext_resource type="Script" uid="uid://cygybxt0inkgv" path="res://src/player_states/damage.gd" id="11"]
+[ext_resource type="Script" uid="uid://gaw00k2adtoi" path="res://src/player_states/death_damage.gd" id="12"]
+[ext_resource type="Script" uid="uid://bbwvh41yosoe4" path="res://src/player_states/death_spikes.gd" id="13"]
+[ext_resource type="Script" uid="uid://iftg32lue2bn" path="res://src/player_states/idle.gd" id="14"]
+[ext_resource type="Script" uid="uid://djuq88uaxcdwg" path="res://src/player_states/idle_attack.gd" id="15"]
+[ext_resource type="Script" uid="uid://dht6cc2g15xy7" path="res://src/player_states/idle_dynamite.gd" id="16"]
+[ext_resource type="PackedScene" uid="uid://doe4fcvlmvk8j" path="res://src/objects/ui/Camera2D.tscn" id="17"]
+[ext_resource type="Script" uid="uid://bjf84fq71hrw4" path="res://src/player_states/idle_magic.gd" id="18"]
+[ext_resource type="Script" uid="uid://bmcmqiwd0m6mp" path="res://src/player_states/idle_pistol.gd" id="19"]
+[ext_resource type="Script" uid="uid://bkc7ebr7xjur0" path="res://src/player_states/jump.gd" id="20"]
+[ext_resource type="Script" uid="uid://ry1srdinejy6" path="res://src/player_states/land.gd" id="21"]
+[ext_resource type="Script" uid="uid://c6udcu476ilnb" path="res://src/player_states/move.gd" id="22"]
+[ext_resource type="Script" uid="uid://4p71qggdb15g" path="res://src/player_states/noclip.gd" id="23"]
+[ext_resource type="Script" uid="uid://ccv26hvbhcugm" path="res://src/player_states/stun.gd" id="24"]
 [ext_resource type="PackedScene" uid="uid://bnkgcr0agx142" path="res://src/objects/generic/player_glitter.tscn" id="26"]
-[ext_resource type="Script" path="res://src/player_states/lift.gd" id="27"]
+[ext_resource type="Script" uid="uid://cgo16p4rvkqr0" path="res://src/player_states/lift.gd" id="27"]
 [ext_resource type="Material" uid="uid://cnl22m00vfaqb" path="res://src/objects/generic/player_glitter_material.tres" id="28"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -415,11 +415,11 @@ offset_right = -109.383
 offset_bottom = 43.2606
 
 [node name="PlayerGlitter" parent="." instance=ExtResource("26")]
-process_material = ExtResource("28")
 fixed_fps = 0
 collision_base_size = 0.0
 visibility_rect = Rect2(-32, -64, 64, 128)
 draw_order = 0
+process_material = ExtResource("28")
 
 [node name="PowerupTimer" type="Timer" parent="."]
 one_shot = true

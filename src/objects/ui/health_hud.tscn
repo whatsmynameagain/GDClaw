@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dajx8rrnkbjrw"]
 
-[ext_resource type="Script" path="res://src/objects/ui/health_hud.gd" id="1"]
+[ext_resource type="Script" uid="uid://burgmvcnn4xt" path="res://src/objects/ui/health_hud.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bxxiq2dst02e7" path="res://sprites/ui/hud/health_numbers/009.png" id="2"]
 [ext_resource type="SpriteFrames" path="res://animations/health_hud.tres" id="3"]
 

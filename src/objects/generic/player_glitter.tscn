@@ -10,7 +10,7 @@ gravity = Vector3(0, 0, 0)
 [node name="PlayerGlitter" type="GPUParticles2D"]
 emitting = false
 amount = 32
-process_material = SubResource("1")
 texture = ExtResource("1")
 lifetime = 0.3
 randomness = 1.0
+process_material = SubResource("1")

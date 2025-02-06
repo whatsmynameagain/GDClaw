@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dmdgp28nmsqs7"]
 
-[ext_resource type="Script" path="res://src/objects/generic/spawn_point.gd" id="1"]
+[ext_resource type="Script" uid="uid://b6q6x1rj4u7jc" path="res://src/objects/generic/spawn_point.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://comatxxspuq5f" path="res://sprites/objects/pickup/restore/extra_life/frame001.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://4j3ljqci8uv5" path="res://sprites/objects/pickup/restore/extra_life/frame002.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://b4mdcrr0yktgk" path="res://sprites/objects/pickup/restore/extra_life/frame003.png" id="4"]

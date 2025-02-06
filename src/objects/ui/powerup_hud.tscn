@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkvfw06ga3apb"]
 
-[ext_resource type="Script" path="res://src/objects/ui/powerup_hud.gd" id="1"]
+[ext_resource type="Script" uid="uid://ckc2grvr6ht7k" path="res://src/objects/ui/powerup_hud.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bv224qq62eswy" path="res://sprites/ui/hud/score_timer_numbers/000.png" id="2"]
 [ext_resource type="SpriteFrames" path="res://animations/powerup_hud.tres" id="3"]
 

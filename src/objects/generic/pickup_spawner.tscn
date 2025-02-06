@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvxbfvgvg8g2s"]
 
-[ext_resource type="Script" path="res://src/objects/generic/pickup_spawner.gd" id="1"]
+[ext_resource type="Script" uid="uid://ciwjcybuv18i6" path="res://src/objects/generic/pickup_spawner.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://dtdmhsxcy1xrf" path="res://sounds/generic/pickup_release.ogg" id="2"]
 
 [node name="PickupSpawner" type="Marker2D"]

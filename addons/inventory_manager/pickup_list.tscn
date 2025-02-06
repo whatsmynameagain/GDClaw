@@ -1,100 +1,138 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=54 format=3 uid="uid://63bwht70e7l8"]
 
-[ext_resource path="res://sprites/objects/pickup/treasure/skull3.png" type="Texture2D" id=1]
-[ext_resource path="res://sprites/objects/pickup/treasure/skull2.png" type="Texture2D" id=2]
-[ext_resource path="res://sprites/objects/pickup/treasure/crown4.png" type="Texture2D" id=3]
-[ext_resource path="res://sprites/objects/pickup/treasure/crown2.png" type="Texture2D" id=4]
-[ext_resource path="res://sprites/objects/pickup/treasure/scepter4.png" type="Texture2D" id=5]
-[ext_resource path="res://sprites/objects/pickup/treasure/gecko4.png" type="Texture2D" id=6]
-[ext_resource path="res://sprites/objects/pickup/treasure/ring2.png" type="Texture2D" id=7]
-[ext_resource path="res://sprites/objects/pickup/treasure/ring4.png" type="Texture2D" id=8]
-[ext_resource path="res://sprites/objects/pickup/treasure/crown1.png" type="Texture2D" id=9]
-[ext_resource path="res://sprites/objects/pickup/treasure/skull1.png" type="Texture2D" id=10]
-[ext_resource path="res://sprites/objects/pickup/treasure/gecko1.png" type="Texture2D" id=11]
-[ext_resource path="res://sprites/objects/pickup/treasure/scepter1.png" type="Texture2D" id=12]
-[ext_resource path="res://addons/inventory_manager/pickup_list.gd" type="Script" id=13]
-[ext_resource path="res://sprites/objects/pickup/treasure/coin/frame001.png" type="Texture2D" id=14]
-[ext_resource path="res://sprites/objects/pickup/treasure/chalice4.png" type="Texture2D" id=15]
-[ext_resource path="res://sprites/objects/pickup/treasure/chalice1.png" type="Texture2D" id=16]
-[ext_resource path="res://sprites/objects/pickup/treasure/chalice3.png" type="Texture2D" id=17]
-[ext_resource path="res://sprites/objects/pickup/treasure/chalice2.png" type="Texture2D" id=18]
-[ext_resource path="res://sprites/objects/pickup/treasure/cross2.png" type="Texture2D" id=19]
-[ext_resource path="res://sprites/objects/pickup/treasure/cross1.png" type="Texture2D" id=20]
-[ext_resource path="res://sprites/objects/pickup/treasure/cross4.png" type="Texture2D" id=21]
-[ext_resource path="res://sprites/objects/pickup/treasure/scepter3.png" type="Texture2D" id=22]
-[ext_resource path="res://sprites/objects/pickup/treasure/ring1.png" type="Texture2D" id=23]
-[ext_resource path="res://sprites/objects/pickup/treasure/skull4.png" type="Texture2D" id=24]
-[ext_resource path="res://sprites/objects/pickup/treasure/cross3.png" type="Texture2D" id=25]
-[ext_resource path="res://sprites/objects/pickup/treasure/bars.png" type="Texture2D" id=26]
-[ext_resource path="res://sprites/objects/pickup/restore/magic/large/frame001.png" type="Texture2D" id=27]
-[ext_resource path="res://sprites/objects/pickup/treasure/crown3.png" type="Texture2D" id=28]
-[ext_resource path="res://sprites/objects/pickup/treasure/scepter2.png" type="Texture2D" id=29]
-[ext_resource path="res://sprites/objects/pickup/treasure/pearls1.png" type="Texture2D" id=30]
-[ext_resource path="res://sprites/objects/pickup/restore/ammo/ammo_large.png" type="Texture2D" id=31]
-[ext_resource path="res://sprites/objects/pickup/restore/health/health_medium.png" type="Texture2D" id=32]
-[ext_resource path="res://sprites/objects/pickup/restore/health/health_small.png" type="Texture2D" id=33]
-[ext_resource path="res://sprites/objects/pickup/powerups/ice_sword/frame001.png" type="Texture2D" id=34]
-[ext_resource path="res://sprites/objects/pickup/restore/magic/medium/frame001.png" type="Texture2D" id=35]
-[ext_resource path="res://sprites/objects/pickup/treasure/ring3.png" type="Texture2D" id=36]
-[ext_resource path="res://sprites/objects/pickup/restore/extra_life/frame001.png" type="Texture2D" id=37]
-[ext_resource path="res://sprites/objects/pickup/treasure/gecko2.png" type="Texture2D" id=38]
-[ext_resource path="res://sprites/objects/pickup/treasure/gecko3.png" type="Texture2D" id=39]
-[ext_resource path="res://sprites/objects/pickup/restore/health/health_large.png" type="Texture2D" id=40]
-[ext_resource path="res://sprites/objects/pickup/restore/ammo/ammo_medium.png" type="Texture2D" id=41]
-[ext_resource path="res://sprites/objects/pickup/powerups/fire_sword/frame01.png" type="Texture2D" id=42]
-[ext_resource path="res://sprites/objects/pickup/restore/dynamite/dynamite.png" type="Texture2D" id=43]
-[ext_resource path="res://sprites/objects/pickup/restore/ammo/ammo_small.png" type="Texture2D" id=44]
-[ext_resource path="res://sprites/objects/pickup/restore/health/1-2.png" type="Texture2D" id=45]
-[ext_resource path="res://sprites/objects/pickup/restore/magic/small/frame001.png" type="Texture2D" id=46]
-[ext_resource path="res://sprites/objects/pickup/powerups/catnip/catnip.png" type="Texture2D" id=47]
-[ext_resource path="res://sprites/objects/teleporter/generic/frame001.png" type="Texture2D" id=48]
-[ext_resource path="res://sprites/objects/pickup/powerups/catnip/catnip_red.png" type="Texture2D" id=49]
-[ext_resource path="res://sprites/objects/pickup/powerups/lightning_sword/frame001.png" type="Texture2D" id=50]
-[ext_resource path="res://sprites/objects/pickup/powerups/invulnerable/frame01.png" type="Texture2D" id=51]
-[ext_resource path="res://sprites/objects/pickup/powerups/ghost/frame1.png" type="Texture2D" id=52]
-[ext_resource path="res://sprites/objects/pickup/end_item/gem/blue.png" type="Texture2D" id=53]
+[ext_resource type="Texture2D" uid="uid://dmmdm81obi101" path="res://sprites/objects/pickup/treasure/skull3.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c6q41dha8vy08" path="res://sprites/objects/pickup/treasure/skull2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c4nr76t6mumb6" path="res://sprites/objects/pickup/treasure/crown4.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://d1kp4r0a7rjv" path="res://sprites/objects/pickup/treasure/crown2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b24dorh6mrlj2" path="res://sprites/objects/pickup/treasure/scepter4.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bb1dytcd2pr2b" path="res://sprites/objects/pickup/treasure/gecko4.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dc1cbn7o2sxr0" path="res://sprites/objects/pickup/treasure/ring2.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dgs5o5pvl1r71" path="res://sprites/objects/pickup/treasure/ring4.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://2e8e5bdraofp" path="res://sprites/objects/pickup/treasure/crown1.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://dcofyaetl45uu" path="res://sprites/objects/pickup/treasure/skull1.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://hoqct5pplfi0" path="res://sprites/objects/pickup/treasure/gecko1.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://ch5rh06872si2" path="res://sprites/objects/pickup/treasure/scepter1.png" id="12"]
+[ext_resource type="Script" uid="uid://cj5tcyt88hc8a" path="res://addons/inventory_manager/pickup_list.gd" id="13"]
+[ext_resource type="Texture2D" uid="uid://cn303xlnrcls" path="res://sprites/objects/pickup/treasure/coin/frame001.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://bvy326keyv6v0" path="res://sprites/objects/pickup/treasure/chalice4.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://ddeuval8v3gum" path="res://sprites/objects/pickup/treasure/chalice1.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://b3c8jm73iylvm" path="res://sprites/objects/pickup/treasure/chalice3.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://dioocaciym6oe" path="res://sprites/objects/pickup/treasure/chalice2.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://2cg3eg271gem" path="res://sprites/objects/pickup/treasure/cross2.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://h0c3cvxfgcdm" path="res://sprites/objects/pickup/treasure/cross1.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://biwsw3e27ujxf" path="res://sprites/objects/pickup/treasure/cross4.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://cqe5jleax07ke" path="res://sprites/objects/pickup/treasure/scepter3.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://7mvk5joavtr0" path="res://sprites/objects/pickup/treasure/ring1.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://1ubg2gt5f80o" path="res://sprites/objects/pickup/treasure/skull4.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://bv48js4r0xak2" path="res://sprites/objects/pickup/treasure/cross3.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://b0yl8rhvexmt8" path="res://sprites/objects/pickup/treasure/bars.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://q5gor5dgx1ea" path="res://sprites/objects/pickup/restore/magic/large/frame001.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://bd80sc20t8qcx" path="res://sprites/objects/pickup/treasure/crown3.png" id="28"]
+[ext_resource type="Texture2D" uid="uid://bk5x55wojudjl" path="res://sprites/objects/pickup/treasure/scepter2.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://6031wet80mt8" path="res://sprites/objects/pickup/treasure/pearls1.png" id="30"]
+[ext_resource type="Texture2D" uid="uid://d2tun3t0mw6k2" path="res://sprites/objects/pickup/restore/ammo/ammo_large.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://cetdqtv4qvpg4" path="res://sprites/objects/pickup/restore/health/health_medium.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://c5i6npp2myujj" path="res://sprites/objects/pickup/restore/health/health_small.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://bbva83a7x82vu" path="res://sprites/objects/pickup/powerups/ice_sword/frame001.png" id="34"]
+[ext_resource type="Texture2D" uid="uid://cfyf6mb3vyahy" path="res://sprites/objects/pickup/restore/magic/medium/frame001.png" id="35"]
+[ext_resource type="Texture2D" uid="uid://dx5hc72sxdo5p" path="res://sprites/objects/pickup/treasure/ring3.png" id="36"]
+[ext_resource type="Texture2D" uid="uid://comatxxspuq5f" path="res://sprites/objects/pickup/restore/extra_life/frame001.png" id="37"]
+[ext_resource type="Texture2D" uid="uid://d03exscu7i1uo" path="res://sprites/objects/pickup/treasure/gecko2.png" id="38"]
+[ext_resource type="Texture2D" uid="uid://dkiffhy6w3sn5" path="res://sprites/objects/pickup/treasure/gecko3.png" id="39"]
+[ext_resource type="Texture2D" uid="uid://b14sangb6586" path="res://sprites/objects/pickup/restore/health/health_large.png" id="40"]
+[ext_resource type="Texture2D" uid="uid://c8ipyjq855hqu" path="res://sprites/objects/pickup/restore/ammo/ammo_medium.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://01stvguq4ohy" path="res://sprites/objects/pickup/powerups/fire_sword/frame01.png" id="42"]
+[ext_resource type="Texture2D" uid="uid://dvn0g2a23vsy8" path="res://sprites/objects/pickup/restore/dynamite/dynamite.png" id="43"]
+[ext_resource type="Texture2D" uid="uid://vgbffehnsryc" path="res://sprites/objects/pickup/restore/ammo/ammo_small.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://b00l3417ebkjr" path="res://sprites/objects/pickup/restore/health/1-2.png" id="45"]
+[ext_resource type="Texture2D" uid="uid://drby5aciy13ps" path="res://sprites/objects/pickup/restore/magic/small/frame001.png" id="46"]
+[ext_resource type="Texture2D" uid="uid://dwr7m6mop2cic" path="res://sprites/objects/pickup/powerups/catnip/catnip.png" id="47"]
+[ext_resource type="Texture2D" uid="uid://dmu1wnesn5m6w" path="res://sprites/objects/teleporter/generic/frame001.png" id="48"]
+[ext_resource type="Texture2D" uid="uid://dufxm3vkq37v4" path="res://sprites/objects/pickup/powerups/catnip/catnip_red.png" id="49"]
+[ext_resource type="Texture2D" uid="uid://boyomfnyew7th" path="res://sprites/objects/pickup/powerups/lightning_sword/frame001.png" id="50"]
+[ext_resource type="Texture2D" uid="uid://cydrmb708vy7k" path="res://sprites/objects/pickup/powerups/invulnerable/frame01.png" id="51"]
+[ext_resource type="Texture2D" uid="uid://bpq7v75nvtk2x" path="res://sprites/objects/pickup/powerups/ghost/frame1.png" id="52"]
+[ext_resource type="Texture2D" uid="uid://yutnonqh4jjo" path="res://sprites/objects/pickup/end_item/gem/blue.png" id="53"]
 
 [node name="ItemList" type="PopupPanel"]
-offset_right = 308.0
-offset_bottom = 598.0
-custom_minimum_size = Vector2( 300, 0 )
-size_flags_horizontal = 5
-size_flags_vertical = 5
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+size = Vector2i(308, 598)
+visible = true
+script = ExtResource("13")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 304.0
 offset_bottom = 594.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-offset_right = 300.0
-offset_bottom = 590.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
-offset_right = 300.0
-offset_bottom = 590.0
-custom_minimum_size = Vector2( 300, 590 )
+custom_minimum_size = Vector2(300, 590)
+layout_mode = 2
 
 [node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
-offset_right = 300.0
-offset_bottom = 600.0
-custom_minimum_size = Vector2( 300, 600 )
+custom_minimum_size = Vector2(300, 600)
+layout_mode = 2
 theme_override_constants/v_separation = 10
 theme_override_constants/h_separation = 4
-items = [ "", ExtResource( 14 ), false, "", ExtResource( 26 ), false, "", ExtResource( 30 ), false, "", ExtResource( 53 ), false, "", ExtResource( 23 ), false, "", ExtResource( 36 ), false, "", ExtResource( 7 ), false, "", ExtResource( 8 ), false, "", ExtResource( 16 ), false, "", ExtResource( 17 ), false, "", ExtResource( 18 ), false, "", ExtResource( 15 ), false, "", ExtResource( 20 ), false, "", ExtResource( 25 ), false, "", ExtResource( 19 ), false, "", ExtResource( 21 ), false, "", ExtResource( 12 ), false, "", ExtResource( 22 ), false, "", ExtResource( 29 ), false, "", ExtResource( 5 ), false, "", ExtResource( 11 ), false, "", ExtResource( 39 ), false, "", ExtResource( 38 ), false, "", ExtResource( 6 ), false, "", ExtResource( 9 ), false, "", ExtResource( 28 ), false, "", ExtResource( 4 ), false, "", ExtResource( 3 ), false, "", ExtResource( 10 ), false, "", ExtResource( 1 ), false, "", ExtResource( 2 ), false, "", ExtResource( 24 ), false, "", ExtResource( 45 ), false, "", ExtResource( 33 ), false, "", ExtResource( 32 ), false, "", ExtResource( 40 ), false, "", ExtResource( 44 ), false, "", ExtResource( 41 ), false, "", ExtResource( 31 ), false, "", ExtResource( 43 ), false, "", ExtResource( 46 ), false, "", ExtResource( 35 ), false, "", ExtResource( 27 ), false, "", ExtResource( 37 ), false, "", ExtResource( 52 ), false, "", ExtResource( 47 ), false, "", ExtResource( 49 ), false, "", ExtResource( 51 ), false, "", ExtResource( 42 ), false, "", ExtResource( 34 ), false, "", ExtResource( 50 ), false, "", ExtResource( 48 ), false ]
 auto_height = true
+item_count = 52
 max_columns = 4
 same_column_width = true
 icon_mode = 0
+item_0/icon = ExtResource("14")
+item_1/icon = ExtResource("26")
+item_2/icon = ExtResource("30")
+item_3/icon = ExtResource("53")
+item_4/icon = ExtResource("23")
+item_5/icon = ExtResource("36")
+item_6/icon = ExtResource("7")
+item_7/icon = ExtResource("8")
+item_8/icon = ExtResource("16")
+item_9/icon = ExtResource("17")
+item_10/icon = ExtResource("18")
+item_11/icon = ExtResource("15")
+item_12/icon = ExtResource("20")
+item_13/icon = ExtResource("25")
+item_14/icon = ExtResource("19")
+item_15/icon = ExtResource("21")
+item_16/icon = ExtResource("12")
+item_17/icon = ExtResource("22")
+item_18/icon = ExtResource("29")
+item_19/icon = ExtResource("5")
+item_20/icon = ExtResource("11")
+item_21/icon = ExtResource("39")
+item_22/icon = ExtResource("38")
+item_23/icon = ExtResource("6")
+item_24/icon = ExtResource("9")
+item_25/icon = ExtResource("28")
+item_26/icon = ExtResource("4")
+item_27/icon = ExtResource("3")
+item_28/icon = ExtResource("10")
+item_29/icon = ExtResource("1")
+item_30/icon = ExtResource("2")
+item_31/icon = ExtResource("24")
+item_32/icon = ExtResource("45")
+item_33/icon = ExtResource("33")
+item_34/icon = ExtResource("32")
+item_35/icon = ExtResource("40")
+item_36/icon = ExtResource("44")
+item_37/icon = ExtResource("41")
+item_38/icon = ExtResource("31")
+item_39/icon = ExtResource("43")
+item_40/icon = ExtResource("46")
+item_41/icon = ExtResource("35")
+item_42/icon = ExtResource("27")
+item_43/icon = ExtResource("37")
+item_44/icon = ExtResource("52")
+item_45/icon = ExtResource("47")
+item_46/icon = ExtResource("49")
+item_47/icon = ExtResource("51")
+item_48/icon = ExtResource("42")
+item_49/icon = ExtResource("34")
+item_50/icon = ExtResource("50")
+item_51/icon = ExtResource("48")
+
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/ScrollContainer/ItemList" to="." method="_on_item_selected"]

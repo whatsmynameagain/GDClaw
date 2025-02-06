@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ryoets6pj0bp"]
 
-[ext_resource type="Script" path="res://src/objects/generic/audio_trigger.gd" id="1"]
+[ext_resource type="Script" uid="uid://c72vgdeh4e8qp" path="res://src/objects/generic/audio_trigger.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bykfobc26qnfl" path="res://sprites/objects/exclamation/exclamation.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
