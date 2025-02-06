@@ -167,7 +167,7 @@ func disable() -> void:
 	if !Engine.is_editor_hint():
 		disconnect("body_entered", Callable(self, "_on_bounce")) 
 		animation.visible = false
-		area.set_collision_layer_value(2, false)
+		area.set_collision_layer_value(3, false)
 		if has_node("Glitter"):
 			get_node("Glitter").visible = false
 			get_node("Glitter").stop()

@@ -7,7 +7,7 @@ var wait_timer
 func _on_enter() -> void:
 	owner.motion = Vector2.ZERO
 	owner.visible = false
-	owner.set_collision_layer_value(1, false)
+	owner.set_collision_layer_value(2, false)
 	var dummy = preload("res://src/objects/generic/death_dummy.tscn").instantiate()
 	owner.emit_signal("spawn_dummy", dummy, owner.global_position, owner.orientation)
 	owner.set_stance_collision(true, true)
@@ -25,4 +25,4 @@ func _on_wait_over() -> void:
 	owner.health = 100
 	owner.emit_signal("health_updated", owner.health)
 	emit_signal("finished", "Idle")
-	owner.set_collision_layer_value(1, true)
+	owner.set_collision_layer_value(2, true)

@@ -105,7 +105,7 @@ func _on_pickup() -> void:
 	#for some reason this^ doesn't work, gotta disable the collision mask instead:
 	#update: maybe the setters could be called with call_deferred, dunno, could try that sometime
 	set_collision_mask_value(1, false) #disable collision with layer 1 (tilemap) for collison box
-	area.set_collision_layer_value(2, false) #disable area collision with layer 1 (player) for areabox
+	area.set_collision_layer_value(2, false) #disable area collision with layer 2 (player) for areabox
 	stopped = true
 	_spawn_value()
 	linear_velocity = Vector2(-750, -750) #move to the top left

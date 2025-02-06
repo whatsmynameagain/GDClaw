@@ -29,8 +29,8 @@
 -sprites aren't being imported correctly (blurry)
     -was this fixed?
 
--can't die from damage (health stays at 1)
 
 -pause action isn't working (_input method in pause_menu.gd)
     -> _input on game.gd isn't working either
     -is_processing_input() returns true
+

@@ -176,7 +176,7 @@ func set_state(value) -> void:
 		States.LIFTED:
 			if !_lifted_on_exit():
 				if dropped:
-					set_collision_layer_value(6, true)
+					set_collision_layer_value(7, true)
 		States.THROW_LAND:
 			if !_throw_land_on_exit():
 				if !dead:
@@ -184,7 +184,7 @@ func set_state(value) -> void:
 						#would be to offset the sprite and collisionlifted area down 
 						#to match the base of the main collision area beforehand.
 						#might do that eventually but for now this is fine
-					set_collision_layer_value(6, true)
+					set_collision_layer_value(7, true)
 	
 	state = value
 	
@@ -230,7 +230,7 @@ func set_state(value) -> void:
 				#temp voice line stuff, I don't know the chances
 				contact_hitbox.monitoring = false
 				animation.play("lifted")
-				set_collision_layer_value(6, false)
+				set_collision_layer_value(7, false)
 				randomize()
 				var chance = randi()%3+1
 				if chance == 3: #1/3 chance of saying something
@@ -252,7 +252,7 @@ func set_state(value) -> void:
 				contact_hitbox.monitoring = false
 				spikes = true
 				motion = Vector2.ZERO
-				set_collision_layer_value(6, false)
+				set_collision_layer_value(7, false)
 				Utils.decide_player([sounds, sounds_2], sound_effects_generic["death_spikes"])
 				if !contents.is_empty():
 					_drop_loot()
@@ -435,7 +435,7 @@ func on_death(source, side : int) -> void:
 		print("juggled")
 	dead = true
 	emit_signal("enemy_dead")
-	set_collision_layer_value(7, false) #disable collision with death tiles
+	set_collision_layer_value(8, false) #disable collision with death tiles
 	print("enemy death by %s" % Settings.Damage_Types.keys()[source])
 	match source:
 		Settings.Damage_Types.COMBAT: #melee

@@ -272,7 +272,7 @@ func _is_class(_name) -> bool:
 
 # -------------SETTERS/GETTERS-------------
 func set_health(value) -> void:
-	health = clamp(value, 1, 100)
+	health = clamp(value, 0, 100)
 
 
 func set_pistol(value) -> void:
@@ -315,6 +315,7 @@ func set_powerup(value) -> void:
 # -------------OVERRIDE METHODS-------------
 	
 func _ready() -> void:
+	assert(health > 0)
 	z_index = Settings.PLAYER_Z
 	player_sounds.set_volume_db(Settings.EFFECTS_VOLUME)
 	player_sounds_2.set_volume_db(Settings.EFFECTS_VOLUME)
