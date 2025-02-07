@@ -56,6 +56,6 @@ func spawn_elements() -> void:
 				print("error loading loot item")
 		#item.glitterColor = elem[4] #dosn't really work because pickups physics overrides it with gold. 
 		#Could be changed.
-		item.physics = true
+		item.physics = true #this is immediately turned to false
 		item.initial_impulse = impulse
 		emit_signal("pickup_spawned", item, global_position, z_index+1)

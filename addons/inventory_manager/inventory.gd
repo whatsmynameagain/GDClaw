@@ -138,7 +138,7 @@ func _on_discard_pressed() -> void:
 
 #get the selected button id from its node name (calls the custom signal that carries the button object)
 func _get_selected_slot(slot) -> void:
-	selected = int(slot.name.lstrip("Button")) - 1 #starts from 1
+	selected = int(slot.name.lstrip("Button")) - 1 
 	var button_popup = inventory_slots.get_children()[selected].get_popup()
 	#reset the popup menu
 	button_popup.set_item_disabled(0, false) 
@@ -160,12 +160,11 @@ func _get_selected_slot(slot) -> void:
 func _on_menu_option_pressed(index : int) -> void:
 	match index:
 		0: #add item
-			list.get_global_position()
 			#code adapted from... some node inheritance addon thing I found online
 			var x = Vector2(get_tree().get_root().size.x,0) / 2
 			var pos = self.get_global_position()
 			var side = 1 if pos > x else 0
-			list.set_global_position(self.get_global_position()+Vector2(side * -200,20))
+			list.set_position(self.get_global_position()+Vector2(side * -200,20))
 			list.popup()
 			
 		1: #clear slot

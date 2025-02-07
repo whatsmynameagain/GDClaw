@@ -142,7 +142,8 @@ func _input(_event) -> void:
 		spawn_random_restore()
 	if Input.is_action_pressed("ui_spawnpowerup"): 
 		spawn_random_powerup()
-		
+	
+	#old debug
 	if Input.is_action_pressed("ui_spawn_sword_projectile"):
 		use_treasure_spawner()
 		#spawn_dynamite()
@@ -199,9 +200,17 @@ func spawn_dynamite() -> void:
 func use_treasure_spawner() -> void:
 	var pos = $Level.get_global_mouse_position()
 	var spawner = preload("res://src/objects/generic/pickup_spawner.tscn").instantiate()
-	level.add_child(spawner)
-	spawner.global_position = pos
-	spawner.set_spawn_list([[0, "Coin"], [1, "Health", "Large"], [0, "Gecko", "Blue"]])
+	
+	level._on_spawn_spawner(
+		spawner, 
+		pos, 
+		Settings.PICKUP_Z, 
+		false, 
+		[[0, "Coin"], [1, "Health", "Large"], [0, "Gecko", "Blue"]]
+	)
+	#level.add_child(spawner)
+	#spawner.global_position = pos
+	#spawner.set_spawn_list()
 
 
 func spawn_sword_projectile() -> void:

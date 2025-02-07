@@ -19,8 +19,10 @@ signal drop_loot(spawner, pos, z, only, contents)
 const BreakSoundA = preload("res://sounds/crate/crate_break.ogg")
 const BreakSoundB = preload("res://sounds/crate/crate_break_2.ogg")
 
-@export var z_position = "Front": set = set_z_position
-@export var contents : Array[Array]: set = set_contents
+@export_enum("Front", "Stack_Front", "Stack_Back", "Back") var z_position : String = "Front": 
+	set = set_z_position
+@export var contents : Array[Array]: 
+	set = set_contents
 
 var collision
 var only_stack := true 

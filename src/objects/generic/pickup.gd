@@ -2,9 +2,15 @@ extends RigidBody2D
 
 class_name Pickup
 
-@export var physics: bool = false: set = set_physics
-@export var static_glitter: bool = false: set = set_glitter
-@export var glitter_color = "Gold": set = set_glitter_color
+@export var physics: bool = false: 
+	get = get_physics, 
+	set = set_physics
+@export var static_glitter: bool = false: 
+	get = get_glitter,
+	set = set_glitter
+@export var glitter_color = "Gold": 
+	get = get_glitter_color,
+	set = set_glitter_color
 @export var one_use: bool = true
 
 var pickup_sounds = {
@@ -32,6 +38,9 @@ var x_velocity_safe := 0.0
 var bounces := 3
 var stopped := false
 var despawning := false
+var _physics : bool #backing variable
+var _static_glitter : bool #backing variable
+var _glitter_color : String # backing variable
 #var default_gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animation = $Animation
@@ -50,11 +59,14 @@ func _is_class(_name) -> bool:
 	return _name == "Pickup" or super.is_class(_name) #not _is_class for this one
 
 
+func get_physics() -> bool:
+	return _physics
+
 func set_physics(value) -> void:
-	physics = value
+	_physics = value
 	if physics:
-		static_glitter = false 
-		glitter_color = "None"
+		_static_glitter = false 
+		_glitter_color = "None"
 		if has_node("Glitter"):
 			get_node("Glitter").queue_free()
 		gravity_scale = 1
@@ -72,26 +84,32 @@ func set_physics(value) -> void:
 	notify_property_list_changed() #update the inspector value
 
 
+func get_glitter() -> bool:
+	return _static_glitter
+
 func set_glitter(value) -> void:
-	static_glitter = value
+	_static_glitter = value
 	if !static_glitter and glitter_color != "None":
-		glitter_color = "None"
+		_glitter_color = "None"
 		if has_node("Glitter"):
 			get_node("Glitter").queue_free()
 	else:
-		glitter_color = "Gold"
-		physics = false
+		_glitter_color = "Gold"
+		_physics = false
 	queue_redraw()
 	notify_property_list_changed()
 
 
+func get_glitter_color() -> String:
+	return _glitter_color
+
 func set_glitter_color(value) -> void:
-	glitter_color = value
+	_glitter_color = value
 	if !static_glitter and value != "None":
-		static_glitter = true
-		physics = false
+		_static_glitter = true
+		_physics = false
 	elif value == "None":
-		static_glitter = false
+		_static_glitter = false
 	queue_redraw()
 	notify_property_list_changed()
 
@@ -109,13 +127,14 @@ func _ready() -> void:
 
 #this is being called way too many times
 #func _integrate_forces(_state) -> void:
-func _physics_process(_delta):	
+func _physics_process(_delta):
 	if Engine.is_editor_hint():
 		return
 	if !physics:
 		set_physics_process(false)
 		return
 	else:
+		
 		#At the time of making this, there's an engine bug where rigidbody2ds never stop bouncing, 
 		#gotta patch it a bit with materials, which actually makes it behave pretty similarly to the original
 		
@@ -136,6 +155,7 @@ func _physics_process(_delta):
 				physics_material_override = temp_material
 			
 		if !initial_impulse_applied:
+			
 			if initial_impulse == Vector2.ZERO:
 				randomize()
 				#fugly, will probably rework later

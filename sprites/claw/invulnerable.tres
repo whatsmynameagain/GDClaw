@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1")
-shader_parameter/switcher = null
+shader_parameter/switcher = 0.0
