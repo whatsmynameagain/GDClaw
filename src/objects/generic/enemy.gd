@@ -101,7 +101,7 @@ func _is_class(_name) -> bool:
 
 
 func set_health(value) -> void:
-	health = max(1, value)
+	health = max(0, value)
 
 
 func set_orientation(value) -> void:

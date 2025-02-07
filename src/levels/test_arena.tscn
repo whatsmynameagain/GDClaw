@@ -246,7 +246,6 @@ layer_0/tile_data = PackedInt32Array(458752, 4, 0, 458753, 5, 0, 458754, 4, 0, 4
 position = Vector2(-137, -44)
 
 [node name="Crate" parent="." index="8" instance=ExtResource("20")]
-position = Vector2(42, -61)
-contents = Array[Array]([[0, "Coin"]])
+position = Vector2(44, -61)
 
 [editable path="Objects/Pickups/Treasure5"]

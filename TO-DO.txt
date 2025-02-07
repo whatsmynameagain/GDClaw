@@ -4,8 +4,6 @@
 -hit animations still visible after animation over
     -fixed, but the whole hit_effect thing should be moved to the hit_effect script instead of handling it in the player and enemy scripts
 
--enemies don't take damage
-
 -anything but the player that uses physics for being thrown or jumping never stops moving (thrown enemies and I suspect jumping treasure)
     -still gotta test barrels
 
@@ -25,6 +23,11 @@
     "scene/resources/sprite_frames.cpp:216 - Condition "!f.has("texture")" is true. Continuing."
 
 -inventory_manager is broken. At least it kinda shows contents
+    ->fixed buttons (menubuttons' contents were missing for some reason)
+    -inventory panels are not showing up
+    -buttons aren't updating when selecting an empty object
+    -remove menu option doesn't work
+        "res://addons/inventory_manager/inventory.gd:172 - Invalid call. Nonexistent function 'remove' in base 'Array[Array]'"
 
 -sprites aren't being imported correctly (blurry)
     -was this fixed?
@@ -34,3 +37,5 @@
     -> _input on game.gd isn't working either
     -is_processing_input() returns true
 
+
+-add check for spawning enemies with 0 health
