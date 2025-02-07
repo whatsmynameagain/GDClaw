@@ -39,3 +39,10 @@
 
 
 -add check for spawning enemies with 0 health
+
+-objects with physics roll around when they should stay still
+    -check rigidbody2d's properties
+
+-many objects' collisions and areas are missized
+    -crumbling platforms
+    -binary platforms

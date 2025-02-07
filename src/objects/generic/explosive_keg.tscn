@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnm1ctulowk3h"]
+[gd_scene load_steps=7 format=3 uid="uid://dnm1ctulowk3h"]
 
 [ext_resource type="SpriteFrames" path="res://animations/explosive_keg.tres" id="1"]
 [ext_resource type="Script" uid="uid://dg8ljy4fyiwca" path="res://src/objects/generic/explosive_keg.gd" id="2"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bpwjiq5gpfuud" path="res://src/objects/generic/liftable_dummy.tscn" id="4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(48.3214, 54.9753)
+size = Vector2(94.0804, 100.622)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_surjy"]
+size = Vector2(32, 38.5)
 
 [node name="ExplosiveBarrel" instance=ExtResource("4")]
 collision_layer = 2048
@@ -21,16 +24,16 @@ animation = &"idle"
 offset = Vector2(0, -24.764)
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
-visible = false
 collision_layer = 0
 collision_mask = 2147486018
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(-0.8909, -30.2906)
+position = Vector2(0, -28.689)
 shape = SubResource("1")
 disabled = true
 
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2(0, -7)
+position = Vector2(-1, 2.75)
+shape = SubResource("RectangleShape2D_surjy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

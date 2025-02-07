@@ -393,7 +393,7 @@ func on_hit(_type : int, source : CollisionObject2D, damage : int, point : Vecto
 		health -= damage
 		
 		if health <= 0:
-			if source.is_class("PistolBullet"): #pistol bullets disappear after killing one enemy
+			if source._is_class("PistolProjectile"): #pistol bullets disappear after killing one enemy
 				source.queue_free()
 				emit_signal("killed_by_player")
 			#not sure if thrown kegs also trigger the voiceline, gotta test it	
