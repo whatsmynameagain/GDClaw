@@ -11,7 +11,7 @@ extends Node2D
 #gotta confirm whether enemies can land on these
 
 const transition_time := {"Vanish" : 0.4, "Slide" : 0.2, "Sink" : 0.3}
-#timings for slide and sink are temporary, figure them out later
+#timings for slide and sink are placeholder, figure them out later
 
 #add another const dict with the sounds res strings based on the type (and an export string for the type)
 @export var active: bool = true
@@ -61,4 +61,3 @@ func _on_timeout() -> void:
 func _on_animation_finished() -> void:
 	timer.start()
 	collision.disabled = !active
-

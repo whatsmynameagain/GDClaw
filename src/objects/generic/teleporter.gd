@@ -83,7 +83,7 @@ func _draw() -> void:
 		
 	if get_node("Animation").sprite_frames != animations:
 		get_node("Animation").sprite_frames = animations
-	if get_node("Animation").visible == false:
+	if !get_node("Animation").visible:
 		get_node("Animation").visible = true
 	
 	draw_line(Vector2.ZERO, get_node("DestinationHelper").position, Color("#ffffff"), 2.0)

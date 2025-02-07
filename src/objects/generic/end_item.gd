@@ -24,10 +24,7 @@ func _is_class(_name) -> bool:
 
 func set_type(value) -> void:
 	type = value
-	if type == "map":
-		drop_anim = false
-	else:
-		drop_anim = true
+	drop_anim = type == "map"
 
 
 func set_drop_anim(value) -> void:
