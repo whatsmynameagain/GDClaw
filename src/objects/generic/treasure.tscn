@@ -21,7 +21,7 @@ static_glitter = true
 [node name="Animation" parent="." index="0"]
 sprite_frames = ExtResource("3")
 animation = &"Ring_Purple"
-frame_progress = 0.490147
+frame_progress = 1.0
 
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {

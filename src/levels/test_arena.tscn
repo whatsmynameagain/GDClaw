@@ -114,54 +114,64 @@ contents = Array[Array]([[0, "Skull", "Purple"], [0, "Skull", "Blue"], [0, "Skul
 [node name="Treasure" parent="Objects/Pickups" index="0" instance=ExtResource("12")]
 position = Vector2(608.952, -398.051)
 collision_layer = 0
+lock_rotation = false
 
 [node name="Treasure2" parent="Objects/Pickups" index="1" instance=ExtResource("12")]
 position = Vector2(477.852, -358.151)
 collision_layer = 0
+lock_rotation = false
 
 [node name="Treasure3" parent="Objects/Pickups" index="2" instance=ExtResource("12")]
 z_index = 15
 position = Vector2(798.003, -63.6502)
 physics_material_override = ExtResource("9")
+lock_rotation = false
 type = "Crown"
 color = "Green"
 
 [node name="Restore" parent="Objects/Pickups" index="3" instance=ExtResource("13")]
 position = Vector2(926.253, -66.5002)
 collision_layer = 0
+lock_rotation = false
 size = "Large"
 
 [node name="Restore2" parent="Objects/Pickups" index="4" instance=ExtResource("13")]
 position = Vector2(924.353, -127.3)
 collision_layer = 0
+lock_rotation = false
 type = "Ammo"
 size = "Medium"
 
 [node name="Restore3" parent="Objects/Pickups" index="5" instance=ExtResource("13")]
 position = Vector2(1053.55, -66.5002)
 collision_layer = 0
+lock_rotation = false
 type = "Extra_Life"
 size = "None"
 
 [node name="Teleporter" parent="Objects/Pickups" index="6" instance=ExtResource("18")]
 position = Vector2(-615.802, 1331.12)
 collision_layer = 0
+lock_rotation = false
 destination = Vector2(-800, -200)
 
 [node name="EndItem" parent="Objects/Pickups" index="7" instance=ExtResource("19")]
 position = Vector2(-889.753, -189.474)
 collision_layer = 0
+lock_rotation = false
 drop_anim = true
 
 [node name="Treasure4" parent="Objects/Pickups" index="8" instance=ExtResource("12")]
 position = Vector2(756.373, -353.687)
 collision_layer = 0
+lock_rotation = false
 type = "Scepter"
 color = "Red"
 
 [node name="Treasure5" parent="Objects/Pickups" index="9" instance=ExtResource("12")]
 position = Vector2(746.856, -353.721)
 collision_layer = 0
+lock_rotation = false
 type = "Scepter"
 color = "Red"
 
@@ -178,60 +188,70 @@ libraries = {
 [node name="Powerup" parent="Objects/Pickups" index="10" instance=ExtResource("11")]
 position = Vector2(-4.23785, -220.368)
 collision_layer = 0
+lock_rotation = false
 duration = 100
 one_use = false
 
 [node name="Powerup5" parent="Objects/Pickups" index="11" instance=ExtResource("11")]
 position = Vector2(55.0921, -221.428)
 collision_layer = 0
+lock_rotation = false
 type = 2
 one_use = false
 
 [node name="Powerup6" parent="Objects/Pickups" index="12" instance=ExtResource("11")]
 position = Vector2(113.363, -222.487)
 collision_layer = 0
+lock_rotation = false
 type = 3
 one_use = false
 
 [node name="Powerup7" parent="Objects/Pickups" index="13" instance=ExtResource("11")]
 position = Vector2(162.098, -222.487)
 collision_layer = 0
+lock_rotation = false
 type = 4
 one_use = false
 
 [node name="Powerup2" parent="Objects/Pickups" index="14" instance=ExtResource("11")]
 position = Vector2(218.25, -225.666)
 collision_layer = 0
+lock_rotation = false
 type = 5
 one_use = false
 
 [node name="Powerup3" parent="Objects/Pickups" index="15" instance=ExtResource("11")]
 position = Vector2(336.909, -223.547)
 collision_layer = 0
+lock_rotation = false
 type = 7
 one_use = false
 
 [node name="Powerup4" parent="Objects/Pickups" index="16" instance=ExtResource("11")]
 position = Vector2(274.401, -226.725)
 collision_layer = 0
+lock_rotation = false
 type = 6
 one_use = false
 
 [node name="Restore5" parent="Objects/Pickups" index="17" instance=ExtResource("13")]
 position = Vector2(161.039, -860.284)
 collision_layer = 0
+lock_rotation = false
 type = "Health"
 size = "Large"
 
 [node name="Restore6" parent="Objects/Pickups" index="18" instance=ExtResource("13")]
 position = Vector2(34.165, -791.951)
 collision_layer = 0
+lock_rotation = false
 type = "Health"
 size = "Large"
 
 [node name="Teleporter2" parent="Objects/Pickups" index="19" instance=ExtResource("18")]
 position = Vector2(2308.88, 332.504)
 collision_layer = 0
+lock_rotation = false
 destination = Vector2(1200, -200)
 orientation = "Vertical"
 one_use = false

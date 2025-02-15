@@ -17,6 +17,7 @@ _data = {
 
 [node name="Pickup" type="RigidBody2D"]
 collision_layer = 4
+lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1")
