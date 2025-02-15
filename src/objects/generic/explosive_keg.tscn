@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dnm1ctulowk3h"]
 
-[ext_resource type="SpriteFrames" path="res://animations/explosive_keg.tres" id="1"]
+[ext_resource type="SpriteFrames" uid="uid://buvjtasnirtau" path="res://animations/explosive_keg.tres" id="1"]
 [ext_resource type="Script" uid="uid://dg8ljy4fyiwca" path="res://src/objects/generic/explosive_keg.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://dl11iwcxjrebk" path="res://sounds/explosive_keg/keg_boom.ogg" id="3"]
 [ext_resource type="PackedScene" uid="uid://bpwjiq5gpfuud" path="res://src/objects/generic/liftable_dummy.tscn" id="4"]
