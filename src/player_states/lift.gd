@@ -77,7 +77,7 @@ func _update(_delta) -> void:
 				owner.lifted_object.throw_direction = owner.orientation
 				owner.lifted_object._on_throw()
 				
-				if !object_animation.get_parent().is_class("Enemy"):
+				if !object_animation.get_parent()._is_class("Enemy"):
 					object_animation.play("thrown")
 				await owner.animation.animation_finished
 				emit_signal("finished", "Idle")
