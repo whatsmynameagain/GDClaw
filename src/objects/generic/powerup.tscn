@@ -16,7 +16,7 @@ static_glitter = true
 [node name="Animation" parent="." index="0"]
 sprite_frames = ExtResource("3")
 animation = &"CATNIP"
-frame_progress = 0.501351
+frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

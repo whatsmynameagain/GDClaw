@@ -16,4 +16,4 @@ static_glitter = true
 [node name="Animation" parent="." index="0"]
 sprite_frames = ExtResource("3")
 animation = &"Blue"
-frame_progress = 0.614285
+frame_progress = 1.0

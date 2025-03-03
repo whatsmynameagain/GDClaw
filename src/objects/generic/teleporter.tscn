@@ -17,7 +17,7 @@ static_glitter = true
 [node name="Animation" parent="." index="0"]
 sprite_frames = ExtResource("3")
 animation = &"Generic"
-frame_progress = 0.168803
+frame_progress = 0.965954
 
 [node name="DestinationHelper" type="Node2D" parent="." index="4"]
 position = Vector2(128, 0)

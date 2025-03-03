@@ -120,7 +120,10 @@ func _draw() -> void:
 		move_from = Vector2.ZERO
 		var i := 1
 		var label = Label.new() #_draw is only called once and then again with every update()
-		var font = label.get_font("") #gotta get the default font for draw_string
+		var default_font = ThemeDB.fallback_font
+		var default_font_size = ThemeDB.fallback_font_size
+		draw_string(default_font, Vector2(64, 64), "Hello world", HORIZONTAL_ALIGNMENT_LEFT, -1, default_font_size)
+	
 		label.queue_free()
 		if preview:
 			get_node("ElevatorBody").visible = false #can't use the onready variable elevator_body on the editor 
@@ -129,7 +132,7 @@ func _draw() -> void:
 				draw_texture(texture, Vector2(move_to.x + shadow_offset.x, move_to.y + shadow_offset.y), 
 						Color(1,1,1,0.6))
 				#doesn't really work with looping elevator paths that only have 2 steps (text overlaps in the middle)
-				draw_string(font, 
+				draw_string(default_font, 
 						Vector2((move_to.x + move_from.x)/2 + 4, (move_to.y + move_from.y)/2  + 16), 
 						"Step %s, Speed %s" % [i, step.z], 
 						HORIZONTAL_ALIGNMENT_LEFT,
